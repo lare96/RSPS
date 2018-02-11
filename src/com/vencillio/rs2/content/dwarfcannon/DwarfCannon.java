@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content.dwarfcannon;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import com.vencillio.core.cache.map.RSObject;
 import com.vencillio.core.cache.map.Region;
 import com.vencillio.core.task.TaskQueue;
@@ -22,6 +19,12 @@ import com.vencillio.rs2.entity.pathfinding.StraightPathFinder;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendAnimateObject;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
+//This has issues - Tanner
 
 /**
  * Handles the Dwarf Cannon

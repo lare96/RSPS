@@ -15,7 +15,7 @@ public enum VencillioBotData {
 	  DATA_7("How many crystal keys do you get for voting?", "3", "Three"),
 	  DATA_8("I am a rock that turns into a crab what am I called?", "Rock crab", "Rock crabs"),
 	  DATA_9("What is the max level possible reached in any skill?", "99"),
-	  DATA_10("Which NPC allows you set bank pin?", "Vencillio guard", "guard"),
+	  DATA_10("Which NPC allows you set bank pin?", "Tannerscape guard", "guard"),
 	  DATA_11("IHow many NPCs drop the Chaos Elemental pet?", "2", "two"),
 	  DATA_12("How many times can you prestige a skill?", "5", "five"),
 	  DATA_13("Corporeal Beast drops how many onyx bolts(e)?", "175"),
