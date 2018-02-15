@@ -1,0 +1,10 @@
+Things that must be working before initial server public
+Skills
+Shops 0,3-7,15-18,20,25-41,89-95
+Impling Jar
+Access to items/resources reasonably
+Combat
+Animations
+Teleportation menu locations all covered
+Voting system
+Donation system
