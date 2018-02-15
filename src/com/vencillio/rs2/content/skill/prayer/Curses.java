@@ -405,7 +405,7 @@ public class Curses {
 			public void onStop() {
 
 			}
-		})
+		});
 		return true;
 	}
 

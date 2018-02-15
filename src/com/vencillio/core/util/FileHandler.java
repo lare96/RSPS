@@ -1,14 +1,10 @@
 package com.vencillio.core.util;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.logging.Logger;
-
 import com.vencillio.VencillioConstants;
 import com.vencillio.rs2.content.gambling.Gambling;
+
+import java.io.*;
+import java.util.logging.Logger;
 
 public class FileHandler {
 	
@@ -50,6 +46,7 @@ public class FileHandler {
 			}
 			BufferedReader in = new BufferedReader(new FileReader(file));
 			int online = Integer.parseInt(in.readLine());
+			System.out.println("Online: " + online);
 			VencillioConstants.MOST_ONLINE = online;
 			logger.info("Most players loaded: "+ online);
 			in.close();
