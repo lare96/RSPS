@@ -24,6 +24,7 @@ public class LoginThread extends Thread {
 			boolean wasLoaded = false;
 			try {
 				starter = !PlayerSave.load(player);
+				System.out.println("Starter: " + starter);
 				wasLoaded = true;
 			} catch (Exception e) {
 				if (player != null) {

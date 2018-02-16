@@ -292,7 +292,6 @@ public final class PlayerSave {
 				return false;
 			}
 
-			System.out.println("Load Details Container exists");
 
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			try {
@@ -407,7 +406,6 @@ public final class PlayerSave {
 					return false;
 				}
 
-				System.out.println("loadDetails file exists");
 
 				reader = new BufferedReader(new FileReader(file));
 
