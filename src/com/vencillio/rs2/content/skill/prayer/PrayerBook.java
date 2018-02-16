@@ -70,9 +70,10 @@ public class PrayerBook {
 		REDEMPTION("Redemption", 49, 3.0, 99, PrayerType.OVER_HEAD),
 		SMITE("Smite", 52, 4.0, 100, PrayerType.OVER_HEAD),
 		CHIVALRY("Chivalry", 60, 3.0, 706, PrayerType.COMBAT),
-		PIETY("Piety", 70, 3.0, 707, PrayerType.COMBAT),
+		PIETY("Piety", 70, 3.0, 707, PrayerType.COMBAT);
 
-		SAPWARRIOR("Sap Warrior", 50, 4.0, 101,PrayerType.COMBAT), //What is config id?
+		//Commented out causes issues logging in (isQuickPrayer) - add when completing prayer
+		/*SAPWARRIOR("Sap Warrior", 50, 4.0, 101,PrayerType.COMBAT), //What is config id?
 		SAPRANGE("Sap Range", 52, 4.0, 102, PrayerType.COMBAT),
 		SAPMAGE("Sap Mage", 54, 4.0, 103, PrayerType.COMBAT),
 		SAPSPIRIT("Sap Spirit", 56, 4.0, 104, PrayerType.COMBAT),
@@ -89,6 +90,7 @@ public class PrayerBook {
 		LEECHSPECIAL("Leech Special", 84, 3.0, 115, PrayerType.COMBAT),
 		WRATH("Wrath", 89, 3.0, 116, PrayerType.OVER_HEAD),
 		SOULSPLIT("Soul Split", 92, 2.0, 117, PrayerType.OVER_HEAD);
+		*/
 
 
 
@@ -525,7 +527,6 @@ public class PrayerBook {
 	}
 	
 	public boolean isQuickPrayer(Prayer prayer) {
-		System.out.println("Prayer values length: " + Prayer.values().length);
 		return quickPrayers[prayer.ordinal()];
 	}
 
