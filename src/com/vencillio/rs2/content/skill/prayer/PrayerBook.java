@@ -525,6 +525,7 @@ public class PrayerBook {
 	}
 	
 	public boolean isQuickPrayer(Prayer prayer) {
+		System.out.println("Prayer values length: " + Prayer.values().length);
 		return quickPrayers[prayer.ordinal()];
 	}
 
