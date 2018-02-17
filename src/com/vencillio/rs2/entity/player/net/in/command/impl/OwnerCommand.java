@@ -3,6 +3,8 @@ package com.vencillio.rs2.entity.player.net.in.command.impl;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.definitions.NpcDefinition;
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.DropTable;
@@ -14,6 +16,7 @@ import com.vencillio.rs2.content.gambling.Lottery;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.QuestTab;
 import com.vencillio.rs2.content.membership.RankHandler;
+import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
@@ -27,7 +30,6 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendBanner;
 import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.Graphic;
 
 /**
  * A list of commands only accessible to the owner.
@@ -164,6 +166,53 @@ public class OwnerCommand implements Command {
 						}
 					}
 				}
+				return true;
+
+			case "hot": //Default heal = 10, default max range = 10
+				boolean hotActive = true;
+				healAmount = parser.hasNext() ? parser.nextInt() : 10;
+				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+
+
+				for (Player p : World.getPlayers()) {
+
+					if (p == null || !p.isActive()) {
+						continue;
+					}
+
+					int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
+
+					Task t = new Task(p, 5) {
+
+						@Override
+						public void execute() {
+							if (distance <= maxDistance) {
+								if (healAmount < 0) { //Damage
+									p.hit(new Hit(-healAmount, HitTypes.CANNON));
+									p.getUpdateFlags().sendGraphic(new Graphic(1200));
+								} else { //Heal
+									int hpDiff = p.getMaxLevels()[3] - p.getSkill().getLevels()[3];
+									p.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
+									p.getUpdateFlags().sendGraphic(new Graphic(444));
+								}
+							}
+
+							if(!hotActive)
+								stop();
+						}
+
+						@Override
+						public void onStop() {
+
+						}
+					};
+
+					TaskQueue.queue(t);
+				}
+				return true;
+
+			case "hotoff":
+				hotActive = false;
 				return true;
 			
 			/*
