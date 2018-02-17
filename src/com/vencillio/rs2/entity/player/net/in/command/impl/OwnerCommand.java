@@ -127,10 +127,12 @@ public class OwnerCommand implements Command {
 
 			case "damageoff":
 				player.setTakeDamage(false);
+				player.setInvulnerable(true);
 				return true;
 
 			case "damageon":
 				player.setTakeDamage(true);
+				player.setInvulnerable(false);
 				return true;
 
 			case "healmultiple": //Default heal = 10, default max range = 10
@@ -719,7 +721,7 @@ public class OwnerCommand implements Command {
 						return true;
 					}
 
-					p.hit(new Hit(player, 99, HitTypes.NONE));
+					p.hit(new Hit(99));
 					player.send(new SendMessage("You have killed @red@" + p.getUsername()));
 				}
 				return true;

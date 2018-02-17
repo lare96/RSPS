@@ -128,6 +128,7 @@ public class Player extends Entity {
 	private boolean isIron = false;
 	private boolean isUltimateIron = false;
 	private boolean isMember = false;
+	private boolean isInvulnerable = false;
 
 	public boolean ironPlayer() {
 		if (this.isIron()) {
@@ -1110,6 +1111,8 @@ public class Player extends Entity {
 		deaths = ((short) (deaths + 1));
 		InterfaceHandler.writeText(new QuestTab(this));
 	}
+
+	public boolean isInvulnerable() { return isInvulnerable; }
 
 	public boolean isAppearanceUpdateRequired() {
 		return appearanceUpdateRequired;
@@ -2351,6 +2354,8 @@ public class Player extends Entity {
 	public boolean isMember() {
 		return isMember;
 	}
+
+	public void setInvulnerable(boolean isInvulnerable) { this.isInvulnerable = isInvulnerable; }
 
 	public void setMember(boolean isMember) {
 		this.isMember = isMember;

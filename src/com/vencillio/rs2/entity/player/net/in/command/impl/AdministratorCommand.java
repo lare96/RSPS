@@ -284,8 +284,88 @@ public class AdministratorCommand implements Command {
                              * Set levels
                              */
                         case "level":
+                           String input;
+                           short skill;
+
                             if (parser.hasNext(2)) {
-                                short skill = parser.nextShort();
+                                input = parser.nextString();
+                                switch(input) {
+                                    case "attack":
+                                        skill = 0;
+                                        break;
+                                    case "defence":
+                                        skill = 1;
+                                        break;
+                                    case "strength":
+                                        skill = 2;
+                                        break;
+                                    case "hp":
+                                    case "hitpoints":
+                                        skill = 3;
+                                        break;
+                                    case "ranged":
+                                        skill = 4;
+                                        break;
+                                    case "prayer":
+                                        skill = 5;
+                                        break;
+                                    case "magic":
+                                        skill = 6;
+                                        break;
+                                    case "cooking":
+                                        skill = 7;
+                                        break;
+                                    case "wc":
+                                    case "woodcutting":
+                                        skill = 8;
+                                        break;
+                                    case "fletching":
+                                        skill = 9;
+                                        break;
+                                    case "fishing":
+                                        skill = 10;
+                                        break;
+                                    case "fm":
+                                    case "firemaking":
+                                        skill = 11;
+                                        break;
+                                    case "crafting":
+                                        skill = 12;
+                                        break;
+                                    case "smithing":
+                                        skill = 13;
+                                        break;
+                                    case "mining":
+                                        skill = 14;
+                                        break;
+                                    case "herb":
+                                    case "herblore":
+                                        skill = 15;
+                                        break;
+                                    case "agility":
+                                        skill = 16;
+                                        break;
+                                    case "thieving":
+                                        skill = 17;
+                                        break;
+                                    case "slayer":
+                                        skill = 18;
+                                        break;
+                                    case "farming":
+                                        skill = 19;
+                                        break;
+                                    case "rc":
+                                    case "runecrafting":
+                                        skill = 20;
+                                        break;
+                                    case "hunter":
+                                        skill = 21;
+                                        break;
+                                    default:
+                                        skill = 0;
+                                        break;
+                                }
+
                                 short amount1 = parser.nextShort();
                                 player.getLevels()[skill] = amount1;
                                 player.getMaxLevels()[skill] = amount1;

@@ -63,8 +63,8 @@ public class TeleportHandler {
 		/** Player Vs Player */
 		EDGEVILLE(246075, 0, "None", "None", 0, new Location(3087, 3515, 0), false, false),
 		VARROCK(246076, 0, "None", "None", 0, new Location(3244, 3512, 0), false, false),
-		EAST_DRAGONS(246077, 0, "None", "None", 0, new Location(3333, 3666, 0), false, false),
-		CASTLE(246078, 0, "None", "None", 0, new Location(3002, 3626, 0), false, false),
+		EAST_DRAGONS(246077, 0, "None", "Lv19 Wild", 0, new Location(3333, 3666, 0), false, false),
+		CASTLE(246078, 0, "None", "Lv14 Wild", 0, new Location(3002, 3626, 0), false, false),
 		MAGE_BANK(246079, 0, "None", "None", 0, new Location(2540, 4717, 0), false, false),
 
 		/** Player Vs Monster */
