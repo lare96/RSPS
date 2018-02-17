@@ -116,7 +116,7 @@ public class OwnerCommand implements Command {
 					try {
 						String name = parser.nextString();
 						while(parser.hasNext()) {
-							msg += parser.nextString() + " ";
+							msg += parser.nextString().toLowerCase() + " ";
 						}
 						//String msg = parser.nextString().replaceAll("_", " ");
 						Player p = World.getPlayerByName(name);
