@@ -39,6 +39,8 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendString;
  */
 public class OwnerCommand implements Command {
 
+	private boolean hotActive = false;
+
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
 		switch (parser.getCommand()) {
@@ -169,7 +171,7 @@ public class OwnerCommand implements Command {
 				return true;
 
 			case "hot": //Default heal = 10, default max range = 10
-				boolean hotActive = true;
+				hotActive = true;
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
 
@@ -182,7 +184,7 @@ public class OwnerCommand implements Command {
 
 					int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
 
-					Task t = new Task(p, 5) {
+					Task t = new Task(p, 9) {
 
 						@Override
 						public void execute() {
