@@ -1865,7 +1865,6 @@ public class Player extends Entity {
 
 	public void teleport(Location location) {
 		boolean zChange = location.getZ() != getLocation().getZ();
-		
 		setTakeDamage(false);
 		getLocation().setAs(location);
 		setResetMovementQueue(true);

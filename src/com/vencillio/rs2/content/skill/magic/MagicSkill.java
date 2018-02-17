@@ -1,34 +1,22 @@
 package com.vencillio.rs2.content.skill.magic;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.task.impl.TaskIdentifier;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.combat.impl.Attack;
 import com.vencillio.rs2.content.skill.Skills;
-import com.vencillio.rs2.content.skill.magic.spells.Charge;
-import com.vencillio.rs2.content.skill.magic.spells.HighAlchemy;
-import com.vencillio.rs2.content.skill.magic.spells.LowAlchemy;
-import com.vencillio.rs2.content.skill.magic.spells.SuperHeat;
-import com.vencillio.rs2.content.skill.magic.spells.Vengeance;
-import com.vencillio.rs2.entity.Animation;
-import com.vencillio.rs2.entity.Entity;
-import com.vencillio.rs2.entity.Graphic;
-import com.vencillio.rs2.entity.Location;
-import com.vencillio.rs2.entity.Projectile;
+import com.vencillio.rs2.content.skill.magic.spells.*;
+import com.vencillio.rs2.entity.*;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendOpenTab;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendSidebarInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendSound;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MagicSkill {
 
@@ -488,7 +476,9 @@ public class MagicSkill {
 				TaskQueue.onMovement(player);
 
 				player.teleport(new Location(x, y, z));
-				player.setTakeDamage(true);
+				if(!player.isInvulnerable())
+					player.setTakeDamage(true);
+
 				teleporting = false;
 
 				switch (type) {
