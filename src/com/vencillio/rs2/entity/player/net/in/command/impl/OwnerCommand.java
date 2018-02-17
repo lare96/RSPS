@@ -110,10 +110,14 @@ public class OwnerCommand implements Command {
 			 * Forces message to player
 			 */
 			case "forcemsg":
+				String msg;
+
 				if (parser.hasNext(2)) {
 					try {
 						String name = parser.nextString();
-						String msg = parser.nextString().replaceAll("_", " ");
+						while(parser.hasNext())
+							msg = parser.nextString();
+						//String msg = parser.nextString().replaceAll("_", " ");
 						Player p = World.getPlayerByName(name);
 						if (p == null) {
 							player.send(new SendMessage("Player not found."));

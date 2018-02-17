@@ -359,7 +359,8 @@ public class AdministratorCommand implements Command {
                                         skill = 20;
                                         break;
                                     case "hunter":
-                                        skill = 21;
+                                    case "hunting":
+                                        skill = 22;
                                         break;
                                     default:
                                         skill = 0;
