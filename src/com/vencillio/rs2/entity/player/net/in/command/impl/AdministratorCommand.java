@@ -8,6 +8,7 @@ import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.content.skill.Skill;
 import com.vencillio.rs2.content.skill.Skills;
+import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
@@ -379,6 +380,31 @@ public class AdministratorCommand implements Command {
                     }
                 }
                 return true;
+
+            case "god":
+                if(player.getAnimations().getStandEmote() != 1501) {
+                    player.getUpdateFlags().sendAnimation(new Animation(1500));
+                    player.getAnimations().setStandEmote(1501);
+                    player.getAnimations().setStandTurnEmote(1851);
+                    player.getAnimations().setWalkEmote(1851);
+                    player.getAnimations().setTurn90CCWEmote(1501);
+                    player.getAnimations().setTurn90CWEmote(1501);
+                    player.getAnimations().setTurn180Emote(1851);
+                    player.getAnimations().setRunEmote(1851);
+                    player.getUpdateFlags().setUpdateRequired(true);
+                    player.setAppearanceUpdateRequired(true);
+                }
+                else {
+                    player.getAnimations().setStandEmote(0x328);
+                    player.getAnimations().setStandTurnEmote(0x337);
+                    player.getAnimations().setWalkEmote(0x333);
+                    player.getAnimations().setTurn90CCWEmote(0x336);
+                    player.getAnimations().setTurn90CWEmote(0x335);
+                    player.getAnimations().setTurn180Emote(0x334);
+                    player.getAnimations().setRunEmote(0x338);
+                    player.getUpdateFlags().setUpdateRequired(true);
+                    player.setAppearanceUpdateRequired(true);
+                }
         }
         return false;
     }
