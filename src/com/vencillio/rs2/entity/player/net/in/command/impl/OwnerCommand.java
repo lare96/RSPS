@@ -135,7 +135,9 @@ public class OwnerCommand implements Command {
 
 			case "healmultiple": //Default heal = 10, default max range = 10
 			case "hm":
-				int healAmount = 10;
+				int healAmount = parser.hasNext() ? parser.nextInt() : 10;
+				int maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+
 				for (Player p : World.getPlayers()) {
 
 					if (p == null || !p.isActive()) {
@@ -143,15 +145,8 @@ public class OwnerCommand implements Command {
 					}
 
 					int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
-					System.out.println("p username: "+ p.getUsername() + " Distance: " + distance);
 
-					if (parser.hasNext()) {
-						healAmount = parser.nextInt();
-					}
-					int maxDistance = parser.hasNext() ? parser.nextInt() : 10; //Not sure
-					System.out.println("Max Distance: " + maxDistance);
 					if (distance <= maxDistance) {
-						System.out.println("Heal amount: " + healAmount);
 						if (healAmount < 0) { //Damage
 							p.hit(new Hit(-healAmount, HitTypes.CANNON));
 							p.getUpdateFlags().sendGraphic(new Graphic(1200));
