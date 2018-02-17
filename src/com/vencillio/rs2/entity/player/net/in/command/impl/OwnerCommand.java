@@ -149,11 +149,12 @@ public class OwnerCommand implements Command {
 					}
 					int maxDistance = parser.hasNext() ? parser.nextInt() : 10; //Not sure
 					System.out.println("Max Distance: " + maxDistance);
-					if (distance < maxDistance) {
-						if (healAmount < 0) {
+					if (distance <= maxDistance) {
+						System.out.println("Heal amount: " + healAmount);
+						if (healAmount < 0) { //Damage
 							p.hit(new Hit(-healAmount, HitTypes.CANNON));
 							p.getUpdateFlags().sendGraphic(new Graphic(1200));
-						} else {
+						} else { //Heal
 							int hpDiff = p.getMaxLevels()[3] - p.getSkill().getLevels()[3];
 							p.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
 							p.getUpdateFlags().sendGraphic(new Graphic(444));
