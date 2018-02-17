@@ -123,7 +123,7 @@ public class OwnerCommand implements Command {
 						if (p == null) {
 							player.send(new SendMessage("Player not found."));
 						}
-						p.getUpdateFlags().sendForceMessage(Utility.formatPlayerName(msg.trim()));
+						p.getUpdateFlags().sendForceMessage(Utility.capitalizeFirstLetter(msg.trim()));
 					} catch (Exception e) {
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format"));
 					}
