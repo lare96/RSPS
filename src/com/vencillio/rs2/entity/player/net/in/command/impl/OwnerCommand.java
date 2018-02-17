@@ -175,7 +175,6 @@ public class OwnerCommand implements Command {
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
 
-
 				for (Player p : World.getPlayers()) {
 
 					if (p == null || !p.isActive()) {
@@ -211,6 +210,47 @@ public class OwnerCommand implements Command {
 
 					TaskQueue.queue(t);
 				}
+				return true;
+
+			case "hot2": //Default heal = 10, default max range = 10
+				hotActive = true;
+				healAmount = parser.hasNext() ? parser.nextInt() : 10;
+				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+
+					Task t = new Task(9) {
+
+						@Override
+						public void execute() {
+							for (Player p : World.getPlayers()) {
+								if (p == null || !p.isActive()) {
+									continue;
+								}
+
+								int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
+
+								if (distance <= maxDistance) {
+									if (healAmount < 0) { //Damage
+										p.hit(new Hit(-healAmount, HitTypes.CANNON));
+										p.getUpdateFlags().sendGraphic(new Graphic(1200));
+									} else { //Heal
+										int hpDiff = p.getMaxLevels()[3] - p.getSkill().getLevels()[3];
+										p.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
+										p.getUpdateFlags().sendGraphic(new Graphic(444));
+									}
+								}
+
+								if (!hotActive)
+									stop();
+							}
+						}
+
+						@Override
+						public void onStop() {
+
+						}
+					};
+
+					TaskQueue.queue(t);
 				return true;
 
 			case "hotoff":
