@@ -6,9 +6,8 @@ import com.vencillio.rs2.entity.Location;
 
 /**
  * Handles player constants
- * 
- * @author Daniel
  *
+ * @author Daniel
  */
 public final class PlayerConstants {
 
@@ -56,6 +55,11 @@ public final class PlayerConstants {
 	 * Member zone
 	 */
 	public static Location MEMEBER_AREA = new Location(2827, 3344, 0);
+
+	/**
+	 * Relaxation zone
+	 */
+	public static Location RELAXATION_AREA = new Location(2972, 9504, 0);
 
 	/**
 	 * Handles starters

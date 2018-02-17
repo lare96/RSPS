@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content;
 
-import java.text.NumberFormat;
-import java.util.HashMap;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.task.impl.TaskIdentifier;
@@ -22,6 +19,9 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.text.NumberFormat;
+import java.util.HashMap;
 
 /**
  * Handles teleporting around with interface
@@ -97,7 +97,8 @@ public class TeleportHandler {
 
 		/** Other */
 		MEMBERSHIP(240111, 0, "Members only", "None", 0, PlayerConstants.MEMEBER_AREA, false, true),
-		STAFFZONE(240112, 0, "Staff only", "None", 0, PlayerConstants.STAFF_AREA, false, true);
+		STAFFZONE(240112, 0, "Staff only", "None", 0, PlayerConstants.STAFF_AREA, false, true),
+		RELAXATION(240113, 0, "None", "None", 0, PlayerConstants.RELAXATION_AREA, false, false);
 
 		private int button;
 		private int cost;

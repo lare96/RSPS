@@ -151,7 +151,6 @@ public class OwnerCommand implements Command {
 							p.hit(new Hit(-healAmount, HitTypes.CANNON));
 							p.getUpdateFlags().sendGraphic(new Graphic(1200));
 						} else {
-							System.out.println("player.getMaxLevels()[3]: " + p.getMaxLevels()[3] + " player.getSkill().getLevels()[3]: " + p.getSkill().getLevels()[3]);
 							int hpDiff = p.getMaxLevels()[3] - p.getSkill().getLevels()[3];
 							p.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
 							p.getUpdateFlags().sendGraphic(new Graphic(444));
