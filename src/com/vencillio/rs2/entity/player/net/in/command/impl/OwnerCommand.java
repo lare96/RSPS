@@ -115,14 +115,15 @@ public class OwnerCommand implements Command {
 				if (parser.hasNext(2)) {
 					try {
 						String name = parser.nextString();
-						while(parser.hasNext())
-							msg = parser.nextString();
+						while(parser.hasNext()) {
+							msg += parser.nextString() + " ";
+						}
 						//String msg = parser.nextString().replaceAll("_", " ");
 						Player p = World.getPlayerByName(name);
 						if (p == null) {
 							player.send(new SendMessage("Player not found."));
 						}
-						p.getUpdateFlags().sendForceMessage(Utility.formatPlayerName(msg));
+						p.getUpdateFlags().sendForceMessage(Utility.formatPlayerName(msg.trim()));
 					} catch (Exception e) {
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format"));
 					}
