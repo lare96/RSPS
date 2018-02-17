@@ -110,7 +110,7 @@ public class OwnerCommand implements Command {
 			 * Forces message to player
 			 */
 			case "forcemsg":
-				String msg;
+				String msg="";
 
 				if (parser.hasNext(2)) {
 					try {
