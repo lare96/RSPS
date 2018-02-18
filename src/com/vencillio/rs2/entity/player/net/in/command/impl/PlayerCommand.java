@@ -378,7 +378,7 @@ public class PlayerCommand implements Command {
 					while (parser.hasNext()) {
 						message += " " + parser.nextString();
 					}
-					Yelling.yell(player, message.trim());
+					Yelling.yell(player, message.trim(), false);
 				} catch (Exception e) {
 					player.getClient().queueOutgoingPacket(new SendMessage("Invalid yell format, syntax: -messsage"));
 				}

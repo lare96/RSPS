@@ -113,6 +113,7 @@ public class Player extends Entity {
 	
 	private boolean hitZulrah;
 	public boolean playingMB = false;
+	public boolean clickToTeleport;
 	
 	/* Weapon Game */
 	private int weaponKills;

@@ -1,34 +1,13 @@
 package com.vencillio.rs2.entity.player.net.in;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.network.ReceivedPacket;
 import com.vencillio.core.network.StreamBuffer;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.Client;
-import com.vencillio.rs2.entity.player.net.in.impl.BankAllButOne;
-import com.vencillio.rs2.entity.player.net.in.impl.BankModifiableX;
-import com.vencillio.rs2.entity.player.net.in.impl.ChangeAppearancePacket;
-import com.vencillio.rs2.entity.player.net.in.impl.ChangeRegionPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.ChatInterfacePacket;
-import com.vencillio.rs2.entity.player.net.in.impl.ClickButtonPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.CloseInterfacePacket;
-import com.vencillio.rs2.entity.player.net.in.impl.CommandPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.FlashingSideIconPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.InputFieldPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.InterfaceAction;
-import com.vencillio.rs2.entity.player.net.in.impl.ItemPackets;
-import com.vencillio.rs2.entity.player.net.in.impl.MovementPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.NPCPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.ObjectPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.PlayerOptionPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.PrivateMessagingPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.PublicChatPacket;
-import com.vencillio.rs2.entity.player.net.in.impl.ReceiveString;
-import com.vencillio.rs2.entity.player.net.in.impl.ResetCounter;
-import com.vencillio.rs2.entity.player.net.in.impl.SpawnTab;
-import com.vencillio.rs2.entity.player.net.in.impl.StringInputPacket;
+import com.vencillio.rs2.entity.player.net.in.impl.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PacketHandler {
 
@@ -53,7 +32,6 @@ public class PacketHandler {
 	private static final IncomingPacket p14 = new ChangeRegionPacket();
 
 	public static void declare() {
-		packets[149] = new SpawnTab();
 		packets[150] = new InputFieldPacket();
 		packets[140] = new BankAllButOne();
 		packets[141] = new BankModifiableX();

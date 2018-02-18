@@ -12,12 +12,12 @@ public class Yelling {
 
 	public static String send;
 
-	public static void yell(Player player, String message) {
-		
+	public static void yell(Player player, String message, boolean staffYell) {
+
 		message = Utility.capitalizeFirstLetter(message);
 
 		int rights = player.getRights();
-		
+
 		if (rights == 1) {
 			send = "[@blu@Moderator</col>] <img=0>@blu@" + player.getUsername() + "</col>: " + message;
 		} else if (rights == 2) {
@@ -34,10 +34,9 @@ public class Yelling {
 			send = "[<col=4D8528>" + Utility.capitalize(player.getYellTitle()) + "</col>] <img=6><col=4D8528>" + player.getUsername() + "</col>: " + message;
 		} else if (rights == 8) {
 			send = "[<col=971FF2>" + Utility.capitalize(player.getYellTitle()) + "</col>] <img=7><col=971FF2>" + player.getUsername() + "</col>: " + message;
-		
-		
+		} else if (staffYell) {
+			send = "[<shad=0><col=FF0202>Staff Yell</shad></col>]  <img=11> " + player.getUsername() + "</col>:<shad=0><col=FF0202> " + message;
 		} else {
-
 			if (player.getRights() == 0) {
 				if (player.getAttributes().get("yellcooldown") == null) {
 					player.getAttributes().set("yellcooldown", Long.valueOf(System.currentTimeMillis()));
@@ -45,7 +44,7 @@ public class Yelling {
 					player.getClient().queueOutgoingPacket(new SendMessage("You must wait a few seconds before yelling again."));
 					return;
 				}
-				
+
 				player.getAttributes().set("yellcooldown", Long.valueOf(System.currentTimeMillis()));
 			}
 			return;
@@ -66,9 +65,12 @@ public class Yelling {
 			return;
 		}
 
-
-		for (Player i : World.getPlayers())
-			if (i != null && send != null)
-				i.getClient().queueOutgoingPacket(new SendMessage(send));
+		for (Player i : World.getPlayers()) {
+			if (i != null && send != null && (i.getRights() >= 1 && i.getRights() <= 4) && staffYell) {
+				i.send(new SendMessage(send));
+			} else if (i != null && send != null && !staffYell) {
+				i.send(new SendMessage(send));
+			}
+		}
 	}
 }
