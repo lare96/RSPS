@@ -92,7 +92,7 @@ public class MovementPacket extends IncomingPacket {
 		if(player.clickToTeleport) //Click tele enabled
 			firstStepX = player.getX();
 		else
-			firstStepX = player.getX() - player.getCurrentRegion().getRegionX() * 8; //Click tele disabled
+			firstStepX = in.readShort(StreamBuffer.ValueType.A, StreamBuffer.ByteOrder.LITTLE); //Click tele disabled
 
 		for (int i = 0; i < steps; i++) {
 			path[i][0] = in.readByte();
@@ -103,7 +103,7 @@ public class MovementPacket extends IncomingPacket {
 		if(player.clickToTeleport) //Click tele enabled
 			firstStepY = player.getY();
 		else
-			firstStepY = player.getY() - player.getCurrentRegion().getRegionY() * 8; //Click tele disabled
+			firstStepY = in.readShort(StreamBuffer.ByteOrder.LITTLE);;; //Click tele disabled
 
 		in.readByte(StreamBuffer.ValueType.C);
 
