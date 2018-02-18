@@ -88,37 +88,22 @@ public class MovementPacket extends IncomingPacket {
 		int steps = (length - 5) / 2;
 		int[][] path = new int[steps][2];
 
-		int firstStepX;
-		if(player.clickToTeleport) //Click tele enabled
-			firstStepX = player.getX() + player.getCurrentRegion().getRegionX() * 8;
-		else
-			firstStepX = in.readShort(StreamBuffer.ValueType.A, StreamBuffer.ByteOrder.LITTLE); //Click tele disabled
+		int firstStepX = in.readShort(StreamBuffer.ValueType.A, StreamBuffer.ByteOrder.LITTLE);
 
 		for (int i = 0; i < steps; i++) {
 			path[i][0] = in.readByte();
 			path[i][1] = in.readByte();
 		}
 
-		int firstStepY;
-		if(player.clickToTeleport) //Click tele enabled
-			firstStepY = player.getY() + player.getCurrentRegion().getRegionY() * 8;
-		else
-			firstStepY = in.readShort(StreamBuffer.ByteOrder.LITTLE); //Click tele disabled
-
+		int firstStepY = in.readShort(StreamBuffer.ByteOrder.LITTLE);
 		in.readByte(StreamBuffer.ValueType.C);
 
 		player.getMovementHandler().reset();
 
 		for (int i = 0; i < steps; i++) {
-			if(player.clickToTeleport) {
-				System.out.println("path[" + i + "][0]: " + path[i][0] + " + firstStepX: " + firstStepX + "path[" + i + "][1]: " + path[i][1] + " + firstStepY: " + firstStepY);
-				//player.teleport(new Location(path[i][0] + firstStepX, path[i][1] + firstStepY, player.getZ()));
-			}
 			path[i][0] += firstStepX;
 			path[i][1] += firstStepY;
 		}
-		if(player.clickToTeleport)
-			player.teleport(new Location(path[steps-1][0] + firstStepX, path[steps-1][1] + firstStepY, player.getZ()));
 
 		if (steps > 0) {
 			if ((Math.abs(path[(steps - 1)][0] - player.getLocation().getX()) > 21) || (Math.abs(path[(steps - 1)][1] - player.getLocation().getY()) > 21)) {

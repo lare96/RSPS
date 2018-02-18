@@ -134,10 +134,10 @@ public class OwnerCommand implements Command {
 				}
 				return true;
 
-			case"click":
+			/*case"click":
 				player.clickToTeleport = !player.clickToTeleport;
 				player.send(new SendMessage("Click teleporting is: "+ (!player.clickToTeleport ? "Disabled" : "Enabled")));
-				return true;
+				return true;*/
 
 			case "damageoff":
 				player.setTakeDamage(false);
