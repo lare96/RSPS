@@ -105,7 +105,6 @@ public class AdministratorCommand implements Command {
 				}
 				else {
 					player.send(new SendMessage("You are at: " + player.getLocation() + "."));
-					System.out.println("new Location(" + player.getX() + ", " + player.getY() + (player.getZ() > 0 ? ", " + player.getZ() : "") + ")");
 					return true;
 				}
 
