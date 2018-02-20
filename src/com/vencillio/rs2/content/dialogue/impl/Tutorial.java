@@ -60,6 +60,7 @@ public class Tutorial extends Dialogue {
 
 	@Override
 	public boolean clickButton(int id) {
+		System.out.println("id: " + id);
 		switch (id) {
 			case 9157:
 				if (option == 1) {
@@ -129,77 +130,86 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"Hello @blu@" + player.getUsername() + "</col>, Welcome to Tannerscape!", "Let's get started with the tutorial!"});
 				break;
 			case 4:
-				nChat(new String[]{"In addition to normal, ironman, and hardcore ironman there is an additional mode here"});
+				nChat(new String[]{"In addition to normal, ironman, and hardcore ironman"});
 				break;
 			case 5:
-				nChat(new String[]{"There are 4 difficulties which affect various aspects of gameplay (Remember this)"});
+				nChat(new String[]{"There is an additional mode here"});
 				break;
 			case 6:
-				nChat(new String[]{"Easy (Fast Experience)", "Medium (Average experience)", "Hard (Slightly slower xp)", "Ultimate (Slowest Experience)"});
+				nChat(new String[]{"There are 4 difficulties which affect various aspects of gameplay (Remember this)"});
 				break;
 			case 7:
-				nChat(new String[]{"In addition to experience rates, special attack restore rate, prayer drain, and damage are also affected"});
+				nChat(new String[]{"Easy (Fast Experience)", "Medium (Average experience)", "Hard (Slightly slower xp)", "Ultimate (Slowest Experience)"});
 				break;
 			case 8:
-				nChat(new String[]{"The harder the difficulty chosen the slower the xp but the better the advantages previously mentioned"});
+				nChat(new String[]{"In addition to experience rates, special attack restore rate,"});
 				break;
 			case 9:
-				nChat(new String[]{"Choose your difficulty on the next screen"});
+				nChat(new String[]{"prayer drain, and damage are also affected"});
 				break;
 			case 10:
+				nChat(new String[]{"The harder the difficulty chosen"});
+				break;
+			case 11:
+				nChat(new String[]{"the slower the xp but the better the advantages previously mentioned"});
+				break;
+			case 12:
+				nChat(new String[]{"Choose your difficulty on the next screen"});
+				break;
+			case 13:
 				DialogueManager.sendOption(player, "Easy", "Medium", "Hard", "Ultimate");
 				option = 2;
 				break;
-			case 11:
+			case 14:
 				nChat(new String[]{"Clicking on the World Map will allow you to teleport", "to various different locations.", "Including minigames, PvP, PvM, etc"});
 				break;
-			case 12:
+			case 15:
 				tele(3082, 3485);
 				nChat(new String[]{"You can change your magic books here."});
 				break;
-			case 13:
+			case 16:
 				tele(3096, 3486);
 				nChat(new String[]{"This is Vannaka; he can give you a slayer task.", "You may also get a co-op slayer task."});
 				break;
-			case 14:
+			case 17:
 				tele(3098, 3498);
 				nChat(new String[]{"This is our exchange post.", "They are located all over Tannerscape.", "You may sell/buy items from other players here."});
 				break;
-			case 15:
+			case 18:
 				tele(3096, 3505);
 				nChat(new String[]{"These are the shops.", "You may buy all your necessary items from here."});
 				break;
-			case 16:
+			case 19:
 				tele(3099, 3500);
 				nChat(new String[]{"This is the home thieving area.", "This is a very easy method to make quick money."});
 				break;
-			case 17:
+			case 20:
 				tele(3086, 3500);
 				nChat(new String[]{"This is the Emblem Trader.", "He will reward you for all your hard work from the", "Bounty Hunter."});
 				break;
-			case 18:
+			case 21:
 				tele(3084, 3489);
 				nChat(new String[]{"Nieve here is in charge of our Prestige system.", "After reaching 99 in a statistic you may prestige it."});
 				break;
-			case 19:
+			case 22:
 				tele(3082, 3505);
 				nChat(new String[]{"If you are ever curious about a NPC, talk to Hari.", "He will be able to help you out."});
 				break;
-			case 20:
+			case 23:
 				tele(3078, 3505);
 				nChat(new String[]{"These three young fellows can be very useful for you.", "They can change your appeareance, give you skillcapes,", "and decant your potions. For a cost of course!"});
 				break;
-			case 21:
+			case 24:
 				tele(3086, 3489);
 				nChat(new String[]{"If you have any more questions please speak to a", "<img=0>@blu@ Moderator</col> or any other staff member."});
 				break;
-			case 22:
+			case 25:
 				nChat(new String[]{"You may view the rules on our forums (@red@www.rennatscape.proboards.com/</col>)", "Make sure to vote to keep the server active."});
 				break;
-			case 23:
+			case 26:
 				nChat(new String[]{"There are tons more of content to explore.", "Good luck with your adventurer!"});
 				break;
-			case 24:
+			case 27:
 				end();
 				StarterKit.handle(player, 202051);
 				player.send(new SendInterface(51750));
