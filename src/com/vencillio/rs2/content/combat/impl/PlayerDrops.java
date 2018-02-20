@@ -1,12 +1,5 @@
 package com.vencillio.rs2.content.combat.impl;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
@@ -26,6 +19,8 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendKillFeed;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.*;
 
 public class PlayerDrops {
 
@@ -51,7 +46,7 @@ public class PlayerDrops {
 		BossPets.onDeath(player);
 		
 
-		if (killer != null && !killer.isNpc()) {
+		if (killer != null && !killer.isNpc()) { //If player, always add rogue kill +1; if not recent kill then +1 kill;
 			Item weapon = killer.getPlayer().getEquipment().getItems()[3];
 			if (weapon == null) {
 				weapon = new Item(0);
@@ -64,13 +59,12 @@ public class PlayerDrops {
 				killer.getPlayer().send(new SendMessage("@blu@You have killed " + player.getUsername() + " recently! You were not awarded."));
 				
 			} else {
-
 				PlayerKilling.addHostToList(killer.getPlayer(), player.getClient().getHost());
 				killer.getPlayer().setKills(killer.getPlayer().getKills() + 1);
 				
-				if (!killer.getPlayer().targetName.equals(player.getUsername())) {
-					if (killer.getPlayer().getRogueKills() > killer.getPlayer().getRogueRecord()) {
-						killer.getPlayer().setRogueRecord(killer.getPlayer().getRogueKills());
+				if (!killer.getPlayer().targetName.equals(player.getUsername())) { //if killer's target is not the player that died
+					if (killer.getPlayer().getRogueKills() > killer.getPlayer().getRogueRecord()) { //and if the killer's rogue kills is more than their rogue record
+						killer.getPlayer().setRogueRecord(killer.getPlayer().getRogueKills()); //update their rogue kill record
 					}		
 				}
 				
@@ -93,12 +87,12 @@ public class PlayerDrops {
 						killer.getPlayer().getInventory().update();
 						
 					} else {
-						GroundItemHandler.add(new Item(12746), player.getLocation(), killer.getPlayer());
+						GroundItemHandler.add(new Item(12746), player.getLocation(), killer.getPlayer()); //Basic emblem?
 					}
 
-					killer.getPlayer().setHunterKills(killer.getPlayer().getHunterKills() + 1);
+					killer.getPlayer().setHunterKills(killer.getPlayer().getHunterKills() + 1); //Hunter kills +1 if killing target
 					if (killer.getPlayer().getHunterKills() > killer.getPlayer().getHunterRecord()) {
-						killer.getPlayer().setHunterRecord(killer.getPlayer().getHunterKills());
+						killer.getPlayer().setHunterRecord(killer.getPlayer().getHunterKills()); //Set hunter record
 					}
 					killer.getPlayer().send(new SendMessage("@dre@Good job! You have killed your target."));
 				}
@@ -114,9 +108,9 @@ public class PlayerDrops {
 		}
 		
 		if (killer != null) {
-			if (!killer.isNpc()) {
+			if (!killer.isNpc()) { //if killer is player log
 				PlayerLogger.DEATH_LOGGER.log(player.getUsername(), String.format("%s has been killed by %s.", Utility.formatPlayerName(player.getUsername()), Utility.formatPlayerName(killer.getPlayer().getUsername())));
-			} else {
+			} else { //If killer is npc log
 				if (killer.getMob().getDefinition() != null && killer.getMob().getDefinition().getName() != null) {
 					PlayerLogger.DEATH_LOGGER.log(player.getUsername(), String.format("%s has been killed by %s.", Utility.formatPlayerName(player.getUsername()), Utility.formatPlayerName(killer.getMob().getDefinition().getName())));
 				}

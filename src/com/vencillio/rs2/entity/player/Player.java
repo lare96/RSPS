@@ -203,7 +203,7 @@ public class Player extends Entity {
 	};
 
 	/* The credits variables */
-	private Set<CreditPurchase> unlockedCredits = new HashSet<CreditPurchase>(CreditPurchase.values().length);;
+	private Set<CreditPurchase> unlockedCredits = new HashSet<CreditPurchase>(CreditPurchase.values().length);
 
 	/* Wilderness variables */
 	public String targetName = "";
@@ -1508,6 +1508,7 @@ public class Player extends Entity {
 	public void process() throws Exception {
 
 		if (Math.abs(World.getCycles() - client.getLastPacketTime()) >= 9) {
+			System.out.println("cycle - get last packet time: " + Math.abs(World.getCycles() - client.getLastPacketTime()));
 			if (getCombat().inCombat() && !getCombat().getLastAttackedBy().isNpc()) {
 				if (timeout == 0) {
 					timeout = System.currentTimeMillis() + 180000;
@@ -1516,7 +1517,7 @@ public class Player extends Entity {
 					System.out.println("Player timed out: " + getUsername());
 				}
 			} else {
-				System.out.println("Player timed out: " + getUsername());
+				System.out.println("Player timed out : " + getUsername());
 				logout(false);
 			}
 		}

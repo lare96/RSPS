@@ -19,7 +19,7 @@ public class Yelling {
 		int rights = player.getRights();
 
 		if (staffYell) {
-			send = "[<shad=0><col=FF0202>Staff Yell</shad></col>]  <img=11> " + player.getUsername() + "</col>:<shad=0><col=FF0202> " + message;
+			send = "[<shad=0><col=FF0202>Staff Yell</shad></col>] " + player.getUsername() + "</col>:<shad=0><col=FF0202> " + message;
 		}
 		else {
 			if (rights == 1) {

@@ -8,3 +8,4 @@ Animations
 Teleportation menu locations all covered
 Voting system
 Donation system
+Remove Godwars TP or fix Godwars
