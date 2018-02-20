@@ -76,22 +76,22 @@ public class Tutorial extends Dialogue {
 				return true;
 			case 9178:
 				player.mode = 0;
-				next = 11;
+				next = 14;
 				execute();
 				return true;
 			case 9179:
 				player.mode = 1;
-				next = 11;
+				next = 14;
 				execute();
 				return true;
 			case 9180:
 					player.mode = 2;
-					next = 11;
+					next = 14;
 					execute();
 				return true;
 			case 9181:
 				player.mode = 3;
-				next = 11;
+				next = 14;
 				execute();
 				return true;
 		}
@@ -132,7 +132,7 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"There is an additional mode here"});
 				break;
 			case 6:
-				nChat(new String[]{"There are 4 difficulties which affect various aspects of gameplay (Remember this)"});
+				nChat(new String[]{"There are 4 difficulties which affect various aspects of gameplay","(Remember this)"});
 				break;
 			case 7:
 				nChat(new String[]{"Easy (Fast Experience)", "Medium (Average experience)", "Hard (Slightly slower xp)", "Ultimate (Slowest Experience)"});
@@ -147,7 +147,7 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"The harder the difficulty chosen"});
 				break;
 			case 11:
-				nChat(new String[]{"the slower the xp but the better the advantages previously mentioned"});
+				nChat(new String[]{"the slower the xp but the better the advantages","previously mentioned"});
 				break;
 			case 12:
 				nChat(new String[]{"Choose your difficulty on the next screen"});
