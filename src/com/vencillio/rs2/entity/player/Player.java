@@ -1507,7 +1507,7 @@ public class Player extends Entity {
 	@Override
 	public void process() throws Exception {
 
-		if (Math.abs(World.getCycles() - client.getLastPacketTime()) >= 9) {
+		if (Math.abs(World.getCycles() - client.getLastPacketTime()) >= 30) {
 			System.out.println("cycle - get last packet time: " + Math.abs(World.getCycles() - client.getLastPacketTime()));
 			if (getCombat().inCombat() && !getCombat().getLastAttackedBy().isNpc()) {
 				if (timeout == 0) {
