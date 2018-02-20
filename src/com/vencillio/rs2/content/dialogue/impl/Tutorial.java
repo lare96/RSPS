@@ -67,36 +67,32 @@ public class Tutorial extends Dialogue {
 					next = 3;
 					execute();
 				}
-				if (option == 2) {
-					player.mode = 0;
-					next = 11;
-					execute();
-				}
 				return true;
 			case 9158:
 				if (option == 1) {
 					next = 24;
 					execute();
 				}
-				if (option == 2) {
-					player.mode = 1;
-					next = 11;
-					execute();
-				}
 				return true;
-			case 9159:
-				if (option == 2) {
+			case 9178:
+				player.mode = 0;
+				next = 11;
+				execute();
+				return true;
+			case 9179:
+				player.mode = 1;
+				next = 11;
+				execute();
+				return true;
+			case 9180:
 					player.mode = 2;
 					next = 11;
 					execute();
-				}
 				return true;
-			case 9160:
-				if (option == 2) {
-					player.mode = 3;
-					next = 11;
-					execute();
-				}
+			case 9181:
+				player.mode = 3;
+				next = 11;
+				execute();
 				return true;
 		}
 		return false;
