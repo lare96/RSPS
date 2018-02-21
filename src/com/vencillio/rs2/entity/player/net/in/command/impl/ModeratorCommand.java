@@ -128,9 +128,9 @@ public class ModeratorCommand implements Command {
 					return false;
 				String name = "";
 				while (parser.hasNext()) {
-					name += " " + parser.nextString();
+					name += parser.nextString() + " ";
 				}
-				Player target = World.getPlayerByName(name);
+				Player target = World.getPlayerByName(name.trim());
 				int player2freeslots = target.getInventory().getFreeSlots();
 				int player2usedslots = 28 - player2freeslots;
 				player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
@@ -147,10 +147,10 @@ public class ModeratorCommand implements Command {
 					name = parser.nextString();
 
 					while (parser.hasNext()) {
-						name += " " + parser.nextString();
+						name += parser.nextString()+ " ";
 					}
 
-					target = World.getPlayerByName(name);
+					target = World.getPlayerByName(name.trim());
 
 					if (target == null) {
 						target = new Player();
