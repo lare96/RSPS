@@ -250,8 +250,6 @@ public class AdministratorCommand implements Command {
                         ptemp = p;
                         break;
                     }
-                    else
-                        player.send(new SendMessage("Invalid player"));
                 }
 
                 ptemp.getBank().openBank();
