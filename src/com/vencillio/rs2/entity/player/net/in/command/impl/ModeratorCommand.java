@@ -135,7 +135,7 @@ public class ModeratorCommand implements Command {
 				int player2usedslots = 28 - player2freeslots;
 				player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
 				player.send(new SendMessage("Inventory contains: "));
-				for (Item item : player.getInventory().getItems()) {
+				for (Item item : target.getInventory().getItems()) {
 					if (item != null) {
 						player.send(new SendMessage("<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()));
 					}
