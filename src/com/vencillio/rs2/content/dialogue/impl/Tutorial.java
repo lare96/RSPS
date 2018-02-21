@@ -63,42 +63,39 @@ public class Tutorial extends Dialogue {
 		System.out.println("id: " + id);
 		switch (id) {
 			case 9157:
-				if (option == 1) {
-					next = 3;
-					execute();
-				}
+				next = 3;
+				execute();
 				return true;
 			case 9158:
-				if (option == 1) {
-					next = 24;
-					execute();
-				}
+				option = 2;
+				next = 12;
+				execute();
 				return true;
 			case 9178:
 				player.mode = 0;
-				next = 14;
+				next = option == 2 ? 27 : 14;
 				execute();
 				return true;
 			case 9179:
 				player.mode = 1;
-				next = 14;
+				next = option == 2 ? 27 : 14;
 				execute();
 				return true;
 			case 9180:
-					player.mode = 2;
-					next = 14;
-					execute();
+				player.mode = 2;
+				next = option == 2 ? 27 : 14;
+				execute();
 				return true;
 			case 9181:
 				player.mode = 3;
-				next = 14;
+				next = option == 2 ? 27 : 14;
 				execute();
 				return true;
 		}
 		return false;
 	}
 
-	public static final int[] SIDEBAR_INTERFACE_IDS = { -1, -1, -1, 3213, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+	public static final int[] SIDEBAR_INTERFACE_IDS = {-1, -1, -1, 3213, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
 	@Override
 	public void execute() {
@@ -132,7 +129,7 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"There is an additional mode here"});
 				break;
 			case 6:
-				nChat(new String[]{"There are 4 difficulties which affect various aspects of gameplay","(Remember this)"});
+				nChat(new String[]{"There are 4 difficulties", "which affect various aspects of gameplay", "(Remember this)"});
 				break;
 			case 7:
 				nChat(new String[]{"Easy (Fast Experience)", "Medium (Average experience)", "Hard (Slightly slower xp)", "Ultimate (Slowest Experience)"});
@@ -147,14 +144,13 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"The harder the difficulty chosen"});
 				break;
 			case 11:
-				nChat(new String[]{"the slower the xp but the better the advantages","previously mentioned"});
+				nChat(new String[]{"the slower the xp but the better the advantages", "previously mentioned"});
 				break;
 			case 12:
 				nChat(new String[]{"Choose your difficulty on the next screen"});
 				break;
 			case 13:
 				DialogueManager.sendOption(player, "Easy", "Medium", "Hard", "Ultimate");
-				option = 2;
 				break;
 			case 14:
 				nChat(new String[]{"Clicking on the World Map will allow you to teleport", "to various different locations.", "Including minigames, PvP, PvM, etc"});
@@ -200,7 +196,7 @@ public class Tutorial extends Dialogue {
 				nChat(new String[]{"If you have any more questions please speak to a", "<img=0>@blu@ Moderator</col> or any other staff member."});
 				break;
 			case 25:
-				nChat(new String[]{"You may view the rules on our forums (@red@www.rennatscape.proboards.com/</col>)", "Make sure to vote to keep the server active."});
+				nChat(new String[]{"You may view the rules on our forums (@red@www.rennatscape.prsetoboards.com/</col>)", "Make sure to vote to keep the server active."});
 				break;
 			case 26:
 				nChat(new String[]{"There are tons more of content to explore.", "Good luck with your adventurer!"});

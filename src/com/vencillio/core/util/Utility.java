@@ -525,7 +525,7 @@ public class Utility {
 	}
 
 	/**
-	 * Converts the username to a long value
+	 * Converts the long value to a username
 	 *
 	 * @param l
 	 * @return

@@ -243,7 +243,18 @@ public class AdministratorCommand implements Command {
                  * Opens bank
                  */
             case "bank":
-                player.getBank().openBank();
+                String temp = parser.hasNext() ? parser.nextString() : player.getUsername();
+                Player ptemp = player;
+                for (Player p : World.getPlayers()) {
+                    if (p != null && p.getUsername().equalsIgnoreCase(temp)) {
+                        ptemp = p;
+                        break;
+                    }
+                    else
+                        player.send(new SendMessage("Invalid player"));
+                }
+
+                ptemp.getBank().openBank();
                 return true;
 
                 /*
