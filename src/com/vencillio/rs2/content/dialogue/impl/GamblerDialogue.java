@@ -15,7 +15,6 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
  */
 public class GamblerDialogue extends Dialogue {
 
-	private int option = 0;
 
 	public GamblerDialogue(Player player) {
 		this.player = player;
@@ -27,39 +26,41 @@ public class GamblerDialogue extends Dialogue {
 		switch (id) {
 
 			case DialogueConstants.OPTIONS_4_1:
-				if(option == 2)
-					DoubleLottoGame.playGame(player, "100000");
-				else
-					player.start(new FlowerGameDialogue(player));
+				player.start(new FlowerGameDialogue(player));
 				break;
 
 			case DialogueConstants.OPTIONS_4_2:
-				if(option == 2)
-					DoubleLottoGame.playGame(player, "1000000");
-				else {
-					setNext(5);
-					execute();
-				}
+				setNext(5);
+				execute();
 				break;
 
 			case DialogueConstants.OPTIONS_4_3:
-				if(option == 2)
-					DoubleLottoGame.playGame(player, "10000000");
-				else {
-					setNext(2);
-					execute();
-				}
+				setNext(2);
+				execute();
 				break;
 
 			case DialogueConstants.OPTIONS_4_4:
-				if(option == 2) {
-					setNext(4);
-					execute();
-				}
-				else
-					player.send(new SendRemoveInterfaces());
+				player.send(new SendRemoveInterfaces());
 				break;
-			case 9182:
+
+			case DialogueConstants.OPTIONS_5_1:
+				DoubleLottoGame.playGame(player, "100000");
+				break;
+
+			case DialogueConstants.OPTIONS_5_2:
+				DoubleLottoGame.playGame(player, "1000000");
+				break;
+
+			case DialogueConstants.OPTIONS_5_3:
+				DoubleLottoGame.playGame(player, "10000000");
+				break;
+
+			case DialogueConstants.OPTIONS_5_4:
+				setNext(4);
+				execute();
+				break;
+
+			case DialogueConstants.OPTIONS_5_5:
 				player.send(new SendRemoveInterfaces());
 				break;
 		}
@@ -87,7 +88,6 @@ public class GamblerDialogue extends Dialogue {
 				break;
 
 			case 3:
-				option = 2;
 				DialogueManager.sendOption(player, "100k", "1m", "10m", "Custom", "Nevermind");
 				break;
 
