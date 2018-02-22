@@ -131,7 +131,7 @@ public class PlayerProfiler {
 	 * @param player
 	 */
 	public static void myProfile(Player player) {
-		double kd = player.getKills() / player.getDeaths();
+		double kd = player.getKills();// / player.getDeaths();
 
 		player.send(new SendMessage("@dre@You are now viewing your own profile."));
 
