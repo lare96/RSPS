@@ -107,9 +107,9 @@ public class PlayerProfiler {
 			"</col>Rogue Record: @whi@" + viewing.getRogueRecord(),
 			"</col>Hunter Kills: @whi@" + viewing.getHunterKills(),
 			"</col>Hunter Record: @whi@" + viewing.getHunterRecord(),
-			"</col>Kills: @whi@" + viewing.getKills(),
+			/*"</col>Kills: @whi@" + viewing.getKills(),
 			"</col>Deaths: @whi@" + viewing.getDeaths(),
-			"</col>K/D: @whi@" + kd,
+			"</col>K/D: @whi@" + kd,*/
 			"</col>Bounty Points: @whi@" + viewing.getBountyPoints(),
 			"</col>Vote Points: @whi@" + viewing.getVotePoints(),
 			"</col>PC Points: @whi@" + viewing.getPestPoints(),
@@ -158,9 +158,9 @@ public class PlayerProfiler {
 			"</col>Rogue Record: @whi@" + player.getRogueRecord(),
 			"</col>Hunter Kills: @whi@" + player.getHunterKills(),
 			"</col>Hunter Record: @whi@" + player.getHunterRecord(),
-			"</col>Kills: @whi@" + player.getKills(),
+			/*"</col>Kills: @whi@" + player.getKills(),
 			"</col>Deaths: @whi@" + player.getDeaths(),
-			"</col>K/D: @whi@" + kd,
+			"</col>K/D: @whi@" + kd,*/
 			"</col>Bounty Points: @whi@" + player.getBountyPoints(),
 			"</col>Vote Points: @whi@" + player.getVotePoints(),
 			"</col>PC Points: @whi@" + player.getPestPoints(),
