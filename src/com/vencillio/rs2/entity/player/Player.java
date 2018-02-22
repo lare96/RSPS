@@ -96,7 +96,7 @@ public class Player extends Entity {
 	/* Stopwatch used for delaying anything */
 	private Stopwatch delay = new Stopwatch();
 	
-	private boolean prestigeColors;
+	private boolean prestigeColors = true;
 	
 	/* Account Security */
 	private String fullName = "";
