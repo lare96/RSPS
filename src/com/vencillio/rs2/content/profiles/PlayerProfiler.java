@@ -131,6 +131,8 @@ public class PlayerProfiler {
 	 */
 	public static void myProfile(Player player) {
 
+		double kd = player.getKills() / player.getDeaths();
+
 		player.send(new SendMessage("@dre@You are now viewing your own profile."));
 
 		player.send(new SendString("My Profile", 51602));
@@ -158,7 +160,7 @@ public class PlayerProfiler {
 			"</col>Hunter Record: @whi@" + player.getHunterRecord(),
 			"</col>Kills: @whi@" + player.getKills(),
 			"</col>Deaths: @whi@" + player.getDeaths(),
-			"</col>K/D: @whi@" + player.getKills()/player.getDeaths(),
+			"</col>K/D: @whi@" + kd,
 			"</col>Bounty Points: @whi@" + player.getBountyPoints(),
 			"</col>Vote Points: @whi@" + player.getVotePoints(),
 			"</col>PC Points: @whi@" + player.getPestPoints(),

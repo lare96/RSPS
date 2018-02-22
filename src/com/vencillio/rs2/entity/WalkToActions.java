@@ -886,7 +886,7 @@ public class WalkToActions {
 				}
 
 				if (id == 8720 || id == 26820 || id == 26813) {
-					player.send(new SendString("http://www.rennatscape.proboards.com/pages/voting", 12000));
+					player.send(new SendString("http://www.rennatscape.proboards.com/page/voting", 12000));
 					player.send(new SendMessage("Loading voting page..."));
 					return;
 				}

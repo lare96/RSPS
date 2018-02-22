@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content.gambling;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.FileHandler;
@@ -18,6 +15,9 @@ import com.vencillio.rs2.entity.object.ObjectManager;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlowerGame {
 	
@@ -165,7 +165,6 @@ public class FlowerGame {
 
 			@Override
 			public void onStop() {
-				System.out.println("FUCK SALT");
 			}
 		});
 	}

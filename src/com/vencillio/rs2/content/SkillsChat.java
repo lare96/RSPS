@@ -1,8 +1,8 @@
 package com.vencillio.rs2.content;
 
-import java.util.HashMap;
-
 import com.vencillio.rs2.entity.player.Player;
+
+import java.util.HashMap;
 
 /**
  * Handles pressing a skill in skilltab
@@ -110,7 +110,7 @@ public class SkillsChat {
 			return false;
 		}
 
-		player.getUpdateFlags().sendForceMessage("[QC] My "+getSkillName(chat.skill)+" level is "+player.getMaxLevels()[chat.skill]+".");		
+		player.getUpdateFlags().sendForceMessage("[QC] My "+getSkillName(chat.skill)+" level is "+player.getMaxLevels()[chat.skill]+ " with prestige level " + player.getSkillPrestiges()[chat.skill] + ".");
 		return true;
 	}
 

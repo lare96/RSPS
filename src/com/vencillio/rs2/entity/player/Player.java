@@ -142,7 +142,7 @@ public class Player extends Entity {
 	
 	/* Money Pouch */
 	private long moneyPouch;
-	private boolean pouchPayment;
+	private boolean pouchPayment = true;
 	
 	public boolean payment(int amount) {
 		if (isPouchPayment()) {
