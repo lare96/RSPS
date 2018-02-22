@@ -69,7 +69,7 @@ public class PlayerProfiler {
 	 * @param viewing
 	 */
 	public static void displayProfile(Player player, Player viewing, boolean inRegion) {
-		double kd = player.getKills() / player.getDeaths();
+		double kd = viewing.getKills() / viewing.getDeaths();
 		viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " is viewing your profile!"));
 		AchievementHandler.activateAchievement(player, AchievementList.VIEW_15_PLAYER_PROFILES, 1);
 		viewing.setProfileViews(+1);
@@ -131,7 +131,7 @@ public class PlayerProfiler {
 	 * @param player
 	 */
 	public static void myProfile(Player player) {
-		double kd = player.getKills() / player.getDeaths();
+		//double kd = player.getKills() / player.getDeaths();
 
 		player.send(new SendMessage("@dre@You are now viewing your own profile."));
 
