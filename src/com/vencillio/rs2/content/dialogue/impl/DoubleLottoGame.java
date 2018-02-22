@@ -17,25 +17,25 @@ public class DoubleLottoGame {
 	public static void playGame(Player player, String input) {
 		boolean won = Utility.random(100) >= CHANCE_OF_LOSING;
 
-		if (player.isPouchPayment())
-			if (player.getMoneyPouch() > Integer.parseInt(input))
-				player.setMoneyPouch(player.getMoneyPouch() - Integer.parseInt(input));
-
-			else if (player.getInventory().hasItemAmount(995, Integer.parseInt(input)))
-				player.getInventory().remove(new Item(995, Integer.parseInt(input)));
-
-			else
+		if (player.isPouchPayment()) {
+			if (player.getMoneyPouch() < Integer.parseInt(input)) {
 				player.send(new SendMessage("You don't have enough money to bet that much"));
+				return;
+			}
+		} else if (!player.getInventory().hasItemAmount(995, Integer.parseInt(input))) {
+			player.send(new SendMessage("You don't have enough money to bet that much"));
+			return;
+		}
 
 		if (won) {
 			if (player.isPouchPayment())
-				player.setMoneyPouch(player.getMoneyPouch() + (Integer.parseInt(input) * 2));
+				player.setMoneyPouch(player.getMoneyPouch() + (Integer.parseInt(input)));
 			else
-				player.getInventory().add(995, Integer.parseInt(input) * 2);
+				player.getInventory().add(995, Integer.parseInt(input));
 
 			DialogueManager.sendNpcChat(player, 1011, Emotion.HAPPY, "Congratulations, you have won double your bet");
 		} else {
-
+			player.getInventory().remove(new Item(995, Integer.parseInt(input)));
 			DialogueManager.sendNpcChat(player, 1011, Emotion.SAD, "Sorry you have lost the money, better luck next time");
 		}
 
