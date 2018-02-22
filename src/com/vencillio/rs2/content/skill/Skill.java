@@ -593,10 +593,8 @@ public class Skill {
 	 * Resets the prestige colors
 	 */
 	public void resetColors() {
-		System.out.println("In reset colors");
 		for (int i = 0; i < Skills.SKILL_COUNT; i++) {
 			if (player.isPrestigeColors()) {
-				System.out.println("player: " + player.getUsername() + "color: " + Prestige.skillTierColor(player, i));
 				player.send(new SendColor(Skills.REFRESH_DATA[i][1], Prestige.skillTierColor(player, i)));
 				player.send(new SendColor(Skills.REFRESH_DATA[i][0], Prestige.skillTierColor(player, i)));	
 			} else {

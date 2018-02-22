@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content.gambling;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
@@ -13,6 +10,9 @@ import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Handles the Lottery
@@ -66,12 +66,15 @@ public class Lottery {
 			return;
 		}
 		
-		if (!player.getInventory().hasItemAmount(995, ENTRY_PRICE)) {
+		if (!player.getInventory().hasItemAmount(995, ENTRY_PRICE) || player.getMoneyPouch() < ENTRY_PRICE) {
 			DialogueManager.sendStatement(player, "You need " + Utility.format(ENTRY_PRICE) + " coins to enter the lottery!");
 			return;
 		}
-		
-		player.getInventory().remove(995, ENTRY_PRICE);
+
+		if(player.isPouchPayment())
+			player.setMoneyPouch(player.getMoneyPouch() - ENTRY_PRICE);
+		else
+			player.getInventory().remove(995, ENTRY_PRICE);
 		CURRENT_POT += ENTRY_PRICE;
 		entries.add(player);
 		World.sendGlobalMessage("[ <col=C46423>Lottery </col>] <col=C46423>" + player.determineIcon(player) + " " + player.getUsername() + "</col> has just entered the lottery! Pot: <col=C46423>" + Utility.format(CURRENT_POT) + " </col>/ <col=C46423>" + Utility.format(LOTTERY_LIMIT) + "</col>.");
