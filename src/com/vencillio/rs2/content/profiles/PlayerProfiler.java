@@ -158,9 +158,9 @@ public class PlayerProfiler {
 			"</col>Rogue Record: @whi@" + player.getRogueRecord(),
 			"</col>Hunter Kills: @whi@" + player.getHunterKills(),
 			"</col>Hunter Record: @whi@" + player.getHunterRecord(),
-			"</col>Kills: @whi@" + player.getKills(),
+			/*"</col>Kills: @whi@" + player.getKills(),
 			"</col>Deaths: @whi@" + player.getDeaths(),
-			"</col>K/D: @whi@" + kd,
+			"</col>K/D: @whi@" + kd,*/
 			"</col>Bounty Points: @whi@" + player.getBountyPoints(),
 			"</col>Vote Points: @whi@" + player.getVotePoints(),
 			"</col>PC Points: @whi@" + player.getPestPoints(),
