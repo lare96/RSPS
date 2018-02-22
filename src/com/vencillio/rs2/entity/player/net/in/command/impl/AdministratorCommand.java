@@ -413,6 +413,7 @@ public class AdministratorCommand implements Command {
                     player.getUpdateFlags().setUpdateRequired(true);
                     player.setAppearanceUpdateRequired(true);
                 }
+                return true;
         }
         return false;
     }

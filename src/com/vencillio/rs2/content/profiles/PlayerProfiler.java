@@ -69,6 +69,7 @@ public class PlayerProfiler {
 	 * @param viewing
 	 */
 	public static void displayProfile(Player player, Player viewing, boolean inRegion) {
+		double kd = player.getKills() / player.getDeaths();
 		viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " is viewing your profile!"));
 		AchievementHandler.activateAchievement(player, AchievementList.VIEW_15_PLAYER_PROFILES, 1);
 		viewing.setProfileViews(+1);
@@ -108,7 +109,7 @@ public class PlayerProfiler {
 			"</col>Hunter Record: @whi@" + viewing.getHunterRecord(),
 			"</col>Kills: @whi@" + viewing.getKills(),
 			"</col>Deaths: @whi@" + viewing.getDeaths(),
-			"</col>K/D: @whi@" + player.getKills()/player.getDeaths(),
+			"</col>K/D: @whi@" + kd,
 			"</col>Bounty Points: @whi@" + viewing.getBountyPoints(),
 			"</col>Vote Points: @whi@" + viewing.getVotePoints(),
 			"</col>PC Points: @whi@" + viewing.getPestPoints(),
@@ -130,7 +131,6 @@ public class PlayerProfiler {
 	 * @param player
 	 */
 	public static void myProfile(Player player) {
-
 		double kd = player.getKills() / player.getDeaths();
 
 		player.send(new SendMessage("@dre@You are now viewing your own profile."));
@@ -158,9 +158,9 @@ public class PlayerProfiler {
 			"</col>Rogue Record: @whi@" + player.getRogueRecord(),
 			"</col>Hunter Kills: @whi@" + player.getHunterKills(),
 			"</col>Hunter Record: @whi@" + player.getHunterRecord(),
-			/*"</col>Kills: @whi@" + player.getKills(),
+			"</col>Kills: @whi@" + player.getKills(),
 			"</col>Deaths: @whi@" + player.getDeaths(),
-			"</col>K/D: @whi@" + kd,*/
+			"</col>K/D: @whi@" + kd,
 			"</col>Bounty Points: @whi@" + player.getBountyPoints(),
 			"</col>Vote Points: @whi@" + player.getVotePoints(),
 			"</col>PC Points: @whi@" + player.getPestPoints(),
