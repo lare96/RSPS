@@ -1,6 +1,7 @@
 package com.vencillio.core;
 
 import com.vencillio.core.network.StreamBuffer;
+import com.vencillio.rs2.content.Prestige;
 import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.Client;
@@ -19,6 +20,7 @@ public class LoginThread extends Thread {
 
 		if ((player = login.poll()) != null) {
 			System.out.println("Logging in: " + player.getUsername());
+			Prestige.update(player);
 
 			boolean starter = false;
 			boolean wasLoaded = false;

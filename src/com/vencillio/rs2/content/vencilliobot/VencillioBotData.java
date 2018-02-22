@@ -48,7 +48,7 @@ public enum VencillioBotData {
 	  DATA_40("What slayer level is required to kill Kraken?", "87", "87"),
 	  DATA_41("What is the required attack level to wield a godsword?", "75"),
 	  DATA_42("How many barrows brothers are there?", "6"),
-	  DATA_43("Type this backwards; tannerscapeisthebestForsure", "erusroftsebehtsioillicnev"),
+	  DATA_43("Type this backwards; tannerscapeisthebestForsure", "erusroftsebehtsiepacsrennat"),
 	  DATA_44("How much does regular membership cost?", "$5", "5 dollars", "5 dollar"),
 	  DATA_45("How many tiers of membership are there?", "4", "four"),
 	  DATA_46("What game is wildly addictive?", "tannerscape", "this game"),
@@ -71,12 +71,12 @@ public enum VencillioBotData {
 	  DATA_63("What minigame offers void armour as a reward?", "pest control"),
 	  DATA_64("What NPC can you talk to if you want to claim a donation?", "credits master", "membership"),
 	  DATA_65("How many Thieving stalls are there at home?", "5", "five"),
-	  DATA_66("Who is the website developer?", "tanner", "Ken"),
+	  DATA_66("Who is the website developer?", "tanner"),
 	  DATA_67("What is the best F2P armour?", "rune", "rune armour"),	  
 	  DATA_68("How much money does normal membership cost?", "$5", "5 dollars"),  
 	  DATA_69("What is the best crossbow in game?", "armadyl crossbow", "acb"),	  
 	  DATA_70("How many posts do you need to post an application?", "50", "fifty"),
-	  DATA_71("How many letters are in the word 'tannerscape'?", "9", "nine"),
+	  DATA_71("How many letters are in the word 'tannerscape'?", "11", "eleven"),
 	  DATA_72("What level magic does the spell High Alchemy require?", "55", "fifty-five", "fifty five"),
 	  
 	  ;
