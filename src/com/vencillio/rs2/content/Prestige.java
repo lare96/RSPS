@@ -234,15 +234,15 @@ public class Prestige {
 	public static int skillTierColor(Player player, int skillId) {
 		switch (player.getSkillPrestiges()[skillId]) {
 		case 1:
-			return 0xE100FF;
+			return 0xE100FF; //Purple
 		case 2:
-			return 0xFF6A00;
+			return 0xFF6A00; //Orange
 		case 3:
-			return 0x11BF0B;
+			return 0x11BF0B; //Green
 		case 4:
-			return 0x0D96D1;
+			return 0x0D96D1; //Blue
 		case 5:
-			return 0xED0909;
+			return 0xED0909; //Red
 		default:
 			return 0xFFFF00;
 		}
