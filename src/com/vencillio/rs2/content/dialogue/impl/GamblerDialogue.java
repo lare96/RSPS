@@ -5,6 +5,7 @@ import com.vencillio.rs2.content.dialogue.DialogueConstants;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.Emotion;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.net.out.impl.SendEnterString;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 
 /**
@@ -63,11 +64,11 @@ public class GamblerDialogue extends Dialogue {
        case 2:
     	   DialogueManager.sendNpcChat(player, 1011, Emotion.HAPPY_TALK, "How much would you like to bet?");
     	   next++;
-    	   execute();
     	   break;
     	   
        case 3:
 		   player.setEnterXInterfaceId(55559);
+		   player.getClient().queueOutgoingPacket(new SendEnterString());
     	   break;
     	   
        case 4:
