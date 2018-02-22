@@ -63,6 +63,7 @@ public class GamblerDialogue extends Dialogue {
        case 2:
     	   DialogueManager.sendNpcChat(player, 1011, Emotion.HAPPY_TALK, "How much would you like to bet?");
     	   next++;
+    	   execute();
     	   break;
     	   
        case 3:
