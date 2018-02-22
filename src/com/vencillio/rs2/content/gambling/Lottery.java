@@ -9,6 +9,7 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class Lottery {
 		entries.add(player);
 		World.sendGlobalMessage("[ <col=C46423>Lottery </col>] <col=C46423>" + player.determineIcon(player) + " " + player.getUsername() + "</col> has just entered the lottery! Pot: <col=C46423>" + Utility.format(CURRENT_POT) + " </col>/ <col=C46423>" + Utility.format(LOTTERY_LIMIT) + "</col>.");
 		AchievementHandler.activateAchievement(player, AchievementList.ENTER_THE_LOTTERY_5_TIMES, 1);
+		player.send(new SendRemoveInterfaces());
 		
 		if (CURRENT_POT == LOTTERY_LIMIT) {
 			draw();

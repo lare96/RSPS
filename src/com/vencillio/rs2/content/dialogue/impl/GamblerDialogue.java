@@ -5,7 +5,6 @@ import com.vencillio.rs2.content.dialogue.DialogueConstants;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.Emotion;
 import com.vencillio.rs2.entity.player.Player;
-import com.vencillio.rs2.entity.player.net.out.impl.SendEnterString;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 
 /**
@@ -67,14 +66,12 @@ public class GamblerDialogue extends Dialogue {
     	   break;
     	   
        case 3:
-			player.setEnterXInterfaceId(56000);
-			player.getClient().queueOutgoingPacket(new SendEnterString());
+		   player.setEnterXInterfaceId(55559);
     	   break;
     	   
        case 4:
-    	   player.start(new LotteryDialogue(player));
+		   player.start(new LotteryDialogue(player));
     	   break;
-    	   
        
        }
        

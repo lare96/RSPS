@@ -1,13 +1,14 @@
 package com.vencillio.rs2.entity.player.net.in.impl;
 
-import com.vencillio.VencillioConstants;
 import com.vencillio.Server;
+import com.vencillio.VencillioConstants;
 import com.vencillio.core.network.StreamBuffer;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.DropTable;
 import com.vencillio.rs2.content.PlayerTitle;
 import com.vencillio.rs2.content.clanchat.Clan;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
+import com.vencillio.rs2.content.dialogue.impl.DoubleLottoGame;
 import com.vencillio.rs2.content.gambling.Gambling;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
@@ -20,6 +21,19 @@ public class StringInputPacket extends IncomingPacket {
 	@Override
 	public int getMaxDuplicates() {
 		return 1;
+	}
+
+	public static boolean isNumeric(String str)
+	{
+		try
+		{
+			double d = Double.parseDouble(str);
+		}
+		catch(NumberFormatException nfe)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -63,6 +77,14 @@ public class StringInputPacket extends IncomingPacket {
 			player.setCredits(player.getCredits() - 10);
 			player.setShopMotto(Utility.capitalize(input));
 			DialogueManager.sendInformationBox(player, "Player Owned Shops Exchange", "You have successfully changed your shop motto.", "Motto:", "@red@" + Utility.capitalize(input), "");
+			return;
+		}
+
+		if (player.getEnterXInterfaceId() == 55559) {
+			if(isNumeric(input))
+				DoubleLottoGame.playGame(player, input);
+			else
+				player.send(new SendMessage("Please enter a number to bet"));
 			return;
 		}
 
