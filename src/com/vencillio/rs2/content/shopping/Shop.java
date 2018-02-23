@@ -262,7 +262,7 @@ public class Shop extends ItemContainer {
 			AchievementHandler.activateAchievement(player, AchievementList.SPEND_100000000_ON_SHOPS, gold.getAmount());
 		}
 
-		if (this.store == 13) {
+		if (this.store == 15 || this.store == 33) { //Get noted id for consumables shop (15) or herblore (33)
 			buying.setId(buying.getDefinition().getNoteId() > -1 ? buying.getDefinition().getNoteId() : buying.getId());
 		}
 

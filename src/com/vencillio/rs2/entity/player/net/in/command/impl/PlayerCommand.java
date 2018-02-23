@@ -7,6 +7,8 @@ import com.vencillio.VencillioConstants;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
+import com.vencillio.rs2.content.achievements.AchievementHandler;
+import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.OptionDialogue;
 import com.vencillio.rs2.content.dialogue.impl.ChangePasswordDialogue;
@@ -58,6 +60,9 @@ public class PlayerCommand implements Command {
 				player.setVotePoints(player.getVotePoints() + 1);
 				player.getInventory().add(995, 1_000_000);
 				player.send(new SendMessage("Successfully redeemed."));
+				AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, 1);
+				AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, 1);
+				AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, 1);
 				//System.out.println("Redemption successful");
 			}
 			else {
@@ -73,7 +78,13 @@ public class PlayerCommand implements Command {
 						player.setVotePoints(player.getVotePoints() + 1);
 						player.getInventory().add(995, 1_000_000);
 					}
+					AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, r1.votes().size());
+					AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, r1.votes().size());
+					AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, r1.votes().size());
 					player.send(new SendMessage("Successfully redeemed x" + r1.votes().size()));
+				}
+				else {
+					player.send(new SendMessage("Redemption unsuccessful"));
 				}
 				return true;
 
@@ -90,7 +101,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "wealth":
-				long total = 0;
+				double total = 0;
 				for (Item item : player.getInventory().getItems()) {
 					if (item != null) {
 						int itemAmount = item.getAmount();
@@ -119,12 +130,18 @@ public class PlayerCommand implements Command {
 				DecimalFormat numberFormat = new DecimalFormat("#.00");
 				numberFormat.setRoundingMode(RoundingMode.DOWN);
 				String str;
-				if (total >= 1000000000000L) {
-					str = numberFormat.format((double) total / 1000000000000L) + "T";
+				if (total > 1000000000000000000L) {
+					str = numberFormat.format( total / 1000000000000000000L) + "Q";
+				}
+				else if (total > 1000000000000000L) {
+					str = numberFormat.format( total / 1000000000000000L) + "q";
+				}
+				else if (total >= 1000000000000L) {
+					str = numberFormat.format( total / 1000000000000L) + "T";
 				} else if (total >= 1000000000L) {
-					str = numberFormat.format((double) total / 1000000000) + "B";
+					str = numberFormat.format(total / 1000000000) + "B";
 				} else if (total >= 1000000L) {
-					str = numberFormat.format((double) total / 1000000) + "M";
+					str = numberFormat.format(total / 1000000) + "M";
 				} else
 					str = "";
 

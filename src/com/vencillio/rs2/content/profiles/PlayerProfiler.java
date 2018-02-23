@@ -53,6 +53,7 @@ public class PlayerProfiler {
 		
 		int deltaX = viewing.getLocation().getX() - (player.getCurrentRegion().getRegionX() << 3);
 		int deltaY = viewing.getLocation().getY() - (player.getCurrentRegion().getRegionY() << 3);
+		viewing.setProfileViews(viewing.getProfileViews()+1);
 
 		if ((deltaX < 16) || (deltaX >= 88) || (deltaY < 16) || (deltaY > 88)) {
 			player.send(new SendMessage("@dre@Viewing character models is disabled while not in same region."));
@@ -219,7 +220,7 @@ public class PlayerProfiler {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setLikes(+1);
+			viewing.setLikes(viewing.getLikes()+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has liked your profile."));
 			break;
 
@@ -230,7 +231,7 @@ public class PlayerProfiler {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setDislikes(+1);
+			viewing.setDislikes(viewing.getDislikes()+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has disliked your profile."));
 			break;
 

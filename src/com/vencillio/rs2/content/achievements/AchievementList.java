@@ -37,6 +37,8 @@ public enum AchievementList {
 	DO_A_SKILLCAPE_EMOTE("Do a skillcape emote", 1, AchievementDifficulty.EASY),
 	ENTER_THE_LOTTERY_5_TIMES("Enter the lottery 5 times", 5, AchievementDifficulty.EASY),
 	USE_THE_SUPER_HEATING_SPELL_25_TIMES("Use the super heating spell 25 times", 25, AchievementDifficulty.EASY),
+	VOTE_5_TIMES("Vote 5 times", 5, AchievementDifficulty.EASY),
+	PRESTIGE_1_TIME("Prestige 1 time", 1, AchievementDifficulty.EASY),
 	
 	/* Medium Achievements */
 	KILL_ROCK_CRABS("Kill 100 Rock crabs", 100, AchievementDifficulty.MEDIUM),
@@ -63,6 +65,7 @@ public enum AchievementList {
 	ENCHANT_1000_BOLTS("Enchant 1,000 bolts", 1000, AchievementDifficulty.MEDIUM),
 	BURY_150_BONES("Bury or use on altar 150 bones", 150, AchievementDifficulty.MEDIUM),
 	USE_THE_SUPER_HEATING_SPELL_135_TIMES("Use the super heating spell 135 times", 135, AchievementDifficulty.MEDIUM),
+	VOTE_15_TIMES("Vote 15 times", 15, AchievementDifficulty.MEDIUM),
 
 	
 	/* Hard Achievements */
@@ -90,6 +93,8 @@ public enum AchievementList {
 	OBTAIN_10_RARE_DROPS("Obtain 10 rare drops", 10, AchievementDifficulty.HARD),
 	BURY_1000_BONES("Bury or use on altar 1,000 bones", 1000, AchievementDifficulty.HARD),
 	WIN_THE_LOTTERY_3_TMES("Win the lottery 3 times", 3, AchievementDifficulty.HARD),
+	VOTE_30_TIMES("Vote 30 times", 30, AchievementDifficulty.HARD),
+	PRESTIGE_15_TIMES("Prestige 15 times", 15, AchievementDifficulty.HARD),
 	;
 
 	private final String name;

@@ -187,7 +187,9 @@ public class Prestige {
 		player.setPrestigePoints(player.getPrestigePoints() + 1);
 		player.send(new SendMessage("[ " + PRESTIGE_COLOR + "Prestige</col> ] You've successfully prestiged " + PRESTIGE_COLOR + "" + getSkillName(skillId) + "</col>!"));
 		World.sendGlobalMessage("<img=8> " + PRESTIGE_COLOR + player.getUsername() + " </col>has just prestiged their " + PRESTIGE_COLOR + "" + getSkillName(skillId) + "</col> skill to tier " + PRESTIGE_COLOR + "" + player.getSkillPrestiges()[skillId] + "</col>!");
+		AchievementHandler.activateAchievement(player, AchievementList.PRESTIGE_1_TIME, 1);
 		AchievementHandler.activateAchievement(player, AchievementList.PRESTIGE_5_TIMES, 1);
+		AchievementHandler.activateAchievement(player, AchievementList.PRESTIGE_15_TIMES, 1);
 		player.getSkill().restore();
 		update(player);
 		return true;
