@@ -29,7 +29,7 @@ public class FileHandler {
 			System.out.println("saving max players" + VencillioConstants.MOST_ONLINE);
 			File file = new File("./data/saves/PLAYERS.txt");
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
-			out.write(VencillioConstants.MOST_ONLINE);
+			out.write(String.valueOf(VencillioConstants.MOST_ONLINE));
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
