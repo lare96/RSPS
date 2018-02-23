@@ -4,6 +4,7 @@ import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendInventoryInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
@@ -37,11 +38,17 @@ public class Shopping {
 	public void buy(int id, int amount, int slot) {
 		if (shopId == -1L)
 			return;
+
 		Shop shop;
 		if (shopType == ShopType.DEFAULT || shopType == ShopType.INSTANCE) {
 			shop = Shop.getShops()[((int) shopId)];
 		} else {
 			Player p = World.getPlayerByName(shopId);
+
+			if(PlayerConstants.isAdministrator(player)) {
+				player.send(new SendMessage("Administrators are not allowed to buy items from player shops."));
+				return;
+			}
 
 			if (p == null) {
 				DialogueManager.sendStatement(p, new String[] { "The shop owner is no longer online." });
@@ -213,6 +220,11 @@ public class Shopping {
 			player.send(new SendMessage("You may not access this store as you are an Iron player."));
 			return;
 		}
+
+		if(PlayerConstants.isAdministrator(player)) {
+			player.send(new SendMessage("You may not access this store as an administrator"));
+			return;
+		}
 	
 		if (owner == null || owner.ironPlayer()) {
 			DialogueManager.sendStatement(player, new String[] { "Player not found." });
@@ -249,6 +261,11 @@ public class Shopping {
 			shop = Shop.getShops()[((int) shopId)];
 		} else {
 			Player p = World.getPlayerByName(shopId);
+
+			if(PlayerConstants.isAdministrator(player)) {
+				player.send(new SendMessage("You may not sell on this shop as an administrator"));
+				return;
+			}
 
 			if (p == null) {
 				DialogueManager.sendStatement(p, new String[] { "The shop owner is no longer online." });

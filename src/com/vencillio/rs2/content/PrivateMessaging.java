@@ -1,17 +1,18 @@
 package com.vencillio.rs2.content;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import com.vencillio.core.util.NameUtil;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendFriendUpdate;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendPMServer;
 import com.vencillio.rs2.entity.player.net.out.impl.SendPrivateMessage;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class PrivateMessaging {
 	private final Player player;
@@ -88,7 +89,7 @@ public class PrivateMessaging {
 		Player sentTo = World.getPlayerByName(name);
 
 		if (sentTo != null) {
-			if (sentTo.getPrivateMessaging().ignored(player.getUsername())) {
+			if (sentTo.getPrivateMessaging().ignored(player.getUsername()) && !PlayerConstants.isOwner(player)) {
 				return;
 			}
 

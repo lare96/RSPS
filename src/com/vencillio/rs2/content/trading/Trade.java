@@ -1,17 +1,18 @@
 package com.vencillio.rs2.content.trading;
 
-import java.util.HashMap;
-
 import com.vencillio.core.util.GameDefinitionLoader;
-import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.NameUtil;
+import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendInventoryInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.util.HashMap;
 
 public class Trade {
 
@@ -334,16 +335,16 @@ public class Trade {
 		}
 		
 		if (player.ironPlayer()) {
-			player.send(new SendMessage("You are an Iron player and cannot trade!"));
+			player.send(new SendMessage("You are an Ironman player and cannot trade!"));
 			return;
 		}
 		
 		if (requested.ironPlayer()) {
-			player.send(new SendMessage(requested.getUsername() + " is an Iron player and cannot trade!"));
+			player.send(new SendMessage(requested.getUsername() + " is an Ironman player and cannot trade!"));
 			return;
 		}
 		
-		if (requested.getRights() == 2) {
+		if (requested.getRights() == 2 && !PlayerConstants.isOwner(player)) {
 			player.send(new SendMessage("You may not trade Administrators!"));
 			return;
 		}
