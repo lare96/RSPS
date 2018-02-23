@@ -606,7 +606,7 @@ public class DeveloperCommand implements Command {
 				for (int i = 0; i < trials; i++) {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, true);
 					for (Item item : drops) {
-						player.getBank().add(item.getId(), item.getAmount(), false);
+						player.getBank().add(new Item(item.getId(), item.getAmount()), false);
 						player.send(new SendMessage("Item: " + item.getName() + " Amount: " + item.getAmount()));
 					}
 					drops.clear();
