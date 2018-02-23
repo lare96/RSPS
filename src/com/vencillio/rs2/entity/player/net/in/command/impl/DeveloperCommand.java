@@ -611,7 +611,7 @@ public class DeveloperCommand implements Command {
 					}
 					drops.clear();
 				}
-				//player.getBank().changeTabAmount(0, player.getBank().getTakenSlots(), false);
+				player.getBank().changeTabAmount(0, player.getBank().getTakenSlots(), false);
 				player.getBank().update();
 				player.getBank().openBank();
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
