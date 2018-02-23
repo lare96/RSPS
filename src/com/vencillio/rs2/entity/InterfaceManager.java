@@ -58,6 +58,10 @@ public class InterfaceManager {
 		return main != -1 || sub != -1 || chat != -1;
 	}
 
+	public boolean hasInterFaceOpen(int interF) {
+		return main == interF;
+	}
+
 	public void reset() {
 		main = -1;
 		sub = -1;

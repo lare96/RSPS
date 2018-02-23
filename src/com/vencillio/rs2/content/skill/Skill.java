@@ -162,6 +162,7 @@ public class Skill {
 			
 			if (this.experience[id] >= 200000000) {
 				this.experience[id] = 200000000;
+				World.sendGlobalMessage("<col=855907><img=12> "+player.getUsername() + " has achieved 200m xp in " + Skills.SKILL_NAMES[id] + "! Prestige level: " + player.getSkillPrestiges()[id]);
 			}
 			update(id);
 			return experience;
@@ -194,6 +195,7 @@ public class Skill {
 
 		if (this.experience[id] >= 200000000) {
 			this.experience[id] = 200000000;
+			World.sendGlobalMessage("<col=855907><img=12> "+player.getUsername() + " has achieved 200m xp in " + Skills.SKILL_NAMES[id] + "! Prestige level: " + player.getSkillPrestiges()[id]);
 		} else {
 			player.send(new SendExpCounter(id, (int) experience));
 		}

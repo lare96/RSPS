@@ -14,6 +14,9 @@ import com.vencillio.rs2.content.MysteryBox;
 import com.vencillio.rs2.content.bank.Bank.RearrangeTypes;
 import com.vencillio.rs2.content.cluescroll.ClueScrollManager;
 import com.vencillio.rs2.content.combat.Hit;
+import com.vencillio.rs2.content.combat.formula.MagicFormulas;
+import com.vencillio.rs2.content.combat.formula.MeleeFormulas;
+import com.vencillio.rs2.content.combat.formula.RangeFormulas;
 import com.vencillio.rs2.content.consumables.ConsumableType;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.OptionDialogue;
@@ -56,6 +59,7 @@ import com.vencillio.rs2.entity.player.net.in.IncomingPacket;
 import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
+import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 
 /**
  * Handles the item packet
@@ -488,6 +492,12 @@ public class ItemPackets extends IncomingPacket {
 
 			if (VencillioConstants.DEV_MODE) {
 				player.send(new SendMessage("Item packet 41"));
+			}
+
+			if (player.getInterfaceManager().hasInterFaceOpen(15106)) {
+				player.send(new SendString("</col>Melee Max Hit: @gre@" + MeleeFormulas.calculateBaseDamage(player), 15116));
+				player.send(new SendString("</col>Range Max Hit: @gre@" + RangeFormulas.getRangedMaxHit(player) + ".0", 15117));
+				player.send(new SendString("</col>Magic Max Hit: @gre@" + MagicFormulas.magicMaxHit(player) + ".0", 15118));
 			}
 
 			if (!player.getInventory().slotContainsItem(slot, itemId)) {
