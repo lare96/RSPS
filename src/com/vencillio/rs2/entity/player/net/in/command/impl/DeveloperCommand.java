@@ -606,10 +606,10 @@ public class DeveloperCommand implements Command {
 				for (int i = 0; i < trials; i++) {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, false);
 					for (Item item : drops) {
-						Item yew = new Item(1515);
+						System.out.println("item id: " + item.getDefinition().getId() + " noted id: " + item.getDefinition().getNoteId());
 						if(item.getDefinition().getNoteId() > -1) {
 							player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
-							System.out.println("yew logs: " + yew.getDefinition().getNoteId());
+
 						}
 						else {
 							player.getInventory().add(new Item(item.getId(), item.getAmount()));
