@@ -602,15 +602,16 @@ public class DeveloperCommand implements Command {
 					player.send(new SendMessage("This npc is non-existant."));
 					return true;
 				}
-				player.getBank().clear();
+				//player.getBank().clear();
 				for (int i = 0; i < trials; i++) {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, true);
 					for (Item item : drops) {
 						player.getBank().add(item.getId(), item.getAmount(), false);
+						player.send(new SendMessage("Item: " + item.getName() + " Amount: " + item.getAmount()));
 					}
 					drops.clear();
 				}
-				player.getBank().changeTabAmount(0, player.getBank().getTakenSlots(), false);
+				//player.getBank().changeTabAmount(0, player.getBank().getTakenSlots(), false);
 				player.getBank().update();
 				player.getBank().openBank();
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
