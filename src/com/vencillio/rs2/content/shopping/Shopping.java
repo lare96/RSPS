@@ -221,10 +221,10 @@ public class Shopping {
 			return;
 		}
 
-		if(PlayerConstants.isAdministrator(player)) {
+		/*if(PlayerConstants.isAdministrator(player)) {
 			player.send(new SendMessage("You may not access this store as an administrator"));
 			return;
-		}
+		}*/
 	
 		if (owner == null || owner.ironPlayer()) {
 			DialogueManager.sendStatement(player, new String[] { "Player not found." });
