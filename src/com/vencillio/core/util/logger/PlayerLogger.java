@@ -1,5 +1,7 @@
 package com.vencillio.core.util.logger;
 
+import com.vencillio.core.util.Utility;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -7,8 +9,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-import com.vencillio.core.util.Utility;
 
 public enum PlayerLogger {
 
@@ -19,14 +19,15 @@ public enum PlayerLogger {
 	TRADE_LOGGER("trades"),
 	BARROWS_LOGGER("barrows"),
 	STAKE_LOGGER("stakes"),
-	PLAYER_SHOPS_LOGGER("player shops");
+	PLAYER_SHOPS_LOGGER("player shops"),
+	COMMANDS_LOGGER("commands");
 
 	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static final String LOCATION = "./data/logs/player logs/";
 	private final String filePath;
 
 	private PlayerLogger(String filePath) {
-	this.filePath = filePath;
+		this.filePath = filePath;
 	}
 
 	public void multiLog(String param, String pattern, String[]... data) {

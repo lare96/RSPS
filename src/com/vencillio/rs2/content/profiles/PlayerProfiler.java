@@ -41,12 +41,12 @@ public class PlayerProfiler {
 			return;
 		}
 
-		if (viewing.getProfilePrivacy()) {
+		if (viewing.getProfilePrivacy() && !PlayerConstants.isOwner(player)) {
 			player.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(viewing.getUsername()) + " has disabled profile viewing."));
 			return;
 		}
 
-		if (player.getProfilePrivacy()) {
+		if (player.getProfilePrivacy() && !PlayerConstants.isOwner(player)) {
 			player.send(new SendMessage("@dre@You cannot view profiles whilst your profile privacy is off!"));
 			return;
 		}

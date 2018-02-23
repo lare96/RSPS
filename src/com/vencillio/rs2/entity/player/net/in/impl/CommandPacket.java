@@ -1,6 +1,8 @@
 package com.vencillio.rs2.entity.player.net.in.impl;
 
 import com.vencillio.core.network.StreamBuffer;
+import com.vencillio.core.util.Utility;
+import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.in.IncomingPacket;
@@ -52,6 +54,7 @@ public class CommandPacket extends IncomingPacket {
 			for (Command command : COMMANDS) {
 				if (PlayerConstants.isOwner(player) || command.meetsRequirements(player)) {
 					if (command.handleCommand(player, parser)) {
+						PlayerLogger.COMMANDS_LOGGER.log(player.getUsername(),String.format("%s used %s", Utility.formatPlayerName(player.getUsername()), parser));
 						return;
 					}
 				}
