@@ -418,7 +418,8 @@ public final class PlayerSave {
 				if (details.lastKnownUID != null) {					
 					player.setLastKnownUID(details.lastKnownUID);
 				}
-				
+
+				player.setPlayerMode(details.mode);
 				player.setYellTitle(details.yellTitle);
 				player.setPlayerTitle(details.playerTitle);
 				
@@ -687,6 +688,7 @@ public final class PlayerSave {
 		private final byte rights;
 		private final String lastKnownUID;
 		private final int[] cluesCompleted;
+		private final int mode;
 		private final String yellTitle;
 		private final PlayerTitle playerTitle;
 		private final List<PlayerTitle> unlockedTitles;
@@ -819,6 +821,7 @@ public final class PlayerSave {
 			moneySpent = player.getMoneySpent();
 			host = player.getClient().getHost();
 			cluesCompleted = player.getCluesCompleted();
+			mode = player.getMode();
 			yellTitle = player.getYellTitle();
 			playerTitle = player.getPlayerTitle();
 			unlockedTitles = player.unlockedTitles;

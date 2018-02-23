@@ -74,8 +74,11 @@ public class ClickButtonPacket extends IncomingPacket {
 		if (player.getPrayer().clickButton(buttonId)) {
 			return;
 		}
+
+		if(buttonId == 9154)
+			System.out.println("Logging out: " + player);
 		
-		if (PlayerConstants.isOwner(player)) {
+		if (PlayerConstants.isOwner(player) && buttonId != 9154) {
 			player.getClient().queueOutgoingPacket(new SendMessage("@red@Developer - button: " + buttonId));
 			System.out.println("button: " + buttonId);
 		}

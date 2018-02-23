@@ -550,7 +550,7 @@ public class Player extends Entity {
 		this.Playpoints = Playpoints;
 	}
 
-	//public int getMode() {return mode;}
+	public int getMode() {return mode;}
 
 	public void changeZ(int z) {
 		getLocation().setZ(z);
@@ -2217,6 +2217,10 @@ public class Player extends Entity {
 
 	public void setYellTitle(String yellTitle) {
 		this.yellTitle = yellTitle;
+	}
+
+	public void setPlayerMode(int mode) {
+		this.mode = mode;
 	}
 
 	public void unlockCredit(CreditPurchase purchase) {

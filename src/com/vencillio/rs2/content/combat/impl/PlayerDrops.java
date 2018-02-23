@@ -55,7 +55,7 @@ public class PlayerDrops {
 			killer.getPlayer().send(new SendMessage(Utility.randomElement(DEATH_MESSAGES).replaceAll("-victim-", ""+player.getUsername()+"</col>")));
 			killer.getPlayer().setRogueKills(killer.getPlayer().getRogueKills() + 1);	
 		
-			if (!PlayerKilling.hostOnList(killer.getPlayer(), player.getClient().getHost())) {
+			if (PlayerKilling.hostOnList(killer.getPlayer(), player.getClient().getHost())) {
 				killer.getPlayer().send(new SendMessage("@blu@You have killed " + player.getUsername() + " recently! You were not awarded."));
 				
 			} else {
