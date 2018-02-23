@@ -607,12 +607,11 @@ public class DeveloperCommand implements Command {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, false);
 					for (Item item : drops) {
 						System.out.println("item id: " + item.getDefinition().getId() + " noted id: " + item.getDefinition().getNoteId());
-						if(item.getDefinition().getNoteId() > -1) {
-							player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
-
-						}
-						else {
+						if(item.getDefinition().isStackable()) {
 							player.getInventory().add(new Item(item.getId(), item.getAmount()));
+						}
+						else if(item.getDefinition().getNoteId() > -1){
+							player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
 						}
 						//player.getBank().changeTabAmount(0, 1, false);
 						//player.send(new SendMessage("Item: " + item.getName() + " Amount: " + item.getAmount()));
