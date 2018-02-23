@@ -26,6 +26,7 @@ public class FileHandler {
 	 */
 	public static void saveMaxPlayers() {
 		try {
+			System.out.println("saving max players" + VencillioConstants.MOST_ONLINE);
 			File file = new File("./data/saves/PLAYERS.txt");
 			BufferedWriter out = new BufferedWriter(new FileWriter(file));
 			out.write(VencillioConstants.MOST_ONLINE);
