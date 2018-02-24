@@ -65,7 +65,7 @@ public class ProfileLeaderboard implements Comparable < Object > {
             for (Player players: World.getPlayers()) {
                 if (players == null)
                     continue;
-                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getProfileViews()));
+                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getViews()));
                 updateString(player, "views");
             }
         }
@@ -75,7 +75,7 @@ public class ProfileLeaderboard implements Comparable < Object > {
             for (Player players: World.getPlayers()) {
                 if (players == null)
                     continue;
-                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getLikes()));
+                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getLikesGiven()));
                 updateString(player, "likes");
             }
         }
@@ -85,7 +85,7 @@ public class ProfileLeaderboard implements Comparable < Object > {
             for (Player players: World.getPlayers()) {
                 if (players == null)
                     continue;
-                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getDislikes()));
+                leaderboard.add(new ProfileLeaderboard(players.getUsername(), players.getDislikesGiven()));
                 updateString(player, "dislikes");
             }
         }
@@ -96,7 +96,7 @@ public class ProfileLeaderboard implements Comparable < Object > {
                 if (players == null)
                     continue;
                                 // 10             /         (5                     + 10               ) * 10
-                double ratio = (player.getLikes() / (double) (player.getDislikes() + player.getLikes()) * player.getLikes());
+                double ratio = (player.getLikesGiven() / (double) (player.getDislikesGiven() + player.getLikesGiven()) * player.getLikesGiven());
                 leaderboard.add(new ProfileLeaderboard(players.getUsername(), ratio));
                 updateString(player, "ratio");
             }

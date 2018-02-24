@@ -90,7 +90,6 @@ public class PlayerProfiler {
 
 		viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " is viewing your profile!"));
 
-		viewing.setProfileViews(+1);
 
 		player.send(new SendPlayerProfilerIndex(viewing.getIndex()));
 
@@ -104,9 +103,9 @@ public class PlayerProfiler {
 		player.send(new SendString("</col>Rank: @gre@" + viewing.determineIcon(viewing) + " " + viewing.determineRank(viewing), 51808));
 		player.send(new SendString("</col>Combat: @gre@" + viewing.getSkill().getCombatLevel(), 51809));
 
-		player.send(new SendString("</col>Likes: @whi@" + viewing.getLikes(), 51881));
+		/*player.send(new SendString("</col>Likes: @whi@" + viewing.getLikes(), 51881));
 		player.send(new SendString("</col>Dislikes @whi@" + viewing.getDislikes(), 51882));
-		player.send(new SendString("</col>Views @whi@" + viewing.getProfileViews(), 51883));
+		player.send(new SendString("</col>Views @whi@" + viewing.getProfileViews(), 51883));*/
 		player.send(new SendString("</col>Money Spent: $@whi@" + viewing.getMoneySpent(), 51884));
 		player.send(new SendString("</col>Credits: @whi@" + viewing.getCredits(), 51885));
 		player.send(new SendString("</col>Kills: @whi@" + viewing.getKills(), 51886));
@@ -140,9 +139,9 @@ public class PlayerProfiler {
 		player.send(new SendString("</col>Combat: @gre@" + player.getSkill().getCombatLevel(), 51609));
 
 		player.send(new SendString("", 51681));
-		player.send(new SendString("</col>Likes: @whi@" + player.getLikes(), 51682));
+		/*player.send(new SendString("</col>Likes: @whi@" + player.getLikes(), 51682));
 		player.send(new SendString("</col>Dislikes @whi@" + player.getDislikes(), 51683));
-		player.send(new SendString("</col>Views @whi@" + player.getProfileViews(), 51684));
+		player.send(new SendString("</col>Views @whi@" + player.getProfileViews(), 51684));*/
 		player.send(new SendString("</col>Money Spent: $@whi@" + player.getMoneySpent(), 51685));
 		player.send(new SendString("</col>Credits: @whi@" + player.getCredits(), 51686));
 		player.send(new SendString("</col>Kills: @whi@" + player.getKills(), 51687));
@@ -185,7 +184,6 @@ public class PlayerProfiler {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setLikes(+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has liked your profile."));
 			break;
 
@@ -196,7 +194,6 @@ public class PlayerProfiler {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setDislikes(+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has disliked your profile."));
 			break;
 
