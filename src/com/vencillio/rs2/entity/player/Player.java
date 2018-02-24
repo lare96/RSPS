@@ -177,8 +177,7 @@ public class Player extends Entity {
 
 	/* Player Profiler */
 	private long lastLike;
-	private byte likesGiven;
-	private int likes, dislikes, profileViews;
+	private byte likesGiven, dislikesGiven, views;
 	public String viewing;
 
 	public List<PlayerTitle> unlockedTitles = new ArrayList<>();
@@ -506,12 +505,36 @@ public class Player extends Entity {
 		likesGiven++;
 	}
 
+	public void addDislikes() {
+		dislikesGiven++;
+	}
+
+	public void addViews() {
+		views++;
+	}
+
 	public void setLikesGiven(byte likesGiven) {
 		this.likesGiven = likesGiven;
 	}
 
+	public void setDislikesGiven(byte dislikesGiven) {
+		this.dislikesGiven = dislikesGiven;
+	}
+
+	public void setViews(byte views) {
+		this.views = views;
+	}
+
 	public byte getLikesGiven() {
 		return likesGiven;
+	}
+
+	public byte getDislikesGiven() {
+		return likesGiven;
+	}
+
+	public byte getViews() {
+		return views;
 	}
 
 	public boolean canLike() {
@@ -2169,30 +2192,6 @@ public class Player extends Entity {
 
 	public void setProfilePrivacy(boolean profilePrivacy) {
 		this.profilePrivacy = profilePrivacy;
-	}
-
-	public int getLikes() {
-		return likes;
-	}
-
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
-
-	public int getDislikes() {
-		return dislikes;
-	}
-
-	public void setDislikes(int dislikes) {
-		this.dislikes = dislikes;
-	}
-
-	public int getProfileViews() {
-		return profileViews;
-	}
-
-	public void setProfileViews(int profileViews) {
-		this.profileViews = profileViews;
 	}
 
 	public int getTriviaWinningStreak() {

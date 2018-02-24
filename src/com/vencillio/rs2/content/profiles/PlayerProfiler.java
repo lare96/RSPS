@@ -53,9 +53,6 @@ public class PlayerProfiler {
 		
 		int deltaX = viewing.getLocation().getX() - (player.getCurrentRegion().getRegionX() << 3);
 		int deltaY = viewing.getLocation().getY() - (player.getCurrentRegion().getRegionY() << 3);
-		System.out.println("Viewing: " + viewing.getUsername() + " Views before: " + viewing.getProfileViews());
-		viewing.setProfileViews(viewing.getProfileViews()+1);
-		System.out.println("Viewing: " + viewing.getUsername() + " Views after: " + viewing.getProfileViews());
 
 		if ((deltaX < 16) || (deltaX >= 88) || (deltaY < 16) || (deltaY > 88)) {
 			player.send(new SendMessage("@dre@Viewing character models is disabled while not in same region."));
@@ -79,7 +76,7 @@ public class PlayerProfiler {
 			kd = viewing.getKills();
 		viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " is viewing your profile!"));
 		AchievementHandler.activateAchievement(player, AchievementList.VIEW_15_PLAYER_PROFILES, 1);
-		viewing.setProfileViews(+1);
+		viewing.addViews();
 
 		if (inRegion) {
 			player.send(new SendPlayerProfilerIndex(viewing.getIndex()));			
@@ -100,9 +97,9 @@ public class PlayerProfiler {
 				
 		String[] STRINGS = { 
 			"",
-			"</col>Likes: @whi@" + viewing.getLikes(),
-			"</col>Dislikes: @whi@" + viewing.getDislikes(),
-			"</col>Views: @whi@" + viewing.getProfileViews(),
+			"</col>Likes: @whi@" + viewing.getLikesGiven(),
+			"</col>Dislikes: @whi@" + viewing.getDislikesGiven(),
+			"</col>Views: @whi@" + viewing.getViews(),
 			"</col>Money Spent: $@whi@" + viewing.getMoneySpent(),
 			"</col>Credits: @whi@" + viewing.getCredits(),		
 			"</col>Achievements Completed: @whi@" + viewing.getPA().achievementCompleted(),
@@ -157,9 +154,9 @@ public class PlayerProfiler {
 		
 		String[] STRINGS = { 
 			"",
-			"</col>Likes: @whi@" + player.getLikes(),
-			"</col>Dislikes: @whi@" + player.getDislikes(),
-			"</col>Views: @whi@" + player.getProfileViews(),
+			"</col>Likes: @whi@" + player.getLikesGiven(),
+			"</col>Dislikes: @whi@" + player.getDislikesGiven(),
+			"</col>Views: @whi@" + player.getViews(),
 			"</col>Money Spent: $@whi@" + player.getMoneySpent(),
 			"</col>Credits: @whi@" + player.getCredits(),		
 			"</col>Achievements Completed: @whi@" + player.getPA().achievementCompleted(),
@@ -222,18 +219,16 @@ public class PlayerProfiler {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setLikes(viewing.getLikes()+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has liked your profile."));
 			break;
 
 		case 203025:
-			player.addLike();
+			player.addDislikes();
 			player.send(new SendMessage("@dre@You have disliked " + Utility.capitalizeFirstLetter(viewing.getUsername()) + "'s profile!"));
 			if (player.getLikesGiven() == 3) {
 				player.setLastLike(System.currentTimeMillis());
 				player.send(new SendMessage("You have given your last reputation; please wait another 24 hours to give more."));
 			}
-			viewing.setDislikes(viewing.getDislikes()+1);
 			viewing.send(new SendMessage("@dre@" + Utility.capitalizeFirstLetter(player.getUsername()) + " has disliked your profile."));
 			break;
 

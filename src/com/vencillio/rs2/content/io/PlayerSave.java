@@ -435,9 +435,8 @@ public final class PlayerSave {
 				player.setShopColor(details.shopColor);
 				player.setLastLike(details.lastLike);
 				player.setLikesGiven(details.likesGiven);
-				player.setLikes(details.likes);
-				player.setDislikes(details.dislikes);
-				player.setProfileViews(details.profileViews);
+				player.setDislikesGiven(details.dislikes);
+				player.setViews(details.profileViews);
 				player.setRetaliate(details.retaliate);
 				player.getSkill().setExpLock(details.expLock);
 				player.getSlayer().setAmount(details.slayerAmount);
@@ -769,8 +768,7 @@ public final class PlayerSave {
 		private final int bountyPoints;
 		private final int playPoints;
 		private long lastLike;
-		private byte likesGiven;
-		private int likes, dislikes, profileViews;
+		private byte likesGiven, dislikes, profileViews;
 		private final String fullName;
 		private final String IP;
 		private final String emailAddress;
@@ -830,9 +828,8 @@ public final class PlayerSave {
 			unlockedTitles = player.unlockedTitles;
 			lastLike = player.getLastLike();
 			likesGiven = player.getLikesGiven();
-			likes = player.getLikes();
-			dislikes = player.getDislikes();
-			profileViews = player.getProfileViews();
+			dislikes = player.getDislikesGiven();
+			profileViews = player.getViews();
 			banned = player.isBanned();
 			banLength = player.getBanLength();
 			moneyPouch = player.getMoneyPouch();
