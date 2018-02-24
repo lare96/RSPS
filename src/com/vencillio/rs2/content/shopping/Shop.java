@@ -207,7 +207,7 @@ public class Shop extends ItemContainer {
 
 		Item gold = new Item(995, getSellPrice(id) * amount);
 
-		if (!player.getInventory().hasSpaceOnRemove(gold, buying)) {
+		if (!player.getInventory().hasSpaceOnRemove(gold, buying) && this.store != 15 || this.store != 33) {
 			if (!buying.getDefinition().isStackable()) {
 				int slots = player.getInventory().getFreeSlots();
 				if (slots > 0) {
