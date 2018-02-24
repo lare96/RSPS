@@ -53,7 +53,9 @@ public class PlayerProfiler {
 		
 		int deltaX = viewing.getLocation().getX() - (player.getCurrentRegion().getRegionX() << 3);
 		int deltaY = viewing.getLocation().getY() - (player.getCurrentRegion().getRegionY() << 3);
+		System.out.println("Viewing: " + viewing.getUsername() + " Views before: " + viewing.getProfileViews());
 		viewing.setProfileViews(viewing.getProfileViews()+1);
+		System.out.println("Viewing: " + viewing.getUsername() + " Views after: " + viewing.getProfileViews());
 
 		if ((deltaX < 16) || (deltaX >= 88) || (deltaY < 16) || (deltaY > 88)) {
 			player.send(new SendMessage("@dre@Viewing character models is disabled while not in same region."));
