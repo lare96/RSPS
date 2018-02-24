@@ -12,6 +12,9 @@ import com.vencillio.rs2.entity.player.net.out.impl.*;
 
 import java.util.Arrays;
 
+import static com.vencillio.rs2.content.bank.Bank.WithdrawTypes.ITEM;
+import static com.vencillio.rs2.content.bank.Bank.WithdrawTypes.NOTE;
+
 public class Bank extends ItemContainer {
 
 	public static enum RearrangeTypes {
@@ -34,11 +37,26 @@ public class Bank extends ItemContainer {
 
 	public RearrangeTypes rearrangeType = RearrangeTypes.SWAP;
 
-	public WithdrawTypes withdrawType = WithdrawTypes.ITEM;
+	public WithdrawTypes withdrawType = ITEM;
 
 	public Bank(Player player) {
 		super(SIZE, ItemContainer.ContainerTypes.ALWAYS_STACK, true, false);
 		this.player = player;
+	}
+
+	public int getWithdrawalMode() {
+		if (withdrawType == ITEM)
+			return 0;
+		else if (withdrawType == NOTE)
+			return 1;
+		return 0;
+	}
+
+	public void setWithdrawalMode(int type) {
+		if(type == 0)
+			withdrawType = ITEM;
+		else
+			withdrawType = NOTE;
 	}
 
 	@Override
@@ -114,7 +132,7 @@ public class Bank extends ItemContainer {
 			rearrangeType = RearrangeTypes.INSERT;
 			return true;
 		case 21011:
-			withdrawType = WithdrawTypes.ITEM;
+			withdrawType = ITEM;
 			return true;
 		case 21010:
 			withdrawType = WithdrawTypes.NOTE;

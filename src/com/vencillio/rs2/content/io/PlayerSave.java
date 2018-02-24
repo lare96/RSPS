@@ -426,7 +426,8 @@ public final class PlayerSave {
 				if (details.unlockedTitles != null && !details.unlockedTitles.isEmpty()) {
 					player.unlockedTitles.addAll(details.unlockedTitles);
 				}
-				
+
+				player.getBank().setWithdrawalMode(details.withdrawalMode);
 				player.setMoneyPouch(details.moneyPouch);
 				player.setShopCollection(details.shopCollection);
 				player.setWeaponPoints(details.weaponPoints);
@@ -689,6 +690,7 @@ public final class PlayerSave {
 		private final String lastKnownUID;
 		private final int[] cluesCompleted;
 		private final int mode;
+		private final int withdrawalMode;
 		private final String yellTitle;
 		private final PlayerTitle playerTitle;
 		private final List<PlayerTitle> unlockedTitles;
@@ -822,6 +824,7 @@ public final class PlayerSave {
 			host = player.getClient().getHost();
 			cluesCompleted = player.getCluesCompleted();
 			mode = player.getMode();
+			withdrawalMode = player.getBank().getWithdrawalMode();
 			yellTitle = player.getYellTitle();
 			playerTitle = player.getPlayerTitle();
 			unlockedTitles = player.unlockedTitles;
