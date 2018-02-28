@@ -641,7 +641,7 @@ public class Player extends Entity {
 			return;
 		}
 		Clan clan = Server.clanManager.getClan(getUsername());
-		//System.out.println("CLAN: " + clan +  " Clan title: " + clan.getTitle() + "Founder: " + clan.getFounder());
+		System.out.println("CLAN: " + clan +  " Clan title: " + clan.getTitle() + "Founder: " + clan.getFounder());
 		send(new SendString(clan.getTitle(), 53706));
 		String title = "";
 		for (int id = 53707; id < 53717; id += 3) {
