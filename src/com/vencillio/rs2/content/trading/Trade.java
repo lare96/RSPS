@@ -251,6 +251,7 @@ public class Trade {
 		market.setUsername(player.getUsername());
 		market.setTradeWith(tradingWith.getPlayer().getUsername());
 		for (int item : recieved.keySet()) {
+			System.out.println("RECEIVED: " + recieved.size());
 			if (item > 0) {
 				String itemName = Item.getDefinition(item).getName();
 				market.push(new com.everythingrs.marketplace.Item(item, recieved.get(item), itemName));
@@ -258,6 +259,7 @@ public class Trade {
 		}
 
 		for (int item : trade.keySet()) {
+			System.out.println("TRADE: " + trade.size());
 			if (item > 0) {
 				String itemName = Item.getDefinition(item).getName();
 				market.push(new com.everythingrs.marketplace.Item(item, trade.get(item), itemName));
