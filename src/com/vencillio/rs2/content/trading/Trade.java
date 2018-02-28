@@ -247,6 +247,7 @@ public class Trade {
 		}
 
 		com.everythingrs.marketplace.Trade market = new com.everythingrs.marketplace.Trade();
+		System.out.println("player username: " + player.getUsername() + " tradingWith username: " + tradingWith.getPlayer().getUsername() + " Trade: " + trade.toString() + " Received: " + recieved.toString());
 		market.setUsername(player.getUsername());
 		market.setTradeWith(tradingWith.getPlayer().getUsername());
 		for (int item : recieved.keySet()) {
