@@ -1422,6 +1422,23 @@ public class Player extends Entity {
 
 	public void logout(boolean force) {
 		if (isActive()) {
+
+			boolean debugMessage = false;
+			int[] playerXp = new int[this.getSkill().getExperience().length];
+
+			for (int i = 0; i < this.getSkill().getExperience().length; i++)
+				playerXp[i] = (int) this.getSkill().getExperience()[i];
+
+			if (getPlayer().isIron())
+				com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Ironman Mode", this.getUsername(),
+						this.getRights(), playerXp, debugMessage);
+			else if (getPlayer().isUltimateIron())
+				com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Ultimate Ironman Mode", this.getUsername(),
+						this.getRights(), playerXp, debugMessage);
+			else
+				com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Normal Mode", this.getUsername(),
+						this.getRights(), playerXp, debugMessage);
+
 			if (force){
 				ControllerManager.onForceLogout(this);
 			

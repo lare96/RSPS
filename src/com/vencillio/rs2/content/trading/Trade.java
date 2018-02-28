@@ -218,6 +218,18 @@ public class Trade {
 			if (success) {
 				if (traded[i] != null) {
 					tradingWith.getPlayer().getInventory().insert(traded[i]);
+
+					com.everythingrs.marketplace.Trade market = new com.everythingrs.marketplace.Trade();
+					market.setUsername(player.getUsername());
+					market.setTradeWith(tradingWith.getPlayer().getUsername());
+					for (Item item : recieving) {
+						if (item.getId() > 0) {
+							String itemName = Item.getDefinition(item.getId()).getName();
+							market.push(new com.everythingrs.marketplace.Item(item.getId(), item.getAmount(), itemName));
+						}
+					}
+					market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
+
 					if (trade.get(traded[i].getId()) != null) {
 						trade.put(traded[i].getId(), traded[i].getAmount() + trade.get(traded[i].getId()));
 					} else {
@@ -227,6 +239,18 @@ public class Trade {
 
 				if (recieving[i] != null) {
 					player.getInventory().insert(recieving[i]);
+
+					com.everythingrs.marketplace.Trade market = new com.everythingrs.marketplace.Trade();
+					market.setUsername(tradingWith.getPlayer().getUsername());
+					market.setTradeWith(player.getUsername());
+					for (Item item : traded) {
+						if (item.getId() > 0) {
+							String itemName = Item.getDefinition(item.getId()).getName();
+							market.push(new com.everythingrs.marketplace.Item(item.getId(), item.getAmount(), itemName));
+						}
+					}
+					market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
+
 					if (recieved.get(recieving[i].getId()) != null) {
 						recieved.put(recieving[i].getId(), recieving[i].getAmount() + recieved.get(recieving[i].getId()));
 					} else {
