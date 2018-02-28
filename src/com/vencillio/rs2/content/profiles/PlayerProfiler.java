@@ -213,7 +213,7 @@ public class PlayerProfiler {
 		switch (button) {
 
 		case 203022:
-			player.addLike();
+			viewing.addLike();
 			player.send(new SendMessage("@dre@You have liked " + Utility.capitalizeFirstLetter(viewing.getUsername()) + "'s profile!"));
 			if (player.getLikesGiven() == 3) {
 				player.setLastLike(System.currentTimeMillis());
@@ -223,7 +223,7 @@ public class PlayerProfiler {
 			break;
 
 		case 203025:
-			player.addDislikes();
+			viewing.addDislikes();
 			player.send(new SendMessage("@dre@You have disliked " + Utility.capitalizeFirstLetter(viewing.getUsername()) + "'s profile!"));
 			if (player.getLikesGiven() == 3) {
 				player.setLastLike(System.currentTimeMillis());

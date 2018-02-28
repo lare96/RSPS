@@ -88,6 +88,32 @@ public class PlayerCommand implements Command {
 				}
 				return true;
 
+			case "claim":
+				new java.lang.Thread() {
+					public void run() {
+						try {
+							com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi",
+									player.getUsername());
+							if (donations.length == 0) {
+								player.send(new SendMessage("You currently don't have any items waiting. You must donate first!"));
+								return;
+							}
+							if (donations[0].message != null) {
+								player.send(new SendMessage(donations[0].message));
+								return;
+							}
+							for (com.everythingrs.donate.Donation donate : donations) {
+								player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+							}
+							player.send(new SendMessage("Thank you for donating!"));
+						} catch (Exception e) {
+							player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
+							e.printStackTrace();
+						}
+					}
+				}.start();
+				return true;
+
 		/*
 		 * Opens the command list
 		 */
@@ -162,12 +188,18 @@ public class PlayerCommand implements Command {
 					if (TimeUnit.MINUTES.toDays(person.getPlayPoints()) > 0) {
 						days = String.valueOf(TimeUnit.MINUTES.toDays(person.getPlayPoints()));
 						totalTime -= Integer.parseInt(days) * 60 * 24;
-						days += " Days ";
+						if(Integer.parseInt(days) > 1)
+							days += " Days ";
+						else
+							days += " Day ";
 					}
 					if (TimeUnit.MINUTES.toHours(totalTime) > 0) {
 						hours = String.valueOf(TimeUnit.MINUTES.toHours(totalTime));
 						totalTime -= Integer.parseInt(hours) * 60;
-						hours += " Hours ";
+						if(Integer.parseInt(hours) > 1)
+							hours += " Hours ";
+						else
+							hours += " Hour ";
 					}
 					String formatted = days + hours + totalTime + " Minutes";
 					player.send(new SendMessage(person.getUsername() + " has played for " + formatted));

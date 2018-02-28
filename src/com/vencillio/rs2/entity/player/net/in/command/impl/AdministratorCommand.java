@@ -223,12 +223,18 @@ public class AdministratorCommand implements Command {
                         if (TimeUnit.MINUTES.toDays(person.getPlayPoints()) > 0) {
                             days = String.valueOf(TimeUnit.MINUTES.toDays(person.getPlayPoints()));
                             totalTime -= Integer.parseInt(days) * 60 * 24;
-                            days += " Days ";
+                            if(Integer.parseInt(days) > 1)
+                                days += " Days ";
+                            else
+                                days += " Day ";
                         }
                         if (TimeUnit.MINUTES.toHours(totalTime) > 0) {
                             hours = String.valueOf(TimeUnit.MINUTES.toHours(totalTime));
                             totalTime -= Integer.parseInt(hours) * 60;
-                            hours +=  " Hours ";
+                            if(Integer.parseInt(hours) > 1)
+                                hours += " Hours ";
+                            else
+                                hours += " Hour ";
                         }
                         String formatted = days + hours + totalTime + " Minutes";
                         player.send(new SendMessage(person.getUsername() + " has played for " + formatted));

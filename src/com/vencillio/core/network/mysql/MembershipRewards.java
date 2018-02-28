@@ -1,15 +1,15 @@
 package com.vencillio.core.network.mysql;
 
-import java.sql.ResultSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.Emotion;
 import com.vencillio.rs2.entity.player.Player;
+
+import java.sql.ResultSet;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MembershipRewards {
 
@@ -54,7 +54,7 @@ public class MembershipRewards {
 					final int prod = resultSet.getInt("productid");
 					final int price = resultSet.getInt("price");
 					
-					if (prod == 1 && price == 1) {
+					if (prod == 1 && price == 1) { //10 credits per 1
 						giveItem(player, 13190);
 					} else if (prod == 2 && price == 3) {
 						giveItem(player, 13191);
