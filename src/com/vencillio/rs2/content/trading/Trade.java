@@ -256,16 +256,19 @@ public class Trade {
 				market.push(new com.everythingrs.marketplace.Item(item, recieved.get(item), itemName));
 			}
 		}
-		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
 
-		/*market.setUsername(tradingWith.getPlayer().getUsername());
-		market.setTradeWith(player.getPlayer().getUsername());
 		for (int item : trade.keySet()) {
 			if (item > 0) {
 				String itemName = Item.getDefinition(item).getName();
 				market.push(new com.everythingrs.marketplace.Item(item, trade.get(item), itemName));
 			}
 		}
+
+		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
+
+		/*market.setUsername(tradingWith.getPlayer().getUsername());
+		market.setTradeWith(player.getPlayer().getUsername());
+
 		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");*/
 		
 		String[][][] strings = new String[2][trade.size()][4];
