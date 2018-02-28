@@ -229,17 +229,6 @@ public class Trade {
 				if (recieving[i] != null) {
 					player.getInventory().insert(recieving[i]);
 
-					/*com.everythingrs.marketplace.Trade market = new com.everythingrs.marketplace.Trade();
-					market.setUsername(tradingWith.getPlayer().getUsername());
-					market.setTradeWith(player.getUsername());
-					for (Item item : traded) {
-						if (item.getId() > 0) {
-							String itemName = Item.getDefinition(item.getId()).getName();
-							market.push(new com.everythingrs.marketplace.Item(item.getId(), item.getAmount(), itemName));
-						}
-					}
-					market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");*/
-
 					if (recieved.get(recieving[i].getId()) != null) {
 						recieved.put(recieving[i].getId(), recieving[i].getAmount() + recieved.get(recieving[i].getId()));
 					} else {
@@ -268,7 +257,7 @@ public class Trade {
 		}
 		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
 
-		market.setUsername(tradingWith.getPlayer().getUsername());
+		/*market.setUsername(tradingWith.getPlayer().getUsername());
 		market.setTradeWith(player.getPlayer().getUsername());
 		for (int item : trade.keySet()) {
 			if (item > 0) {
@@ -276,7 +265,7 @@ public class Trade {
 				market.push(new com.everythingrs.marketplace.Item(item, trade.get(item), itemName));
 			}
 		}
-		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
+		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");*/
 		
 		String[][][] strings = new String[2][trade.size()][4];
 		int index = 0;
