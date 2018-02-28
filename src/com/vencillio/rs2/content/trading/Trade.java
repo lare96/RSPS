@@ -258,6 +258,9 @@ public class Trade {
 			}
 		}
 
+		market.setUsername(tradingWith.getPlayer().getUsername());
+		market.setTradeWith(player.getUsername());
+
 		for (int item : trade.keySet()) {
 			System.out.println("TRADE: " + trade.size());
 			if (item > 0) {
