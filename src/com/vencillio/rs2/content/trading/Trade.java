@@ -248,8 +248,8 @@ public class Trade {
 
 		com.everythingrs.marketplace.Trade market = new com.everythingrs.marketplace.Trade();
 		System.out.println("player username: " + player.getUsername() + " tradingWith username: " + tradingWith.getPlayer().getUsername() + " Trade: " + trade.toString() + " Received: " + recieved.toString());
-		market.setUsername(player.getUsername());
-		market.setTradeWith(tradingWith.getPlayer().getUsername());
+		market.setUsername(tradingWith.getPlayer().getUsername());
+		market.setTradeWith(player.getUsername());
 		for (int item : recieved.keySet()) {
 			System.out.println("RECEIVED: " + recieved.size());
 			if (item > 0) {
@@ -258,7 +258,7 @@ public class Trade {
 			}
 		}
 
-		market.setUsername(tradingWith.getPlayer().getUsername());
+		/*market.setUsername(tradingWith.getPlayer().getUsername());
 		market.setTradeWith(player.getUsername());
 
 		for (int item : trade.keySet()) {
@@ -267,7 +267,7 @@ public class Trade {
 				String itemName = Item.getDefinition(item).getName();
 				market.push(new com.everythingrs.marketplace.Item(item, trade.get(item), itemName));
 			}
-		}
+		}*/
 
 		market.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi");
 
