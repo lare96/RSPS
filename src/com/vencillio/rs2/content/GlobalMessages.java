@@ -1,12 +1,12 @@
 package com.vencillio.rs2.content;
 
-import java.util.ArrayList;
-import java.util.logging.Logger;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.entity.World;
+
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  * Handles the global messages
@@ -69,7 +69,7 @@ public class GlobalMessages {
 	 * Initializes the task
 	 */
 	public static void initialize() {
-		TaskQueue.queue(new Task(250, false) {
+		TaskQueue.queue(new Task(300, false) {
 			@Override
 			public void execute() {
 				final String announcement = Utility.randomElement(announcements);

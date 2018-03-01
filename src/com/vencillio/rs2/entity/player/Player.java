@@ -4,7 +4,6 @@ import com.vencillio.Server;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.cache.map.Region;
 import com.vencillio.core.network.StreamBuffer;
-import com.vencillio.core.network.mysql.HiscoreUpdater;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.task.impl.FinishTeleportingTask;
@@ -1487,9 +1486,9 @@ public class Player extends Entity {
 
 			PlayerSave.save(this);
 
-			if (!VencillioConstants.DEV_MODE) {
+			/*if (!VencillioConstants.DEV_MODE) {
 				HiscoreUpdater.update(this);
-			}
+			}*/
 		}
 
 		World.unregister(this);

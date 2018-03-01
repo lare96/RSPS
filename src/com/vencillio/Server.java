@@ -1,14 +1,7 @@
 package com.vencillio;
 
 import com.vencillio.core.GameThread;
-import com.vencillio.core.network.mysql.HiscoreUpdater;
-import com.vencillio.core.network.mysql.MembershipRewards;
-import com.vencillio.core.network.mysql.VoteUpdater;
-import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.content.clanchat.ClanManager;
-import com.vencillio.rs2.content.io.PlayerSave;
-import com.vencillio.rs2.entity.World;
-import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.tools.ControlPanel;
 
 import java.text.SimpleDateFormat;
@@ -84,7 +77,7 @@ public class Server {
 		logger.info("Development mode: " + (VencillioConstants.DEV_MODE ? "Online" : "Offline") + ".");
 		logger.info("Staff mode: " + (VencillioConstants.STAFF_ONLY ? "Online" : "Offline") + ".");
 
-		if (!VencillioConstants.DEV_MODE) {
+		/*if (!VencillioConstants.DEV_MODE) {
 			try {
 				MembershipRewards.prepare();
 				HiscoreUpdater.prepare();
@@ -106,7 +99,7 @@ public class Server {
 
 				PlayerLogger.SHUTDOWN_LOGGER.log("Logs", String.format("Server shutdown with %s online.", World.getActivePlayers()));
 			}));
-		}
+		}*/
 
 		GameThread.init();
 		ControlPanel.init();
