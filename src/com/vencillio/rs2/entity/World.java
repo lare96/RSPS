@@ -298,7 +298,7 @@ public class World {
 			c.tick();
 		}
 
-		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
+		for (int i = 1; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			try {
 				if (player != null) {
@@ -346,7 +346,7 @@ public class World {
 			}
 		}
 
-		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
+		for (int i = 1; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player == null) || (!player.isActive()))
 				pFlags[i] = null;
@@ -360,7 +360,7 @@ public class World {
 				}
 			}
 		}
-		for (int i = 0; i < mobs.length; i++) {
+		for (int i = 1; i < mobs.length; i++) {
 			Mob mob = mobs[i];
 			if (mob != null) {
 				try {
@@ -373,7 +373,7 @@ public class World {
 			}
 		}
 
-		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
+		for (int i = 1; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player != null) && (pFlags[i] != null) && (player.isActive())) {
 				try {
@@ -385,7 +385,7 @@ public class World {
 				}
 			}
 		}
-		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
+		for (int i = 1; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player != null) && (player.isActive())) {
 				try {
