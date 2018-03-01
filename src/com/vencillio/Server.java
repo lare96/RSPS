@@ -11,12 +11,10 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.tools.ControlPanel;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
-import java.util.TimeZone;
 import java.util.logging.Logger;
 
 
@@ -52,16 +50,23 @@ public class Server {
 		return new SimpleDateFormat("EEEE MMM dd yyyy ").format(new Date());
 	}
 
+	private static Instant start = Instant.now();
+
 	/**
 	 * Gets the server uptime
 	 * 
 	 * @return
 	 */
 	public static String getUptime() {
-		RuntimeMXBean mx = ManagementFactory.getRuntimeMXBean();
+		Instant temp = Instant.now();
+		Duration elapsed = Duration.between(start, temp);
+		return elapsed.toString().substring(2)
+				.replaceAll("(\\d[HMS])(?!$)", "$1 ")
+				.toLowerCase();
+		/*RuntimeMXBean mx = ManagementFactory.getRuntimeMXBean();
 		DateFormat df = new SimpleDateFormat("DD 'D', HH 'H', mm 'M'");
-		df.setTimeZone(TimeZone.getTimeZone("GMT-7")); //In-game time?
-		return "" + df.format(new Date(mx.getUptime()));
+		df.setTimeZone(TimeZone.getTimeZone("GMT+0")); //In-game time?
+		return "" + df.format(new Date(mx.getUptime()));*/
 	}
 
 	/**
@@ -74,6 +79,7 @@ public class Server {
 		if (args != null && args.length > 0) {
 			VencillioConstants.DEV_MODE = Boolean.valueOf(args[0]);
 		}
+
 		
 		logger.info("Development mode: " + (VencillioConstants.DEV_MODE ? "Online" : "Offline") + ".");
 		logger.info("Staff mode: " + (VencillioConstants.STAFF_ONLY ? "Online" : "Offline") + ".");
