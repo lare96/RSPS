@@ -2,6 +2,8 @@ package com.vencillio.rs2.content.interfaces.impl;
 
 import com.vencillio.VencillioConstants;
 import com.vencillio.Server;
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.entity.World;
@@ -57,5 +59,22 @@ public class QuestTab extends InterfaceHandler {
 		return 29501;
 	}
 
+	public static void initialize() { //Refreshes quest tab every minute to keep it up to date
+		TaskQueue.queue(new Task(100) {
+			@Override
+			public void execute() {
+				for (Player player : World.getPlayers()) {
+					if (player == null || !player.isActive()) {
+						continue;
+					}
+					InterfaceHandler.writeText(new QuestTab(player));
+				}
+			}
+
+			@Override
+			public void onStop() {
+			}
+		});
+	}
 }
 

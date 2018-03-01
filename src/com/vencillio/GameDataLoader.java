@@ -13,6 +13,7 @@ import com.vencillio.rs2.content.cluescroll.ClueScrollManager;
 import com.vencillio.rs2.content.combat.impl.PoisonWeapons;
 import com.vencillio.rs2.content.combat.special.SpecialAttackHandler;
 import com.vencillio.rs2.content.dialogue.OneLineDialogue;
+import com.vencillio.rs2.content.interfaces.impl.QuestTab;
 import com.vencillio.rs2.content.minigames.duelarena.DuelingConstants;
 import com.vencillio.rs2.content.minigames.godwars.GodWarsData;
 import com.vencillio.rs2.content.minigames.plunder.PlunderConstants;
@@ -94,6 +95,7 @@ public class GameDataLoader {
 					GameDefinitionLoader.loadNpcSpawns();
 					GlobalMessages.initialize();
 					VencillioBot.initialize();
+					QuestTab.initialize();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
