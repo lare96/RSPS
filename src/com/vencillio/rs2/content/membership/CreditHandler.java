@@ -99,11 +99,6 @@ public enum CreditHandler {
 			spent(player, 30);
 			player.send(new SendMessage("Players may not see your wilderness kills anymore!"));
 		}
-	}),PURCHASE_MORE_CREDITS(205025, 0, new Handle() {
-		@Override
-		public void handle(Player player) {
-			player.send(new SendString("http://tannerscape.everythingrs.com/services/store", 12000));
-		}
 	}),;
 
 	private int button;
