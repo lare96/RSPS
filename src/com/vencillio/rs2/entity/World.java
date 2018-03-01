@@ -1,14 +1,10 @@
 package com.vencillio.rs2.entity;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.vencillio.VencillioConstants;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
-import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.MobUpdateList;
+import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.combat.CombatConstants;
 import com.vencillio.rs2.content.dwarfcannon.DwarfCannon;
 import com.vencillio.rs2.content.gambling.Lottery;
@@ -21,12 +17,12 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.PlayerUpdateFlags;
 import com.vencillio.rs2.entity.player.net.Client;
-import com.vencillio.rs2.entity.player.net.out.impl.SendGameUpdateTimer;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendNPCUpdate;
-import com.vencillio.rs2.entity.player.net.out.impl.SendPlayerUpdate;
-import com.vencillio.rs2.entity.player.net.out.impl.SendProjectile;
-import com.vencillio.rs2.entity.player.net.out.impl.SendStillGraphic;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Handles the in-game world
@@ -275,7 +271,7 @@ public class World {
 	 */
 	public static int npcAmount() {
 		int amount = 0;
-		for (int i = 1; i < mobs.length; i++) {
+		for (int i = 0; i < mobs.length; i++) {
 			if (mobs[i] != null) {
 				amount++;
 			}
@@ -302,7 +298,7 @@ public class World {
 			c.tick();
 		}
 
-		for (int i = 1; i < 2048; i++) {
+		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			try {
 				if (player != null) {
@@ -350,7 +346,7 @@ public class World {
 			}
 		}
 
-		for (int i = 1; i < 2048; i++) {
+		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player == null) || (!player.isActive()))
 				pFlags[i] = null;
@@ -377,7 +373,7 @@ public class World {
 			}
 		}
 
-		for (int i = 1; i < 2048; i++) {
+		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player != null) && (pFlags[i] != null) && (player.isActive())) {
 				try {
@@ -389,7 +385,7 @@ public class World {
 				}
 			}
 		}
-		for (int i = 1; i < 2048; i++) {
+		for (int i = 0; i < VencillioConstants.MAX_PLAYERS; i++) {
 			Player player = players[i];
 			if ((player != null) && (player.isActive())) {
 				try {

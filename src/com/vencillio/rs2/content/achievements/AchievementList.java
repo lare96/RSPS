@@ -66,6 +66,7 @@ public enum AchievementList {
 	BURY_150_BONES("Bury or use on altar 150 bones", 150, AchievementDifficulty.MEDIUM),
 	USE_THE_SUPER_HEATING_SPELL_135_TIMES("Use the super heating spell 135 times", 135, AchievementDifficulty.MEDIUM),
 	VOTE_15_TIMES("Vote 15 times", 15, AchievementDifficulty.MEDIUM),
+	ANSWER_50_TRIVIABOTS_CORRECTLY("Answer 50 TriviaBots correctly", 50, AchievementDifficulty.MEDIUM),
 
 	
 	/* Hard Achievements */
@@ -79,7 +80,7 @@ public enum AchievementList {
 	CAST_VENGEANCE_350_TIMES("Cast vengeance 350 times", 350, AchievementDifficulty.HARD),
 	BURN_1250_LOGS("Burn 1,250 logs", 1250, AchievementDifficulty.HARD),
 	COOK_1000_FOODS("Cook 1,000 foods", 1000, AchievementDifficulty.HARD),
-	ANSWER_80_TRIVIABOTS_CORRECTLY("Answer 80 TriviaBots correctly", 80, AchievementDifficulty.HARD),
+	ANSWER_100_TRIVIABOTS_CORRECTLY("Answer 100 TriviaBots correctly", 100, AchievementDifficulty.HARD),
 	OPEN_70_CRYSTAL_CHESTS("Open 70 Crystal chests", 70, AchievementDifficulty.HARD),
 	KILL_50_PLAYER("Kill 50 players", 50, AchievementDifficulty.HARD),
 	DIE_50_TIME("Die 50 times", 50, AchievementDifficulty.HARD),

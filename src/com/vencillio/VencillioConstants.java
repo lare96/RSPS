@@ -45,7 +45,9 @@ public class VencillioConstants {
 	/**
 	 * Holds the most players online at once
 	 */
-	public static int MOST_ONLINE = 0;	
+	public static int MOST_ONLINE = 0;
+
+	public static int MAX_PLAYERS = 512;
 
 	/**
 	 * Strings that are classified as bad

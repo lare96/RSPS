@@ -35,13 +35,13 @@ public class RankHandler {
 		int rights = 0;
 		if (player.getMoneySpent() < 5)
 			rights = 0;
-		if (player.getMoneySpent() >= 5) 
+		if (player.getMoneySpent() >= 5)  //Normal Member
 			rights = 5;
-		if (player.getMoneySpent() >= 25)
+		if (player.getMoneySpent() >= 25) //Super Member
 			rights = 6;
-		if (player.getMoneySpent() >= 75)
+		if (player.getMoneySpent() >= 75) //Extreme Member
 			rights = 7;
-		if (player.getMoneySpent() >= 150)
+		if (player.getMoneySpent() >= 150) //Elite Member
 			rights = 8;
 		
 		if (rights != 0 && player.getRights() != rights) {

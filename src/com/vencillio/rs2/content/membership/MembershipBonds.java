@@ -28,9 +28,9 @@ public class MembershipBonds {
 		THREE("50 credit", 13192, 5, 50, 5),
 		FOUR("80 credit", 13193, 8, 80, 10),
 		FIVE("100 credit", 13194, 10, 100, 15),
-		SIX("200 credit", 13195, 20, 200, 25),
-		SEVEN("500 credit", 13196, 50, 500, 50),
-		EIGHT("1,000 credit", 13197, 100, 1000, 150),
+		SIX("200 credit", 13195, 20, 200, 30),
+		SEVEN("500 credit", 13196, 50, 500, 75),
+		EIGHT("1,000 credit", 13197, 100, 1000, 200),
 		NINE("2,000 credit", 13198, 200, 2000, 500);
 		
 		private final String name;

@@ -1,10 +1,5 @@
 package com.vencillio.rs2.content.vencilliobot;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.logging.Logger;
-
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
@@ -15,6 +10,11 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendBanner;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Vencillio Bot - Asks random questions which players can race to answer
@@ -62,7 +62,7 @@ public class VencillioBot {
 	 * Initializes the VencillioBot task
 	 */
 	public static void initialize() {
-		TaskQueue.queue(new Task(650, false) {
+		TaskQueue.queue(new Task(1000, false) {
 			@Override
 			public void execute() {
 				if (current == null) {
@@ -124,7 +124,8 @@ public class VencillioBot {
 		int REWARD = Utility.random(150_000);
 		player.getInventory().addOrCreateGroundItem(995, REWARD, true);
 		AchievementHandler.activateAchievement(player, AchievementList.ANSWER_15_TRIVIABOTS_CORRECTLY, 1);
-		AchievementHandler.activateAchievement(player, AchievementList.ANSWER_80_TRIVIABOTS_CORRECTLY, 1);
+		AchievementHandler.activateAchievement(player, AchievementList.ANSWER_50_TRIVIABOTS_CORRECTLY, 1);
+		AchievementHandler.activateAchievement(player, AchievementList.ANSWER_100_TRIVIABOTS_CORRECTLY, 1);
 		reset();
 	}
 	

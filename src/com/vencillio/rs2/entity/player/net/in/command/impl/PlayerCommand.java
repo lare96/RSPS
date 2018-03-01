@@ -60,11 +60,12 @@ public class PlayerCommand implements Command {
 			if(r1.success()) {
 				player.setVotePoints(player.getVotePoints() + 1);
 				player.getInventory().add(995, 1_000_000);
-				player.send(new SendMessage("Successfully redeemed."));
+				player.send(new SendMessage("Successfully redeemed. Thanks for voting!"));
+				VencillioConstants.LAST_VOTER = player.getUsername();
+				VencillioConstants.CURRENT_VOTES++;
 				AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, 1);
 				AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, 1);
 				AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, 1);
-				//System.out.println("Redemption successful");
 			}
 			else {
 				player.send(new SendMessage("Redemption unsuccessful"));
@@ -82,7 +83,9 @@ public class PlayerCommand implements Command {
 					AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, r1.votes().size());
 					AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, r1.votes().size());
 					AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, r1.votes().size());
-					player.send(new SendMessage("Successfully redeemed x" + r1.votes().size()));
+					VencillioConstants.LAST_VOTER = player.getUsername();
+					VencillioConstants.CURRENT_VOTES++;
+					player.send(new SendMessage("Successfully redeemed x" + r1.votes().size() +  ". Thanks for voting!"));
 				}
 				else {
 					player.send(new SendMessage("Redemption unsuccessful"));
@@ -293,7 +296,7 @@ public class PlayerCommand implements Command {
 		case "donating":
 		case "store":
 		case "credits":
-			player.send(new SendString("http://www.rennatscape.proboards.com/", 12000));
+			player.send(new SendString("http://www.bit.ly/2FFVgKj", 12000));
 			player.send(new SendMessage("Loading donation page..."));
 			return true;
 
