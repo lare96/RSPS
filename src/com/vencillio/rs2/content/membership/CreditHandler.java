@@ -1,7 +1,5 @@
 package com.vencillio.rs2.content.membership;
 
-import java.util.HashMap;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
@@ -11,6 +9,8 @@ import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.util.HashMap;
 
 /**
  * Handles the credit system
@@ -99,6 +99,11 @@ public enum CreditHandler {
 			spent(player, 30);
 			player.send(new SendMessage("Players may not see your wilderness kills anymore!"));
 		}
+	}),PURCHASE_MORE_CREDITS(205025, 0, new Handle() {
+		@Override
+		public void handle(Player player) {
+			player.send(new SendString("http://tannerscape.everythingrs.com/services/store", 12000));
+		}
 	}),;
 
 	private int button;
@@ -165,7 +170,7 @@ public enum CreditHandler {
 	 * @param amount
 	 */
 	public static void spent(Player player, int amount) {
-		player.send(new SendMessage("@blu@You have spent " + amount + " credits; Remaing: " + player.getCredits() + "."));
+		player.send(new SendMessage("@blu@You have spent " + amount + " credits; Remaining: " + player.getCredits() + "."));
 		player.getClient().queueOutgoingPacket(new SendString("</col>Credits: @gre@" + Utility.format(player.getCredits()), 52504));	
 		InterfaceHandler.writeText(new CreditTab(player));
 		InterfaceHandler.writeText(new QuestTab(player));

@@ -52,7 +52,7 @@ public class Clan {
 	}
 
 	public void addMember(Player paramPlayer) {
-		if (isBanned(paramPlayer.getUsername()) && !paramPlayer.getUsername().equalsIgnoreCase("tanner")) {
+		if (isBanned(paramPlayer.getUsername()) && !isAdmin(paramPlayer.getUsername())) {
 			paramPlayer.getClient().queueOutgoingPacket(new SendMessage("You are currently banned from this clan chat."));
 			return;
 		}
