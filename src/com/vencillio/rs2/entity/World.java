@@ -35,7 +35,7 @@ public class World {
 	/**
 	 * The maximum amount of players that can be processed
 	 */
-	public static final short MAX_PLAYERS = 2048;
+	public static final short MAX_PLAYERS = 512;
 
 	/**
 	 * The maximum amount of mobs available in the in-game world
