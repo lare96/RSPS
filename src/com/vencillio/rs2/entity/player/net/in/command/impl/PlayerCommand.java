@@ -1,5 +1,6 @@
 package com.vencillio.rs2.entity.player.net.in.command.impl;
 
+import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
 import com.motiservice.vote.Result;
 import com.motiservice.vote.SearchField;
@@ -89,29 +90,27 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "claim":
-				new java.lang.Thread() {
-					public void run() {
-						try {
-							com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi",
-									player.getUsername());
-							if (donations.length == 0) {
-								player.send(new SendMessage("You currently don't have any items waiting. You must donate first!"));
-								return;
-							}
-							if (donations[0].message != null) {
-								player.send(new SendMessage(donations[0].message));
-								return;
-							}
-							for (com.everythingrs.donate.Donation donate : donations) {
-								player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-							}
-							player.send(new SendMessage("Thank you for donating!"));
-						} catch (Exception e) {
-							player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
-							e.printStackTrace();
+				new Thread(() -> {
+					try {
+						Donation[] donations = Donation.donations("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi",
+								player.getUsername());
+						if (donations.length == 0) {
+							player.send(new SendMessage("You currently don't have any items waiting. You must donate first!"));
+							return;
 						}
+						if (donations[0].message != null) {
+							player.send(new SendMessage(donations[0].message));
+							return;
+						}
+						for (Donation donate : donations) {
+							player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+						}
+						player.send(new SendMessage("Thank you for donating!"));
+					} catch (Exception e) {
+						player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
+						e.printStackTrace();
 					}
-				}.start();
+				}).start();
 				return true;
 
 		/*

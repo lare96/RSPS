@@ -60,7 +60,7 @@ public class Server {
 	public static String getUptime() {
 		RuntimeMXBean mx = ManagementFactory.getRuntimeMXBean();
 		DateFormat df = new SimpleDateFormat("DD 'D', HH 'H', mm 'M'");
-		df.setTimeZone(TimeZone.getTimeZone("GMT+0")); //In-game time?
+		df.setTimeZone(TimeZone.getTimeZone("GMT-7")); //In-game time?
 		return "" + df.format(new Date(mx.getUptime()));
 	}
 
