@@ -76,6 +76,9 @@ public class ClickButtonPacket extends IncomingPacket {
 		}
 
 
+		if(buttonId == 205025)
+			player.send(new SendString("http://www.tannerscape.everythingrs.com/services/store", 12000));
+
 		if(buttonId == 9154)
 			System.out.println("Logging out: " + player.getUsername() + " | " + player.getClient().getHost());
 		
