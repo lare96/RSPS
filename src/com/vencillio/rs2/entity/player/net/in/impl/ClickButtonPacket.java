@@ -77,7 +77,7 @@ public class ClickButtonPacket extends IncomingPacket {
 
 
 		if(buttonId == 205025)
-			player.send(new SendString("http://bit.ly/2FFVgKj", 12000));
+			player.send(new SendString("http://www.bit.ly/2FFVgKj", 12000));
 
 		if(buttonId == 9154)
 			System.out.println("Logging out: " + player.getUsername() + " | " + player.getClient().getHost());
