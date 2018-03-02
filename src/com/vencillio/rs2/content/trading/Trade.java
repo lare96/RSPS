@@ -376,7 +376,7 @@ public class Trade {
 			return;
 		}
 		
-		if (requested.ironPlayer()) {
+		if (requested.ironPlayer() && !PlayerConstants.isOwner(player)) {
 			player.send(new SendMessage(requested.getUsername() + " is an Ironman player and cannot trade!"));
 			return;
 		}

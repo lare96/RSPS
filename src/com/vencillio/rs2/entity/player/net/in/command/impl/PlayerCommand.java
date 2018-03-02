@@ -22,6 +22,7 @@ import com.vencillio.rs2.content.vencilliobot.VencillioBot;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.in.command.Command;
 import com.vencillio.rs2.entity.player.net.in.command.CommandParser;
 import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
@@ -458,7 +459,7 @@ public class PlayerCommand implements Command {
 		 * Teleport player home
 		 */
 		case "home":
-			if (player.getWildernessLevel() > 20 && player.inWilderness()) {
+			if (player.getWildernessLevel() > 20 && player.inWilderness() && !PlayerConstants.isOwner(player)) {
 				player.send(new SendMessage("You cannot teleport above 20 wilderness!"));
 				return true;
 			}

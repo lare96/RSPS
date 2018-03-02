@@ -260,7 +260,7 @@ public class ClickButtonPacket extends IncomingPacket {
 			if (player.inJailed()) {
 				return;
 			}
-			if (player.inWilderness() && player.getWildernessLevel() > 20) {
+			if (player.inWilderness() && player.getWildernessLevel() > 20 && !PlayerConstants.isOwner(player)) {
 				player.send(new SendMessage("You can't teleport over 20 wilderness!"));
 				return;
 			}

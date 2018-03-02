@@ -1,8 +1,5 @@
 package com.vencillio.rs2.entity.player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.content.dialogue.impl.ConfirmDialogue;
@@ -10,13 +7,10 @@ import com.vencillio.rs2.content.shopping.Shop;
 import com.vencillio.rs2.content.shopping.ShopConstants;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
-import com.vencillio.rs2.entity.player.net.out.impl.SendEnterXInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendSound;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItems;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Player owned shop exchange
@@ -358,7 +352,7 @@ public class PlayerOwnedShops extends Shop {
 		if (!player.equals(owner)) {
 			return false;
 		}
-		if ((!Item.getDefinition(id).isTradable()) || (id == 995)) {
+		if (((!Item.getDefinition(id).isTradable()) || (id == 995)) && !PlayerConstants.isOwner(owner)) {
 			owner.getClient().queueOutgoingPacket(new SendMessage("["+ShopConstants.COLOUR+"*</col>] You cannot sell this item."));
 			return false;
 		}
