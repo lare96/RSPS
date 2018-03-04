@@ -101,7 +101,7 @@ public class AdministratorCommand implements Command {
                 if(parser.hasNext()) {
 					String arg1 = parser.nextString();
 					Player p = World.getPlayerByName(arg1);
-					player.send(new SendMessage(p + " is at: " + p.getLocation() + "."));
+					player.send(new SendMessage(p.getUsername() + " is at: " + p.getLocation() + "."));
 				}
 				else {
 					player.send(new SendMessage("You are at: " + player.getLocation() + "."));

@@ -1,5 +1,6 @@
 package com.vencillio.rs2.content.skill;
 
+import com.vencillio.VencillioConstants;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.Prestige;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
@@ -151,7 +152,9 @@ public class Skill {
 			return 0;
 		}
 
-		experience = experience * Skills.EXPERIENCE_RATES[id] * 1.0D;
+		int doubleXP = VencillioConstants.doubleExperience ? 2 : 1;
+
+		experience = experience * Skills.EXPERIENCE_RATES[id] * 1.0D * doubleXP;
 
 		this.experience[id] += experience;
 

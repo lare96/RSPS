@@ -1557,6 +1557,7 @@ public class Player extends Entity {
 				}
 			} else {
 				System.out.println("Player timed out : " + getUsername());
+				PlayerSave.save(this);
 				logout(false);
 			}
 		}
