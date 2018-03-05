@@ -96,7 +96,7 @@ public final class Graphic {
 	 */
 	public Graphic(int id, int delay, boolean high) {
 		this.id = id;
-		if (high == true) {
+		if (high) {
 			height = 100;
 		} else {
 			height = 0;

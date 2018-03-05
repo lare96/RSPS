@@ -1,6 +1,10 @@
 package com.vencillio.rs2.entity.player.net.in.command.impl;
 
 import com.vencillio.core.definitions.ItemDefinition;
+import com.vencillio.core.definitions.NpcCombatDefinition;
+import com.vencillio.core.definitions.NpcDefinition;
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.bank.Bank;
@@ -9,9 +13,11 @@ import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.content.skill.Skill;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
+import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
+import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.in.command.Command;
 import com.vencillio.rs2.entity.player.net.in.command.CommandParser;
@@ -29,6 +35,8 @@ import java.util.stream.Collectors;
  * @author Daniel | Play Boy
  */
 public class AdministratorCommand implements Command {
+
+    boolean active = false;
 
     @Override
     public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -245,6 +253,27 @@ public class AdministratorCommand implements Command {
                 }
                 return true;
 
+            case "ag":
+            case "adminglow":
+                active = !active;
+                Task t = new Task(2) {
+                    @Override
+                    public void execute() {
+                        player.getUpdateFlags().sendGraphic(new Graphic(246));
+                        if (!active)
+                            stop();
+                    }
+
+                    @Override
+                    public void onStop() {
+                    }
+                };
+
+                TaskQueue.queue(t);
+                return true;
+
+
+
                 /*
                  * Opens bank
                  */
@@ -420,6 +449,24 @@ public class AdministratorCommand implements Command {
                     player.getAnimations().setRunEmote(0x338);
                     player.getUpdateFlags().setUpdateRequired(true);
                     player.setAppearanceUpdateRequired(true);
+                }
+                return true;
+
+            case "npcinfo":
+                if(parser.hasNext(1)) {
+                    int input = parser.nextInt();
+                    NpcCombatDefinition def = GameDefinitionLoader.getNpcCombatDefinition(input);
+                    NpcDefinition npcDef = Mob.getDefinition(input);
+                    NpcCombatDefinition.Skill[] skills = def.getSkills();
+                    int hp = 0;
+                    for (int i = 0; i<skills.length; i++) {
+                        //System.out.println("id: " + skills[i].getId() + " lvl: " + skills[i].getLevel());
+                        if (skills[i].getId() == 3) {
+                            //System.out.println("Stored hp: " + skills[i].getLevel());
+                            hp = skills[i].getLevel();
+                        }
+                    }
+                    player.send(new SendMessage("Hp of mob " + npcDef.getName() + " is: " + hp));
                 }
                 return true;
         }

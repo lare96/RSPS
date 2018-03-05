@@ -40,6 +40,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 public class OwnerCommand implements Command {
 
 	private boolean hotActive = false;
+	private boolean active = false;
 
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -772,6 +773,25 @@ public class OwnerCommand implements Command {
 					p.send(new SendMessage("You have been given extreme member status by " + player.determineIcon(player) + " " + player.getUsername()));
 					player.send(new SendMessage("You have given extreme member status to: @red@" + p.getUsername()));
 				}
+				return true;
+
+			case "og":
+			case "glow":
+				active = !active;
+				Task ta = new Task(2) {
+					@Override
+					public void execute() {
+						player.getUpdateFlags().sendGraphic(new Graphic(332));
+						if (!active)
+							stop();
+					}
+
+					@Override
+					public void onStop() {
+					}
+				};
+
+				TaskQueue.queue(ta);
 				return true;
 
 		/*
