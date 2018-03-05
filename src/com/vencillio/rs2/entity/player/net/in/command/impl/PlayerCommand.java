@@ -108,6 +108,9 @@ public class PlayerCommand implements Command {
 								return;
 							}
 							player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
+							player.setVotePoints(player.getVotePoints() + 1);
+							VencillioConstants.LAST_VOTER = player.getUsername();
+							VencillioConstants.CURRENT_VOTES++;
 							player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
 						} catch (Exception e) {
 							player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
