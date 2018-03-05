@@ -98,26 +98,22 @@ public class PlayerCommand implements Command {
 				final String id = parser.nextString();
 				final String rewardAmount = parser.hasNext(1) ? parser.nextString() : "1";
 
-				com.everythingrs.vote.Vote.service.execute(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", playerName, id, rewardAmount);
-							if (reward[0].message != null) {
-								player.send(new SendMessage(reward[0].message));
-								return;
-							}
-							player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
-							player.setVotePoints(player.getVotePoints() + 1);
-							VencillioConstants.LAST_VOTER = player.getUsername();
-							VencillioConstants.CURRENT_VOTES++;
-							player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
-						} catch (Exception e) {
-							player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
-							e.printStackTrace();
+				com.everythingrs.vote.Vote.service.execute(() -> {
+					try {
+						com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", playerName, id, rewardAmount);
+						if (reward[0].message != null) {
+							player.send(new SendMessage(reward[0].message));
+							return;
 						}
+						player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
+						player.setVotePoints(player.getVotePoints() + reward[0].give_amount);
+						VencillioConstants.LAST_VOTER = player.getUsername();
+						VencillioConstants.CURRENT_VOTES += reward[0].give_amount;
+						player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
+					} catch (Exception e) {
+						player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
+						e.printStackTrace();
 					}
-
 				});
 				return true;
 

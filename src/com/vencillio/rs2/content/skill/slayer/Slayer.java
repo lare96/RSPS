@@ -120,6 +120,7 @@ public class Slayer {
 
 		if (isSlayerTask(p, killed)) {
 			amount = ((byte) (amount - 1));
+			System.out.println("def.getlevel: " + def.getLevel());
 			double exp = def.getLevel() * 2;
 
 			addSlayerExperience(exp);
