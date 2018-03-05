@@ -22,7 +22,7 @@ public class CommandInterface extends InterfaceHandler {
 			"::home - teleports home",
 			"::teleport - opens the teleporting menu",
 			"::triviasettings - TriviaBot settings",
-			"::redeem (code)",
+			"::reward (id)",
 			"::claim",
 			"",
 			"",

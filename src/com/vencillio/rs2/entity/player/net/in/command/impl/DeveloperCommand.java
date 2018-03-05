@@ -803,6 +803,18 @@ public class DeveloperCommand implements Command {
 			}
 			return true;
 
+			case "npc2":
+				if (parser.hasNext()) { //No owner
+					try {
+						int npc = parser.nextInt();
+						Mob mob = new Mob(null, npc, false, false, false, new Location(player.getLocation()));
+						player.getClient().queueOutgoingPacket(new SendMessage("Spawned NPC index: " + mob.getIndex()));
+					} catch (Exception e) {
+						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
+					}
+				}
+				return true;
+
 			/*
 			 * Updates the game
 			 */

@@ -2,14 +2,10 @@ package com.vencillio.rs2.entity.player.net.in.command.impl;
 
 import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
-import com.motiservice.vote.Result;
-import com.motiservice.vote.SearchField;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
-import com.vencillio.rs2.content.achievements.AchievementHandler;
-import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.OptionDialogue;
 import com.vencillio.rs2.content.dialogue.impl.ChangePasswordDialogue;
@@ -52,7 +48,7 @@ public class PlayerCommand implements Command {
 		/*
 		 * Claim votes
 		 */
-		case "redeem":
+		/*case "redeem":
 		case "claimvote":
 		case "claimvotes":
 			//VoteUpdater.update(player);
@@ -91,6 +87,35 @@ public class PlayerCommand implements Command {
 				else {
 					player.send(new SendMessage("Redemption unsuccessful"));
 				}
+				return true;*/
+
+			case "reward":
+				if (!parser.hasNext(1)) {
+					player.send(new SendMessage("Please use [::reward id], [::reward id amount], or [::reward id all]."));
+					return true;
+				}
+				final String playerName = player.getUsername();
+				final String id = parser.nextString();
+				final String rewardAmount = parser.hasNext(1) ? parser.nextString() : "1";
+
+				com.everythingrs.vote.Vote.service.execute(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							com.everythingrs.vote.Vote[] reward = com.everythingrs.vote.Vote.reward("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", playerName, id, rewardAmount);
+							if (reward[0].message != null) {
+								player.send(new SendMessage(reward[0].message));
+								return;
+							}
+							player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
+							player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
+						} catch (Exception e) {
+							player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
+							e.printStackTrace();
+						}
+					}
+
+				});
 				return true;
 
 			case "claim":
