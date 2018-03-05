@@ -87,7 +87,7 @@ public class Skill {
 
 		//325k hits for 13m xp (ultimate) | 81,250 hit for easy
 		//Kept hp ratio same for all modes (3:1)
-		int[] modes = {4,3,2,1};
+		int[] modes = {6,5,3,1};
 		double[] modes2 = {1,4/3,2,4};
 		double exp = hit * modes[player.mode];
 		switch (type) {

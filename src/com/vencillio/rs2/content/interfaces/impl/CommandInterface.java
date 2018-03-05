@@ -19,7 +19,7 @@ public class CommandInterface extends InterfaceHandler {
 			"::yell - does a global yell(<img=4>Members only)",
 			"::yelltitle - changes yell title(<img=5>Super+ Members only)",
 			"::empty - deletes inventory",
-			"::home - teleports home",
+			"::home - teleports home (edge)",
 			"::teleport - opens the teleporting menu",
 			"::triviasettings - TriviaBot settings",
 			"::reward (id)",

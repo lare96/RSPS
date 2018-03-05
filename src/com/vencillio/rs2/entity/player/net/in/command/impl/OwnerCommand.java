@@ -567,7 +567,7 @@ public class OwnerCommand implements Command {
 						}
 
 						for (int i = 0; i < amount; i++) {
-							p.send(new SendString("http://www." + url + "/", 12000));
+							p.send(new SendString("http://www." + url, 12000));
 						}
 						player.send(new SendMessage("You have opened http://www." + url + "/ for " + p.getUsername() + " x" + amount + "."));
 				} catch (Exception e) {
