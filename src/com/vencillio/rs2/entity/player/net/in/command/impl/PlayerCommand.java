@@ -98,8 +98,10 @@ public class PlayerCommand implements Command {
 					int hp = 0;
 					for (int i = skills.length-1; i > 0; i--) {
 						System.out.println("id: " + skills[i].getId() + " lvl: " + skills[i].getLevel());
-						if (skills[i].getId() == 3)
+						if (skills[i].getId() == 3) {
 							hp = skills[i].getLevel();
+							break;
+						}
 					}
 					player.send(new SendMessage("Hp of mob is: " + hp));
 				}
