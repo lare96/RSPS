@@ -98,7 +98,7 @@ public class PlayerCommand implements Command {
 					int hp = 0;
 					for (NpcCombatDefinition.Skill skill : skills) {
 						System.out.println("id: " + skill.getId() + " lvl: " + skill.getLevel());
-						if (skill.getId() == 6)
+						if (skill.getId() == 3)
 							hp = skill.getLevel();
 					}
 					player.send(new SendMessage("Hp of mob is: " + hp));
