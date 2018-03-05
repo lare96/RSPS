@@ -1,13 +1,5 @@
 package com.vencillio.rs2.entity.mob;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
 import com.vencillio.core.definitions.ItemDropDefinition;
 import com.vencillio.core.definitions.ItemDropDefinition.ItemDropTable;
 import com.vencillio.core.definitions.NpcDefinition;
@@ -41,6 +33,14 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
 import com.vencillio.rs2.entity.player.net.out.impl.SendKillFeed;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Handles Mop drops
@@ -625,10 +625,10 @@ public class MobDrops {
 					if (petDrop != null) {
 						if (e.getPlayer().getBossPet() == null) {
 							BossPets.spawnPet(e.getPlayer(), petDrop.getItem(), true);
-							e.getPlayer().send(new SendMessage("You feel a pressence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
+							e.getPlayer().send(new SendMessage("You feel a presence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
 						} else {
 							e.getPlayer().getBank().depositFromNoting(petDrop.getItem(), 1, 0, false);
-							e.getPlayer().send(new SendMessage("You feel a pressence added to your bank."));
+							e.getPlayer().send(new SendMessage("You feel a presence added to your bank."));
 							AchievementHandler.activateAchievement(e.getPlayer(), AchievementList.OBTAIN_1_BOSS_PET, 1);
 							AchievementHandler.activateAchievement(e.getPlayer(), AchievementList.OBTAIN_10_BOSS_PET, 1);
 						}

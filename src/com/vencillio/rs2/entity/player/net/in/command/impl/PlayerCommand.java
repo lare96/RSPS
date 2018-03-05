@@ -3,6 +3,8 @@ package com.vencillio.rs2.entity.player.net.in.command.impl;
 import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
 import com.vencillio.VencillioConstants;
+import com.vencillio.core.definitions.NpcCombatDefinition;
+import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
@@ -88,6 +90,20 @@ public class PlayerCommand implements Command {
 					player.send(new SendMessage("Redemption unsuccessful"));
 				}
 				return true;*/
+
+			case "npcinfo":
+				if(parser.hasNext(1)) {
+					NpcCombatDefinition def = GameDefinitionLoader.getNpcCombatDefinition(parser.nextInt());
+					NpcCombatDefinition.Skill[] skills = def.getSkills();
+					int hp = 0;
+					for (NpcCombatDefinition.Skill skill : skills)
+						if (skill.getId() == 3)
+							hp = skills[3].getLevel();
+					player.send(new SendMessage("Hp of mob is: " + hp));
+				}
+				else
+					player.send(new SendMessage("Invalid"));
+				return true;
 
 			case "reward":
 				if (!parser.hasNext(1)) {
