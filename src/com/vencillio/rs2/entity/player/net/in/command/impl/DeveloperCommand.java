@@ -633,8 +633,10 @@ public class DeveloperCommand implements Command {
 				/*player.getBank().update();
 				player.getBank().openBank();*/
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
-				if(chance != 0)
-					player.send(new SendMessage("Chance of " + new Item(id).getName() + " dropping is " + String.format("%.2d", chance/trials) + "%"));
+				if(chance != 0) {
+					Item myItem = new Item(id);
+					player.send(new SendMessage("Chance of " + myItem.getName() + " dropping is " + String.format("%.2d", chance / trials) + "%"));
+				}
 			}
 			return true;
 
