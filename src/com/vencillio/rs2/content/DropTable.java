@@ -1,11 +1,5 @@
 package com.vencillio.rs2.content;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.definitions.ItemDropDefinition;
 import com.vencillio.core.definitions.ItemDropDefinition.ItemDrop;
@@ -15,11 +9,13 @@ import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItems;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItemsAlt;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DropTable {
 	
@@ -241,7 +237,7 @@ public class DropTable {
 		}
 		
 		player.send(new SendUpdateItemsAlt(59757, itemDef.getId(), 1, 0));
-		player.send(new SendString("</col>Item: @gre@" + itemDef.getName(), 59753));
+		player.send(new SendString("</col>Item: @gre@" + itemDef.getName() + "(" + itemDef.getId(), 59753));
 		player.send(new SendString("</col>Price: @gre@" + Utility.formatPrice(itemDef.getGeneralPrice()), 59754));
 		player.send(new SendString("</col>Tradeable: @gre@" + Utility.formatBoolean(itemDef.isTradable()), 59755));
 		player.send(new SendString("</col>Noted: @gre@" + Utility.formatBoolean(itemDef.isNote()), 59756));

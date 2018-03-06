@@ -608,7 +608,7 @@ public class DeveloperCommand implements Command {
 				for (int i = 0; i < trials; i++) {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, false);
 					for (Item item : drops) {
-						if(id >= 0 && item.getId() == id) {
+						if(id >= 0 && item.getDefinition().getId() == id) {
 							if (item.getDefinition().isStackable()) {
 								player.getInventory().add(new Item(item.getId(), item.getAmount()));
 								chance++;
@@ -635,7 +635,8 @@ public class DeveloperCommand implements Command {
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
 				if(chance != 0) {
 					Item myItem = new Item(id);
-					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2d", chance / trials) + "%"));
+					double dropChance = chance/trials;
+					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2d", dropChance) + "%"));
 				}
 			}
 			return true;
