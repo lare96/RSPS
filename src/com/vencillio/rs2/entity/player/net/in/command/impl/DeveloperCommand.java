@@ -635,7 +635,7 @@ public class DeveloperCommand implements Command {
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
 				if(chance != 0) {
 					Item myItem = new Item(id);
-					player.send(new SendMessage("Chance of " + myItem.getName() + " dropping is " + String.format("%.2d", chance / trials) + "%"));
+					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2d", chance / trials) + "%"));
 				}
 			}
 			return true;
