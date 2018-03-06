@@ -617,7 +617,7 @@ public class DeveloperCommand implements Command {
 								chance++;
 							}
 						}
-						else {
+						else if(id == -1){
 							if (item.getDefinition().isStackable()) {
 								player.getInventory().add(new Item(item.getId(), item.getAmount()));
 							} else if (item.getDefinition().getNoteId() > -1) {
@@ -635,8 +635,10 @@ public class DeveloperCommand implements Command {
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
 				if(chance != 0) {
 					Item myItem = new Item(id);
+					System.out.println("Item name: " + myItem.getDefinition().getName());
 					double dropChance = chance/trials;
-					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2d", dropChance) + "%"));
+					System.out.println("Chance: " + String.format("%.2f", dropChance));
+					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2f", dropChance) + "%"));
 				}
 			}
 			return true;

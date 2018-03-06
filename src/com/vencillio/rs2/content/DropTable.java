@@ -237,7 +237,7 @@ public class DropTable {
 		}
 		
 		player.send(new SendUpdateItemsAlt(59757, itemDef.getId(), 1, 0));
-		player.send(new SendString("</col>Item: @gre@" + itemDef.getName() + "(" + itemDef.getId(), 59753));
+		player.send(new SendString("</col>Item: @gre@" + itemDef.getName() + "(" + itemDef.getId() + ")", 59753));
 		player.send(new SendString("</col>Price: @gre@" + Utility.formatPrice(itemDef.getGeneralPrice()), 59754));
 		player.send(new SendString("</col>Tradeable: @gre@" + Utility.formatBoolean(itemDef.isTradable()), 59755));
 		player.send(new SendString("</col>Noted: @gre@" + Utility.formatBoolean(itemDef.isNote()), 59756));
