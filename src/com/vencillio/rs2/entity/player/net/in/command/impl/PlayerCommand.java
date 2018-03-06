@@ -99,6 +99,7 @@ public class PlayerCommand implements Command {
 				final String playerName = player.getUsername();
 				final String id = parser.nextString();
 				final String rewardAmount = parser.hasNext(1) ? parser.nextString() : "1";
+				final int[] theAmount = {0};
 
 				com.everythingrs.vote.Vote.service.execute(() -> {
 					try {
@@ -107,14 +108,18 @@ public class PlayerCommand implements Command {
 							player.send(new SendMessage(reward[0].message));
 							return;
 						}
+						if(reward[0].reward_id == 995)
+							theAmount[0] = reward[0].give_amount/1000000;
+						else if(reward[0].reward_id == 989)
+							theAmount[0] = reward[0].give_amount/3;
 						player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
-						player.setVotePoints(player.getVotePoints() + reward[0].reward_amount);
+						player.setVotePoints(player.getVotePoints() + theAmount[0]);
 						VencillioConstants.LAST_VOTER = player.getUsername();
-						VencillioConstants.CURRENT_VOTES += reward[0].reward_amount;
+						VencillioConstants.CURRENT_VOTES += theAmount[0];
 						player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
-						AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, reward[0].reward_amount);
-						AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, reward[0].reward_amount);
-						AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, reward[0].reward_amount);
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, theAmount[0]);
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, theAmount[0]);
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, theAmount[0]);
 					} catch (Exception e) {
 						player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
 						e.printStackTrace();
