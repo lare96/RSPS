@@ -52,6 +52,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -635,10 +636,9 @@ public class DeveloperCommand implements Command {
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
 				if(chance != 0) {
 					Item myItem = new Item(id);
-					System.out.println("Item name: " + myItem.getDefinition().getName());
-					double dropChance = chance/trials;
-					System.out.println("Chance: " + String.format("%.2f", dropChance));
-					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + String.format("%.2f", dropChance) + "%"));
+					double dropChance = (double) chance / trials;
+					DecimalFormat df = new DecimalFormat("#.##");
+					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + df.format(dropChance*100) + "%"));
 				}
 			}
 			return true;
