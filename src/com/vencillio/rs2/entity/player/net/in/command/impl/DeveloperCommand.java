@@ -597,6 +597,8 @@ public class DeveloperCommand implements Command {
 			if (parser.hasNext(2)) {
 				int npc = parser.nextInt();
 				int trials = parser.nextInt();
+				int id = parser.hasNext() ? parser.nextInt() : -1;
+				int chance = 0;
 				NpcDefinition npcDef = GameDefinitionLoader.getNpcDefinition(npc);
 				if (npcDef == null) {
 					player.send(new SendMessage("This npc is non-existant."));
@@ -606,11 +608,21 @@ public class DeveloperCommand implements Command {
 				for (int i = 0; i < trials; i++) {
 					List<Item> drops = MobDrops.getDropItems(player, npc, 0, false);
 					for (Item item : drops) {
-						if(item.getDefinition().isStackable()) {
-							player.getInventory().add(new Item(item.getId(), item.getAmount()));
+						if(id >= 0 && item.getId() == id) {
+							if (item.getDefinition().isStackable()) {
+								player.getInventory().add(new Item(item.getId(), item.getAmount()));
+								chance++;
+							} else if (item.getDefinition().getNoteId() > -1) {
+								player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
+								chance++;
+							}
 						}
-						else if(item.getDefinition().getNoteId() > -1){
-							player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
+						else {
+							if (item.getDefinition().isStackable()) {
+								player.getInventory().add(new Item(item.getId(), item.getAmount()));
+							} else if (item.getDefinition().getNoteId() > -1) {
+								player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
+							}
 						}
 						//player.getBank().changeTabAmount(0, 1, false);
 						//player.send(new SendMessage("Item: " + item.getName() + " Amount: " + item.getAmount()));
@@ -621,6 +633,8 @@ public class DeveloperCommand implements Command {
 				/*player.getBank().update();
 				player.getBank().openBank();*/
 				player.send(new SendMessage("Simulated " + trials + " kills of \'" + npcDef.getName() + "\' (Id: " + npc + ")."));
+				if(chance != 0)
+					player.send(new SendMessage("Chance of " + new Item(id).getName() + " dropping is " + String.format("%.2d", chance/trials) + "%"));
 			}
 			return true;
 

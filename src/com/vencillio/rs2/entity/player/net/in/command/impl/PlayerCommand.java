@@ -6,6 +6,8 @@ import com.vencillio.VencillioConstants;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
+import com.vencillio.rs2.content.achievements.AchievementHandler;
+import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.dialogue.OptionDialogue;
 import com.vencillio.rs2.content.dialogue.impl.ChangePasswordDialogue;
@@ -106,10 +108,13 @@ public class PlayerCommand implements Command {
 							return;
 						}
 						player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
-						player.setVotePoints(player.getVotePoints() + reward[0].give_amount);
+						player.setVotePoints(player.getVotePoints() + reward[0].reward_amount);
 						VencillioConstants.LAST_VOTER = player.getUsername();
-						VencillioConstants.CURRENT_VOTES += reward[0].give_amount;
+						VencillioConstants.CURRENT_VOTES += reward[0].reward_amount;
 						player.send(new SendMessage("Thank you for voting! You now have " + reward[0].vote_points + " vote points."));
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_5_TIMES, reward[0].reward_amount);
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_15_TIMES, reward[0].reward_amount);
+						AchievementHandler.activateAchievement(player, AchievementList.VOTE_30_TIMES, reward[0].reward_amount);
 					} catch (Exception e) {
 						player.send(new SendMessage("Api Services are currently offline. Please check back shortly"));
 						e.printStackTrace();
