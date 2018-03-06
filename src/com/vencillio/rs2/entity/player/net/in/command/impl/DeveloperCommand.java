@@ -638,7 +638,8 @@ public class DeveloperCommand implements Command {
 					Item myItem = new Item(id);
 					double dropChance = (double) chance / trials;
 					DecimalFormat df = new DecimalFormat("#.##");
-					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + df.format(dropChance*100) + "%"));
+					DecimalFormat df2 = new DecimalFormat("#");
+					player.send(new SendMessage("Chance of " + myItem.getDefinition().getName() + " dropping is " + df.format(dropChance*100) + "% (1 in " + df2.format(100/dropChance/100) + ")"));
 				}
 			}
 			return true;

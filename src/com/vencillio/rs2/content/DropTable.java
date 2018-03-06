@@ -155,7 +155,7 @@ public class DropTable {
 		
 		player.monsterSelected = npcId;
 		
-		player.send(new SendString("</col>Name: @red@" + npcDef.getName(), 59806));
+		player.send(new SendString("</col>Name: @red@" + npcDef.getName() + "(" + npcDef.getId() + ")", 59806));
 		player.send(new SendString("</col>Level: @red@" + npcDef.getLevel(), 59807));
 		player.send(new SendString("", 59818));
 		

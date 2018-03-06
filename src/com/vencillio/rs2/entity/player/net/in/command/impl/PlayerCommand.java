@@ -478,7 +478,7 @@ public class PlayerCommand implements Command {
 			if (player.getRights() == 2 || player.getRights() == 3) {
 				player.getInventory().clear();
 				player.send(new SendMessage("You have emptied your inventory."));
-				player.send(new SendRemoveInterfaces());
+				//player.send(new SendRemoveInterfaces());
 				return true;
 			}
 			
