@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import com.vencillio.core.util.Utility;
+import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.item.Item;
@@ -190,7 +191,7 @@ public class Impling {
 					player.getClient().queueOutgoingPacket(new SendMessage("You catch the impling and place it in the jar."));
 					player.getInventory().add(t.getJar(), 1);
 					player.getInventory().remove(11260, 1);
-					player.getSkill().addExperience(22, t.getXp());
+					player.getSkill().addExperience(Skills.HUNTER, t.getXp());
 					teleportImpling(impling);
 				}
 			}
