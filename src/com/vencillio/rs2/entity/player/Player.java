@@ -740,7 +740,7 @@ public class Player extends Entity {
 						
 						if (npc != null) {
 							if (!GodWarsData.isProtected(this, npc) && !i.getCombat().inCombat()) {
-								if (Math.abs(getLocation().getX() - i.getLocation().getX()) + Math.abs(getLocation().getY() - i.getLocation().getY()) <= 25) {
+								if (Math.abs(getLocation().getX() - i.getLocation().getX()) + Math.abs(getLocation().getY() - i.getLocation().getY()) <= 5) {
 									i.getCombat().setAttack(this);
 									i.getFollowing().setFollow(this, Following.FollowType.COMBAT);
 								}

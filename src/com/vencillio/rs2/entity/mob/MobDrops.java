@@ -508,7 +508,7 @@ public class MobDrops {
 			return items;
 		}
 
-		boolean ucTable = random.nextInt(100) <= ucRoll;
+		boolean ucTable = random.nextInt(100) <= ucRoll; //ucRoll 10 default (10% chance uncommon)
 
 		boolean hasCommon = (drops.getCommon() != null) && (drops.getCommon().getDrops() != null) && (drops.getCommon().getDrops().length > 0);
 		boolean hasUncommon = (drops.getUncommon() != null) && (drops.getUncommon().getDrops() != null) && (drops.getUncommon().getDrops().length > 0);

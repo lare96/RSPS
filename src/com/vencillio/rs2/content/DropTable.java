@@ -171,7 +171,7 @@ public class DropTable {
 		List<Item> v_rares = new ArrayList<>();
 		
 		for (ItemDrop drop : table.getRare().getDrops()) {
-			if (GameDefinitionLoader.getRareDropChance(drop.getId()) <= 50) {
+			if (GameDefinitionLoader.getRareDropChance(drop.getId()) <= 50) { //Less then 5% for very rare
 				v_rares.add(new Item(drop.getId(), drop.getMax()));
 			} else {
 				rares.add(new Item(drop.getId(), drop.getMax()));
