@@ -41,6 +41,7 @@ public class Yelling {
 			} else {
 				if (player.getRights() == 0) {
 					if (player.getAttributes().get("yellcooldown") == null) {
+						player.send(new SendMessage("Yell CD null"));
 						send = player.getUsername() + ": " + message;
 						player.getAttributes().set("yellcooldown", System.currentTimeMillis());
 					} else if (System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") < 5000L) {
