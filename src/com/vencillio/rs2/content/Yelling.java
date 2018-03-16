@@ -44,7 +44,7 @@ public class Yelling {
 						player.send(new SendMessage("Yell CD null"));
 						send = player.getUsername() + ": " + message;
 						player.getAttributes().set("yellcooldown", System.currentTimeMillis());
-					} else if (System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") < 5000L) {
+					} else if (System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") < 5000) {
 						player.getClient().queueOutgoingPacket(new SendMessage("You must wait a few seconds before yelling again."));
 						return;
 					}
