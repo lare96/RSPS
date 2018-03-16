@@ -40,16 +40,18 @@ public class Yelling {
 				send = "[<col=971FF2>" + Utility.capitalize(player.getYellTitle()) + "</col>] <img=7><col=971FF2>" + player.getUsername() + "</col>: " + message;
 			} else {
 				if (player.getRights() == 0) {
-					if (player.getAttributes().get("yellcooldown") == null) {
-						player.send(new SendMessage("Yell CD null"));
+					if(System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") >= 5000)
+					{
+						player.getAttributes().remove("yellcooldown");
+					}
+					else if (player.getAttributes().get("yellcooldown") == null) {
 						send = player.getUsername() + ": " + message;
 						player.getAttributes().set("yellcooldown", System.currentTimeMillis());
 					} else if (System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") < 5000) {
 						player.getClient().queueOutgoingPacket(new SendMessage("You must wait a few seconds before yelling again."));
 						return;
 					}
-					player.send(new SendMessage(System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown")));
-					//player.getAttributes().set("yellcooldown", System.currentTimeMillis());
+
 				}
 				//return;
 			}
