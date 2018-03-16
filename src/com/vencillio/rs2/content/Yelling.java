@@ -41,13 +41,14 @@ public class Yelling {
 			} else {
 				if (player.getRights() == 0) {
 					if (player.getAttributes().get("yellcooldown") == null) {
-						player.getAttributes().set("yellcooldown", Long.valueOf(System.currentTimeMillis()));
-					} else if (System.currentTimeMillis() - ((Long) player.getAttributes().get("yellcooldown")).longValue() < 3000L) {
+						send = player.getUsername() + ": " + message;
+						player.getAttributes().set("yellcooldown", System.currentTimeMillis());
+					} else if (System.currentTimeMillis() - (Long) player.getAttributes().get("yellcooldown") < 5000L) {
 						player.getClient().queueOutgoingPacket(new SendMessage("You must wait a few seconds before yelling again."));
 						return;
 					}
 
-					player.getAttributes().set("yellcooldown", Long.valueOf(System.currentTimeMillis()));
+					player.getAttributes().set("yellcooldown", System.currentTimeMillis());
 				}
 				return;
 			}

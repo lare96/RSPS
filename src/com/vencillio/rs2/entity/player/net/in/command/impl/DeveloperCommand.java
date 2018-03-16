@@ -617,6 +617,10 @@ public class DeveloperCommand implements Command {
 								player.getInventory().add(new Item(item.getDefinition().getNoteId(), item.getAmount()));
 								chance++;
 							}
+							else if(!item.getDefinition().isTradable()) {
+								player.getInventory().add(new Item(item.getId()));
+								chance++;
+							}
 						}
 						else if(id == -1){
 							if (item.getDefinition().isStackable()) {

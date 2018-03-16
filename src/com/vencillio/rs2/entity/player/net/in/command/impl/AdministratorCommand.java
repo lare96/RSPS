@@ -415,7 +415,10 @@ public class AdministratorCommand implements Command {
                                 short amount1 = parser.nextShort();
                                 player.getLevels()[skill] = amount1;
                                 player.getMaxLevels()[skill] = amount1;
-                                player.getSkill().getExperience()[skill] = Skill.EXP_FOR_LEVEL[amount1 - 1];
+                                if (amount1 == 1)
+                                    player.getSkill().getExperience()[skill] = Skill.EXP_FOR_LEVEL[amount1 - 1];
+                                else
+                                    player.getSkill().getExperience()[skill] = Skill.EXP_FOR_LEVEL[amount1 - 1] + 1;
                                 player.getSkill().update();
                                 player.getSkill().updateTotalLevel();
                                 player.send(new SendMessage("You set " + Skills.SKILL_NAMES[skill] + " to level " + amount1 + "."));
