@@ -34,6 +34,7 @@ import com.vencillio.rs2.entity.item.ItemCheck;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.mob.MobConstants;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 
@@ -132,12 +133,14 @@ public class PlayerCombatInterface implements CombatInterface {
 		if (!player.inMultiArea() || !attacking.inMultiArea()) {
 			if (player.getCombat().inCombat() && player.getCombat().getLastAttackedBy() != player.getCombat().getAttacking()) {
 				player.getClient().queueOutgoingPacket(new SendMessage("You are already under attack."));
-				return false;
+				if(!PlayerConstants.isOwner(player))
+					return false;
 			}
 
 			if (attacking.getCombat().inCombat() && attacking.getCombat().getLastAttackedBy() != player && !player.getSummoning().isFamiliar(attacking.getCombat().getLastAttackedBy())) {
 				player.getClient().queueOutgoingPacket(new SendMessage("This " + (player.getCombat().getAttacking().isNpc() ? "monster" : "player") + " is already under attack."));
-				return false;
+				if(!PlayerConstants.isOwner(player))
+					return false;
 			}
 
 		}

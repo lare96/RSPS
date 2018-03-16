@@ -47,10 +47,9 @@ public class Yelling {
 						player.getClient().queueOutgoingPacket(new SendMessage("You must wait a few seconds before yelling again."));
 						return;
 					}
-
-					player.getAttributes().set("yellcooldown", System.currentTimeMillis());
+					//player.getAttributes().set("yellcooldown", System.currentTimeMillis());
 				}
-				return;
+				//return;
 			}
 		}
 

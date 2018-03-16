@@ -1,7 +1,5 @@
 package com.vencillio.rs2.content.minigames.pestcontrol;
 
-import java.util.List;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
@@ -16,6 +14,8 @@ import com.vencillio.rs2.entity.mob.VirtualMobRegion;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.util.List;
 
 /**
  * Handles the Pest Control game
@@ -62,7 +62,7 @@ public class PestControlGame {
 	/**
 	 * Game time
 	 */
-	private int time = 300;
+	private int time = 500;
 
 	/**
 	 * Check if game has ended
@@ -213,7 +213,7 @@ public class PestControlGame {
 			DialogueManager.sendNpcChat(p, 1756, Emotion.CALM, "Go with strength!", "Defend the void knight and destroy the portals!", "You are our only hope!");
 		}
 		
-		time = 300;
+		time = 500;
 
 		voidKnight = new Mob(region, 1756, false, false, new Location(2656, 2592, z));
 
