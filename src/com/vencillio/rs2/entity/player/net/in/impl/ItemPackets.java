@@ -82,7 +82,6 @@ public class ItemPackets extends IncomingPacket {
 		int magicId;
 		int z;
 
-		player.send(new SendMessage("Opcode:" + opcode));
 		switch (opcode) {
 		case 145:
 			int interfaceId = in.readShort(StreamBuffer.ValueType.A);
@@ -94,7 +93,6 @@ public class ItemPackets extends IncomingPacket {
 			}
 
 			if (player.getInterfaceManager().main == 42750) {
-				player.send(new SendMessage("42750 id: " + itemId));
 				BoltEnchanting.handle(player, itemId);
 			}
 
