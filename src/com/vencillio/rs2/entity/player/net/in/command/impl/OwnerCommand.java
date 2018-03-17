@@ -276,6 +276,7 @@ public class OwnerCommand implements Command {
 						for (Mob m : World.getNpcs()) {
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getLocation().getX(), m.getLocation().getY());//p.withinDistance(player, 4);
 
+							player.send(new SendMessage("Distance: " + distance));
 							if (distance > maxDistance) {
 								continue;
 							}
