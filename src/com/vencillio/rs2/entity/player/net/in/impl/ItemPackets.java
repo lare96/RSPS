@@ -116,6 +116,7 @@ public class ItemPackets extends IncomingPacket {
 				}
 				break;
 			case 4393:
+				player.send(new SendMessage("Case 4393"));
 				if (player.getInterfaceManager().main == 48500) {
 					player.getPriceChecker().withdraw(itemId, slot, 1);					
 				} else if (player.getInterfaceManager().main == 26700) {
