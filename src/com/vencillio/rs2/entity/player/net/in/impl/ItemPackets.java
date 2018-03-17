@@ -101,6 +101,7 @@ public class ItemPackets extends IncomingPacket {
 			}
 
 			if (player.getInterfaceManager().main == 42750) {
+				player.send(new SendMessage("42750 id: " + itemId));
 				BoltEnchanting.handle(player, itemId);
 			}
 			
