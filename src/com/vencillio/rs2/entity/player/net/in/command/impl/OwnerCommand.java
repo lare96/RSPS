@@ -16,7 +16,6 @@ import com.vencillio.rs2.content.gambling.Lottery;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.QuestTab;
 import com.vencillio.rs2.content.membership.RankHandler;
-import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
@@ -265,7 +264,6 @@ public class OwnerCommand implements Command {
 				return true;
 
 			case "hitnpc": //Default heal = 10, default max range = 10
-				Entity entity;
 				hotActive = true;
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
@@ -281,6 +279,8 @@ public class OwnerCommand implements Command {
 							if (distance > maxDistance) {
 								continue;
 							}
+
+							player.send(new SendMessage("Distance: " + distance));
 
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage

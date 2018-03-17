@@ -78,7 +78,6 @@ public class BoltEnchanting {
 		}
 		
 		String boltName = GameDefinitionLoader.getItemDef(data.getBolt()).getName();
-		player.send(new SendMessage("Bolt name: " + boltName + " getBolt: " + data.getBolt()));
 		
 		if (player.getSkill().getLevels()[Skills.MAGIC] < data.getLevel()) {
 			player.send(new SendMessage("@red@You need a Magic level of " + data.getLevel() + " to enchant " + boltName + " bolts."));
