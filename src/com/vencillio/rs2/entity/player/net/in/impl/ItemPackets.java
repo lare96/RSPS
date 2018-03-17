@@ -93,6 +93,11 @@ public class ItemPackets extends IncomingPacket {
 				player.send(new SendMessage("InterfaceId: " + interfaceId + " | Interface Manager: " + player.getInterfaceManager().getMain()));
 			}
 
+			if (player.getInterfaceManager().main == 42750) {
+				player.send(new SendMessage("42750 id: " + itemId));
+				BoltEnchanting.handle(player, itemId);
+			}
+
 			if ((interfaceId != 1688 && interfaceId != 59813 && interfaceId != 56503) && (!player.getInterfaceManager().verify(interfaceId))) {
 				return;
 			}
@@ -100,10 +105,7 @@ public class ItemPackets extends IncomingPacket {
 				return;
 			}
 
-			if (player.getInterfaceManager().main == 42750) {
-				player.send(new SendMessage("42750 id: " + itemId));
-				BoltEnchanting.handle(player, itemId);
-			}
+
 			
 			switch (interfaceId) {
 			case 56503:
