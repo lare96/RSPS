@@ -269,11 +269,11 @@ public class OwnerCommand implements Command {
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
 
-				Task tas = new Task(9) {
+				Task tas = new Task(9, true) {
 
 					@Override
 					public void execute() {
-
+						player.send(new SendMessage(World.getNpcs().length));
 						for (Entity e : World.getNpcs()) {
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), e.getLocation().getX(), e.getLocation().getY());//p.withinDistance(player, 4);
 
