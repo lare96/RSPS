@@ -273,7 +273,7 @@ public class OwnerCommand implements Command {
 
 					@Override
 					public void execute() {
-						player.send(new SendMessage(World.getNpcs().length));
+						player.send(new SendMessage("Length: " + World.getNpcs().length));
 						for (Entity e : World.getNpcs()) {
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), e.getLocation().getX(), e.getLocation().getY());//p.withinDistance(player, 4);
 
