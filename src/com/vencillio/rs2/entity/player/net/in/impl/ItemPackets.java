@@ -121,6 +121,7 @@ public class ItemPackets extends IncomingPacket {
 				} else if (player.getInterfaceManager().main == 26700) {
 					TabCreation.handle(player, itemId);
 				} else if (player.getInterfaceManager().main == 42750) {
+					player.send(new SendMessage("item id: " + itemId));
 					BoltEnchanting.handle(player, itemId);
 				} else if (player.getInterfaceManager().main == 59750) {
 					String aName = Utility.getAOrAn(GameDefinitionLoader.getItemDef(itemId).getName()) + " " + GameDefinitionLoader.getItemDef(itemId).getName();				
