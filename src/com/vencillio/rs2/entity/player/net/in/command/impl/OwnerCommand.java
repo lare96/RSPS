@@ -16,7 +16,6 @@ import com.vencillio.rs2.content.gambling.Lottery;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.QuestTab;
 import com.vencillio.rs2.content.membership.RankHandler;
-import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
@@ -274,8 +273,8 @@ public class OwnerCommand implements Command {
 					@Override
 					public void execute() {
 						player.send(new SendMessage("Length: " + World.getNpcs().length));
-						for (Entity e : World.getNpcs()) {
-							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), e.getLocation().getX(), e.getLocation().getY());//p.withinDistance(player, 4);
+						for (Mob m : World.getNpcs()) {
+							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getLocation().getX(), m.getLocation().getY());//p.withinDistance(player, 4);
 
 							player.send(new SendMessage("Distance: " + distance));
 							if (distance > maxDistance) {
@@ -286,12 +285,12 @@ public class OwnerCommand implements Command {
 
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage
-									e.hit(new Hit(-healAmount, HitTypes.CANNON));
-									e.getUpdateFlags().sendGraphic(new Graphic(1200));
+									m.hit(new Hit(-healAmount, HitTypes.CANNON));
+									m.getUpdateFlags().sendGraphic(new Graphic(1200));
 								} else { //Heal
-									int hpDiff = e.getMaxLevels()[3] - e.getLevels()[3];
-									e.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
-									e.getUpdateFlags().sendGraphic(new Graphic(444));
+									int hpDiff = m.getMaxLevels()[3] - m.getLevels()[3];
+									m.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
+									m.getUpdateFlags().sendGraphic(new Graphic(444));
 								}
 							}
 
