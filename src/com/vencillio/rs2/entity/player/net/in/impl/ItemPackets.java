@@ -31,18 +31,13 @@ import com.vencillio.rs2.content.skill.crafting.JewelryCreationTask;
 import com.vencillio.rs2.content.skill.craftingnew.Crafting;
 import com.vencillio.rs2.content.skill.firemaking.Firemaking;
 import com.vencillio.rs2.content.skill.fletching.Fletching;
-import com.vencillio.rs2.content.skill.herblore.CleanHerbTask;
-import com.vencillio.rs2.content.skill.herblore.HerbloreFinishedPotionTask;
-import com.vencillio.rs2.content.skill.herblore.HerbloreGrindingTask;
-import com.vencillio.rs2.content.skill.herblore.HerbloreUnfinishedPotionTask;
-import com.vencillio.rs2.content.skill.herblore.PotionDecanting;
-import com.vencillio.rs2.content.skill.herblore.SuperCombatPotion;
+import com.vencillio.rs2.content.skill.herblore.*;
 import com.vencillio.rs2.content.skill.hunter.Impling.ImplingRewards;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
+import com.vencillio.rs2.content.skill.magic.TabCreation;
 import com.vencillio.rs2.content.skill.magic.spells.BoltEnchanting;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSeas;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSwamp;
-import com.vencillio.rs2.content.skill.magic.TabCreation;
 import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
 import com.vencillio.rs2.content.skill.prayer.BoneBurying;
 import com.vencillio.rs2.content.skill.ranged.ToxicBlowpipe;
@@ -104,6 +99,10 @@ public class ItemPackets extends IncomingPacket {
 			if (player.getMagic().isTeleporting()) {
 				return;
 			}
+
+			if (player.getInterfaceManager().main == 42750) {
+				BoltEnchanting.handle(player, itemId);
+			}
 			
 			switch (interfaceId) {
 			case 56503:
@@ -126,13 +125,6 @@ public class ItemPackets extends IncomingPacket {
 					player.getUpdateFlags().sendForceMessage(Utility.randomElement(VencillioConstants.ITEM_IDENTIFICATION_MESSAGES).replaceAll("/s/", "" + aName));
 				}
 				break;
-				case 75007:
-					player.send(new SendMessage("Case 75007"));
-					if (player.getInterfaceManager().main == 42750) {
-						player.send(new SendMessage("item id: " + itemId));
-						BoltEnchanting.handle(player, itemId);
-					}
-					break;
 
 			case 1119:// Smithing
 			case 1120:
