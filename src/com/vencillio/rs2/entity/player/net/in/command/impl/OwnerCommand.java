@@ -272,7 +272,7 @@ public class OwnerCommand implements Command {
 
 					@Override
 					public void execute() {
-						player.send(new SendMessage("Length: " + World.getNpcs().length));
+						//player.send(new SendMessage("Length: " + World.getNpcs().length));
 						for (Mob m : World.getNpcs()) {
 
 							if(m == null) continue;
@@ -285,7 +285,7 @@ public class OwnerCommand implements Command {
 								continue;
 							}
 
-							player.send(new SendMessage("Distance: " + distance));
+							//player.send(new SendMessage("Distance: " + distance));
 
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage
