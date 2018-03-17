@@ -274,6 +274,10 @@ public class OwnerCommand implements Command {
 					public void execute() {
 						player.send(new SendMessage("Length: " + World.getNpcs().length));
 						for (Mob m : World.getNpcs()) {
+
+							if(m == null) continue;
+
+							player.send(new SendMessage("px: " + player.getX() + " py: " + player.getY() + " mx: " + m.getLocation().getX() + " my: " + m.getLocation().getY()));
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getLocation().getX(), m.getLocation().getY());//p.withinDistance(player, 4);
 
 							player.send(new SendMessage("Distance: " + distance));
