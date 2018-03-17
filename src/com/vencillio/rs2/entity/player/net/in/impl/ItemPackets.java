@@ -116,19 +116,22 @@ public class ItemPackets extends IncomingPacket {
 				}
 				break;
 			case 4393:
-				player.send(new SendMessage("Case 4393"));
 				if (player.getInterfaceManager().main == 48500) {
 					player.getPriceChecker().withdraw(itemId, slot, 1);					
 				} else if (player.getInterfaceManager().main == 26700) {
 					TabCreation.handle(player, itemId);
-				} else if (player.getInterfaceManager().main == 42750) {
-					player.send(new SendMessage("item id: " + itemId));
-					BoltEnchanting.handle(player, itemId);
 				} else if (player.getInterfaceManager().main == 59750) {
 					String aName = Utility.getAOrAn(GameDefinitionLoader.getItemDef(itemId).getName()) + " " + GameDefinitionLoader.getItemDef(itemId).getName();				
 					player.getUpdateFlags().sendForceMessage(Utility.randomElement(VencillioConstants.ITEM_IDENTIFICATION_MESSAGES).replaceAll("/s/", "" + aName));
 				}
 				break;
+				case 75007:
+					player.send(new SendMessage("Case 75007"));
+					if (player.getInterfaceManager().main == 42750) {
+						player.send(new SendMessage("item id: " + itemId));
+						BoltEnchanting.handle(player, itemId);
+					}
+					break;
 
 			case 1119:// Smithing
 			case 1120:
