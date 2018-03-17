@@ -16,6 +16,7 @@ import com.vencillio.rs2.content.gambling.Lottery;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.QuestTab;
 import com.vencillio.rs2.content.membership.RankHandler;
+import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
@@ -261,6 +262,49 @@ public class OwnerCommand implements Command {
 
 			case "hotoff":
 				hotActive = false;
+				return true;
+
+			case "hitnpc": //Default heal = 10, default max range = 10
+				Entity entity;
+				hotActive = true;
+				healAmount = parser.hasNext() ? parser.nextInt() : 10;
+				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+
+				Task tas = new Task(9) {
+
+					@Override
+					public void execute() {
+
+						for (Mob m : World.getNpcs()) {
+							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getX(), m.getY());//p.withinDistance(player, 4);
+
+							if (distance > maxDistance) {
+								continue;
+							}
+
+							if (distance <= maxDistance) {
+								if (healAmount < 0) { //Damage
+									m.hit(new Hit(-healAmount, HitTypes.CANNON));
+									m.getUpdateFlags().sendGraphic(new Graphic(1200));
+								} else { //Heal
+									int hpDiff = m.getMaxLevels()[3] - m.getLevels()[3];
+									m.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
+									m.getUpdateFlags().sendGraphic(new Graphic(444));
+								}
+							}
+
+							if (!hotActive)
+								stop();
+						}
+					}
+
+					@Override
+					public void onStop() {
+
+					}
+				};
+
+				TaskQueue.queue(tas);
 				return true;
 			
 			/*

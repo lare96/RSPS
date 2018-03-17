@@ -1,18 +1,14 @@
 package com.vencillio.rs2.content.skill.magic.spells;
 
-import java.util.HashMap;
-
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItemsAlt;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.util.HashMap;
 
 /**
  * Handles Bolt Enchanting
@@ -82,6 +78,7 @@ public class BoltEnchanting {
 		}
 		
 		String boltName = GameDefinitionLoader.getItemDef(data.getBolt()).getName();
+		player.send(new SendMessage("Bolt name: " + boltName + " getBolt: " + data.getBolt()));
 		
 		if (player.getSkill().getLevels()[Skills.MAGIC] < data.getLevel()) {
 			player.send(new SendMessage("@red@You need a Magic level of " + data.getLevel() + " to enchant " + boltName + " bolts."));
