@@ -4,9 +4,7 @@ import com.vencillio.VencillioConstants;
 import com.vencillio.core.cache.map.Region;
 import com.vencillio.rs2.content.minigames.duelarena.DuelingConstants;
 import com.vencillio.rs2.entity.player.Player;
-import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
-import com.vencillio.rs2.entity.player.net.in.command.impl.OwnerCommand;
 import com.vencillio.rs2.entity.player.net.out.impl.SendConfig;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMultiInterface;
@@ -22,12 +20,6 @@ public class PlayerMovementHandler extends MovementHandler {
 
 	@Override
 	public boolean canMoveTo(int direction) {
-		player.send(new SendMessage("CanMoveTo1"));
-		if(PlayerConstants.isOwner(player) && OwnerCommand.noclip) {
-			player.send(new SendMessage("true1"));
-			return true;
-		}
-
 		int x = player.getLocation().getX();
 		int y = player.getLocation().getY();
 		int z = player.getLocation().getZ();
@@ -37,13 +29,6 @@ public class PlayerMovementHandler extends MovementHandler {
 
 	@Override
 	public boolean canMoveTo(int x, int y, int size, int direction) {
-
-		player.send(new SendMessage("CanMoveTo2"));
-		if(PlayerConstants.isOwner(player) && OwnerCommand.noclip) {
-			player.send(new SendMessage("true2"));
-			return true;
-		}
-
 		int z = player.getLocation().getZ();
 
 		return Region.getRegion(x, y).canMove(x, y, z, direction);

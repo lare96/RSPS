@@ -41,7 +41,6 @@ public class OwnerCommand implements Command {
 
 	private boolean hotActive = false;
 	private boolean active = false;
-	public static boolean noclip = false;
 
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -311,10 +310,6 @@ public class OwnerCommand implements Command {
 				};
 
 				TaskQueue.queue(tas);
-				return true;
-
-			case "noclip":
-				noclip = !noclip;
 				return true;
 			
 			/*
