@@ -1,9 +1,8 @@
 package com.vencillio.core.cache.map;
 
+import com.vencillio.rs2.entity.Location;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.vencillio.rs2.entity.Location;
 
 public class Region {
 

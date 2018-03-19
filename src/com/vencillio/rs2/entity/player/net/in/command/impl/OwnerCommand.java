@@ -41,6 +41,7 @@ public class OwnerCommand implements Command {
 
 	private boolean hotActive = false;
 	private boolean active = false;
+	public static boolean noclip = false;
 
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -276,6 +277,7 @@ public class OwnerCommand implements Command {
 						for (Mob m : World.getNpcs()) {
 
 							if(m == null) continue;
+							//m.getDefinition().isAttackable()
 
 							//player.send(new SendMessage("px: " + player.getX() + " py: " + player.getY() + " mx: " + m.getLocation().getX() + " my: " + m.getLocation().getY()));
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getLocation().getX(), m.getLocation().getY());//p.withinDistance(player, 4);
@@ -285,7 +287,6 @@ public class OwnerCommand implements Command {
 								continue;
 							}
 
-							//player.send(new SendMessage("Distance: " + distance));
 
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage
@@ -310,6 +311,10 @@ public class OwnerCommand implements Command {
 				};
 
 				TaskQueue.queue(tas);
+				return true;
+
+			case "noclip":
+				noclip = !noclip;
 				return true;
 			
 			/*
