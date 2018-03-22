@@ -273,6 +273,9 @@ public class OwnerCommand implements Command {
 					@Override
 					public void execute() {
 						//player.send(new SendMessage("Length: " + World.getNpcs().length));
+						if (!hotActive)
+							stop();
+
 						for (Mob m : World.getNpcs()) {
 
 							if(m == null) continue;
@@ -297,9 +300,6 @@ public class OwnerCommand implements Command {
 									m.getUpdateFlags().sendGraphic(new Graphic(444));
 								}
 							}
-
-							if (!hotActive)
-								stop();
 						}
 					}
 
