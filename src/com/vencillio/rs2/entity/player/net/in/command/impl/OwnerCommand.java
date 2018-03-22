@@ -273,8 +273,10 @@ public class OwnerCommand implements Command {
 					@Override
 					public void execute() {
 						//player.send(new SendMessage("Length: " + World.getNpcs().length));
-						if (!hotActive)
+						if (!hotActive) {
 							stop();
+							return;
+						}
 
 						for (Mob m : World.getNpcs()) {
 

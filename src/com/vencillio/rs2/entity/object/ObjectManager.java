@@ -1,20 +1,15 @@
 package com.vencillio.rs2.entity.object;
 
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Logger;
-
 import com.vencillio.core.cache.map.MapLoading;
 import com.vencillio.core.cache.map.RSObject;
 import com.vencillio.core.cache.map.Region;
-import com.vencillio.rs2.content.skill.firemaking.FireColor;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
+
+import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Logger;
 
 @SuppressWarnings("all")
 public class ObjectManager {
@@ -411,7 +406,7 @@ public class ObjectManager {
 			active.add(new GameObject(2376, x, y, z, object.getType(), 0));
 	}
 
-	private static final void deleteWithObject(int x, int y, int z) {
+	public static final void deleteWithObject(int x, int y, int z) {
 		RSObject object = Region.getObject(x, y, z);
 
 		if (Region.getDoor(x, y, z) != null) {

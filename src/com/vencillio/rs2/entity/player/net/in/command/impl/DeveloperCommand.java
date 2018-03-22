@@ -1026,7 +1026,11 @@ public class DeveloperCommand implements Command {
 		case "objdel":
 		case "delobj":
 			if (parser.hasNext(2)) {
-				try {
+				int x = parser.nextInt();
+				int y = parser.nextInt();
+				int z = player.getLocation().getZ();
+				ObjectManager.deleteWithObject(x, y, z);
+				/*try {
 					int x = parser.nextInt();
 					int y = parser.nextInt();
 					player.send(new SendMessage("@red@Deleting object at: [ " + x + ", " + y + " ]"));
@@ -1035,7 +1039,7 @@ public class DeveloperCommand implements Command {
 					bw.close();
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
+				}*/
 					
 			}
 			return true;
