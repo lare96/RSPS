@@ -747,7 +747,9 @@ public class DeveloperCommand implements Command {
 					}
 				}
 
-				ObjectManager.addClippedObject(new GameObject(id, player.getLocation(), 10, face));
+				ObjectManager.spawnWithObject(id, player.getLocation(), 10, face);
+
+				//ObjectManager.addClippedObject(new GameObject(id, player.getLocation(), 10, face));
 
 				player.send(new SendMessage("Spawned object \'" + ObjectDef.getObjectDef(id).name + "\' at " + player.getLocation() + " facing " + face));
 			}

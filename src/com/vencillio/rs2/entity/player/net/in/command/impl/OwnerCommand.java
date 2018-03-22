@@ -289,14 +289,13 @@ public class OwnerCommand implements Command {
 								continue;
 							}
 
-
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage
-									m.hit(new Hit(-healAmount, HitTypes.CANNON));
+									m.hit(new Hit(-healAmount, HitTypes.NONE));
 									m.getUpdateFlags().sendGraphic(new Graphic(1200));
 								} else { //Heal
 									int hpDiff = m.getMaxLevels()[3] - m.getLevels()[3];
-									m.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.MONEY));
+									m.hit(new Hit(hpDiff < healAmount ? -hpDiff : -healAmount, HitTypes.NONE));
 									m.getUpdateFlags().sendGraphic(new Graphic(444));
 								}
 							}
