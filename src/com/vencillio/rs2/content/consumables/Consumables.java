@@ -5,10 +5,13 @@ import com.vencillio.core.definitions.PotionDefinition;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.task.impl.AntifireTask;
+import com.vencillio.core.task.impl.OverloadTask;
 import com.vencillio.core.task.impl.TaskIdentifier;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
+import com.vencillio.rs2.content.combat.Hit;
+import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
@@ -225,39 +228,47 @@ public final class Consumables {
 	 */
 	public boolean useSpecialCasePotion(int id) {
 		switch (id) {
-		case 2452:
-		case 2454:
-		case 2456:
-		case 2458:
-		case 2488:
-			TaskQueue.queue(new AntifireTask(player, false));
-			break;
-		case 15304:
-		case 15305:
-		case 15306:
-		case 15307:
-			TaskQueue.queue(new AntifireTask(player, true));
-			break;
-		case 3008:
-		case 3010:
-		case 3012:
-		case 3014:
-			player.getRunEnergy().add(20);
-			return true;
-		case 175:
-		case 177:
-		case 179:
-		case 2446:
-			player.curePoison(100);
-			return true;
-			
-		case 12695:
-		case 12697:
-		case 12699:
-		case 12701:
-			this.superCombatEffect(player);
-			return true;
-			
+			case 2452:
+			case 2454:
+			case 2456:
+			case 2458:
+			case 2488:
+				TaskQueue.queue(new AntifireTask(player, false));
+				break;
+			case 15304:
+			case 15305:
+			case 15306:
+			case 15307:
+				TaskQueue.queue(new AntifireTask(player, true));
+				break;
+			case 3008:
+			case 3010:
+			case 3012:
+			case 3014:
+				player.getRunEnergy().add(20);
+				return true;
+			case 175:
+			case 177:
+			case 179:
+			case 2446:
+				player.curePoison(100);
+				return true;
+
+			case 12695:
+			case 12697:
+			case 12699:
+			case 12701:
+				this.superCombatEffect(player);
+				return true;
+
+			case 11730:
+			case 11731:
+			case 11732:
+			case 11733:
+				this.overloadEffect();
+				TaskQueue.queue(new OverloadTask(player));
+				return true;
+
 		}
 		return false;
 	}
@@ -276,6 +287,24 @@ public final class Consumables {
 					amount = player.getLevels()[i] + 5 + (int) (player.getLevels()[i] * 0.15);
 				}
 				player.getSkill().setLevel(i, amount);
+			}
+		}
+	}
+
+	private void overloadEffect() {
+		int amount;
+		int[] skillIds = {0, 1, 2, 4, 6};
+
+		for(int i=0; i < skillIds.length; i++) {
+			if (player.getMaxLevels()[skillIds[i]] + 5 + (int) (player.getMaxLevels()[skillIds[i]] * 0.15) > player.getLevels()[skillIds[i]]) {
+				if (player.getMaxLevels()[skillIds[i]] + 5 + (int) (player.getMaxLevels()[skillIds[i]] * 0.15) < player.getLevels()[skillIds[i]] + 5 + (int) (player.getLevels()[skillIds[i]] * 0.15)) {
+					amount = player.getMaxLevels()[skillIds[i]] + 5 + (int) (player.getMaxLevels()[skillIds[i]] * 0.15);
+				} else {
+					amount = player.getLevels()[skillIds[i]] + 5 + (int) (player.getLevels()[skillIds[i]] * 0.15);
+				}
+				player.getSkill().setLevel(skillIds[i], amount);
+				player.getUpdateFlags().sendAnimation(new Animation(3170));
+				player.hit(new Hit(10));
 			}
 		}
 	}

@@ -421,6 +421,7 @@ public class ObjectManager {
 		MapLoading.removeObject(object.getId(), x, y, z, object.getType(), object.getFace());
 
 		active.add(new GameObject(2376, x, y, z, object.getType(), 0));
+		send(new GameObject(2376, x, y, z, object.getType(), object.getFace()));
 	}
 	
 	private static final void remove(int x, int y, int z) {

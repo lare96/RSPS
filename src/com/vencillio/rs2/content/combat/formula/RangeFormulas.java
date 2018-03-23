@@ -19,7 +19,7 @@ public class RangeFormulas {
 	/**
 	 * Calculates the victims defence to ranged attacks
 	 * 
-	 * @param player
+	 * @param defending
 	 * @return
 	 */
 	public static int calculateRangeDefence(Entity defending) {
@@ -116,11 +116,11 @@ public class RangeFormulas {
 		int rStr = player.getBonuses()[12];
 
 		if ((weapon.getRangedDefinition().getType() == RangedWeaponDefinition.RangedTypes.THROWN) || (weapon.getRangedDefinition().getArrows() == null) || (weapon.getRangedDefinition().getArrows().length == 0)) {
-			rStr = weapon.getRangedStrengthBonus();
+			rStr += weapon.getRangedStrengthBonus();
 		} else {
 			Item ammo = player.getEquipment().getItems()[13];
 			if (ammo != null) {
-				rStr = ammo.getRangedStrengthBonus();
+				rStr += ammo.getRangedStrengthBonus();
 			}
 		}
 
