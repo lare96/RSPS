@@ -721,6 +721,10 @@ public class ItemPackets extends IncomingPacket {
 			if (SuperCombatPotion.itemOnItem(player, itemUsed, usedWith)) {
 				return;
 			}
+
+			if (Overload.itemOnItem(player, itemUsed, usedWith)) {
+				return;
+			}
 			
 			if (SerpentineHelmet.itemOnItem(player, itemUsed, usedWith)) {
 				return;

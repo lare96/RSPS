@@ -293,6 +293,7 @@ public final class Consumables {
 
 	private void overloadEffect() {
 		int amount;
+
 		int[] skillIds = {0, 1, 2, 4, 6};
 
 		for(int i=0; i < skillIds.length; i++) {
@@ -303,9 +304,25 @@ public final class Consumables {
 					amount = player.getLevels()[skillIds[i]] + 5 + (int) (player.getLevels()[skillIds[i]] * 0.15);
 				}
 				player.getSkill().setLevel(skillIds[i], amount);
-				player.getUpdateFlags().sendAnimation(new Animation(3170));
-				player.hit(new Hit(10));
 			}
 		}
+		TaskQueue.queue(new Task(player, 2, true) {
+			int count = 5;
+
+			@Override
+			public void execute() {
+				player.getUpdateFlags().sendAnimation(new Animation(3170));
+				player.hit(new Hit(10));
+				count--;
+
+				if(count == 0)
+					stop();
+			}
+
+			@Override
+			public void onStop() {
+
+			}
+		});
 	}
 }

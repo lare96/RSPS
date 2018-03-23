@@ -20,7 +20,7 @@ public class BossInterface extends InterfaceHandler {
 			"Barrelchest",
 			"Corporeal Beast",
 			"Daggonoths Kings",
-			"Godwars (N/A)",
+			"Godwars",
 			"Zulrah",
 			"Kraken",
 			"Giant Mole",

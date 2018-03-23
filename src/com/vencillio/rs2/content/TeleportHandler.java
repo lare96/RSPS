@@ -73,7 +73,7 @@ public class TeleportHandler {
 		BARRELCHEST(250053, 4500, "High combat", "Instanced", 190, new Location(3806, 2844, 0), true, true),
 		CORPOREAL_BEAST(250054, 6000, "High combat", "Team Based", 785, new Location(2948, 4385, 2), false, false),
 		DAGGANNOTH_KINGS(250055, 6000, "High combat", "", 303, new Location(1909, 4367, 0), false, false),
-		//GOD_WARS(250056, 8000, "High combat", "Team Based", 0,  new Location(2882, 5308, 2), false, false),
+		GOD_WARS(250056, 8000, "High combat", "Team Based", 0,  new Location(2882, 5308, 2), false, false),
 		ZULRAH(250057, 10000, "High combat", "Hard", 725, new Location(2268, 3070, 0), true, true),
 		KRAKEN(250058, 7500, "High combat", "", 291, new Location(3696, 5807, 0), true, true),
 		GIANT_MOLE(250059, 1500, "High combat", "", 230, new Location(1760, 5163, 0), false, false),

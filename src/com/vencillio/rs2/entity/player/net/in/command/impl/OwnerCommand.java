@@ -189,7 +189,7 @@ public class OwnerCommand implements Command {
 
 					int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
 
-					Task t = new Task(p, 9) {
+					TaskQueue.queue(new Task(p, 9) {
 
 						@Override
 						public void execute() {
@@ -212,9 +212,7 @@ public class OwnerCommand implements Command {
 						public void onStop() {
 
 						}
-					};
-
-					TaskQueue.queue(t);
+					});
 				}
 				return true;
 
@@ -223,7 +221,7 @@ public class OwnerCommand implements Command {
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
 
-					Task t = new Task(9) {
+				TaskQueue.queue(new Task(9) {
 
 						@Override
 						public void execute() {
@@ -254,9 +252,7 @@ public class OwnerCommand implements Command {
 						public void onStop() {
 
 						}
-					};
-
-					TaskQueue.queue(t);
+					});
 				return true;
 
 			case "hotoff":
@@ -268,7 +264,7 @@ public class OwnerCommand implements Command {
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
 
-				Task tas = new Task(9, true) {
+				TaskQueue.queue(new Task(9, true) {
 
 					@Override
 					public void execute() {
@@ -308,9 +304,8 @@ public class OwnerCommand implements Command {
 					public void onStop() {
 
 					}
-				};
+				});
 
-				TaskQueue.queue(tas);
 				return true;
 			
 			/*
