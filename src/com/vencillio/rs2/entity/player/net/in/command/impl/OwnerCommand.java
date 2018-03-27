@@ -193,6 +193,12 @@ public class OwnerCommand implements Command {
 
 						@Override
 						public void execute() {
+
+							if (!hotActive) {
+								stop();
+								return;
+							}
+
 							if (distance <= maxDistance) {
 								if (healAmount < 0) { //Damage
 									p.hit(new Hit(-healAmount, HitTypes.CANNON));
@@ -204,8 +210,7 @@ public class OwnerCommand implements Command {
 								}
 							}
 
-							if(!hotActive)
-								stop();
+
 						}
 
 						@Override
@@ -216,7 +221,7 @@ public class OwnerCommand implements Command {
 				}
 				return true;
 
-			case "hot2": //Default heal = 10, default max range = 10
+			case "hot2": //Default heal = 10, default max range = 10 *re-evaluates distance every time
 				hotActive = true;
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
@@ -225,6 +230,12 @@ public class OwnerCommand implements Command {
 
 						@Override
 						public void execute() {
+
+							if (!hotActive) {
+								stop();
+								return;
+							}
+
 							for (Player p : World.getPlayers()) {
 								if (p == null || !p.isActive()) {
 									continue;
@@ -243,8 +254,7 @@ public class OwnerCommand implements Command {
 									}
 								}
 
-								if (!hotActive)
-									stop();
+
 							}
 						}
 
