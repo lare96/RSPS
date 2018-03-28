@@ -1416,6 +1416,7 @@ public class Player extends Entity {
 		send(new SendConfig(1992, getSideStones()));
 
 		ControlPanel.updateList();
+		ControlPanel.update(this);
 		return true;
 	}
 
