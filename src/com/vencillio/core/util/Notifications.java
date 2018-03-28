@@ -9,8 +9,7 @@ import java.awt.*;
  */
 public class Notifications {
 
-
-	public static void displayTray(Player p) throws AWTException, java.net.MalformedURLException {
+	public static void displayTray(Player p) {
 		//Obtain only one instance of the SystemTray object
 		SystemTray tray = SystemTray.getSystemTray();
 
@@ -23,7 +22,12 @@ public class Notifications {
 		trayIcon.setImageAutoSize(true);
 		//Set tooltip text for the tray icon
 		//trayIcon.setToolTip("System tray icon demo");
-		tray.add(trayIcon);
+		try {
+			tray.add(trayIcon);
+		} catch (AWTException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 		trayIcon.displayMessage("Player Online: " + p.getUsername(), "", TrayIcon.MessageType.INFO);
 	}
 }
