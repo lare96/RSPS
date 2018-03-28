@@ -21,7 +21,7 @@ public class LoginThread extends Thread {
 		if ((player = login.poll()) != null) {
 			System.out.println("Logging in: " + player.getUsername());
 
-			Notifications.displayTray(player);
+			Notifications.displayTray(player.getUsername());
 
 			player.getSkill().resetColors();
 

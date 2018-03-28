@@ -1,7 +1,5 @@
 package com.vencillio.core.util;
 
-import com.vencillio.rs2.entity.player.Player;
-
 import java.awt.*;
 
 /**
@@ -9,7 +7,7 @@ import java.awt.*;
  */
 public class Notifications {
 
-	public static void displayTray(Player p) {
+	public static void displayTray(String p) {
 		//Obtain only one instance of the SystemTray object
 		SystemTray tray = SystemTray.getSystemTray();
 
@@ -28,6 +26,6 @@ public class Notifications {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		trayIcon.displayMessage("Player Online: " + p.getUsername(), "", TrayIcon.MessageType.INFO);
+		trayIcon.displayMessage("Player Online: " + p, "", TrayIcon.MessageType.INFO);
 	}
 }
