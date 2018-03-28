@@ -1129,6 +1129,13 @@ public class ControlPanel extends JFrame {
 			dialog.setAlwaysOnTop(true);
 			dialog.setModal(true);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			// 10 sec
+			Timer timer = new Timer(15000, e -> {
+				dialog.setVisible(false);
+				dialog.dispose();
+			});
+
+			timer.start();
 			dialog.setVisible(true);
 		});
 		//showMessageDialog(null, p.getUsername() + " logged in");
