@@ -27,8 +27,6 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 //import com.ew.utils.ObjectExamines;//delete?
 //import com.ew.utils.PriceManager;//need?
 //import com.ew.utils.ProfanityFilter;//delete?
@@ -1125,7 +1123,15 @@ public class ControlPanel extends JFrame {
 	}
 
 	public static void update(Player p) {
-		showMessageDialog(null, p.getUsername() + " logged in");
+		EventQueue.invokeLater(() -> {
+			JOptionPane op = new JOptionPane(p.getUsername() + " logged in",JOptionPane.INFORMATION_MESSAGE);
+			JDialog dialog = op.createDialog("Info");
+			dialog.setAlwaysOnTop(true);
+			dialog.setModal(true);
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		});
+		//showMessageDialog(null, p.getUsername() + " logged in");
 	}
 
 	public static void updateList() {
