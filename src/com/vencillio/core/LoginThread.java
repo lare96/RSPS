@@ -1,10 +1,13 @@
 package com.vencillio.core;
 
 import com.vencillio.core.network.StreamBuffer;
+import com.vencillio.core.util.Notifications;
 import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.Client;
 
+import java.awt.*;
+import java.net.MalformedURLException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -19,6 +22,13 @@ public class LoginThread extends Thread {
 
 		if ((player = login.poll()) != null) {
 			System.out.println("Logging in: " + player.getUsername());
+
+			try {
+				Notifications.displayTray(player);
+			} catch (AWTException | MalformedURLException e) {
+				e.printStackTrace();
+			}
+
 			player.getSkill().resetColors();
 
 			boolean starter = false;
