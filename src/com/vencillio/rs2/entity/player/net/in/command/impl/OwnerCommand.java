@@ -47,12 +47,24 @@ public class OwnerCommand implements Command {
 		switch (parser.getCommand()) {
 
 			case "doublexp":
+				String msg = "Double XP Bonus is now active!";
 				if (!VencillioConstants.doubleExperience) {
 					VencillioConstants.doubleExperience = true;
-					World.sendGlobalMessage("<col=99ff99>Double XP Bonus is now active!");
+					World.sendGlobalMessage("<col=99ff99>" + msg);
+					for (Player players : World.getPlayers()) {
+						if (players != null && players.isActive()) {
+							players.send(new SendBanner(Utility.formatPlayerName(msg), 0x1C889E));
+						}
+					}
 				} else {
+					msg = "Double XP Bonus is now off!";
 					VencillioConstants.doubleExperience = false;
-					World.sendGlobalMessage("<col=99ff99>Double XP Bonus is now off!");
+					World.sendGlobalMessage("<col=99ff99>" + msg);
+					for (Player players : World.getPlayers()) {
+						if (players != null && players.isActive()) {
+							players.send(new SendBanner(Utility.formatPlayerName(msg), 0x1C889E));
+						}
+					}
 				}
 				return true;
 
@@ -66,6 +78,11 @@ public class OwnerCommand implements Command {
 						players.getMagic().setVengeanceActive(true);
 					}
 				}
+				return true;
+
+			case "follow":
+				Player other = World.getPlayerByName(parser.nextString());
+				player.getFollowing().setFollow(other);
 				return true;
 			/**
 			 * Daniel's testing command
@@ -115,7 +132,7 @@ public class OwnerCommand implements Command {
 			 * Forces message to player
 			 */
 			case "forcemsg":
-				String msg="";
+				msg="";
 
 				if (parser.hasNext(2)) {
 					try {
@@ -273,8 +290,9 @@ public class OwnerCommand implements Command {
 				hotActive = true;
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+				int ticks = parser.hasNext() ? parser.nextInt() : 9;
 
-				TaskQueue.queue(new Task(9, true) {
+				TaskQueue.queue(new Task(ticks, true) {
 
 					@Override
 					public void execute() {
@@ -287,7 +305,6 @@ public class OwnerCommand implements Command {
 						for (Mob m : World.getNpcs()) {
 
 							if(m == null) continue;
-							//m.getDefinition().isAttackable()
 
 							//player.send(new SendMessage("px: " + player.getX() + " py: " + player.getY() + " mx: " + m.getLocation().getX() + " my: " + m.getLocation().getY()));
 							int distance = Utility.getManhattanDistance(player.getX(), player.getY(), m.getLocation().getX(), m.getLocation().getY());//p.withinDistance(player, 4);
@@ -578,7 +595,7 @@ public class OwnerCommand implements Command {
 					try {
 						String name = parser.nextString();
 						int itemId = parser.nextInt();
-						int amount = parser.nextInt();
+						int amount = parser.hasNext() ? parser.nextInt() : 1;
 						Player p = World.getPlayerByName(name);
 
 						if (p == null) {
@@ -909,8 +926,9 @@ public class OwnerCommand implements Command {
 				if (parser.hasNext()) {
 					try {
 						int npcID = parser.nextInt();
+						Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
 
-						final Mob slave = new Mob(player, npcID, false, false, true, player.getLocation());
+						final Mob slave = new Mob(target, npcID, false, false, true, player.getLocation());
 						slave.getFollowing().setIgnoreDistance(true);
 						slave.getFollowing().setFollow(player);
 						slave.setCanAttack(false);

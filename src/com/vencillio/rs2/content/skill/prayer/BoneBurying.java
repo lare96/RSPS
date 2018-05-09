@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content.skill.prayer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.Task.BreakType;
 import com.vencillio.core.task.Task.StackType;
@@ -15,12 +12,16 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendSound;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class BoneBurying {
 	
 	public static enum Bones {
 		NORMAL_BONES(526, 4.5D),
 		WOLF_BONES(2859, 4.5D),
 		BAT_BONES(530, 4.5D),
+		CURVED_BONES(10977, 15.0D),
 		BIG_BONES(532, 18.0D),
 		BABYDRAGON_BONES(534, 30.0D),
 		DRAGON_BONES(536, 72.0D),

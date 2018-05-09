@@ -494,9 +494,14 @@ public class ItemPackets extends IncomingPacket {
 			}
 
 			if (player.getInterfaceManager().hasInterFaceOpen(15106)) {
-				player.send(new SendString("</col>Melee Max Hit: @gre@" + MeleeFormulas.calculateBaseDamage(player), 15116));
-				player.send(new SendString("</col>Range Max Hit: @gre@" + RangeFormulas.getRangedMaxHit(player) + ".0", 15117));
-				player.send(new SendString("</col>Magic Max Hit: @gre@" + MagicFormulas.magicMaxHit(player) + ".0", 15118));
+				double diff = player.getCorrectedDamage(MeleeFormulas.calculateBaseDamage(player)) - MeleeFormulas.calculateBaseDamage(player);
+				player.send(new SendString("</col>Melee Max Hit: @gre@" + MeleeFormulas.calculateBaseDamage(player) + "(+" + diff + ")", 15116));
+
+				diff = player.getCorrectedDamage(RangeFormulas.getRangedMaxHit(player)) - RangeFormulas.getRangedMaxHit(player);
+				player.send(new SendString("</col>Range Max Hit: @gre@" + RangeFormulas.getRangedMaxHit(player) + ".0" + "(+" + diff + ")", 15117));
+
+				diff = player.getCorrectedDamage(MagicFormulas.magicMaxHit(player)) - MagicFormulas.magicMaxHit(player);
+				player.send(new SendString("</col>Magic Max Hit: @gre@" + MagicFormulas.magicMaxHit(player) + ".0" + "(+" + diff + ")", 15118));
 			}
 
 			if (!player.getInventory().slotContainsItem(slot, itemId)) {

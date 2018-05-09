@@ -54,7 +54,7 @@ public class VencillioConstants {
 	 */
 	public static final String[] BAD_STRINGS = { 
 		"fag", "f4g", "faggot", "nigger", "fuck", "bitch", "whore", 
-		"slut", "gay", "lesbian", "scape", ".net", ".com", ".org", 
+		"slut", "gay", "lesbian", ".net", ".com", ".org",
 		"vagina", "dick", "cock", "penis", "hoe", "soulsplit", "ikov", 
 		"retard", "cunt",
 	};

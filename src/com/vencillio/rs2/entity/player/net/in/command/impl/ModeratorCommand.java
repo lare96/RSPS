@@ -17,15 +17,7 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.in.command.Command;
 import com.vencillio.rs2.entity.player.net.in.command.CommandParser;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInventory;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInventoryInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendOpenTab;
-import com.vencillio.rs2.entity.player.net.out.impl.SendSidebarInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendSystemBan;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItems;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
 
 /**
  * A list of commands accessible to all players with the moderator's rank.

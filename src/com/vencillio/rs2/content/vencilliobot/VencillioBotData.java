@@ -29,7 +29,7 @@ public enum VencillioBotData {
 	  DATA_21("What is the smithing level required to create a DFS?", "90"),
 	  DATA_22("Purple is prestige color for what prestige level?","2nd", "second", "2"),
 	  DATA_23("How many waves in fight caves?","fifteen", "15"),
-	  DATA_24("What is the minimum required amount to bet against the Gambler?", "500k"),
+	  DATA_24("What is the minimum required amount to bet against the Gambler?", "100k"),
 	  DATA_25("How much special attack does Magic Short Bow require?", "55%", "55"),
 	  DATA_26("Berserker ring is dropped by which NPC?","Dagannoth King Rex", "Dagannoth Rex", "Rex"),
 	  DATA_27("How many friends fit on the friendslist?", "200"),

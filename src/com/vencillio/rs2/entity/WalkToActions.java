@@ -790,6 +790,63 @@ public class WalkToActions {
 			return;
 		}
 
+		if ((id == 5581) && (x == 3232) && (y == 3296)) {
+			player.getInventory().add(new Item(1351));
+			ObjectManager.deleteWithObject(3232, 3296, player.getZ());
+
+			TaskQueue.queue(new Task(100) {
+				@Override
+				public void execute() {
+					ObjectManager.spawnWithObject(id, new Location(3232, 3296), 10, 0);
+					stop();
+				}
+
+				@Override
+				public void onStop() {
+				}
+
+			});
+			return;
+		}
+
+		if (id == 1161) {
+			player.getInventory().add(new Item(1965));
+			ObjectManager.deleteWithObject(x, y, player.getZ());
+
+			TaskQueue.queue(new Task(100) {
+				@Override
+				public void execute() {
+					ObjectManager.spawnWithObject(id, new Location(x, y), 10, 0);
+					stop();
+				}
+
+				@Override
+				public void onStop() {
+				}
+
+			});
+			return;
+		}
+
+		if (id == 312) {
+			player.getInventory().add(new Item(1942));
+			ObjectManager.deleteWithObject(x, y, player.getZ());
+
+			TaskQueue.queue(new Task(100) {
+				@Override
+				public void execute() {
+					ObjectManager.spawnWithObject(id, new Location(x, y), 10, 0);
+					stop();
+				}
+
+				@Override
+				public void onStop() {
+				}
+
+			});
+			return;
+		}
+
 		if ((id == 1738) && (x == 2839) && (y == 3537)) {
 			player.teleport(new Location(2839, 3537, 2));
 			return;

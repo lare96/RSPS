@@ -98,7 +98,7 @@ public class MobDrops {
 				if (item.getDefinition().getGeneralPrice() >= 1_000_000) {
 					PlayerLogger.DROP_LOGGER.log(entity.getPlayer().getUsername(), String.format("%s has recieved %s %s from %s.", Utility.formatPlayerName(entity.getPlayer().getUsername()), item.getAmount(), item.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
 					AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_RARE_DROPS, 1);
-					World.sendGlobalMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " recieved a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".");
+					World.sendGlobalMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " received a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".");
 				} else {
 					World.sendRegionMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " recieved a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());					
 				}
@@ -612,7 +612,7 @@ public class MobDrops {
 
 					if (!p.getController().equals(ControllerManager.WILDERNESS_CONTROLLER)) {
 						Item item = new Item(rare.getId(), am);
-						World.sendRegionMessage("<col=1F8C26>" + e.getPlayer().getUsername() + " recieved a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());
+						World.sendRegionMessage("<col=1F8C26>" + e.getPlayer().getUsername() + " received a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());
 						
 					}
 				}

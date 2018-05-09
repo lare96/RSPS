@@ -10,6 +10,7 @@ import com.vencillio.rs2.content.io.PlayerSaveUtil;
 import com.vencillio.rs2.content.shopping.Shop;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.World;
+import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.object.ObjectManager;
 import com.vencillio.rs2.entity.player.Player;
@@ -307,6 +308,27 @@ public class ControlPanel extends JFrame {
 		tabbedPane.addTab("Highscores", null, panel_2, null);
 		panel_2.setLayout(null);
 
+		final JButton inventoryButton = new JButton("Check Inventory");
+
+		inventoryButton.addActionListener(new ActionListener() {
+			JLabel invData = new JLabel();
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int player2freeslots = player.getInventory().getFreeSlots();
+				int player2usedslots = 28 - player2freeslots;
+				invData.setText("<col=DF7401>" + player + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots.");
+				invData.setText(invData.getText() + "\nInventory contains: \n");
+				for (Item item : player.getInventory().getItems()) {
+					if (item != null) {
+						invData.setText(invData.getText() + "<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()+ "\n");
+					}
+				}
+
+				JDialog inventoryInfo = new JDialog();
+				inventoryInfo.add(invData);
+			}
+		});
+
 
 		final JButton button = new JButton("Include offline");
 		button.addActionListener(new ActionListener() {
@@ -513,6 +535,10 @@ public class ControlPanel extends JFrame {
 		final JLabel mutedLabel = new JLabel("Muted:");
 		mutedLabel.setBounds(393, 349, 176, 14);
 		panel_2.add(mutedLabel);
+
+
+		inventoryButton.setBounds(393, 399, 201, 14);
+		panel_2.add(inventoryButton);
 
 		final JPanel infoPanel = new JPanel();
 		tabbedPane.addTab("Information", null, infoPanel, null);
@@ -1129,7 +1155,7 @@ public class ControlPanel extends JFrame {
 			dialog.setAlwaysOnTop(true);
 			dialog.setModal(true);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			// 10 sec
+			// 15 sec
 			Timer timer = new Timer(15000, e -> {
 				dialog.setVisible(false);
 				dialog.dispose();
