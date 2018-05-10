@@ -323,8 +323,10 @@ public class ControlPanel extends JFrame {
 						invData.setText(invData.getText() + "<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()+ "\n");
 					}
 				}
-				JDialog inventoryInfo = new JDialog(new ControlPanel());
+				JDialog inventoryInfo = new JDialog();
 				inventoryInfo.add(invData);
+				invData.setSize(300,300);
+				invData.setVisible(true);
 			}
 		});
 
