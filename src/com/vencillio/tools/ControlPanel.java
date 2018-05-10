@@ -317,10 +317,10 @@ public class ControlPanel extends JFrame {
 				int player2freeslots = player.getInventory().getFreeSlots();
 				int player2usedslots = 28 - player2freeslots;
 				invData.setText(player.getUsername() + " has used " + player2usedslots + " slots; Free: " + player2freeslots + " inventory slots.");
-				invData.setText("<html>" + invData.getText() + "<br/>Inventory contains: <br/></html>");
+				invData.setText(invData.getText() + "<html> <br/>Inventory contains: <br/></html>");
 				for (Item item : player.getInventory().getItems()) {
 					if (item != null) {
-						invData.setText("<html>" + invData.getText() + item.getAmount() + " x " + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()+ "<br/></html>");
+						invData.setText(invData.getText() + "<html>" +  + item.getAmount() + " x " + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()+ "<br/></html>");
 					}
 				}
 				JDialog inventoryInfo = new JDialog();
