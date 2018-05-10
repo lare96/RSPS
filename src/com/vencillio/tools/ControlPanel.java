@@ -316,14 +316,16 @@ public class ControlPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int player2freeslots = player.getInventory().getFreeSlots();
 				int player2usedslots = 28 - player2freeslots;
-				invData.setText(player.getUsername() + " has used " + player2usedslots + " slots; Free: " + player2freeslots + " inventory slots.");
-				invData.setText(invData.getText() + "<html> <br/>Inventory contains: <br/></html>");
+				StringBuilder sb = new StringBuilder();
+				sb.append("<html><br>").append(player.getUsername()).append(" has used ").append(player2usedslots).append(" slots; Free: ").append( player2freeslots).append(" inventory slots.")
+				.append("<br/>Inventory contains: <br/>");
 				for (Item item : player.getInventory().getItems()) {
 					if (item != null) {
-						invData.setText(invData.getText() + "<html>" +  + item.getAmount() + " x " + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()+ "<br/></html>");
+						sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append("<br/></html>");
 					}
 				}
 				JDialog inventoryInfo = new JDialog();
+				invData.setText(sb.toString());
 				inventoryInfo.add(invData);
 				inventoryInfo.setSize(300,300);
 				inventoryInfo.setVisible(true);
