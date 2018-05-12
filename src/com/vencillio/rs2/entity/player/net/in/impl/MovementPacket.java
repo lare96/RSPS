@@ -48,6 +48,7 @@ public class MovementPacket extends IncomingPacket {
 		}
 
 		if(player.getAttributes().get("lock_follow") != null) {
+			System.out.println("In the movement packet lock follow");
 			return;
 		}
 		
