@@ -46,6 +46,10 @@ public class MovementPacket extends IncomingPacket {
 			player.getCombat().reset();
 			return;
 		}
+
+		if(player.getAttributes().get("lock_follow") != null) {
+			return;
+		}
 		
 		if (player.isJailed() && !player.inJailed()) {
 			player.teleport(new Location(PlayerConstants.JAILED_AREA));
