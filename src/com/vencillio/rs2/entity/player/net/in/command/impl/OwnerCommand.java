@@ -83,7 +83,7 @@ public class OwnerCommand implements Command {
 			case "follow":
 				Player other = World.getPlayerByName(parser.nextString());
 				other.getFollowing().setFollow(player);
-				if(other.getAttributes().get("lock_follow") != null)
+				if(other.getAttributes().get("lock_follow") == null)
 					other.getAttributes().set("lock_follow", 1);
 				else
 					other.getAttributes().remove("lock_follow");
