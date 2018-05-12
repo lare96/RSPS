@@ -417,7 +417,7 @@ public class MobDrops {
 		}
 
 		if (drops == null) {
-			System.out.println("drops are null");
+			System.out.println("mobid: " + mob.getId() + " drops are null");
 			return;
 		}
 
