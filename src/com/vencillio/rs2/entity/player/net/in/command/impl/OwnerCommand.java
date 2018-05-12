@@ -82,7 +82,11 @@ public class OwnerCommand implements Command {
 
 			case "follow":
 				Player other = World.getPlayerByName(parser.nextString());
-				player.getFollowing().setFollow(other);
+				other.getFollowing().setFollow(player);
+				if(player.getAttributes().get("lock_follow") != null)
+					player.getAttributes().set("lock_follow", 1);
+				else
+					player.getAttributes().remove("lock_follow");
 				return true;
 			/**
 			 * Daniel's testing command
@@ -928,9 +932,9 @@ public class OwnerCommand implements Command {
 						int npcID = parser.nextInt();
 						Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
 
-						final Mob slave = new Mob(target, npcID, false, false, true, player.getLocation());
+						final Mob slave = new Mob(target, npcID, false, false, true, target.getLocation());
 						slave.getFollowing().setIgnoreDistance(true);
-						slave.getFollowing().setFollow(player);
+						slave.getFollowing().setFollow(target);
 						slave.setCanAttack(false);
 
 						NpcDefinition def = GameDefinitionLoader.getNpcDefinition(npcID);

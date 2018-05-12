@@ -53,8 +53,8 @@ public class RangeFormulas {
 	 * 
 	 * Calculates the attackers attack
 	 * 
-	 * @param c
-	 * @return
+	 * @param entity
+	 * @return int
 	 */
 	public static int calculateRangeAttack(Entity entity) {
 
@@ -129,11 +129,11 @@ public class RangeFormulas {
 
 	public static int getRangedMaxHit(Player player) {
 		double pBonus = 1.0D;
-		int vBonus = 0;
+		int vBonus = 1;
 		int sBonus = 0;
 
 		if (ItemCheck.wearingFullVoidRanged(player)) {
-			vBonus *= 80.0;
+			vBonus *= 40.0;
 		}
 
 		switch (player.getEquipment().getAttackStyle()) {
@@ -157,10 +157,10 @@ public class RangeFormulas {
 			}
 		}
 
-		int str = player.getSkill().getLevels()[4];
-		double eS = (int) (str * pBonus + sBonus + vBonus);
+		int str = player.getSkill().getLevels()[4]; //Range lvl of player
+		double eS = (int) (str * pBonus + sBonus + vBonus); //range lvl + prayer modifiers + attack style bonus + void bonus
 		int rngStr = getEffectiveRangedStrength(player);
-		double base = 5.0D + (eS + 8.0D) * (rngStr + 64) / 64.0D;
+		double base = 5.0D + (eS + 8.0D) * (rngStr + 64) / 64.0D; //5 + (range+pmods+attackBonus+voidBonus+8) * ( rangeStr +64) / 64
 
 		if (player.getSpecialAttack().isInitialized()) {
 			base = (int) (base * getRangedSpecialModifier(player));

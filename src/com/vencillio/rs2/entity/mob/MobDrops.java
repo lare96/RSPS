@@ -417,14 +417,17 @@ public class MobDrops {
 		}
 
 		if (drops == null) {
+			System.out.println("drops are null");
 			return;
 		}
 
 		if ((drops.getConstant() != null) && (drops.getConstant().getDrops() != null)) {
+			System.out.println("mob id(has constants): " +mob.getId());
 			dropConstants(entity, mob, drops.getConstant(), dropLocation);
 		}
 
 		if (!drop) {
+			System.out.println("drop false mob max hp 0");
 			return;
 		}
 		
@@ -433,6 +436,7 @@ public class MobDrops {
 		}
 
 		if ((drops.getCommon() == null) || (drops.getCommon().getDrops() == null)) {
+			System.out.println("get common null");
 			return;
 		}
 
@@ -443,10 +447,12 @@ public class MobDrops {
 		boolean hasRare = (drops.getRare() != null) && (drops.getRare().getDrops() != null) && (drops.getRare().getDrops().length > 0);
 
 		if ((rares) && (hasRare) && (rollRareDrop(entity, mob, drops.getRare(), rtMod, dropLocation))) {
+			System.out.println("rares: " + rares + " hasrare: " + hasRare);
 			return;
 		}
 
-		for (int i = 0; i < amount; i++) {
+		for (int i = 0; i < amount; i++) { //Does this once so either uncommon if there is one otherwise 1 common
+			System.out.println("hasUncommon: " + hasUncommon + " ucTable: " + ucTable + " hascommon: " + hasCommon);
 			if ((hasUncommon) && (ucTable))
 				drop(entity, mob, drops.getUncommon(), dropLocation);
 			else if (hasCommon)

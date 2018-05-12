@@ -1,14 +1,14 @@
 package com.vencillio.rs2.entity.mob.impl.wild;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vencillio.core.util.Utility;
-import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
+import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.mob.Mob;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Handles the Scorpia boss
@@ -76,6 +76,7 @@ public class Scorpia extends Mob {
 			Mob mob = new Mob(6617, true, new Location(getX() + index, getY(), getZ()));
 			mob.getFollowing().setFollow(this);
 			mob.getUpdateFlags().faceEntity(getIndex());
+			mob.getCombat().setAttack(this.getCombat().getAttacking());
 			guardians.add(mob);
 		}
 	}

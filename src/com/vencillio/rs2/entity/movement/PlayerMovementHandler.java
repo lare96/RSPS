@@ -36,7 +36,7 @@ public class PlayerMovementHandler extends MovementHandler {
 
 	@Override
 	public void process() {
-		if ((player.isDead()) || (player.isFrozen())  || (player.isStunned()) || (player.getMagic().isTeleporting()) || ((player.getDueling().isDueling()) && player.getDueling().getRuleToggle()[DuelingConstants.NO_MOVEMENT])) {
+		if ((player.isDead()) || (player.isFrozen())  || (player.isStunned()) || (player.getMagic().isTeleporting()) || ((player.getDueling().isDueling()) && player.getDueling().getRuleToggle()[DuelingConstants.NO_MOVEMENT]) || player.getAttributes().get("lock_follow") != null) {
 			reset();
 			return;
 		}
