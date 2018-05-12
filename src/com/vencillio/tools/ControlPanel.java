@@ -321,14 +321,14 @@ public class ControlPanel extends JFrame {
 				.append("<br/>Inventory contains: <br/>");
 				for (Item item : player.getInventory().getItems()) {
 					if (item != null) {
-						sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append("<br/>");
+						sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append(" ea.<br/>");
 					}
 				}
 				sb.append("</html>");
 				JDialog inventoryInfo = new JDialog();
 				invData.setText(sb.toString());
 				inventoryInfo.add(invData);
-				inventoryInfo.setSize(300,300);
+				inventoryInfo.setSize(400,300);
 				inventoryInfo.setVisible(true);
 			}
 		});

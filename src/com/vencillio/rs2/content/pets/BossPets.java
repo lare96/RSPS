@@ -112,7 +112,8 @@ public class BossPets {
 		player.setBossID(data.npcID);
 		player.getUpdateFlags().sendAnimation(new Animation(827));
 		player.face(player.getBossPet());
-		
+		petEffect(player);
+
 
 		if (loot) {
 			AchievementHandler.activateAchievement(player, AchievementList.OBTAIN_1_BOSS_PET, 1);
@@ -126,8 +127,6 @@ public class BossPets {
 	/**
 	 * Handles picking up the pet
 	 * @param player
-	 * @param npcID
-	 * @return
 	 */
 	public static boolean pickupPet(Player player, Mob mob) {
 		if (mob == null || World.getNpcs()[mob.getIndex()] == null) {
@@ -176,6 +175,28 @@ public class BossPets {
 		});		
 		
 		return true;
+	}
+
+	private static void petEffect(Player player) {
+
+			TaskQueue.queue(new Task(20) { //Restore 1 hp / 20 ticks (12 sec)
+				@Override
+				public void execute() {
+					if(player.getBossPet() == null) {
+						stop();
+						return;
+					}
+					if (player.getLevels()[3] < player.getMaxLevels()[3]) {
+						player.getLevels()[3] += 1;
+						player.getSkill().update(3);
+					}
+				}
+
+				@Override
+				public void onStop() {
+
+				}
+			});
 	}
 	
 	/**
