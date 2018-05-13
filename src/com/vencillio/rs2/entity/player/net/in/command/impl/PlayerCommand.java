@@ -164,8 +164,15 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "wealth":
+				Player tmp;
+				if(PlayerConstants.isOwner(player) && parser.hasNext()) {
+					tmp = World.getPlayerByName(parser.nextString());
+				}
+				else {
+					tmp = player;
+				}
 				double total = 0;
-				for (Item item : player.getInventory().getItems()) {
+				for (Item item : tmp.getInventory().getItems()) {
 					if (item != null) {
 						int itemAmount = item.getAmount();
 //						System.out.println(item.getName() + " : " + item.getDefinition().getGeneralPrice()+ " : "+itemAmount);
@@ -173,7 +180,7 @@ public class PlayerCommand implements Command {
 					}
 				}
 
-				for (Item item : player.getBank().getItems()) {
+				for (Item item : tmp.getBank().getItems()) {
 					if (item != null) {
 						int itemAmount = item.getAmount();
 //						System.out.println(item.getName() + " : " + item.getDefinition().getGeneralPrice()+ " : "+itemAmount +
@@ -182,14 +189,14 @@ public class PlayerCommand implements Command {
 						total += (long) item.getDefinition().getGeneralPrice() * (long) itemAmount;
 					}
 				}
-				for (Item item : player.getEquipment().getItems()) {
+				for (Item item : tmp.getEquipment().getItems()) {
 					if (item != null) {
 						int itemAmount = item.getAmount();
 //						System.out.println(item.getName() + " : " + item.getDefinition().getGeneralPrice() + " : " + itemAmount);
 						total += (long) item.getDefinition().getGeneralPrice() * (long) itemAmount;
 					}
 				}
-				total += player.getMoneyPouch();
+				total += tmp.getMoneyPouch();
 				DecimalFormat numberFormat = new DecimalFormat("#.00");
 				numberFormat.setRoundingMode(RoundingMode.DOWN);
 				String str;
@@ -208,7 +215,7 @@ public class PlayerCommand implements Command {
 				} else
 					str = "";
 
-				player.getUpdateFlags().sendForceMessage("<img=3>My total wealth is " + NumberFormat.getNumberInstance(Locale.US).format(total) + " (" + str + ")");
+				tmp.getUpdateFlags().sendForceMessage("<img=3>My total wealth is " + NumberFormat.getNumberInstance(Locale.US).format(total) + " (" + str + ")");
 				return true;
 
 			case "playtime":

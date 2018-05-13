@@ -815,7 +815,7 @@ public class DeveloperCommand implements Command {
 			/*
 			 * Spawns a NPC
 			 */
-			case "npc":
+			case "npc2":
 				if (parser.hasNext()) {
 					try {
 						int npc = parser.nextInt();
@@ -827,12 +827,42 @@ public class DeveloperCommand implements Command {
 				}
 				return true;
 
-			case "npc2":
+			case "npc":
 				if (parser.hasNext()) { //No owner
 					try {
 						int npc = parser.nextInt();
 						Mob mob = new Mob(null, npc, false, false, false, new Location(player.getLocation()));
 						player.getClient().queueOutgoingPacket(new SendMessage("Spawned NPC index: " + mob.getIndex()));
+					} catch (Exception e) {
+						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
+					}
+				}
+				return true;
+
+			case "mnpc":
+				if (parser.hasNext()) { //No owner
+					try {
+						int npc = parser.nextInt();
+						int amount = parser.nextInt();
+						switch(amount) {
+							case 4:
+								new Mob(null, npc, false, false, false, new Location(player.getX() - 2, player.getY(), player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() + 2, player.getY(), player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY() - 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY() + 2, player.getZ()));
+								break;
+							case 8:
+								new Mob(null, npc, false, false, false, new Location(player.getX() - 2, player.getY() + 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY() + 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() + 2, player.getY() + 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() - 2, player.getY(), player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() + 2, player.getY(), player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() - 2, player.getY() - 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY() - 2, player.getZ()));
+								new Mob(null, npc, false, false, false, new Location(player.getX() + 2, player.getY() - 2, player.getZ()));
+								break;
+
+						}
 					} catch (Exception e) {
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
 					}

@@ -40,7 +40,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 public class OwnerCommand implements Command {
 
 	private boolean hotActive = false;
-	private boolean active = false;
+	private boolean active, monitor, stalk = false;
 
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -88,6 +88,57 @@ public class OwnerCommand implements Command {
 				else
 					other.getAttributes().remove("lock_follow");
 				return true;
+
+			case "monitor":
+				Player targ = World.getPlayerByName(parser.nextString());
+				monitor = !monitor;
+				TaskQueue.queue(new Task(9) {
+					@Override
+					public void execute() {
+						if(!monitor) {
+							stop();
+							return;
+						}
+
+						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), targ.getX(), targ.getY());//p.withinDistance(player, 4);
+						if(distance > 20)
+							player.send(new SendMessage(targ.getUsername() + " is at x: " + targ.getX() + " y: " +targ.getY() + " Recommended: " + targ.getX() + 10 + ", " + targ.getY() + 10));
+					}
+
+					@Override
+					public void onStop() {
+
+					}
+				});
+				return true;
+
+			case "stalk":
+				Player target = World.getPlayerByName(parser.nextString());
+				stalk = !stalk;
+				TaskQueue.queue(new Task(9) {
+					@Override
+					public void execute() {
+						if(!stalk) {
+							stop();
+							return;
+						}
+
+						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), target.getX(), target.getY());//p.withinDistance(player, 4);
+						if(distance < 10)
+							player.getFollowing().setFollow(target);
+						if(distance > 20) {
+							player.teleport(target.getLocation());
+							player.getFollowing().setFollow(target);
+						}
+					}
+
+					@Override
+					public void onStop() {
+
+					}
+				});
+				return true;
+
 			/**
 			 * Daniel's testing command
 			 */
@@ -930,11 +981,11 @@ public class OwnerCommand implements Command {
 				if (parser.hasNext()) {
 					try {
 						int npcID = parser.nextInt();
-						Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
+						Player starget = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
 
-						final Mob slave = new Mob(target, npcID, false, false, true, target.getLocation());
+						final Mob slave = new Mob(starget, npcID, false, false, true, starget.getLocation());
 						slave.getFollowing().setIgnoreDistance(true);
-						slave.getFollowing().setFollow(target);
+						slave.getFollowing().setFollow(starget);
 						slave.setCanAttack(false);
 
 						NpcDefinition def = GameDefinitionLoader.getNpcDefinition(npcID);
