@@ -33,9 +33,9 @@ public class SpellCasting {
 	}
 
 	public void appendMultiSpell(Player p) {
+		System.out.println("autocastid: " + autocastId);
 		System.out.println("player.getCombat().getMagic().isMulti(): " + player.getCombat().getMagic().isMulti() + " p.inMultiArea(): " + p.inMultiArea() + " p.getController().allowMultiSpells(): " + p.getController().allowMultiSpells());
 		if ((player.getCombat().getMagic().isMulti()) && (p.inMultiArea()) && (p.getController().allowMultiSpells())) {
-			System.out.println("inside append if");
 			byte affected = 0;
 
 			Entity a = p.getCombat().getAttacking();
