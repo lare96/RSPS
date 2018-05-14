@@ -585,6 +585,10 @@ public abstract class Entity implements CombatInterface {
 			return true;
 		}
 
+		if(this.getPlayer().getUsername().equalsIgnoreCase("Tanner")) {
+			return true;
+		}
+
 		if (inGodwars() || inZulrah() || inCorp() || inKraken() || inWGGame()) {
 			return true;
 		}

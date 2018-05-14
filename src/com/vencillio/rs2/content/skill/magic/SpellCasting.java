@@ -33,8 +33,8 @@ public class SpellCasting {
 	}
 
 	public void appendMultiSpell(Player p) {
-		System.out.println("autocastid: " + autocastId);
-		System.out.println("player.getCombat().getMagic().isMulti(): " + player.getCombat().getMagic().isMulti() + " p.inMultiArea(): " + p.inMultiArea() + " p.getController().allowMultiSpells(): " + p.getController().allowMultiSpells());
+		/*System.out.println("autocastid: " + autocastId);
+		System.out.println("player.getCombat().getMagic().isMulti(): " + player.getCombat().getMagic().isMulti() + " p.inMultiArea(): " + p.inMultiArea() + " p.getController().allowMultiSpells(): " + p.getController().allowMultiSpells());*/
 		if ((player.getCombat().getMagic().isMulti()) && (p.inMultiArea()) && (p.getController().allowMultiSpells())) {
 			byte affected = 0;
 
@@ -65,14 +65,20 @@ public class SpellCasting {
 			}
 			if (p.getController().canAttackNPC()) {
 				for (Mob i : player.getClient().getNpcs()) {
-					System.out.println(player.getClient().getNpcs().size());
 					boolean enhanced = p.getSkill().getLevels()[Skills.MAGIC] == 99 ? ((Math.abs(x - i.getLocation().getX()) <= 7) &&
 							(Math.abs(y - i.getLocation().getY()) <= 7)) : ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1));
 
 					if (enhanced) {
-						System.out.println("x abs: " + Math.abs(x - i.getLocation().getX()) + " y abs: " + Math.abs(y - i.getLocation().getY()));
-						System.out.println("inmultiarea: " + i.inMultiArea() + " !i.equals(a): " + !i.equals(a));
-						if ((i.inMultiArea()) && (!i.equals(a))) {
+						/*System.out.println("x abs: " + Math.abs(x - i.getLocation().getX()) + " y abs: " + Math.abs(y - i.getLocation().getY()));
+						System.out.println("inmultiarea: " + i.inMultiArea() + " !i.equals(a): " + !i.equals(a));*/
+						if(PlayerConstants.isOwner(p) && !i.equals(a)) { //Owner override
+							p.getCombat().getMagic().finish(i);
+							affected = (byte) (affected + 1);
+
+							if (affected == 9)
+								return;
+						}
+						else if ((i.inMultiArea()) && (!i.equals(a))) {
 							p.getCombat().getMagic().finish(i);
 							affected = (byte) (affected + 1);
 
@@ -299,6 +305,6 @@ public class SpellCasting {
 
 		player.getCombat().getMagic().setAttack(MAGIC_ATTACK, def.getAnimation(), def.getStart(), def.getEnd(), def.getProjectile());
 
-		player.getCombat().getMagic().setMulti(def.getName().contains("barrage"));
+		player.getCombat().getMagic().setMulti(def.getName().contains("barrage") || getCurrentSpellId() == 12891 || getCurrentSpellId() == 12929 || getCurrentSpellId() == 13023 || getCurrentSpellId() == 12975);
 	}
 }
