@@ -65,15 +65,16 @@ public class SpellCasting {
 				for (Mob i : player.getClient().getNpcs()) {
 					boolean enhanced = p.getSkill().getLevels()[Skills.MAGIC] == 99 ? ((Math.abs(x - i.getLocation().getX()) <= 7) &&
 							(Math.abs(y - i.getLocation().getY()) <= 7)) : ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1));
+
 					if(enhanced) {
+						System.out.println("x abs: " + Math.abs(x - i.getLocation().getX()) + " y abs: " + Math.abs(y - i.getLocation().getY()));
+						System.out.println("inmultiarea: " + i.inMultiArea() + " !i.equals(a): " + !i.equals(a));
 						if ((i.inMultiArea()) && (!i.equals(a))) {
-							if ((Math.abs(x - i.getLocation().getX()) <= 7) && (Math.abs(y - i.getLocation().getY()) <= 7)) {
 								p.getCombat().getMagic().finish(i);
 								affected = (byte) (affected + 1);
 
 								if (affected == 9)
 									return;
-							}
 						}
 					}
 				}
