@@ -844,7 +844,6 @@ public class DeveloperCommand implements Command {
 					try {
 						int npc = parser.nextInt();
 						int amount = parser.nextInt();
-						System.out.println("npc: " + npc + " amount:" + amount);
 						switch(amount) {
 							case 4:
 								new Mob(null, npc, false, false, false, new Location(player.getX() - 2, player.getY(), player.getZ()));
@@ -864,7 +863,7 @@ public class DeveloperCommand implements Command {
 								break;
 						}
 					} catch (Exception e) {
-						System.out.println(e.getMessage());
+						e.printStackTrace();
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
 					}
 				}
