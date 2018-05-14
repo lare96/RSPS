@@ -861,10 +861,6 @@ public class DeveloperCommand implements Command {
 								new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY() - 2, player.getZ()));
 								new Mob(null, npc, false, false, false, new Location(player.getX() + 2, player.getY() - 2, player.getZ()));
 								break;
-							default:
-								player.send(new SendMessage("Incorrect amount"));
-								break;
-
 						}
 					} catch (Exception e) {
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
