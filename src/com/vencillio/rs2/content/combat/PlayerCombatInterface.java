@@ -526,6 +526,10 @@ public class PlayerCombatInterface implements CombatInterface {
 			player.getMagic().getSpellCasting().updateMagicAttack();
 			player.updateCombatType();
 		}
+
+		if(player.getCombat().getCombatType() == CombatTypes.MAGIC && player.getMagic().getSpellCasting().isAutocasting()) {
+			player.getMagic().getSpellCasting().updateMagicAttack();
+		}
 	}
 
 	@Override

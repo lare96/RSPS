@@ -305,7 +305,6 @@ public class SpellCasting {
 
 		player.getCombat().getMagic().setAttack(MAGIC_ATTACK, def.getAnimation(), def.getStart(), def.getEnd(), def.getProjectile());
 
-		System.out.println("getCurrentSpellId: " + getCurrentSpellId());
 		player.getCombat().getMagic().setMulti(def.getName().contains("barrage") || getCurrentSpellId() == 12891 || getCurrentSpellId() == 12929 || getCurrentSpellId() == 13023 || getCurrentSpellId() == 12975);
 	}
 }
