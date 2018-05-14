@@ -4,6 +4,8 @@ import com.vencillio.core.cache.map.ObjectDef;
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.definitions.NpcCombatDefinition;
 import com.vencillio.core.definitions.NpcDefinition;
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.content.io.PlayerSaveUtil;
@@ -69,6 +71,7 @@ public class ControlPanel extends JFrame {
 	private JTextField announcementsTextField;
 	public PrintStream SYSTEM_OUT = null;
 	public JScrollPane CONSOL_SCROLLER, jScrollPane4;
+	private boolean dialogClosed = true;
 
 	public static void init() {
 		EventQueue.invokeLater(new Runnable() {
@@ -314,22 +317,75 @@ public class ControlPanel extends JFrame {
 			JLabel invData = new JLabel();
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int player2freeslots = player.getInventory().getFreeSlots();
-				int player2usedslots = 28 - player2freeslots;
-				StringBuilder sb = new StringBuilder();
-				sb.append("<html><br>").append(player.getUsername()).append(" has used ").append(player2usedslots).append(" slots; Free: ").append( player2freeslots).append(" inventory slots.")
-				.append("<br/>Inventory contains: <br/>");
-				for (Item item : player.getInventory().getItems()) {
-					if (item != null) {
-						sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append(" ea.<br/>");
+				TaskQueue.queue(new Task(25) { //Every 15 sec
+					@Override
+					public void execute() {
+						if(dialogClosed)
+							stop();
+
+						int player2freeslots = player.getInventory().getFreeSlots();
+						int player2usedslots = 28 - player2freeslots;
+						StringBuilder sb = new StringBuilder();
+						sb.append("<html><br>").append(player.getUsername()).append(" has used ").append(player2usedslots).append(" slots; Free: ").append( player2freeslots).append(" inventory slots.")
+								.append("<br/>Inventory contains: <br/>");
+						for (Item item : player.getInventory().getItems()) {
+							if (item != null) {
+								sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append(" ea.<br/>");
+							}
+						}
+						sb.append("</html>");
+						invData.setText(sb.toString());
 					}
-				}
-				sb.append("</html>");
+
+					@Override
+					public void onStop() {
+
+					}
+				});
+
 				JDialog inventoryInfo = new JDialog();
-				invData.setText(sb.toString());
 				inventoryInfo.add(invData);
-				inventoryInfo.setSize(400,300);
+				inventoryInfo.setSize(400,500);
+				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
+
+				inventoryInfo.addWindowListener(new WindowListener() {
+					@Override
+					public void windowOpened(WindowEvent e) {
+						dialogClosed = false;
+					}
+
+					@Override
+					public void windowClosing(WindowEvent e) {
+
+					}
+
+					@Override
+					public void windowClosed(WindowEvent e) {
+						dialogClosed = true;
+
+					}
+
+					@Override
+					public void windowIconified(WindowEvent e) {
+
+					}
+
+					@Override
+					public void windowDeiconified(WindowEvent e) {
+
+					}
+
+					@Override
+					public void windowActivated(WindowEvent e) {
+
+					}
+
+					@Override
+					public void windowDeactivated(WindowEvent e) {
+
+					}
+				});
 			}
 		});
 

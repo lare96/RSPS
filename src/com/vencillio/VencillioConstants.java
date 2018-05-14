@@ -15,7 +15,7 @@ public class VencillioConstants {
 	/**
 	 * Checks if in development mode
 	 */
-	public static boolean DEV_MODE = false;
+	public static boolean DEV_MODE = true;
 
 	/**
 	 * Walking check

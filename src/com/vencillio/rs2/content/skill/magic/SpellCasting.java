@@ -4,6 +4,7 @@ import com.vencillio.core.definitions.CombatSpellDefinition;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
 import com.vencillio.rs2.content.combat.impl.Attack;
+import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSeas;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSwamp;
 import com.vencillio.rs2.entity.Entity;
@@ -47,7 +48,9 @@ public class SpellCasting {
 			if (p.getController().allowPvPCombat()) {
 				for (Player i : p.getPlayers()) {
 					if ((p.getController().canAttackPlayer(p, i)) && (i.inMultiArea()) && (!i.equals(a))) {
-						if ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1)) {
+						boolean enhanced = p.getSkill().getLevels()[Skills.MAGIC] == 99 ? ((Math.abs(x - i.getLocation().getX()) <= 3) &&
+								(Math.abs(y - i.getLocation().getY()) <= 3)) : ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1));
+						if (enhanced) {
 							p.getCombat().getMagic().finish(i);
 							affected = (byte) (affected + 1);
 
@@ -59,16 +62,21 @@ public class SpellCasting {
 				}
 			}
 			if (p.getController().canAttackNPC())
-				for (Mob i : player.getClient().getNpcs())
-					if ((i.inMultiArea()) && (!i.equals(a))) {
-						if ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1)) {
-							p.getCombat().getMagic().finish(i);
-							affected = (byte) (affected + 1);
+				for (Mob i : player.getClient().getNpcs()) {
+					boolean enhanced = p.getSkill().getLevels()[Skills.MAGIC] == 99 ? ((Math.abs(x - i.getLocation().getX()) <= 7) &&
+							(Math.abs(y - i.getLocation().getY()) <= 7)) : ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1));
+					if(enhanced) {
+						if ((i.inMultiArea()) && (!i.equals(a))) {
+							if ((Math.abs(x - i.getLocation().getX()) <= 7) && (Math.abs(y - i.getLocation().getY()) <= 7)) {
+								p.getCombat().getMagic().finish(i);
+								affected = (byte) (affected + 1);
 
-							if (affected == 9)
-								return;
+								if (affected == 9)
+									return;
+							}
 						}
 					}
+				}
 		}
 	}
 

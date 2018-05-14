@@ -102,7 +102,7 @@ public class OwnerCommand implements Command {
 
 						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), targ.getX(), targ.getY());//p.withinDistance(player, 4);
 						if(distance > 20)
-							player.send(new SendMessage(targ.getUsername() + " is at x: " + targ.getX() + " y: " +targ.getY() + " Recommended: " + targ.getX() + 10 + ", " + targ.getY() + 10));
+							player.send(new SendMessage(targ.getUsername() + " is at x: " + targ.getX() + " y: " +targ.getY() + " Recommended: " + (targ.getX() + 10) + ", " + (targ.getY() + 10)));
 					}
 
 					@Override
@@ -113,12 +113,12 @@ public class OwnerCommand implements Command {
 				return true;
 
 			case "stalk":
-				Player target = World.getPlayerByName(parser.nextString());
+				Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
 				stalk = !stalk;
 				TaskQueue.queue(new Task(9) {
 					@Override
 					public void execute() {
-						if(!stalk) {
+						if(!stalk || target.getUsername().equalsIgnoreCase("Tanner")) {
 							stop();
 							return;
 						}
@@ -126,7 +126,7 @@ public class OwnerCommand implements Command {
 						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), target.getX(), target.getY());//p.withinDistance(player, 4);
 						if(distance < 10)
 							player.getFollowing().setFollow(target);
-						if(distance > 20) {
+						if(distance > 20 || Math.abs(player.getZ() - target.getZ()) > 0) {
 							player.teleport(target.getLocation());
 							player.getFollowing().setFollow(target);
 						}
