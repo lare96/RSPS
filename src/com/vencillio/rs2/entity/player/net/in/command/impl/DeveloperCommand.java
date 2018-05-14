@@ -863,6 +863,7 @@ public class DeveloperCommand implements Command {
 								break;
 							default:
 								player.send(new SendMessage("Incorrect amount"));
+								break;
 
 						}
 					} catch (Exception e) {
