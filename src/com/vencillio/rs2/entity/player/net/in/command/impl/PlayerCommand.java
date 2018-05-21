@@ -514,7 +514,16 @@ public class PlayerCommand implements Command {
 				player.send(new SendMessage("You cannot teleport above 20 wilderness!"));
 				return true;
 			}
-			player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
+			if(PlayerConstants.isOwner(player)) {
+				Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
+				if(target != player)
+					target.getMagic().teleport(3087, 3492, 0, TeleportTypes.TELE_OTHER);
+				else
+					player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
+			}
+			else {
+				player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
+			}
 			return true;
 
 /*		case "bsf815s":

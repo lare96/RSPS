@@ -523,6 +523,10 @@ public class WalkToActions {
 						case 315:// Emblem trader
 							player.getShopping().open(BountyShop.SHOP_ID);
 							break;
+						case 2183:
+						case 2184:
+							player.getShopping().open(4); //Tokkul shop
+							break;
 						case 5419:// Exchange agent
 							player.start(new OptionDialogue("Edit shop description (100k).", p -> {
 								player.setEnterXInterfaceId(55776);

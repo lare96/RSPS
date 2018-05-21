@@ -74,7 +74,6 @@ public class DeveloperCommand implements Command {
 			case "fuckingtits":
 				player.send(new SendMessage("<col=241241>FUCKING </col> TITS"));
 				return true;
-
 			case "posion":
 				player.hit(new Hit(5, HitTypes.POISON));
 				return true;
@@ -775,7 +774,8 @@ public class DeveloperCommand implements Command {
 				if (parser.hasNext()) {
 					try {
 						int id = parser.nextInt();
-						player.getShopping().open(id);
+						Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
+						target.getShopping().open(id);
 					} catch (Exception e) {
 						player.getClient().queueOutgoingPacket(new SendMessage("Invalid format!"));
 					}

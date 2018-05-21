@@ -95,6 +95,7 @@ public class MobDrops {
 			Item item = new Item(drop.getId(), calculateAmount(drop));
 
 			if (!entity.isNpc()) {
+				System.out.println("Item general price: " + item.getDefinition().getGeneralPrice());
 				if (item.getDefinition().getGeneralPrice() >= 1_000_000) {
 					PlayerLogger.DROP_LOGGER.log(entity.getPlayer().getUsername(), String.format("%s has recieved %s %s from %s.", Utility.formatPlayerName(entity.getPlayer().getUsername()), item.getAmount(), item.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
 					AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_RARE_DROPS, 1);

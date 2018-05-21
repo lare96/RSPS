@@ -67,7 +67,7 @@ public class Lottery {
 			return;
 		}
 		
-		if (!player.getInventory().hasItemAmount(995, ENTRY_PRICE) || player.getMoneyPouch() < ENTRY_PRICE) {
+		if (!player.getInventory().hasItemAmount(995, ENTRY_PRICE) && player.getMoneyPouch() < ENTRY_PRICE) {
 			DialogueManager.sendStatement(player, "You need " + Utility.format(ENTRY_PRICE) + " coins to enter the lottery!");
 			return;
 		}
