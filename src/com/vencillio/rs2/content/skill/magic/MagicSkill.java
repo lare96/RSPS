@@ -548,22 +548,22 @@ public class MagicSkill {
 
 		switch (runeId) {
 		case 556:
-			if ((wep == 1381) || (wep == 1397) || (wep == 17293)) {
+			if ((wep == 1381) || (wep == 1397) || (wep == 17293) || (wep == 11998)) {
 				return false;
 			}
 			return true;
 		case 554:
-			if ((wep == 1387) || (wep == 1393) || (wep == 17293)) {
+			if ((wep == 1387) || (wep == 1393) || (wep == 17293) || (wep == 11787) || (wep == 3053) || (wep == 11998)) {
 				return false;
 			}
 			return true;
 		case 555:
-			if ((wep == 1383) || (wep == 1395) || (wep == 17293) || ((shield != null) && (shield.getId() == 18346))) {
+			if ((wep == 1383) || (wep == 1395) || (wep == 17293) || ((shield != null) && (shield.getId() == 18346)) || (wep == 11787) || (wep == 6562)) {
 				return false;
 			}
 			return true;
 		case 557:
-			if ((wep == 1385) || (wep == 1399) || (wep == 17293)) {
+			if ((wep == 1385) || (wep == 1399) || (wep == 17293) || (wep == 3053)) {
 				return false;
 			}
 			return true;

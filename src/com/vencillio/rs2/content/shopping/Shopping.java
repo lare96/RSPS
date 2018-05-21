@@ -356,7 +356,7 @@ public class Shopping {
 
 				player.getClient().queueOutgoingPacket(new SendMessage("["+ShopConstants.COLOUR+"*</col>] "+ShopConstants.COLOUR+"" + itemName + "</col>: currently costs "+ShopConstants.COLOUR+"" + price + "</col> " + coin + "."));
 			} else {
-				player.getClient().queueOutgoingPacket(new SendMessage("["+ShopConstants.COLOUR+"*</col>] "+ShopConstants.COLOUR+"" + itemName + "</col>: currentky costs "+ShopConstants.COLOUR+"" + value + "</col> " + Shop.getShops()[((int) shopId)].getCurrencyName() + "."));
+				player.getClient().queueOutgoingPacket(new SendMessage("["+ShopConstants.COLOUR+"*</col>] "+ShopConstants.COLOUR+"" + itemName + "</col>: currently costs "+ShopConstants.COLOUR+"" + value + "</col> " + Shop.getShops()[((int) shopId)].getCurrencyName() + "."));
 			}
 		} else {
 			String price = "" + value;

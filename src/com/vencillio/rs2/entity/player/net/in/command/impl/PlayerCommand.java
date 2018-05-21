@@ -140,8 +140,18 @@ public class PlayerCommand implements Command {
 							player.send(new SendMessage(donations[0].message));
 							return;
 						}
-						for (Donation donate : donations) {
-							player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+						if(player.getInventory().getFreeSlots() == 0) {
+							player.send(new SendMessage("Your inventory was full so the credit voucher has been sent to your bank."));
+
+							for (Donation donate : donations) {
+								//player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+								player.getBank().add(new Item(donate.product_id, donate.product_amount));
+							}
+						}
+						else {
+							for (Donation donate : donations) {
+								player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+							}
 						}
 						player.send(new SendMessage("Thank you for donating!"));
 					} catch (Exception e) {

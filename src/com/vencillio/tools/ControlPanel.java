@@ -345,7 +345,7 @@ public class ControlPanel extends JFrame {
 
 				JDialog inventoryInfo = new JDialog();
 				inventoryInfo.add(invData);
-				inventoryInfo.setSize(400,500);
+				inventoryInfo.setPreferredSize(new Dimension(400,500));
 				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
 

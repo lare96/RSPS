@@ -297,8 +297,9 @@ public class OwnerCommand implements Command {
 				hotActive = true;
 				healAmount = parser.hasNext() ? parser.nextInt() : 10;
 				maxDistance = parser.hasNext() ? parser.nextInt() : 10;
+				int tick = parser.hasNext() ? parser.nextInt() : 9;
 
-				TaskQueue.queue(new Task(9) {
+				TaskQueue.queue(new Task(tick) {
 
 						@Override
 						public void execute() {
