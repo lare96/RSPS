@@ -257,7 +257,7 @@ public class PlayerCombatInterface implements CombatInterface {
 	}
 
 	@Override
-	public void hit(Hit hit) {
+	public void hit(Hit hit) { //Potential to add in dmg reduction here?
 		if (!player.canTakeDamage() || player.isImmuneToHit() || player.getMagic().isTeleporting() && !player.getController().isSafe(player)) {
 			return;
 		}
@@ -268,6 +268,13 @@ public class PlayerCombatInterface implements CombatInterface {
 
 		if (player.isDead()) {
 			hit.setDamage(0);
+		}
+
+		int torsoID = 300, legsID = 301;
+		System.out.println("hit getAttacker: " + hit.getAttacker().toString() + "hit: " + hit.getDamage());
+		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT))
+		{
+
 		}
 
 		if (hit.getAttacker() != null) {
