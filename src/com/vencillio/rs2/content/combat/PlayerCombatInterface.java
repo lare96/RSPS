@@ -257,7 +257,7 @@ public class PlayerCombatInterface implements CombatInterface {
 	}
 
 	@Override
-	public void hit(Hit hit) { //Potential to add in dmg reduction here?
+	public void hit(Hit hit) { //Potential to add in dmg reduction here? player = the one taking the hit
 		if (!player.canTakeDamage() || player.isImmuneToHit() || player.getMagic().isTeleporting() && !player.getController().isSafe(player)) {
 			return;
 		}
@@ -270,11 +270,13 @@ public class PlayerCombatInterface implements CombatInterface {
 			hit.setDamage(0);
 		}
 
-		int torsoID = 300, legsID = 301;
-		System.out.println("hit getAttacker: " + hit.getAttacker().toString() + "hit: " + hit.getDamage() + "player: " + player.getUsername());
-		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT))
+		int torsoID = 8839, legsID = 8840;
+		//System.out.println("hit getAttacker: " + hit.getAttacker().toString() + "hit: " + hit.getDamage() + "player: " + player.getUsername());
+		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) || player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT))
 		{
-
+			System.out.println("hit b4: " + hit.getDamage());
+			hit.setDamage((int) (hit.getDamage() * .5));
+			System.out.println("hit after: " + hit.getDamage());
 		}
 
 		if (hit.getAttacker() != null) {
