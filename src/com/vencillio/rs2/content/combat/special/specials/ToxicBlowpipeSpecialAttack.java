@@ -16,6 +16,7 @@ public class ToxicBlowpipeSpecialAttack implements Special {
 	
 	@Override
 	public boolean checkRequirements(Player player) {
+		System.out.println("In check reqs blowpipe");
 		if (player.getToxicBlowpipe().getBlowpipeAmmo() == null) {
 			return false;
 		}
