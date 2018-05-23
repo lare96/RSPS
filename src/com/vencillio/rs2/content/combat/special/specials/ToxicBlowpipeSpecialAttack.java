@@ -25,6 +25,7 @@ public class ToxicBlowpipeSpecialAttack implements Special {
 		if (player.getToxicBlowpipe().getBlowpipeCharge() <= 0) {
 			return false;
 		}
+		System.out.println("Returned true");
 		return true;
 	}
 
