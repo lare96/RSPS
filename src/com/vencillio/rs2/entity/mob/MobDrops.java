@@ -95,13 +95,12 @@ public class MobDrops {
 			Item item = new Item(drop.getId(), calculateAmount(drop));
 
 			if (!entity.isNpc()) {
-				System.out.println("Item general price: " + item.getDefinition().getGeneralPrice());
 				if (item.getDefinition().getGeneralPrice() >= 1_000_000) {
-					PlayerLogger.DROP_LOGGER.log(entity.getPlayer().getUsername(), String.format("%s has recieved %s %s from %s.", Utility.formatPlayerName(entity.getPlayer().getUsername()), item.getAmount(), item.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
+					PlayerLogger.DROP_LOGGER.log(entity.getPlayer().getUsername(), String.format("%s has received %s %s from %s.", Utility.formatPlayerName(entity.getPlayer().getUsername()), item.getAmount(), item.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
 					AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_RARE_DROPS, 1);
 					World.sendGlobalMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " received a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".");
 				} else {
-					World.sendRegionMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " recieved a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());					
+					World.sendRegionMessage("<col=1F8C26>" + entity.getPlayer().getUsername() + " received a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());
 				}
 			}
 
@@ -441,7 +440,7 @@ public class MobDrops {
 			return;
 		}
 
-		boolean ucTable = random.nextInt(100) <= ucRoll;
+		boolean ucTable = random.nextInt(100) <= ucRoll; //10% Uncommon table chance
 
 		boolean hasCommon = (drops.getCommon() != null) && (drops.getCommon().getDrops() != null) && (drops.getCommon().getDrops().length > 0);
 		boolean hasUncommon = (drops.getUncommon() != null) && (drops.getUncommon().getDrops() != null) && (drops.getUncommon().getDrops().length > 0);
@@ -640,6 +639,12 @@ public class MobDrops {
 							AchievementHandler.activateAchievement(e.getPlayer(), AchievementList.OBTAIN_10_BOSS_PET, 1);
 						}
 					} else {
+						if (drop.getDefinition().getGeneralPrice() >= 1_000_000) {
+							PlayerLogger.DROP_LOGGER.log(e.getPlayer().getUsername(), String.format("%s has received %s %s from %s.", Utility.formatPlayerName(e.getPlayer().getUsername()), drop.getAmount(), drop.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
+							AchievementHandler.activateAchievement(e.getPlayer(), AchievementList.OBTAIN_10_RARE_DROPS, 1);
+							World.sendGlobalMessage("<col=1F8C26>" + e.getPlayer().getUsername() + " received a drop: " + Utility.format(drop.getAmount()) + " x " + drop.getDefinition().getName() + ".");
+						}
+
 						GroundItemHandler.add(drop, dropLocation, p, p.ironPlayer() ? p : null);
 					}
 				}

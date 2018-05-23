@@ -1,42 +1,8 @@
 package com.vencillio.rs2.content.combat.special;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.rs2.content.combat.impl.CombatEffect;
-import com.vencillio.rs2.content.combat.special.effects.AbyssalTentacleEffect;
-import com.vencillio.rs2.content.combat.special.effects.AbyssalWhipEffect;
-import com.vencillio.rs2.content.combat.special.effects.BandosGodswordEffect;
-import com.vencillio.rs2.content.combat.special.effects.BarrelchestAnchorEffect;
-import com.vencillio.rs2.content.combat.special.effects.DragonScimitarEffect;
-import com.vencillio.rs2.content.combat.special.effects.DragonSpearEffect;
-import com.vencillio.rs2.content.combat.special.effects.SaradominGodswordEffect;
-import com.vencillio.rs2.content.combat.special.effects.ToxicBlowpipeEffect;
-import com.vencillio.rs2.content.combat.special.effects.ZamorakianHastaEffect;
-import com.vencillio.rs2.content.combat.special.effects.ZamorakianSpearEffect;
-import com.vencillio.rs2.content.combat.special.specials.AbyssalTentacleSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.AbyssalWhipSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.AnchorSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ArmadylCrossbowSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ArmadylGodswordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.BandosGodswordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DarkBowSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonClawsSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonDaggerSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonHalberdSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonLongswordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonMaceSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonScimitarSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.DragonSpearSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.GraniteMaulSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.MagicShortbowInfusedSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.MagicShortbowSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.SaradominGodswordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.SaradominSwordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ToxicBlowpipeSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ZamorakGodswordSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ZamorakianHastaSpecialAttack;
-import com.vencillio.rs2.content.combat.special.specials.ZamorakianSpearSpecialAttack;
+import com.vencillio.rs2.content.combat.special.effects.*;
+import com.vencillio.rs2.content.combat.special.specials.*;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
@@ -44,6 +10,9 @@ import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateSpecialBar;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpecialAttackHandler {
 	
