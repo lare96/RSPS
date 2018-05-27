@@ -793,10 +793,12 @@ public abstract class Entity implements CombatInterface {
 					stop();
 					return;
 				}
-				
-				if (getPlayer().isDead() || getPlayer().getMagic().isTeleporting()) {
-					System.out.println("Poison false second if");
-					return;
+
+				if(!e.isNpc()) {
+					if (getPlayer().isDead() || getPlayer().getMagic().isTeleporting()) {
+						System.out.println("Poison false second if");
+						return;
+					}
 				}
 
 				e.hit(new Hit(poisonDamage, Hit.HitTypes.POISON));
