@@ -1,21 +1,29 @@
 package com.vencillio.rs2.content.combat.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
+import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PoisonWeapons {
 	private static final Map<Integer, PoisonData> poison = new HashMap<Integer, PoisonData>();
 
 	public static void checkForPoison(Player player, Entity attack) {
-		if (Utility.randomNumber(3) != 0) {
+		if(SerpentineHelmet.hasHelmet(player) && player.getCombat().getCombatType() == CombatTypes.MELEE) {
+			if(Utility.randomNumber(6) != 0) {
+				return;
+			}
+			System.out.println("Attack.poison(6) commence on entity: " + attack.toString());
+			attack.poison(6);
+		}
+		else if (Utility.randomNumber(3) != 0) {
 			return;
 		}
 

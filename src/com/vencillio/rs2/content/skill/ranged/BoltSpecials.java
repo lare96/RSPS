@@ -56,6 +56,7 @@ public class BoltSpecials {
 			attacking.getUpdateFlags().sendGraphic(Graphic.lowGraphic(752, 0));
 //			player.getSpecialAttack().toggleSpecial();
 			if (Utility.randomNumber(3) == 0) {
+				System.out.println("In randomNum 3 - should poison the entity attacking which is: "+ attacking.toString());
 				attacking.poison(5);
 			}
 			break;
