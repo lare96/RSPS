@@ -788,7 +788,7 @@ public abstract class Entity implements CombatInterface {
 			@Override
 			public void execute() {
 				System.out.println("poisonDamage: " + poisonDamage + " Entity: " + this.toString());
-				if (!poisoned || poisonDamage <= 0 || getPlayer() == null) {
+				if (!poisoned || poisonDamage <= 0 || (getPlayer() == null && getMob() == null)) {
 					System.out.println("Poison false first if");
 					stop();
 					return;
