@@ -780,6 +780,7 @@ public abstract class Entity implements CombatInterface {
 
 		poisoned = true;
 		poisonDamage = start;
+		Entity e = this;
 
 		TaskQueue.queue(new Task(this, 30) {
 			int count = 0;
@@ -795,9 +796,8 @@ public abstract class Entity implements CombatInterface {
 				if (getPlayer().isDead() || getPlayer().getMagic().isTeleporting()) {
 					return;
 				}
-				
 
-				hit(new Hit(poisonDamage, Hit.HitTypes.POISON));
+				e.hit(new Hit(poisonDamage, Hit.HitTypes.POISON));
 
 				if (++count == 4) {
 					poisonDamage -= 1;
