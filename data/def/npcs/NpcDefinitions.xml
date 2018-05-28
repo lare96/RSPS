@@ -19628,7 +19628,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1636</id>
@@ -19640,7 +19640,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1637</id>
@@ -19652,7 +19652,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1638</id>
@@ -19664,7 +19664,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1639</id>
@@ -19676,7 +19676,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1640</id>
@@ -19688,7 +19688,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1641</id>
@@ -19700,7 +19700,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1642</id>
@@ -19712,7 +19712,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1643</id>
@@ -19724,7 +19724,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1644</id>
@@ -19736,7 +19736,7 @@
 		<turn90CCWAnimation>65535</turn90CCWAnimation>
 		<level>0</level>
 		<size>1</size>
-		<attackable>true</attackable>
+		<attackable>false</attackable>
 	</NpcDefinition>
 	<NpcDefinition>
 		<id>1645</id>
