@@ -20,7 +20,6 @@ public class PoisonWeapons {
 			if(Utility.randomNumber(6) != 0) {
 				return;
 			}
-			System.out.println("Attack.poison(6) commence on entity: " + attack.toString());
 			attack.poison(6);
 		}
 		else if (Utility.randomNumber(3) != 0) {

@@ -787,16 +787,13 @@ public abstract class Entity implements CombatInterface {
 
 			@Override
 			public void execute() {
-				System.out.println("poisonDamage: " + poisonDamage + " Entity: " + this.toString());
 				if (!poisoned || poisonDamage <= 0 || (getPlayer() == null && getMob() == null)) {
-					System.out.println("Poison false first if");
 					stop();
 					return;
 				}
 
 				if(!e.isNpc()) {
 					if (getPlayer().isDead() || getPlayer().getMagic().isTeleporting()) {
-						System.out.println("Poison false second if");
 						return;
 					}
 				}
@@ -807,7 +804,6 @@ public abstract class Entity implements CombatInterface {
 					poisonDamage -= 1;
 					count = 0;
 					if (poisonDamage == 0) {
-						System.out.println("stop called poison is 0");
 						stop();
 					}
 				}
