@@ -200,6 +200,7 @@ public class Impling {
 					impling.setVisible(false);
 					Walking.setNpcOnTile(impling, false);
 					impling.getUpdateFlags().setUpdateRequired(true);
+					impling.remove();
 					switch(impling.getId()) {
 						case 1635:
 						case 1636:
