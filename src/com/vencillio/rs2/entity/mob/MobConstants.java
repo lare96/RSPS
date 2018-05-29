@@ -1,12 +1,5 @@
 package com.vencillio.rs2.entity.mob;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
 import com.vencillio.core.definitions.NpcDefinition;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.minigames.godwars.GodWarsData;
@@ -14,6 +7,13 @@ import com.vencillio.rs2.content.minigames.godwars.GodWarsData.Allegiance;
 import com.vencillio.rs2.content.minigames.pestcontrol.PestControlGame;
 import com.vencillio.rs2.content.skill.fishing.Fishing;
 import com.vencillio.rs2.entity.player.Player;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * Holds constant variables for mobs
@@ -44,7 +44,17 @@ public final class MobConstants {
 	 */
 	public static enum MobDissapearDelay {
 
-		BARRELCHEST(5666, (byte) 15);
+		BARRELCHEST(5666, (byte) 15),
+		BABYIMPLING(1635, (byte) 0),
+		YOUNGIMPLING(1636, (byte) 0),
+		GOURMETIMPLING(1637, (byte) 0),
+		EARTHIMPLING(1638, (byte) 0),
+		ESSENCEIMPLING(1639, (byte) 0),
+		ECLECTICIMPLING(1640, (byte) 0),
+		NATUREIMPLING(1641, (byte) 0),
+		MAGPIEIMPLING(1642, (byte) 0),
+		NINJAIMPLING(1643, (byte) 0),
+		DRAGONIMPLING(1644, (byte) 0),;
 
 		private final int id;
 		private final byte delay;

@@ -18,12 +18,13 @@ public class MobDeathTask extends Task {
 	public MobDeathTask(final Mob mob) {
 		super(mob, mob.getRespawnTime() + 1 + MobConstants.MobDissapearDelay.getDelay(mob.getId()), false, Task.StackType.STACK, Task.BreakType.NEVER, TaskIdentifier.CURRENT_ACTION);
 		this.mob = mob;
+		boolean isImpling = mob.getId() >= 1635 && mob.getId() <= 1644;
 
 		mob.setDead(true);
 		mob.getUpdateFlags().faceEntity(65535);
 		mob.getCombat().reset();
 
-		Task death = new Task(mob, 2, false, Task.StackType.STACK, Task.BreakType.NEVER, TaskIdentifier.CURRENT_ACTION) {
+		Task death = new Task(mob, isImpling ? 0 : 2, false, Task.StackType.STACK, Task.BreakType.NEVER, TaskIdentifier.CURRENT_ACTION) {
 			@Override
 			public void execute() {
 				Entity killer = mob.getCombat().getDamageTracker().getKiller();

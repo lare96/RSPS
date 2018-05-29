@@ -640,7 +640,7 @@ public class GameDefinitionLoader {
 		logger.info("Loaded " + Utility.format(list.size()) + " npc drops.");
 	}
 
-	//@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public static void loadNpcSpawns() throws FileNotFoundException, IOException {
 		List<NpcSpawnDefinition> list = (List<NpcSpawnDefinition>) xStream.fromXML(new FileInputStream("./data/def/npcs/NpcSpawnDefinitions.xml"));
 		for (NpcSpawnDefinition def : list) {
