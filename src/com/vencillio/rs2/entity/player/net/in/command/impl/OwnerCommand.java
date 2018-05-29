@@ -163,6 +163,7 @@ public class OwnerCommand implements Command {
 
 					}
 				});
+				return true;
 
 
 			/**
