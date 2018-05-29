@@ -20,6 +20,7 @@ import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
+import com.vencillio.rs2.entity.item.impl.GroundItem;
 import com.vencillio.rs2.entity.item.impl.GroundItemHandler;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
@@ -138,6 +139,31 @@ public class OwnerCommand implements Command {
 					}
 				});
 				return true;
+
+			case "dp0":
+				int itemToSpawn = parser.nextInt();
+				int[] sign = { 1, -1};
+				TaskQueue.queue(new Task(3, true) {
+					int amount = parser.nextInt();
+					@Override
+					public void execute() {
+						if(amount <= 0) {
+							stop();
+							return;
+						}
+						int rand = Utility.random(7);
+						GroundItemHandler.add(new GroundItem(new Item(itemToSpawn),
+								new Location(player.getX() + (rand * sign[Utility.random(1)]),
+										player.getY() + (rand * sign[Utility.random(1)]))));
+						amount--;
+					}
+
+					@Override
+					public void onStop() {
+
+					}
+				});
+
 
 			/**
 			 * Daniel's testing command
