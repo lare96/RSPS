@@ -143,8 +143,9 @@ public class OwnerCommand implements Command {
 			case "dp0":
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};
+				int temp = parser.nextInt();
 				TaskQueue.queue(new Task(3, true) {
-					int amount = parser.nextInt();
+					int amount = temp;
 					@Override
 					public void execute() {
 						if(amount <= 0) {
