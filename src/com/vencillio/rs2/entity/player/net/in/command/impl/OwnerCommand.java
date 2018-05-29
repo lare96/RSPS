@@ -157,6 +157,7 @@ public class OwnerCommand implements Command {
 								new Location(player.getX() + (rand * sign[Utility.random(1)]),
 										player.getY() + (rand2 * sign[Utility.random(1)])), null);
 						GroundItemHandler.add(tmp);
+						GroundItemHandler.globalize(tmp);
 						tmp.setTime(100);
 						amount--;
 					}
