@@ -155,7 +155,7 @@ public class OwnerCommand implements Command {
 						int rand = Utility.random(7), rand2 = Utility.random(7);
 						GroundItem tmp = new GroundItem(new Item(itemToSpawn),
 								new Location(player.getX() + (rand * sign[Utility.random(1)]),
-										player.getY() + (rand2 * sign[Utility.random(1)])), player.getUsername());
+										player.getY() + (rand2 * sign[Utility.random(1)])), null);
 						GroundItemHandler.add(tmp);
 						tmp.setTime(100);
 						amount--;
