@@ -192,7 +192,8 @@ public class Impling {
 					player.getInventory().add(t.getJar(), 1);
 					player.getInventory().remove(11260, 1);
 					player.getSkill().addExperience(Skills.HUNTER, t.getXp());
-					teleportImpling(impling);
+					impling.checkForDeath();
+					//teleportImpling(impling);
 				}
 			}
 		}

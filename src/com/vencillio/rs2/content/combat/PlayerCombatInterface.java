@@ -19,6 +19,7 @@ import com.vencillio.rs2.content.skill.magic.spells.Vengeance;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSeas;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSwamp;
 import com.vencillio.rs2.content.skill.melee.BarrowsSpecials;
+import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
 import com.vencillio.rs2.content.skill.prayer.PrayerBook.Prayer;
 import com.vencillio.rs2.content.skill.ranged.BoltSpecials;
 import com.vencillio.rs2.content.skill.ranged.ToxicBlowpipe;
@@ -485,6 +486,10 @@ public class PlayerCombatInterface implements CombatInterface {
 
 		if (ToxicBlowpipe.hasBlowpipe(player)) {
 			ToxicBlowpipe.degrade(player);
+		}
+
+		if(SerpentineHelmet.hasHelmet(player)) {
+			SerpentineHelmet.degrade(player);
 		}
 		
 		if (TridentOfTheSeas.hasTrident(player)) {

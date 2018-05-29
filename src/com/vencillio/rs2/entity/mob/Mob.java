@@ -449,6 +449,21 @@ public class Mob extends Entity {
 		if (getCombatDefinition() != null) {
 			return getCombatDefinition().getRespawnTime();
 		}
+		switch(getId()) {
+			case 1635:
+			case 1636:
+			case 1637:
+			case 1638:
+				return 8; //4.8s
+			case 1639:
+			case 1640:
+			case 1641:
+			case 1642:
+				return 14; //8.4s
+			case 1643:
+			case 1644:
+				return 25; //15s
+		}
 		return 50;
 	}
 

@@ -122,7 +122,6 @@ public class SerpentineHelmet {
 	 */
 	public static void check(Player player) {
 		int percent = player.getSerpentineHelment().getCharges() * 100 / FULL;
-		player.send(new SendMessage("Please not the helment effect has not been added yet!"));
 		player.send(new SendMessage("Charges: <col=007F00>" + Utility.format(player.getSerpentineHelment().getCharges()) + " </col>(<col=007F00>" + percent + "%</col>)"));
 	}
 	
@@ -142,6 +141,14 @@ public class SerpentineHelmet {
 		player.getInventory().addOrCreateGroundItem(12934, amount, true);
 		player.getInventory().addOrCreateGroundItem(12929, 1, true);
 	
+	}
+
+	public static void degrade(Player player) {
+		player.getSerpentineHelment().charges -= 2;
+		if (player.getSerpentineHelment().charges <= 0) {
+			player.send(new SendMessage("The serpentine helm needs to be charged with more zulrah scales."));
+			player.getEquipment().getItems()[EquipmentConstants.HELM_SLOT].setId(11929);
+		}
 	}
 	
 }

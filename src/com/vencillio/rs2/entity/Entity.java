@@ -8,6 +8,7 @@ import com.vencillio.rs2.content.combat.CombatInterface;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.minigames.pestcontrol.PestControlGame;
 import com.vencillio.rs2.content.skill.Skills;
+import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
 import com.vencillio.rs2.entity.following.Following;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.movement.MovementHandler;
@@ -775,6 +776,11 @@ public abstract class Entity implements CombatInterface {
 	 */
 	public void poison(int start) {
 		if ((poisoned) || (World.getCycles() < poisonImmunity)) {
+			if(getPlayer() != null) {
+				if(SerpentineHelmet.hasHelmet(this.getPlayer())) {
+					return;
+				}
+			}
 			return;
 		}
 

@@ -38,11 +38,11 @@ public class TeleportHandler {
 	public enum TeleportationData {
 
 		/** Training */
-		ROCK_CRABS(238123, 0, "None", "None", 0, new Location(2674, 3710, 0), false, false),
-		HILL_GIANTS(238124, 0, "None", "None", 0, new Location(3117, 9856, 0), false, false),
+		ROCK_CRABS(238123, 0, "None", "Lv 13", 0, new Location(2674, 3710, 0), false, false),
+		HILL_GIANTS(238124, 0, "None", "Lv 28", 0, new Location(3117, 9856, 0), false, false),
 		AL_KAHID(238125, 0, "None", "None", 0, new Location(3293, 3182, 0), false, false),
-		COWS(238126, 0, "None", "None", 0, new Location(3257, 3263, 0), false, false),
-		YAKS(238127, 0, "None", "None", 0, new Location(2321, 3804, 0), false, false),
+		COWS(238126, 0, "None", "Lv 2", 0, new Location(3257, 3263, 0), false, false),
+		YAKS(238127, 0, "None", "Lv 22", 0, new Location(2321, 3804, 0), false, false),
 		BRIMHAVEN_DUNG(238128, 1000, "None", "None", 0, new Location(2710, 9466, 0), false, false),
 		TAVERLY_DUNG(238129, 1500, "None", "None", 0, new Location(2884, 9798, 0), false, false),
 		SLAYER_TOWER(238130, 2000, "None", "None", 0, new Location(3428, 3538, 0), false, false),
@@ -50,7 +50,7 @@ public class TeleportHandler {
 		MITHRIL_DRAGONS(238132, 3000, "None", "None", 0, new Location(1747, 5324, 0), false, false),
 
 		/** Skilling */
-		WILD_RESOURCE(242099, 3000, "54 Wild!", "None", 0, new Location(3184, 3947, 0), false, false),
+		WILD_RESOURCE(242099, 3000, "None", "54 Wild!", 0, new Location(3184, 3947, 0), false, false),
 		THIEVING(242100, 3000, "None", "None", 0, new Location(3047, 4976, 1), false, false),
 		CRAFTING(242101, 2000, "None", "None", 0, new Location(2747, 3444, 0), false, false),
 		AGILITY(242102, 5000, "None", "None", 0, new Location(2480, 3437, 0), false, true),
@@ -59,6 +59,7 @@ public class TeleportHandler {
 		FISHING(242105, 4000, "None", "None", 0, new Location(2840, 3437, 0), false, false),
 		WOODCUTTING(242106, 3000, "None", "None", 0, new Location(2722, 3473, 0), false, false),
 		FARMING(242107, 3000, "None", "None", 0, new Location(2806, 3463, 0), false, true),
+		HUNTING(242108, 3000, "None", "None", 0, new Location(2465, 4437, 0), false, false),
 
 		/** Player Vs Player */
 		EDGEVILLE(246075, 0, "None", "None", 0, new Location(3087, 3515, 0), false, false),

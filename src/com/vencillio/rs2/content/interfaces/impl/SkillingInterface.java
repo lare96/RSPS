@@ -24,7 +24,7 @@ public class SkillingInterface extends InterfaceHandler {
 			"Fishing",
 			"Woodcutting",
 			"Farming",
-			"",
+			"Hunting",
 			"",
 			"",
 			"",
