@@ -1,20 +1,20 @@
 package com.vencillio.rs2.content.skill.hunter;
 
-import java.util.HashMap;
-import java.util.Random;
-
 import com.vencillio.core.task.Task;
-import com.vencillio.core.task.TaskIdentifier;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
+import com.vencillio.rs2.entity.Area;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.mob.Walking;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Manages the functionality of parts of the hunter skill
@@ -178,7 +178,7 @@ public class Impling {
 					return;
 				}
 
-				if (player.getSkill().getLevels()[22] < t.getLevelRequired()) {
+				if (player.getSkill().getLevels()[Skills.HUNTER] < t.getLevelRequired()) {
 					player.getClient().queueOutgoingPacket(new SendMessage("You need a hunter level of " + t.getLevelRequired() + " to catch this impling."));
 					return;
 				}
@@ -201,6 +201,16 @@ public class Impling {
 					Walking.setNpcOnTile(impling, false);
 					impling.getUpdateFlags().setUpdateRequired(true);
 					impling.remove();
+
+					Location[] loc = {
+							new Location(2478 + Utility.random(6), 4419 + Utility.random(54)),
+							new Location(2473 + Utility.random(15), 4458 + Utility.random(8)),
+							new Location(2471 + Utility.random(20), 4446 + Utility.random(11)),
+							new Location(2472 + Utility.random(16), 4419 + Utility.random(31)),
+							new Location(2463 + Utility.random(29), 4420 + Utility.random(13))
+					};
+
+					int rand = Utility.random(5);
 					switch(impling.getId()) {
 						case 1635:
 						case 1636:
@@ -209,7 +219,7 @@ public class Impling {
 							TaskQueue.queue(new Task(8, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									new Mob(impling.getId(), true, loc[rand]);
 									stop();
 								}
 
@@ -226,7 +236,7 @@ public class Impling {
 							TaskQueue.queue(new Task(14, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									new Mob(impling.getId(), true, loc[rand]);
 									stop();
 								}
 
@@ -241,7 +251,7 @@ public class Impling {
 							TaskQueue.queue(new Task(25, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									new Mob(impling.getId(), true, loc[rand]);
 									stop();
 								}
 
