@@ -3,12 +3,16 @@ package com.vencillio.rs2.content.skill.hunter;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskIdentifier;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
+import com.vencillio.rs2.entity.mob.Walking;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 
@@ -192,7 +196,62 @@ public class Impling {
 					player.getInventory().add(t.getJar(), 1);
 					player.getInventory().remove(11260, 1);
 					player.getSkill().addExperience(Skills.HUNTER, t.getXp());
-					impling.checkForDeath();
+					impling.setDead(true);
+					impling.setVisible(false);
+					Walking.setNpcOnTile(impling, false);
+					impling.getUpdateFlags().setUpdateRequired(true);
+					switch(impling.getId()) {
+						case 1635:
+						case 1636:
+						case 1637:
+						case 1638:
+							TaskQueue.queue(new Task(8, false) {
+								@Override
+								public void execute() {
+									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									stop();
+								}
+
+								@Override
+								public void onStop() {
+
+								}
+							});
+							break;
+						case 1639:
+						case 1640:
+						case 1641:
+						case 1642:
+							TaskQueue.queue(new Task(14, false) {
+								@Override
+								public void execute() {
+									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									stop();
+								}
+
+								@Override
+								public void onStop() {
+
+								}
+							});
+							break;
+						case 1643:
+						case 1644:
+							TaskQueue.queue(new Task(25, false) {
+								@Override
+								public void execute() {
+									new Mob(impling.getId(), true, impling.getSpawnLocation());
+									stop();
+								}
+
+								@Override
+								public void onStop() {
+
+								}
+							});
+							break;
+					}
+					//impling.checkForDeath();
 					//teleportImpling(impling);
 				}
 			}
