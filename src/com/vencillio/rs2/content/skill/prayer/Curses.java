@@ -325,7 +325,7 @@ public class Curses {
 	}
 
 	public static void applySoulSplit(final Mob npc, int damage, Entity e) {//PvE
-		int maxHp = e.getMaxLevels()[3];
+		int maxHp = e.getPlayer().getMaxLevels()[3];
 
 		if (e.getPlayer().getSkill().getLevels()[3] < maxHp) {
 			int healAmount = (int) (damage * 0.2);

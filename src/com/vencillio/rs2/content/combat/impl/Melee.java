@@ -43,6 +43,7 @@ public class Melee {
 		int damage = (int) (entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MELEE) + 1)) * damageBoost);
 
 		if(attacking.isNpc() && entity.getPlayer() != null) {
+			System.out.println("Attacking: " + attacking.toString());
 			if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT))
 				Curses.applySoulSplit(attacking.getMob(), damage, entity);
 		}
