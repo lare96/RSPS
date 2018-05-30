@@ -7,8 +7,10 @@ import com.vencillio.rs2.content.combat.Combat.CombatTypes;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.combat.formula.FormulaData;
 import com.vencillio.rs2.content.combat.formula.MeleeFormulas;
+import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Entity;
+import com.vencillio.rs2.entity.item.EquipmentConstants;
 
 public class Melee {
 
@@ -38,6 +40,11 @@ public class Melee {
 		success = accurate;
 
 		int damage = (int) (entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MELEE) + 1)) * damageBoost);
+
+		if(attacking.isNpc() && entity.getPlayer() != null) {
+			if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT))
+				Curses.applySoulSplit(attacking.getMob(), damage);
+		}
 
 		if (nextDamage != -1) {
 			damage = nextDamage;

@@ -63,7 +63,7 @@ public class Magic {
 		finish(attacking);
 	}
 
-	public void finish(Entity attacking) {
+	public void finish(Entity attacking) { //Entity is the one attacking, attacking is the one being attacked
 
 		boolean success;
 

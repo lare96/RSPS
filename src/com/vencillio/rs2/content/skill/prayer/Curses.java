@@ -15,7 +15,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
  */
 
 public class Curses {
-	private Player p;
+	private static Player p;
 
 	public Curses(Player p) {
 		this.p = p;
@@ -325,7 +325,7 @@ public class Curses {
 		}
 	}
 
-	public void applySoulSplit(final Mob npc, int damage) {//PvE
+	public static void applySoulSplit(final Mob npc, int damage) {//PvE
 		int maxHp = p.getMaxLevels()[3];
 
 		if (p.getSkill().getLevels()[3] < maxHp) {
