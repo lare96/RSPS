@@ -10425,7 +10425,7 @@
 		<noteId>-1</noteId>
 		<highAlch>100</highAlch>
 		<lowAlch>66</lowAlch>
-		<generalPrice>1457</generalPrice>
+		<generalPrice>1000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Black knife</name>
@@ -109737,7 +109737,7 @@
 		<noteId>-1</noteId>
 		<highAlch>180</highAlch>
 		<lowAlch>120</lowAlch>
-		<generalPrice>1486</generalPrice>
+		<generalPrice>1000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Silver bolts</name>
