@@ -12,6 +12,7 @@ import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.item.EquipmentConstants;
 
+@SuppressWarnings("all")
 public class Melee {
 
 	private final Entity entity;
