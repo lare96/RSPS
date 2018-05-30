@@ -343,14 +343,14 @@ public class Curses {
 			int offX = (pY - oY) * -1;
 			int offY = (pX - oX) * -1;
 			//player.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, 25, 2263, 15, 10, -player.oldNpcIndex - 1, 0);
-			/*World.sendProjectile(new Projectile(2263, 1, 0, 25, 15, 10, 50), new Location(pX,pY), 0, (byte)oX, (byte)oY);
+			World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(pX,pY), 0, (byte)oX, (byte)oY);
 			TaskQueue.queue(new Task(0) {
 				public void execute() {
-					npc.getUpdateFlags().sendGraphic(new Graphic(2264));
+					npc.getUpdateFlags().sendGraphic(new Graphic(1177));
 					int offX2 = (oY - pY) * -1;
 					int offY2 = (oX - pX) * -1;
 					//player.getPA().createPlayersProjectile(oX, oY, offX2, offY2, 50, 25, 2263, 15, 10, -player.playerId - 1, 0);
-					World.sendProjectile(new Projectile(2263, 1, 0, 25, 15, 10, 50), new Location(oX,oY), 0, (byte)offX2, (byte)offY2);
+					World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(oX,oY), 0, (byte)offX2, (byte)offY2);
 					stop();
 				}
 
@@ -358,7 +358,7 @@ public class Curses {
 				public void onStop() {
 
 				}
-			});*/
+			});
 		}
 	}
 
