@@ -324,32 +324,32 @@ public class Curses {
 		}
 	}
 
-	public static void applySoulSplit(final Mob npc, int damage) {//PvE
-		int maxHp = p.getMaxLevels()[3];
+	public static void applySoulSplit(final Mob npc, int damage, Entity e) {//PvE
+		int maxHp = e.getMaxLevels()[3];
 
-		if (p.getSkill().getLevels()[3] < maxHp) {
+		if (e.getPlayer().getSkill().getLevels()[3] < maxHp) {
 			int healAmount = (int) (damage * 0.2);
-			if (p.getSkill().getLevels()[3] + healAmount > maxHp) {
-				p.getLevels()[3] = p.getMaxLevels()[3];
+			if (e.getPlayer().getSkill().getLevels()[3] + healAmount > maxHp) {
+				e.getLevels()[3] = e.getMaxLevels()[3];
 			} else {
-				p.getLevels()[3] += healAmount;
+				e.getLevels()[3] += healAmount;
 			}
-			p.getSkill().update(3);
+			e.getPlayer().getSkill().update(3);
 
-			final int pX = p.getX();
-			final int pY = p.getY();
+			final int pX = e.getX();
+			final int pY = e.getY();
 			final int oX = npc.getX();
 			final int oY = npc.getY();
 			int offX = (pY - oY) * -1;
 			int offY = (pX - oX) * -1;
-			//p.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, 25, 2263, 15, 10, -p.oldNpcIndex - 1, 0);
+			//e.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, 25, 2263, 15, 10, -e.oldNpcIndex - 1, 0);
 			World.sendProjectile(new Projectile(2263, 1, 0, 25, 15, 10, 50), new Location(pX,pY), 0, (byte)oX, (byte)oY);
 			TaskQueue.queue(new Task(0) {
 				public void execute() {
 					npc.getUpdateFlags().sendGraphic(new Graphic(2264));
 					int offX2 = (oY - pY) * -1;
 					int offY2 = (oX - pX) * -1;
-					//p.getPA().createPlayersProjectile(oX, oY, offX2, offY2, 50, 25, 2263, 15, 10, -p.playerId - 1, 0);
+					//e.getPA().createPlayersProjectile(oX, oY, offX2, offY2, 50, 25, 2263, 15, 10, -e.playerId - 1, 0);
 					World.sendProjectile(new Projectile(2263, 1, 0, 25, 15, 10, 50), new Location(oX,oY), 0, (byte)offX2, (byte)offY2);
 					stop();
 				}

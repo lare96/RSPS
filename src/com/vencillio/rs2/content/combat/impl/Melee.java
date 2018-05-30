@@ -43,7 +43,7 @@ public class Melee {
 
 		if(attacking.isNpc() && entity.getPlayer() != null) {
 			if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT))
-				Curses.applySoulSplit(attacking.getMob(), damage);
+				Curses.applySoulSplit(attacking.getMob(), damage, entity);
 		}
 
 		if (nextDamage != -1) {
