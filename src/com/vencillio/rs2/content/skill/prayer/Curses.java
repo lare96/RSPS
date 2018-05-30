@@ -325,7 +325,7 @@ public class Curses {
 	}
 
 	public static void applySoulSplit(final Mob npc, int damage, Entity e) {//PvE
-		int maxHp = e.getPlayer().getMaxLevels()[3];
+		/*int maxHp = e.getPlayer().getMaxLevels()[3];
 
 		if (e.getPlayer().getSkill().getLevels()[3] < maxHp) {
 			int healAmount = (int) (damage * 0.2);
@@ -334,7 +334,7 @@ public class Curses {
 			} else {
 				e.getLevels()[3] += healAmount;
 			}
-			e.getPlayer().getSkill().update(3);
+			e.getPlayer().getSkill().update(3);*/
 
 			final int pX = e.getX();
 			final int pY = e.getY();
@@ -359,7 +359,7 @@ public class Curses {
 
 				}
 			});
-		}
+		//}
 	}
 
 	private boolean leechAttack(final Entity entity) {
