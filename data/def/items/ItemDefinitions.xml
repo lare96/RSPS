@@ -109730,7 +109730,7 @@
 	<ItemDefinition>
 		<name>Runite bolts</name>
 		<id>9144</id>
-		<members>true</members>pus
+		<members>true</members>
 		<tradable>true</tradable>
 		<stackable>true</stackable>
 		<note>false</note>
