@@ -4701,7 +4701,7 @@
 		<noteId>392</noteId>
 		<highAlch>300</highAlch>
 		<lowAlch>200</lowAlch>
-		<generalPrice>2458</generalPrice>
+		<generalPrice>1300</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Manta ray</name>
@@ -84729,7 +84729,7 @@
 		<noteId>7061</noteId>
 		<highAlch>67</highAlch>
 		<lowAlch>45</lowAlch>
-		<generalPrice>3300</generalPrice>
+		<generalPrice>1400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Tuna potato</name>
