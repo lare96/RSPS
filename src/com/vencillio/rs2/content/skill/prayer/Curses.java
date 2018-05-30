@@ -325,21 +325,22 @@ public class Curses {
 	}
 
 	public static void applySoulSplit(final Mob npc, int damage, Player player) {//PvE
-		int maxHp = player.getPlayer().getMaxLevels()[3];
+		int maxHp = player.getMaxLevels()[3];
 
-		if (player.getPlayer().getSkill().getLevels()[3] < maxHp) {
+		if (player.getSkill().getLevels()[3] < maxHp) {
 			int healAmount = (int) (damage * 0.2);
-			if (player.getPlayer().getSkill().getLevels()[3] + healAmount > maxHp) {
+			if (player.getSkill().getLevels()[3] + healAmount > maxHp) {
 				player.getLevels()[3] = player.getMaxLevels()[3];
 			} else {
 				player.getLevels()[3] += healAmount;
 			}
-			player.getPlayer().getSkill().update(3);
+			player.getSkill().update(3);
 
 			final int pX = player.getX();
 			final int pY = player.getY();
 			final int oX = npc.getX();
 			final int oY = npc.getY();
+			System.out.println("px: " + pX + " py: " + pY + " ox: " + oX + "oy: " + oY);
 			int offX = (pY - oY) * -1;
 			int offY = (pX - oX) * -1;
 			//player.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, 25, 2263, 15, 10, -player.oldNpcIndex - 1, 0);
