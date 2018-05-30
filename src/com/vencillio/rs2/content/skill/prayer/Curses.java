@@ -2,7 +2,6 @@ package com.vencillio.rs2.content.skill.prayer;
 
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
-import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.entity.*;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
@@ -29,7 +28,7 @@ public class Curses {
 		boolean performed = false;
 
 		try {
-			// check if entity is dead...
+			/*// check if entity is dead...
 			if (p.getPrayer().active(PrayerBook.Prayer.LEECHATTACK) && random(20 - (int) p.curseOdds) == 1) {
 				performed = leechAttack(entity);
 			} else if (p.getPrayer().active(PrayerBook.Prayer.LEECHDEFENCE) && random(23 - (int) p.curseOdds) == 1) {
@@ -52,7 +51,7 @@ public class Curses {
 				performed = sapMagic(entity);
 			} else if (entity instanceof Player && (p.getPrayer().active(PrayerBook.Prayer.SAPSPIRIT) && random(20) == 1)) {
 				performed = sapSpirit((Player) entity);
-			}
+			}*/
 		} catch (Exception ex) {
 			p.curseOdds = 0.0;
 		}
@@ -258,7 +257,7 @@ public class Curses {
 	}
 
 	public void deflectAttack(Entity entity, int damage) {
-		if (!p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMISSILES) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMAGIC)) {
+		/*if (!p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMISSILES) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMAGIC)) {
 			return;
 		}
 		if (random(2) > 0) {
@@ -277,7 +276,7 @@ public class Curses {
 		}
 		p.getUpdateFlags().sendAnimation(new Animation(12573));
 		Hit h = new Hit(deflectedDamage);
-		entity.hit(h);
+		entity.hit(h);*/
 		//entity.setHitUpdateRequired(true);
 		//entity.setUpdateRequired(true);
 	}
@@ -655,7 +654,7 @@ public class Curses {
 	}
 
 	public void checkMultipliers() {
-		if (!p.getPrayer().active(PrayerBook.Prayer.LEECHATTACK) && !p.getPrayer().active(PrayerBook.Prayer.SAPWARRIOR)) {
+		/*if (!p.getPrayer().active(PrayerBook.Prayer.LEECHATTACK) && !p.getPrayer().active(PrayerBook.Prayer.SAPWARRIOR)) {
 			p.attackMultiplier = checkMultiplier(p.attackMultiplier);
 		}
 		if (!p.getPrayer().active(PrayerBook.Prayer.LEECHRANGED) && !p.getPrayer().active(PrayerBook.Prayer.SAPRANGE)) {
@@ -670,6 +669,6 @@ public class Curses {
 		if (!p.getPrayer().active(PrayerBook.Prayer.LEECHSTRENGTH) && !p.getPrayer().active(PrayerBook.Prayer.SAPSTRENGTH)) {
 			p.strengthMultiplier = checkMultiplier(p.strengthMultiplier);
 		}
-		//p.multiplierDelay = System.currentTimeMillis();/not sure what this is currently
+		//p.multiplierDelay = System.currentTimeMillis();/not sure what this is currently*/
 	}
 }
