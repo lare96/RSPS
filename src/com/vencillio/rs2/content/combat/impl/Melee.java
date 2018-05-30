@@ -11,6 +11,7 @@ import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.item.EquipmentConstants;
+import com.vencillio.rs2.entity.player.Player;
 
 @SuppressWarnings("all")
 public class Melee {
@@ -43,9 +44,10 @@ public class Melee {
 		int damage = (int) (entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MELEE) + 1)) * damageBoost);
 
 		if(attacking.isNpc() && entity.getPlayer() != null) {
+			Player p = entity.getPlayer();
 			System.out.println("Attacking: " + attacking.toString());
 			if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT))
-				Curses.applySoulSplit(attacking.getMob(), damage, entity);
+				Curses.applySoulSplit(attacking.getMob(), damage, p);
 		}
 
 		if (nextDamage != -1) {
