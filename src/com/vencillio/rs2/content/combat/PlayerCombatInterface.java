@@ -20,6 +20,7 @@ import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSeas;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSwamp;
 import com.vencillio.rs2.content.skill.melee.BarrowsSpecials;
 import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
+import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.content.skill.prayer.PrayerBook.Prayer;
 import com.vencillio.rs2.content.skill.ranged.BoltSpecials;
 import com.vencillio.rs2.content.skill.ranged.ToxicBlowpipe;
@@ -273,11 +274,18 @@ public class PlayerCombatInterface implements CombatInterface {
 
 		int torsoID = 8839, legsID = 8840;
 		//System.out.println("hit getAttacker: " + hit.getAttacker().toString() + "hit: " + hit.getDamage() + "player: " + player.getUsername());
+
+		//Deflection
+		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) && player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT))
+		{
+			Curses.deflectAttack(hit.getAttacker(), hit.getDamage());
+			hit.setDamage((int) (hit.getDamage() * .5));
+		}
+
+		//Absorption
 		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) || player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT))
 		{
-			System.out.println("hit b4: " + hit.getDamage());
 			hit.setDamage((int) (hit.getDamage() * .5));
-			System.out.println("hit after: " + hit.getDamage());
 		}
 
 		if (hit.getAttacker() != null) {

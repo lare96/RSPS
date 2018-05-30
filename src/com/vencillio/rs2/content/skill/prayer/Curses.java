@@ -2,6 +2,7 @@ package com.vencillio.rs2.content.skill.prayer;
 
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
+import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.entity.*;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
@@ -256,10 +257,10 @@ public class Curses {
 		return true;
 	}
 
-	public void deflectAttack(Entity entity, int damage) {
+	public static void deflectAttack(Entity entity, int damage) {
 		/*if (!p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMISSILES) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMAGIC)) {
 			return;
-		}
+		}*/
 		if (random(2) > 0) {
 			return;
 		}
@@ -267,16 +268,16 @@ public class Curses {
 		if (deflectedDamage <= 0) {
 			return;
 		}
-		if (p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE)) {
+		/*if (p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE)) {
 			p.getUpdateFlags().sendGraphic(new Graphic(2227)); // melee deflect
 		} else if (p.getPrayer().active(PrayerBook.Prayer.DEFLECTMISSILES)) {
 			p.getUpdateFlags().sendGraphic(new Graphic(2229)); // range deflect
 		} else if (p.getPrayer().active(PrayerBook.Prayer.DEFLECTMAGIC)) {
 			p.getUpdateFlags().sendGraphic(new Graphic(2230)); // mage deflect
-		}
-		p.getUpdateFlags().sendAnimation(new Animation(12573));
+		}*/
+		//p.getUpdateFlags().sendAnimation(new Animation(12573));
 		Hit h = new Hit(deflectedDamage);
-		entity.hit(h);*/
+		entity.hit(h);
 		//entity.setHitUpdateRequired(true);
 		//entity.setUpdateRequired(true);
 	}
@@ -343,14 +344,14 @@ public class Curses {
 			int offX = (pY - oY) * -1;
 			int offY = (pX - oX) * -1;
 			//player.getPA().createPlayersProjectile(pX, pY, offX, offY, 50, 25, 2263, 15, 10, -player.oldNpcIndex - 1, 0);
-			World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(pX,pY), 0, (byte)oX, (byte)oY);
+			//World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(pX,pY), 0, (byte)oX, (byte)oY);
 			TaskQueue.queue(new Task(0) {
 				public void execute() {
 					npc.getUpdateFlags().sendGraphic(new Graphic(1177));
 					int offX2 = (oY - pY) * -1;
 					int offY2 = (oX - pX) * -1;
 					//player.getPA().createPlayersProjectile(oX, oY, offX2, offY2, 50, 25, 2263, 15, 10, -player.playerId - 1, 0);
-					World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(oX,oY), 0, (byte)offX2, (byte)offY2);
+					//World.sendProjectile(new Projectile(280, 1, 0, 25, 15, 10, 50), new Location(oX,oY), 0, (byte)offX2, (byte)offY2);
 					stop();
 				}
 
