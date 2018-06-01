@@ -149,9 +149,6 @@ public class BossPets {
 		
 		if (player.getInventory().hasSpaceFor(new Item(data.getItem()))) {
 			player.getInventory().add(new Item(data.getItem()));
-		} else if (player.getBank().hasSpaceFor((new Item(data.getItem())))) {
-			player.getBank().add((new Item(data.getItem())));
-			player.getClient().queueOutgoingPacket(new SendMessage("Your pet has been added to your bank."));
 		} else {
 			player.getClient().queueOutgoingPacket(new SendMessage("You must free some inventory space to pick up your pet."));
 			return false;

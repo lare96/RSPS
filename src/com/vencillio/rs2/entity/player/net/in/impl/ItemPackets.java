@@ -870,6 +870,11 @@ public class ItemPackets extends IncomingPacket {
 				}
 				switch (itemId) {
 
+					case 10833:
+						if(!player.inWilderness()) {
+							player.getBank().openBank();
+						}
+
 					case 6199://Mystery Box
 						MysteryBox.open(player);
 						break;

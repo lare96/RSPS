@@ -21,28 +21,30 @@ public class PoisonWeapons {
 		CombatTypes type = player.getCombat().getCombatType();
 		int venom = 10;
 
-		if (!attack.inCorp() && !attack.inZulrah() && attack.getMob().getId() != 2205 && attack.getMob().getId() != 2215 && attack.getMob().getId() != 3129 && attack.getMob().getId() != 3162) {
-			if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player))) { //Serpentine + TBP or TOS
-				attack.poison(venom);
-			} else if (SerpentineHelmet.hasHelmet(player)) {
-				if (type == CombatTypes.MELEE && poison.containsKey(player.getEquipment().getItems()[3].getId())) {
-					if (Utility.randomNumber(1) != 0) {
+		if(attack.isNpc()) {
+			if (!attack.inCorp() && !attack.inZulrah() && attack.getMob().getId() != 2205 && attack.getMob().getId() != 2215 && attack.getMob().getId() != 3129 && attack.getMob().getId() != 3162) {
+				if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player))) { //Serpentine + TBP or TOS
+					attack.poison(venom);
+				} else if (SerpentineHelmet.hasHelmet(player)) {
+					if (type == CombatTypes.MELEE && poison.containsKey(player.getEquipment().getItems()[3].getId())) {
+						if (Utility.randomNumber(1) != 0) {
+							return;
+						}
+					}
+					if (type == CombatTypes.RANGED && poison.containsKey(player.getEquipment().getItems()[13].getId())) {
+						if (Utility.randomNumber(1) != 0) {
+							return;
+						}
+					}
+					if (type != CombatTypes.MAGIC) {
+						attack.poison(venom);
+					}
+				} else if (SerpentineHelmet.hasHelmet(player) && player.getCombat().getCombatType() == CombatTypes.MELEE) {
+					if (Utility.randomNumber(6) != 0) {
 						return;
 					}
-				}
-				if (type == CombatTypes.RANGED && poison.containsKey(player.getEquipment().getItems()[13].getId())) {
-					if (Utility.randomNumber(1) != 0) {
-						return;
-					}
-				}
-				if (type != CombatTypes.MAGIC) {
 					attack.poison(venom);
 				}
-			} else if (SerpentineHelmet.hasHelmet(player) && player.getCombat().getCombatType() == CombatTypes.MELEE) {
-				if (Utility.randomNumber(6) != 0) {
-					return;
-				}
-				attack.poison(venom);
 			}
 		} else if (Utility.randomNumber(3) != 0) {
 			return;

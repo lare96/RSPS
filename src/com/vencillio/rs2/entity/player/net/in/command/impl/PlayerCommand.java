@@ -3,6 +3,7 @@ package com.vencillio.rs2.entity.player.net.in.command.impl;
 import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
 import com.vencillio.VencillioConstants;
+import com.vencillio.core.definitions.NpcDefinition;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
@@ -19,6 +20,7 @@ import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
 import com.vencillio.rs2.content.vencilliobot.VencillioBot;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
+import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.net.in.command.Command;
@@ -171,6 +173,95 @@ public class PlayerCommand implements Command {
 				player.send(new SendString("Tannerscape Command List", 8144));
 				InterfaceHandler.writeText(new CommandInterface(player));
 				player.send(new SendInterface(8134));
+				return true;
+
+			case "kc":
+				NpcDefinition m;
+				int npcID = 1;
+				String input = parser.nextString();
+				switch(input) {
+					case "kbd":
+						npcID = 239;
+						break;
+					case "seatrollqueen":
+					case "seatroll":
+					case "stq":
+						npcID = 4315;
+						break;
+					case "bc":
+					case "barrel":
+					case "barrelchest":
+						npcID = 6342;
+						break;
+					case "corp":
+					case "cb":
+					case "corporealbeast":
+						npcID = 319;
+						break;
+					case "dagsup":
+					case "ds":
+					case "dagsupreme":
+						npcID = 2265;
+						break;
+					case "dagprime":
+					case "dp":
+						npcID = 2266;
+						break;
+					case "dagrex":
+					case "dr":
+						npcID = 2267;
+						break;
+					case "zilyana":
+						npcID = 2205;
+						break;
+					case "graardor":
+						npcID = 2215;
+						break;
+					case "kril":
+					case "k'ril":
+						npcID = 3129;
+						break;
+					case "zulrah":
+						npcID = 2042;
+						break;
+					case "kraken":
+						npcID = 494;
+						break;
+					case "mole":
+						npcID = 5779;
+						break;
+					case "ce":
+					case "chaosele":
+					case "chaos":
+						npcID = 2054;
+						break;
+					case "callisto":
+						npcID = 6609;
+						break;
+					case "scorpia":
+						npcID = 6615;
+						break;
+					case "vetion":
+					case "vet'ion":
+						npcID = 6611;
+						break;
+					case "cf":
+					case "chaosfan":
+					case "chaosfanatic":
+						npcID = 6619;
+						break;
+					case "ca":
+					case "crazy":
+					case "archaeologist":
+						npcID = 6618;
+						break;
+					default:
+						player.send(new SendMessage("The input you entered is not available for this"));
+				}
+				if(npcID != 1) {
+					m = Mob.getDefinition(npcID);
+					player.send(new SendMessage("Your kill count for " + input + " is: " + player.getProperties().getPropertyValue("MOB_" + m.getName())));
+				}
 				return true;
 
 			case "wealth":

@@ -775,13 +775,10 @@ public abstract class Entity implements CombatInterface {
 	 * @param start
 	 */
 	public void poison(int start) {
-		if ((poisoned) || (World.getCycles() < poisonImmunity)) {
-			if(getPlayer() != null) {
-				if(SerpentineHelmet.hasHelmet(this.getPlayer())) {
-					return;
-				}
+		if (((poisoned) || (World.getCycles() < poisonImmunity)) && getPlayer() != null) {
+			if (!SerpentineHelmet.hasHelmet(getPlayer())) {
+				return;
 			}
-			return;
 		}
 
 		poisoned = true;
