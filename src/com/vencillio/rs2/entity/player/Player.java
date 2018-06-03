@@ -1921,7 +1921,7 @@ public class Player extends Entity {
 
 		TaskQueue.cancelHitsOnEntity(this);
 		System.out.println("player teleporting: " + getUsername());
-		TaskQueue.queue(new FinishTeleportingTask(this, 5));
+		TaskQueue.queue(new FinishTeleportingTask(this, 2));
 		
 		movementHandler.reset();
 
