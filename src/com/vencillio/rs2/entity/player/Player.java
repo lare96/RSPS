@@ -1920,6 +1920,7 @@ public class Player extends Entity {
 		ControllerManager.setControllerOnWalk(this);
 
 		TaskQueue.cancelHitsOnEntity(this);
+		System.out.println("player teleporting: " + getUsername());
 		TaskQueue.queue(new FinishTeleportingTask(this, 5));
 		
 		movementHandler.reset();
