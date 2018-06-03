@@ -14,8 +14,10 @@ public class FinishTeleportingTask extends Task {
 
 	@Override
 	public void execute() {
-		if(!player.isInvulnerable())
+		System.out.println("player invulnerable: " + player.isInvulnerable() + " player can take damage: " + player.canTakeDamage());
+		if(!player.isInvulnerable() && !player.canTakeDamage()) {
 			player.setTakeDamage(true);
+		}
 
 		stop();
 	}
