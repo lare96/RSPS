@@ -744,6 +744,8 @@ public class ItemPackets extends IncomingPacket {
 					return;
 				}
 
+
+
 				if (itemUsed.getId() == 1759 || usedWith.getId() == 1759) {
 					AmuletStringing.stringAmulet(player, itemUsed.getId(), usedWith.getId());
 					return;
@@ -874,6 +876,7 @@ public class ItemPackets extends IncomingPacket {
 						if(!player.inWilderness()) {
 							player.getBank().openBank();
 						}
+						break;
 
 					case 6199://Mystery Box
 						MysteryBox.open(player);

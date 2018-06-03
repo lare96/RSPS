@@ -207,6 +207,15 @@ public class WalkToActions {
 				}
 			});
 			return;
+		} else if (id == 26761) {
+			TaskQueue.queue(new PullLeverTask(player, x, y, length[0], length[1]) {
+				@Override
+				public void onDestination() {
+					player.getUpdateFlags().sendFaceToDirection(length[0] >= 2 ? x + length[0] / 2 : x, length[1] >= 2 ? y + length[1] / 2 : y);
+					player.getMagic().teleportNoWildernessRequirement(3153, 3923, 0, MagicSkill.TeleportTypes.SPELL_BOOK);
+				}
+			});
+			return;
 		} else if ((id == 9706)) {
 			TaskQueue.queue(new PullLeverTask(player, x, y, length[0], length[1]) {
 				@Override

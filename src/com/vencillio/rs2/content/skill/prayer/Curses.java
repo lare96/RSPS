@@ -257,16 +257,16 @@ public class Curses {
 		return true;
 	}
 
-	public static void deflectAttack(Entity entity, int damage) {
+	public static boolean deflectAttack(Entity entity, int damage) {
 		/*if (!p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMISSILES) && !p.getPrayer().active(PrayerBook.Prayer.DEFLECTMAGIC)) {
 			return;
 		}*/
 		if (random(2) > 0) {
-			return;
+			return false;
 		}
 		int deflectedDamage = (int) (damage * .10);
 		if (deflectedDamage <= 0) {
-			return;
+			return false;
 		}
 		/*if (p.getPrayer().active(PrayerBook.Prayer.DEFLECTMELEE)) {
 			p.getUpdateFlags().sendGraphic(new Graphic(2227)); // melee deflect
@@ -278,6 +278,7 @@ public class Curses {
 		//p.getUpdateFlags().sendAnimation(new Animation(12573));
 		Hit h = new Hit(deflectedDamage);
 		entity.hit(h);
+		return true;
 		//entity.setHitUpdateRequired(true);
 		//entity.setUpdateRequired(true);
 	}

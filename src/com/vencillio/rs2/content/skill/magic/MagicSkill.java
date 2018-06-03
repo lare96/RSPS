@@ -73,7 +73,7 @@ public class MagicSkill {
 			player.send(new SendMessage("You are jailed and can not do this!"));
 			return false;
 		}
-		if (player.inWilderness() && player.getWildernessLevel() >= 20 && !PlayerConstants.isOwner(player)) {
+		if (player.inWilderness() && player.getWildernessLevel() >= 20 && !PlayerConstants.isOwner(player) && type != TeleportTypes.TELE_OTHER) {
 			player.getClient().queueOutgoingPacket(new SendMessage("You can't teleport above level 20 Wilderness."));
 			return false;
 		}
@@ -580,7 +580,7 @@ public class MagicSkill {
 			player.getClient().queueOutgoingPacket(new SendMessage("You do not have any charges on your shield."));
 			return;
 		}
-		if ((!PlayerConstants.isOwner(player)) && (System.currentTimeMillis() - dFireShieldTime < 300000L)) {
+		if ((!PlayerConstants.isOwner(player)) && (System.currentTimeMillis() - dFireShieldTime < 90000L)) {
 			player.getClient().queueOutgoingPacket(new SendMessage("You must let your shield cool down before using it again."));
 			return;
 		}

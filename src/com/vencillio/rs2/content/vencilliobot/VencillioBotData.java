@@ -53,8 +53,8 @@ public enum VencillioBotData {
 	  DATA_45("How many tiers of membership are there?", "4", "four"),
 	  DATA_46("What game is wildly addictive?", "tannerscape", "this game"),
 	  DATA_47("What NPC helps Iron accounts?", "adam"),
-	  DATA_48("Name one of the moderators.", "saga", "grim", "narcan"), //Mod names here
-	  DATA_49("Who is the community manager?", "synergy"), //CM here
+	  DATA_48("Name one of the moderators.", "none", "grim", "narcan"), //Mod names here
+	  DATA_49("Who is the community manager?", "none"), //CM here
 	  DATA_50("Name one of the developers", "tanner", "chex", "zion", "complex"),
 	  DATA_51("How many total achievements are there?", "78", "seventy eight", "seventy-eight"),
 	  DATA_52("How many prayers are there?", "26", "twenty six", "twenty-six"),
@@ -68,7 +68,7 @@ public enum VencillioBotData {
 	  DATA_60("What skill involves burning logs?", "firemaking"),
 	  DATA_61("What is the required defence level to wear dragon armour?", "60", "sixty"),
 	  DATA_62("What NPC allows you to reset combat stats?", "genie"),
-	  DATA_63("What minigame offers void armour as a reward?", "pest control"),
+	  DATA_63("What minigame offers void armour as a reward?", "pest control", "pc"),
 	  DATA_64("What NPC can you talk to if you want to claim a donation?", "credits master", "membership"),
 	  DATA_65("How many Thieving stalls are there at home?", "5", "five"),
 	  DATA_66("Who is the website developer?", "tanner"),

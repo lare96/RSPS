@@ -278,8 +278,9 @@ public class PlayerCombatInterface implements CombatInterface {
 		//Deflection
 		if(player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) && player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT))
 		{
-			Curses.deflectAttack(hit.getAttacker(), hit.getDamage());
-			hit.setDamage((int) (hit.getDamage() * .5));
+			if(Curses.deflectAttack(hit.getAttacker(), hit.getDamage())) {
+				hit.setDamage((int) (hit.getDamage() * .5));
+			}
 		}
 
 		//Absorption
