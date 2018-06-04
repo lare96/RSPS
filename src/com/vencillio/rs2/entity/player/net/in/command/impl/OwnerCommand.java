@@ -253,6 +253,10 @@ public class OwnerCommand implements Command {
 				player.setInvulnerable(false);
 				return true;
 
+			case "deflect":
+				player.setDeflect(!player.isDeflect());
+				return true;
+
 			case "healmultiple": //Default heal = 10, default max range = 10
 			case "hm":
 				int healAmount = parser.hasNext() ? parser.nextInt() : 10;

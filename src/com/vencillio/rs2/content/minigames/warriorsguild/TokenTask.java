@@ -24,19 +24,21 @@ public class TokenTask extends Task {
 			stop();
 			return;
 		}
-	
-		player.getInventory().remove(8851, 25);
 
-		player.getAttributes().set("warrguildtokensused", player.getAttributes().getInt("warrguildtokensused") + 25);
-		player.send(new SendMessage("@red@25 tokens were taken away from you."));
-		CyclopsRoom.updateInterface(player);
-		if (player.getInventory().getItemAmount(8851) < 20) {
+		if (player.getInventory().getItemAmount(8851) < 15) {
 			player.teleport(NO_TOKENS);
 			player.getAttributes().remove("cyclopsdefenderdrop");
 			player.getAttributes().remove("warrguildtokentask");
 			player.send(new SendMessage("@red@You have ran out of tokens!"));
 			stop();
+			return;
 		}
+	
+		player.getInventory().remove(8851, 15);
+
+		player.getAttributes().set("warrguildtokensused", player.getAttributes().getInt("warrguildtokensused") + 15);
+		player.send(new SendMessage("@red@15 tokens were taken away from you."));
+		CyclopsRoom.updateInterface(player);
 	}
 
 	@Override

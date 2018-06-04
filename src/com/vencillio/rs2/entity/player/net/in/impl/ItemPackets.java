@@ -26,6 +26,7 @@ import com.vencillio.rs2.content.dwarfcannon.DwarfMultiCannon;
 import com.vencillio.rs2.content.membership.MembershipBonds;
 import com.vencillio.rs2.content.minigames.weapongame.WeaponGameStore;
 import com.vencillio.rs2.content.pets.BossPets;
+import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.content.skill.crafting.AmuletStringing;
 import com.vencillio.rs2.content.skill.crafting.JewelryCreationTask;
 import com.vencillio.rs2.content.skill.craftingnew.Crafting;
@@ -703,6 +704,15 @@ public class ItemPackets extends IncomingPacket {
 					player.getInventory().add(989, 1);
 					return;
 				}
+				if ((usedWith.getId() == 2366 && itemUsed.getId() == 2368) || (usedWith.getId() == 2368 && itemUsed.getId() == 2366)) {
+					if(player.getSkill().getLevels()[Skills.SMITHING] >= 60) {
+						player.getInventory().remove(2366, 1);
+						player.getInventory().remove(2368, 1);
+						player.getInventory().add(1187, 1);
+						player.getSkill().addExperience(Skills.SMITHING, 75);
+					}
+					return;
+				}
 
 				if (Firemaking.attemptFiremaking(player, itemUsed, usedWith)) {
 					return;
@@ -873,8 +883,21 @@ public class ItemPackets extends IncomingPacket {
 				switch (itemId) {
 
 					case 10833:
+						int bankCost = 1000000;
 						if(!player.inWilderness()) {
-							player.getBank().openBank();
+							if(player.isPouchPayment()) {
+								if(player.getMoneyPouch() >= bankCost) {
+									player.setMoneyPouch(player.getMoneyPouch() - bankCost);
+									player.getBank().openBank();
+								}
+							}
+							else if(player.getInventory().hasItemAmount(995, bankCost)) {
+								player.getInventory().remove(995, bankCost);
+								player.getBank().openBank();
+							}
+							else {
+								player.send(new SendMessage("You do not have " + bankCost + " coins to pay for that"));
+							}
 						}
 						break;
 

@@ -127,7 +127,9 @@ public class Player extends Entity {
 	private boolean isIron = false;
 	private boolean isUltimateIron = false;
 	private boolean isMember = false;
+
 	private boolean isInvulnerable = false;
+	private boolean isDeflect = false;
 
 	public boolean ironPlayer() {
 		if (this.isIron()) {
@@ -1136,6 +1138,8 @@ public class Player extends Entity {
 
 	public boolean isInvulnerable() { return isInvulnerable; }
 
+	public boolean isDeflect() { return isDeflect; }
+
 	public boolean isAppearanceUpdateRequired() {
 		return appearanceUpdateRequired;
 	}
@@ -1920,7 +1924,6 @@ public class Player extends Entity {
 		ControllerManager.setControllerOnWalk(this);
 
 		TaskQueue.cancelHitsOnEntity(this);
-		System.out.println("player teleporting: " + getUsername());
 		TaskQueue.queue(new FinishTeleportingTask(this, 2));
 		
 		movementHandler.reset();
@@ -2378,6 +2381,8 @@ public class Player extends Entity {
 	}
 
 	public void setInvulnerable(boolean isInvulnerable) { this.isInvulnerable = isInvulnerable; }
+
+	public void setDeflect(boolean isDeflect) { this.isDeflect = isDeflect; }
 
 	public void setMember(boolean isMember) {
 		this.isMember = isMember;

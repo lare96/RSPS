@@ -35,7 +35,10 @@ public class DoubleLottoGame {
 
 			DialogueManager.sendNpcChat(player, 1011, Emotion.HAPPY, "Congratulations, you have won double your bet");
 		} else {
-			player.getInventory().remove(new Item(995, Integer.parseInt(input)));
+			if(player.isPouchPayment())
+				player.setMoneyPouch(player.getMoneyPouch() - Integer.parseInt(input));
+			else
+				player.getInventory().remove(new Item(995, Integer.parseInt(input)));
 			DialogueManager.sendNpcChat(player, 1011, Emotion.SAD, "Sorry you have lost the money, better luck next time");
 		}
 

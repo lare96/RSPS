@@ -540,7 +540,7 @@ public class WalkToActions {
 							player.start(new OptionDialogue("Edit shop description (100k).", p -> {
 								player.setEnterXInterfaceId(55776);
 								player.getClient().queueOutgoingPacket(new SendEnterString());
-							}, "Edit shop.", p -> {
+							}, "Edit shop.", (Player p) -> {
 								player.getShopping().open(player);
 							}));
 							break;

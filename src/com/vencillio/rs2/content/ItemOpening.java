@@ -1,13 +1,13 @@
 package com.vencillio.rs2.content;
 
-import java.util.HashMap;
-
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.HashMap;
 
 /**
  * Handles opening items
@@ -83,6 +83,8 @@ public enum ItemOpening {
 	BOX_SNARE_PACK(12742, new Item(10009, 100)),
 	MAGIC_BOX_PACK(12744, new Item(10026, 100)),
 	EYE_OF_NEW_PACK(12859, new Item(222, 100)),
+	PARTYHAT_PACK(13173, new Item(1038), new Item(1040), new Item(1042), new Item(1044), new Item(1046), new Item(1048)),
+	HALLOWEEN_MASK_PACK(13175, new Item(1053), new Item(1055) , new Item(1057)),
 	
 	/* Achievement Armour */
 	ARMOUR_SET_1(6828, new Item(13137, 1), new Item(13104, 1), new Item(13112, 1), new Item(13117, 1), new Item(13108, 1), new Item(13121, 1), new Item(13129, 1)),

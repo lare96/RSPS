@@ -28,26 +28,26 @@ public class CreditsShop2 extends Shop {
 	public static final int getPrice(int id) {
 		switch (id) {
 		case 13173:
-			return 900;
+			return 500;
 			
 		case 11863:
 		case 11862:
 		case 11847:
 		case 4084:
-			return 200;
+			return 150;
 			
 		case 12399:
-			return 250;
+			return 200;
 			
 		case 13175:
-			return 450;
+			return 225;
 			
 		case 3140:
 		case 11335:
 		case 4151:
 		case 6585:
 		case 12004:
-			return 75;
+			return 50;
 			
 		case 1052:
 		case 11840:
@@ -55,28 +55,28 @@ public class CreditsShop2 extends Shop {
 			return 50;
 			
 		case 6570:
-			return 60;
+			return 50;
 			
 		case 7462:
 			return 30;
 			
 		case 11283:
 		case 11235:
-			return 100;
+			return 80;
 			
 		case 6731:
 		case 6733:
 		case 6735:
 		case 6737:
-			return 65;
+			return 40;
 			
 		case 11907:
-			return 85;
+			return 75;
 
 			
 		}
 
-		return 150;
+		return 100;
 	}
 
 	/**

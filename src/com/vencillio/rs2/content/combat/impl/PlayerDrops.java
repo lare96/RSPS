@@ -47,6 +47,12 @@ public class PlayerDrops {
 		
 
 		if (killer != null && !killer.isNpc()) { //If player, always add rogue kill +1; if not recent kill then +1 kill;
+
+			if(player.getInventory().hasItemId(10833)) {
+				player.getInventory().remove(10833);
+				player.send(new SendMessage("@red@You have lost your tax bag"));
+			}
+
 			Item weapon = killer.getPlayer().getEquipment().getItems()[3];
 			if (weapon == null) {
 				weapon = new Item(0);

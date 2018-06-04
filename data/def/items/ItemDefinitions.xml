@@ -129999,7 +129999,7 @@
 		<name>Normal tax bag</name>
 		<id>10833</id>
 		<members>true</members>
-		<tradable>true</tradable>
+		<tradable>false</tradable>
 		<stackable>false</stackable>
 		<note>false</note>
 		<noteId>-1</noteId>

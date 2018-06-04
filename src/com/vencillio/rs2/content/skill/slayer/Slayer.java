@@ -16,7 +16,7 @@ public class Slayer {
 		LOW,
 		MEDIUM,
 		HIGH,
-		BOSS;
+		BOSS
 	}
 
 	public static boolean isSlayerTask(Player p, Mob mob) {

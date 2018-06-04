@@ -120,7 +120,7 @@ public class MagicFormulas {
 		}
 
 		if (player.getMagic().isDFireShieldEffect()) {
-			return 23;
+			return 30;
 		}
 
 		if ((spellId >= 1190) && (spellId <= 1192) && (Charge.isChargeActive(player))) {
