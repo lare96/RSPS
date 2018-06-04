@@ -6,6 +6,7 @@ import com.vencillio.rs2.content.dialogue.Emotion;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 
 /**
  * Created by Tanner on 2/21/2018.
@@ -33,12 +34,15 @@ public class DoubleLottoGame {
 			else
 				player.getInventory().add(995, Integer.parseInt(input));
 
+			player.send(new SendString(player.getMoneyPouch() + "", 8135));
 			DialogueManager.sendNpcChat(player, 1011, Emotion.HAPPY, "Congratulations, you have won double your bet");
 		} else {
 			if(player.isPouchPayment())
 				player.setMoneyPouch(player.getMoneyPouch() - Integer.parseInt(input));
 			else
 				player.getInventory().remove(new Item(995, Integer.parseInt(input)));
+
+			player.send(new SendString(player.getMoneyPouch() + "", 8135));
 			DialogueManager.sendNpcChat(player, 1011, Emotion.SAD, "Sorry you have lost the money, better luck next time");
 		}
 
