@@ -114,22 +114,24 @@ public class OwnerCommand implements Command {
 				return true;
 
 			case "stalk":
-				Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
+				String target = parser.hasNext() ? parser.nextString() : player.getUsername();
 				stalk = !stalk;
 				TaskQueue.queue(new Task(9) {
+					Player targetPlayer = null;
 					@Override
 					public void execute() {
-						if(!stalk || target.getUsername().equalsIgnoreCase("Tanner")) {
+						targetPlayer = World.getPlayerByName(target);
+						if(!stalk || targetPlayer.getUsername().equalsIgnoreCase("Tanner") || targetPlayer == null) {
 							stop();
 							return;
 						}
 
-						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), target.getX(), target.getY());//p.withinDistance(player, 4);
+						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), targetPlayer.getX(), targetPlayer.getY());//p.withinDistance(player, 4);
 						if(distance < 10)
-							player.getFollowing().setFollow(target);
-						if(distance > 20 || Math.abs(player.getZ() - target.getZ()) > 0) {
-							player.teleport(target.getLocation());
-							player.getFollowing().setFollow(target);
+							player.getFollowing().setFollow(targetPlayer);
+						if(distance > 20 || Math.abs(player.getZ() - targetPlayer.getZ()) > 0) {
+							player.teleport(targetPlayer.getLocation());
+							player.getFollowing().setFollow(targetPlayer);
 						}
 					}
 
@@ -238,11 +240,6 @@ public class OwnerCommand implements Command {
 				}
 				return true;
 
-			/*case"click":
-				player.clickToTeleport = !player.clickToTeleport;
-				player.send(new SendMessage("Click teleporting is: "+ (!player.clickToTeleport ? "Disabled" : "Enabled")));
-				return true;*/
-
 			case "damageoff":
 				player.setTakeDamage(false);
 				player.setInvulnerable(true);
@@ -255,6 +252,7 @@ public class OwnerCommand implements Command {
 
 			case "deflect":
 				player.setDeflect(!player.isDeflect());
+				player.send(new SendMessage("Deflect " + (player.isDeflect() ? " On" : "Off")));
 				return true;
 
 			case "healmultiple": //Default heal = 10, default max range = 10
@@ -802,7 +800,7 @@ public class OwnerCommand implements Command {
 					player.send(new SendString("@dre@IP Address:", 8149));
 					player.send(new SendString("" + p.getClient().getHost(), 8150));
 					player.send(new SendInterface(8134));
-					player.send(new SendMessage("You are now vieiwing " + p.getUsername() + "'s account details."));
+					player.send(new SendMessage("You are now viewing " + p.getUsername() + "'s account details."));
 				}
 				return true;
 
@@ -941,7 +939,7 @@ public class OwnerCommand implements Command {
 			case "og":
 			case "glow":
 				active = !active;
-				Task ta = new Task(2) {
+				TaskQueue.queue(new Task(2) {
 					@Override
 					public void execute() {
 						player.getUpdateFlags().sendGraphic(new Graphic(332));
@@ -952,9 +950,8 @@ public class OwnerCommand implements Command {
 					@Override
 					public void onStop() {
 					}
-				};
+				});
 
-				TaskQueue.queue(ta);
 				return true;
 
 		/*

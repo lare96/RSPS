@@ -99,6 +99,7 @@ public class AchievementShop extends Shop {
 				new Item(10838),
 				new Item(10839),
 				new Item(10394),
+				new Item(10833),
 
 		}, false, "Achievement Store");
 	}

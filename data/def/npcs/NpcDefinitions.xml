@@ -11553,7 +11553,7 @@
 		<level>141</level>
 		<size>4</size>
 		<attackable>false</attackable>
-	</NpcDefinition>
+	</NpcDefinition>+
 	<NpcDefinition>
 		<id>963</id>
 		<name>Kalphite Queen</name>

@@ -118,7 +118,7 @@ public class HomeStalls extends Task {
 	}
 
 	public static void handleRandom(Player player) {
-		int random = Utility.randomNumber(100);
+		int random = Utility.randomNumber(100); //1% chance to fail stall
 		if (random == 1) {
 			if (player.inMemberZone()) {
 				player.teleport(new Location(2854, 3337, 0));

@@ -74,6 +74,7 @@ public class PrestigeShop extends Shop {
 				new Item(7593),
 				new Item(7595),
 				new Item(7596),
+				new Item(10833),
 
 
 		}, false, "Prestige Store");

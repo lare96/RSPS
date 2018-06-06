@@ -23,7 +23,7 @@ public class GodWars {
 	/**
 	 * Points required to enter the room
 	 */
-	public static final int POINTS_TO_ENTER = 25;
+	public static final int POINTS_TO_ENTER = 40;
 
 	/**
 	 * Godwars Key

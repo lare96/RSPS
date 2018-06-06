@@ -1,11 +1,5 @@
 package com.vencillio.rs2.content.minigames.barrows;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.logger.PlayerLogger;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
@@ -20,6 +14,12 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendPlayerHint;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Handles the barrows minigame. Does not need to extend the minigame class
@@ -78,8 +78,6 @@ public class Barrows {
 		 * 
 		 * @param npcId
 		 *            the npc id of the barrows brother.
-		 * @param digLocation
-		 *            the location that has to be dug to get into the crypt.
 		 * @param hillPosition
 		 *            the position of the hill.
 		 * @param cryptPosition
