@@ -84,7 +84,7 @@ public class GodWars {
 				if (player.getInventory().hasItemId(ECUMENICAL_KEY)) {
 					player.getInventory().remove(ECUMENICAL_KEY, 1);
 					TaskQueue.queue(new WalkThroughDoorTask(player, x, y, z, new Location(x, y + 1, z)));
-					player.send(new SendMessage("You have used your Ecumencial key to enter the room."));
+					player.send(new SendMessage("You have used your Ecumenical key to enter the room."));
 					return true;
 				}
 				if (player.getMinigames().getGWKC()[Allegiance.ARMADYL.ordinal()] >= POINTS_TO_ENTER) {
@@ -109,7 +109,7 @@ public class GodWars {
 				if (player.getInventory().hasItemId(ECUMENICAL_KEY)) {
 					player.getInventory().remove(ECUMENICAL_KEY, 1);
 					TaskQueue.queue(new WalkThroughDoorTask(player, x, y, z, new Location(x + 1, y, z)));
-					player.send(new SendMessage("You have used your Ecumencial key to enter the room."));
+					player.send(new SendMessage("You have used your Ecumenical key to enter the room."));
 					return true;
 				}
 				if (player.getMinigames().getGWKC()[Allegiance.BANDOS.ordinal()] >= POINTS_TO_ENTER) {
@@ -136,7 +136,7 @@ public class GodWars {
 				if (player.getInventory().hasItemId(ECUMENICAL_KEY)) {
 					player.getInventory().remove(ECUMENICAL_KEY, 1);
 					TaskQueue.queue(new WalkThroughDoorTask(player, x, y, z, new Location(x - 1, y, z)));
-					player.send(new SendMessage("You have used your Ecumencial key to enter the room."));
+					player.send(new SendMessage("You have used your Ecumenical key to enter the room."));
 					return true;
 				}
 				if (player.getMinigames().getGWKC()[Allegiance.SARADOMIN.ordinal()] >= POINTS_TO_ENTER) {
@@ -163,13 +163,13 @@ public class GodWars {
 				if (player.getInventory().hasItemId(ECUMENICAL_KEY)) {
 					player.getInventory().remove(ECUMENICAL_KEY, 1);
 					TaskQueue.queue(new WalkThroughDoorTask(player, x, y, z, new Location(x, y - 1, z)));
-					player.send(new SendMessage("You have used your Ecumencial key to enter the room."));
+					player.send(new SendMessage("You have used your Ecumenical key to enter the room."));
 					return true;
 				}
 				if (player.getMinigames().getGWKC()[Allegiance.ZAMORAK.ordinal()] >= POINTS_TO_ENTER) {
 					TaskQueue.queue(new WalkThroughDoorTask(player, x, y, z, new Location(x, y - 1, z)));
 					player.getMinigames().changeGWDKills(-POINTS_TO_ENTER, Allegiance.ZAMORAK);
-					for (Mob mob : MobConstants.getGodWarsBossMob(Allegiance.BANDOS)) {
+					for (Mob mob : MobConstants.getGodWarsBossMob(Allegiance.ZAMORAK)) {
 						mob.getCombat().setAttacking(player);
 						mob.getFollowing().setFollow(player, Following.FollowType.COMBAT);
 					}

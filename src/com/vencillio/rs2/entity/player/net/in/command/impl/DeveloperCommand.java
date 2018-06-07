@@ -863,11 +863,11 @@ public class DeveloperCommand implements Command {
 								break;
 							case 25:
 								for(int i=0; i<5; i++) {
-									new Mob(null, npc, false, false, false, new Location(player.getX()-2, player.getY()+i-2));
-									new Mob(null, npc, false, false, false, new Location(player.getX()-1, player.getY()+i-2));
-									new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY()+i-2));
-									new Mob(null, npc, false, false, false, new Location(player.getX()+1, player.getY()+i-2));
-									new Mob(null, npc, false, false, false, new Location(player.getX()+2, player.getY()+i-2));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-2, player.getY()+i-2, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-1, player.getY()+i-2, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY()+i-2, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+1, player.getY()+i-2, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+2, player.getY()+i-2, player.getZ()));
 								}
 								break;
 						}

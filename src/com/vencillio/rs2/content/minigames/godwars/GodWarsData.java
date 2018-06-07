@@ -1,9 +1,9 @@
 package com.vencillio.rs2.content.minigames.godwars;
 
+import com.vencillio.rs2.entity.player.Player;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.vencillio.rs2.entity.player.Player;
 
 public class GodWarsData {
 
@@ -56,6 +56,9 @@ public class GodWarsData {
 		SARADOMIN_SPIRITUAL_MAGE(2212, Allegiance.SARADOMIN),
 
 		KRILL_TSUTSAROTH(3129, Allegiance.ZAMORAK),
+		TSTANON_KARLAK(3130, Allegiance.ZAMORAK),
+		ZAKLN_GRITCH(3131, Allegiance.ZAMORAK),
+		BALFRUG_KREEYATH(3132, Allegiance.ZAMORAK),
 		WEREWOLF(3136, Allegiance.ZAMORAK),
 		VAMPYRE(3137, Allegiance.ZAMORAK),
 		BLOODVELD(3138, Allegiance.ZAMORAK),
