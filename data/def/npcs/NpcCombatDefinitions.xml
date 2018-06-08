@@ -5769,19 +5769,38 @@
 			<int>50</int>
 			<int>50</int>
 		</bonuses>
-		<melee>
-			<melee>
+		<magic>
+			<magic>
 				<attack>
-					<hitDelay>1</hitDelay>
+					<hitDelay>3</hitDelay>
 					<attackDelay>7</attackDelay>
 				</attack>
 				<animation>
-					<id>7018</id>
+					<id>6154</id>
 					<delay>0</delay>
 				</animation>
-				<max>18</max>
-			</melee>
-		</melee>
+				<start>
+					<id>1202</id>
+					<delay>0</delay>
+					<height>0</height>
+				</start>
+				<projectile>
+					<id>1203</id>
+					<size>1</size>
+					<delay>40</delay>
+					<duration>60</duration>
+					<startHeight>43</startHeight>
+					<endHeight>31</endHeight>
+					<curve>16</curve>
+				</projectile>
+				<end>
+					<id>1204</id>
+					<delay>0</delay>
+					<height>0</height>
+				</end>
+				<max>20</max>
+			</magic>
+		</magic>
 	</NpcCombatDefinition>
 	
 	<NpcCombatDefinition>

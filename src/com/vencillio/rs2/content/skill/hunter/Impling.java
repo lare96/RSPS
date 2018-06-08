@@ -8,7 +8,6 @@ import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
-import com.vencillio.rs2.entity.mob.Walking;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 
@@ -196,8 +195,6 @@ public class Impling {
 					player.getInventory().remove(11260, 1);
 					player.getSkill().addExperience(Skills.HUNTER, t.getXp());
 					impling.setDead(true);
-					impling.setVisible(false);
-					Walking.setNpcOnTile(impling, false);
 					impling.getUpdateFlags().setUpdateRequired(true);
 					impling.remove();
 
@@ -209,7 +206,7 @@ public class Impling {
 							new Location(2463 + Utility.random(29), 4420 + Utility.random(13))
 					};
 
-					int rand = Utility.random(5);
+					int rand = Utility.random(4); //0-4
 					switch(impling.getId()) {
 						case 1635:
 						case 1636:
