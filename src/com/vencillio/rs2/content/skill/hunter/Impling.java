@@ -5,7 +5,6 @@ import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
-import com.vencillio.rs2.entity.Area;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
@@ -219,7 +218,8 @@ public class Impling {
 							TaskQueue.queue(new Task(8, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, loc[rand]);
+									Mob m = new Mob(impling.getId(), true, loc[rand]);
+									System.out.println("X: " + m.getX() + " Y: " + m.getY() + " Z: " + m.getZ());
 									stop();
 								}
 
@@ -236,7 +236,8 @@ public class Impling {
 							TaskQueue.queue(new Task(14, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, loc[rand]);
+									Mob m = new Mob(impling.getId(), true, loc[rand]);
+									System.out.println("X: " + m.getX() + " Y: " + m.getY() + " Z: " + m.getZ());
 									stop();
 								}
 
@@ -251,7 +252,8 @@ public class Impling {
 							TaskQueue.queue(new Task(25, false) {
 								@Override
 								public void execute() {
-									new Mob(impling.getId(), true, loc[rand]);
+									Mob m = new Mob(impling.getId(), true, loc[rand]);
+									System.out.println("X: " + m.getX() + " Y: " + m.getY() + " Z: " + m.getZ());
 									stop();
 								}
 
@@ -283,8 +285,7 @@ public class Impling {
 
 	/**
 	 * Manages the spawning of implings upon server startup
-	 * 
-	 * @param impling
+	 *
 	 *            the impling being created
 	 */
 	public static void appendImpling() {

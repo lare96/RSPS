@@ -1,8 +1,5 @@
 package com.vencillio.rs2.content.skill.ranged;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.entity.item.EquipmentConstants;
@@ -12,6 +9,9 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendChatBoxInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItemsAlt;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class ToxicBlowpipe {
 
@@ -129,10 +129,12 @@ public class ToxicBlowpipe {
 				player.getToxicBlowpipe().blowpipeAmmo = dart;
 			}
 		}
-		
-		player.getInventory().remove(dart);
-		check(player);
-		return false;
+
+		if(usedWith.getId() != 5937 || itemUsed.getId() != 5937) {
+			player.getInventory().remove(dart);
+			check(player);
+		}
+			return false;
 	}
 
 	public static void check(Player player) {
