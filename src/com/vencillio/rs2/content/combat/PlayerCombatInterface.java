@@ -513,6 +513,15 @@ public class PlayerCombatInterface implements CombatInterface {
 		if (TridentOfTheSwamp.hasTrident(player)) {
 			TridentOfTheSwamp.degrade(player);
 		}
+
+		if(player.getEquipment().isWearingItem(12904)) {
+			player.setToxicStaffOfTheDead(player.getToxicStaffOfTheDead() - 1);
+
+			if (player.getToxicStaffOfTheDead() == 0) {
+				player.send(new SendMessage("You do not have any charges left to use this."));
+				player.getEquipment().getItems()[EquipmentConstants.WEAPON_SLOT].setId(12902);
+			}
+		}
 	}
 
 	@Override

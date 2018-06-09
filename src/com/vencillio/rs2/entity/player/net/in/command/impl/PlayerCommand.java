@@ -15,6 +15,7 @@ import com.vencillio.rs2.content.dialogue.impl.ChangePasswordDialogue;
 import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.CommandInterface;
 import com.vencillio.rs2.content.interfaces.impl.TrainingInterface;
+import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.content.profiles.PlayerProfiler;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
 import com.vencillio.rs2.content.vencilliobot.VencillioBot;
@@ -370,6 +371,22 @@ public class PlayerCommand implements Command {
 					player.getUpdateFlags().sendForceMessage("<col=3399ff><img=3>I'm playing on game mode: Hard");
 				} else if (player.mode == 3) {
 					player.getUpdateFlags().sendForceMessage("<col=ff6600><img=3>I'm playing on game mode: Ultimate");
+				}
+				return true;
+
+			case "insure":
+				if(player.getInventory().hasItemAmount(995, 25_000_000)) {
+					player.getInventory().remove(995, 25_000_000);
+					player.insure = true;
+					PlayerSave.save(player);
+				}
+				else if(player.getMoneyPouch() > 25_000_000) {
+					player.setMoneyPouch(player.getMoneyPouch() - 25_000_000);
+					player.insure = true;
+					PlayerSave.save(player);
+				}
+				else {
+					player.send(new SendMessage("You don't have enough money to insure your pet"));
 				}
 				return true;
 

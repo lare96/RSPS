@@ -5,6 +5,7 @@ import com.vencillio.core.task.TaskQueue;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
+import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
@@ -220,6 +221,12 @@ public class BossPets {
 	 */
 	public static void onDeath(Player player) {
 		if (player.getBossPet() != null) {
+			if(player.insure) {
+				player.insure = false;
+				PlayerSave.save(player);
+				player.send(new SendMessage("Your pet was saved as it was insured this time."));
+				return;
+			}
 			player.getBossPet().remove();
 			player.setBossPet(null);
 			player.send(new SendMessage("You have died with your pet, loosing it forever."));

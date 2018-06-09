@@ -130,6 +130,7 @@ public class Player extends Entity {
 
 	private boolean isInvulnerable = false;
 	private boolean isDeflect = false;
+	public int toxicStaffOfTheDeadCharges;
 
 	public boolean ironPlayer() {
 		if (this.isIron()) {
@@ -354,6 +355,7 @@ public class Player extends Entity {
 
 	private PlayTime Playtime;
 	public int mode;
+	public boolean insure;
 
 	private boolean starter = false;
 	private String username;
@@ -575,6 +577,10 @@ public class Player extends Entity {
 	}
 
 	public int getMode() {return mode;}
+
+	public boolean getInsure() { return insure; }
+
+	public void setInsure(boolean insure) { this.insure = insure; }
 
 	public void changeZ(int z) {
 		getLocation().setZ(z);
@@ -2531,5 +2537,9 @@ public class Player extends Entity {
 	public void setSwampTrident(TridentOfTheSwamp swampTrident) {
 		this.swampTrident = swampTrident;
 	}
+
+	public int getToxicStaffOfTheDead() { return toxicStaffOfTheDeadCharges; }
+
+	public void setToxicStaffOfTheDead(int charges) { this.toxicStaffOfTheDeadCharges = charges; }
 
 }

@@ -46,7 +46,7 @@ public class PotionDecanting {
 				for (int k = 0; k < items.length; k++) {
 					if (i != k && items[k] != null && Consumables.isPotion(items[k])) {
 
-						if (!p.getInventory().hasItemAmount(new Item(995, 250))) {
+						if (!p.getInventory().hasItemAmount(new Item(995, 250)) || p.getMoneyPouch() > 250) {
 							p.getClient().queueOutgoingPacket(new SendMessage("You do not have enough coins to decant any potions!"));
 							p.getInventory().update();
 							return;

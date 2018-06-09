@@ -422,6 +422,8 @@ public final class PlayerSave {
 				player.setPlayerMode(details.mode);
 				player.setYellTitle(details.yellTitle);
 				player.setPlayerTitle(details.playerTitle);
+				player.setInsure(details.insure);
+				player.setToxicStaffOfTheDead(details.toxicStaffCharges);
 				
 				if (details.unlockedTitles != null && !details.unlockedTitles.isEmpty()) {
 					player.unlockedTitles.addAll(details.unlockedTitles);
@@ -689,6 +691,7 @@ public final class PlayerSave {
 		private final String lastKnownUID;
 		private final int[] cluesCompleted;
 		private final int mode;
+		private final int toxicStaffCharges;
 		private final int withdrawalMode;
 		private final String yellTitle;
 		private final PlayerTitle playerTitle;
@@ -701,6 +704,7 @@ public final class PlayerSave {
 		private final String shopMotto;
 		private final String shopColor;
 		private final String lastClanChat;
+		private final boolean insure;
 		private final boolean muted;
 		private final boolean isMember;
 		private final boolean isIron;
@@ -822,6 +826,8 @@ public final class PlayerSave {
 			host = player.getClient().getHost();
 			cluesCompleted = player.getCluesCompleted();
 			mode = player.getMode();
+			toxicStaffCharges = player.getToxicStaffOfTheDead();
+			insure = player.getInsure();
 			withdrawalMode = player.getBank().getWithdrawalMode();
 			yellTitle = player.getYellTitle();
 			playerTitle = player.getPlayerTitle();

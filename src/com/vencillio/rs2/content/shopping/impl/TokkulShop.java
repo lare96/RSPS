@@ -30,7 +30,7 @@ public class TokkulShop extends Shop {
 	public static final int getPrice(int id) {
 		switch (id) {
 		case 6571:
-			return 25000;
+			return 300_000;
 		case 6568:
 			return 15000;
 		case 6524:

@@ -30,7 +30,7 @@ public class BountyShop extends Shop {
 			case 4587:
 			case 1305:
 			case 12800:
-				return 150_000;
+				return 550_000;
 			case 1215:
 				return 90_000;
 			case 1377:
@@ -63,11 +63,11 @@ public class BountyShop extends Shop {
 			case 12769:
 				return 500_000;
 			case 12798:
-				return 150_000;
+				return 550_000;
 			case 12802:
-				return 150_000;
+				return 550_000;
 			case 12804:
-				return 175_000;
+				return 850_000;
 			case 4740:
 				return 360;
 			case 892:
@@ -75,25 +75,27 @@ public class BountyShop extends Shop {
 			case 890:
 				return 240;
 			case 12846:
-				return 75_000;
-			case 12786:
-				return 350_000;
-			case 4153:
-				return 30_000;
-			case 7462:
-				return 30_000;
-			case 5698:
-				return 8_000;
-			case 11791:
-				return 200_000;
-			case 11840:
-				return 150_000;
-			case 6585:
-				return 200_000;
-			case 12765:
-				return 275_000;
-			case 12002:
 				return 300_000;
+			case 12786:
+				return 150_000;
+			case 4153:
+				return 7_500;
+			case 7462:
+				return 15_000;
+			case 5698:
+				return 5_000;
+			case 11791:
+				return 750_000;
+			case 11840:
+				return 75_000;
+			case 6585:
+				return 100_000;
+			case 12765:
+				return 1_500_000;
+			case 12002:
+				return 1_250_000;
+			case 4151:
+				return 1_750_000;
 
 
 		}
@@ -104,7 +106,7 @@ public class BountyShop extends Shop {
 	 * All items in Bounty store
 	 */
 	public BountyShop() {
-		super(SHOP_ID, new Item[]{ new Item(12002), new Item(11840), new Item(6585), new Item(11791), new Item(5698), new Item(4153), new Item(7462), new Item(12798), new Item(12800), new Item(12802), new Item(12804), new Item(12765), new Item(12846), new Item(12786)
+		super(SHOP_ID, new Item[]{ new Item(12002), new Item(11840), new Item(6585), new Item(11791), new Item(5698), new Item(4153), new Item(7462), new Item(12798), new Item(12800), new Item(12802), new Item(12804), new Item(12765), new Item(4151), new Item(12846), new Item(12786)
 		}, false, "Bounty Store");
 	}
 

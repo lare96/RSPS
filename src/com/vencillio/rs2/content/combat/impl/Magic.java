@@ -81,6 +81,16 @@ public class Magic {
 		}
 
 		int damage = nextHit == -2 ? entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MAGIC) + 1)) : nextHit;
+		if (entity.getPlayer() != null) {
+			if (entity.getPlayer().getEquipment().isWearingItem(11791) || entity.getPlayer().getEquipment().isWearingItem(12904))
+			{
+				damage *= 1.15;
+			}
+			if (entity.getPlayer().getEquipment().isWearingItem(12002))
+			{
+				damage *= 1.1;
+			}
+		}
 
 
 

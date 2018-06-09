@@ -30,7 +30,7 @@ public class DecantingDialogue extends Dialogue {
 			break;
 			
 		case DialogueConstants.OPTIONS_3_2:
-			if (player.getInventory().hasItemId(995)) {
+			if (player.getInventory().hasItemId(995) || player.getMoneyPouch() > 0) {
 				PotionDecanting.decantAll(player);
 				player.send(new SendRemoveInterfaces());
 			} else {

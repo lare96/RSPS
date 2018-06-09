@@ -2,6 +2,7 @@ package com.vencillio.rs2.content.skill.magic;
 
 import com.vencillio.core.definitions.CombatSpellDefinition;
 import com.vencillio.core.util.GameDefinitionLoader;
+import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
 import com.vencillio.rs2.content.combat.impl.Attack;
 import com.vencillio.rs2.content.skill.Skills;
@@ -185,7 +186,8 @@ public class SpellCasting {
 		}
 
 		if (spell.execute(player)) {
-			player.getMagic().removeRunes(spell.getRunes());
+			if((player.getEquipment().isWearingItem(11791) || player.getEquipment().isWearingItem(12904)) &&  Utility.randomNumber(8) != 0)
+				player.getMagic().removeRunes(spell.getRunes());
 			player.getSkill().addExperience(6, spell.getExperience());
 		}
 	}
