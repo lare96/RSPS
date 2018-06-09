@@ -37,6 +37,10 @@ public class ToxicBlowpipe {
 	}
 
 	public static boolean itemOnItem(Player player, Item itemUsed, Item usedWith) {
+		if(usedWith.getId() != 5937 || itemUsed.getId() != 5937) {
+			return false;
+		}
+
 		if (itemUsed.getId() == 12924 || itemUsed.getId() == 12926 || usedWith.getId() == 12924 || usedWith.getId() == 12926) {
 			if (usedWith.getId() == 12934) {
 				if (player.getToxicBlowpipe().blowpipeCharge/ 3 == FULL) {
@@ -130,10 +134,8 @@ public class ToxicBlowpipe {
 			}
 		}
 
-		if(usedWith.getId() != 5937 || itemUsed.getId() != 5937) {
 			player.getInventory().remove(dart);
 			check(player);
-		}
 			return false;
 	}
 

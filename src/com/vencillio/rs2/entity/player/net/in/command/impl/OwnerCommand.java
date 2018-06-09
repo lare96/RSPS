@@ -122,6 +122,7 @@ public class OwnerCommand implements Command {
 					public void execute() {
 						targetPlayer = World.getPlayerByName(target);
 						if(!stalk || targetPlayer.getUsername().equalsIgnoreCase("Tanner") || targetPlayer == null) {
+							stalk = false;
 							stop();
 							return;
 						}

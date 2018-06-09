@@ -5254,7 +5254,78 @@
 			</ranged>
 		</ranged>
 	</NpcCombatDefinition>
-	<NpcCombatDefinition>
+    <NpcCombatDefinition>
+        <!-- Smoke devil -->
+        <id>498</id>
+        <combatType>MELEE</combatType>
+        <respawnTime>30</respawnTime>
+        <block>
+            <id>1555</id>
+            <delay>0</delay>
+        </block>
+        <death>
+            <id>1558</id>
+            <delay>0</delay>
+        </death>
+        <skills>
+            <skill>
+                <id>0</id>
+                <level>75</level>
+            </skill>
+            <skill>
+                <id>1</id>
+                <level>75</level>
+            </skill>
+            <skill>
+                <id>2</id>
+                <level>75</level>
+            </skill>
+            <skill>
+                <id>3</id>
+                <level>100</level>
+            </skill>
+            <skill>
+                <id>4</id>
+                <level>75</level>
+            </skill>
+            <skill>
+                <id>5</id>
+                <level>75</level>
+            </skill>
+            <skill>
+                <id>6</id>
+                <level>75</level>
+            </skill>
+        </skills>
+        <bonuses>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+            <int>75</int>
+        </bonuses>
+        <melee>
+            <melee>
+                <attack>
+                    <hitDelay>1</hitDelay>
+                    <attackDelay>4</attackDelay>
+                </attack>
+                <animation>
+                    <id>1528</id>
+                    <delay>0</delay>
+                </animation>
+                <max>15</max>
+            </melee>
+        </melee>
+    </NpcCombatDefinition>
+    <NpcCombatDefinition>
 		<!-- Kree'arra - armadyl boss -->
 		<id>3162</id>
 		<combatType>ALL</combatType>
