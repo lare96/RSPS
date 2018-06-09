@@ -92,6 +92,8 @@ public class BountyShop extends Shop {
 				return 200_000;
 			case 12765:
 				return 275_000;
+			case 12002:
+				return 300_000;
 
 
 		}
@@ -102,7 +104,7 @@ public class BountyShop extends Shop {
 	 * All items in Bounty store
 	 */
 	public BountyShop() {
-		super(SHOP_ID, new Item[]{ new Item(11840), new Item(6585), new Item(11791), new Item(5698), new Item(4153), new Item(7462), new Item(4097), new Item(12798), new Item(12800), new Item(12802), new Item(12804), new Item(12765), new Item(12846), new Item(12786)
+		super(SHOP_ID, new Item[]{ new Item(12002), new Item(11840), new Item(6585), new Item(11791), new Item(5698), new Item(4153), new Item(7462), new Item(12798), new Item(12800), new Item(12802), new Item(12804), new Item(12765), new Item(12846), new Item(12786)
 		}, false, "Bounty Store");
 	}
 
