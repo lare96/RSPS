@@ -31,11 +31,18 @@ public class Overload {
 		}
 
 		//Creates item if items being used are correct
-		for (int index = 0; index < ITEMS.length; index++) {
-			if (itemUsed.getId() == ITEMS[index] || usedWith.getId() == ITEMS[index]) {
-				create(player);
-				return true;
+		if (player.getInventory().hasItemId(145) && player.getInventory().hasItemId(261) && player.getInventory().hasItemId(157)
+				&& player.getInventory().hasItemId(267) && player.getInventory().hasItemId(163) && player.getInventory().hasItemId(2481)
+				&& player.getInventory().hasItemId(11727) && player.getInventory().hasItemId(9594) && player.getInventory().hasItemId(11723)
+				&& player.getInventory().hasItemId(8302) && player.getInventory().hasItemId(269)) {
+
+			for (int index = 0; index < ITEMS.length; index++) {
+				if (itemUsed.getId() == ITEMS[index] || usedWith.getId() == ITEMS[index]) {
+					create(player);
+					return true;
+				}
 			}
+
 		}
 		return false;
 	}

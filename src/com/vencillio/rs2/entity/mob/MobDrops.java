@@ -19,6 +19,8 @@ import com.vencillio.rs2.content.minigames.warriorsguild.ArmourAnimator;
 import com.vencillio.rs2.content.minigames.warriorsguild.CyclopsRoom;
 import com.vencillio.rs2.content.pets.BossPets;
 import com.vencillio.rs2.content.pets.BossPets.PetData;
+import com.vencillio.rs2.content.skill.Skills;
+import com.vencillio.rs2.content.skill.prayer.BoneBurying;
 import com.vencillio.rs2.content.skill.summoning.FamiliarMob;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Location;
@@ -44,9 +46,8 @@ import java.util.List;
 
 /**
  * Handles Mop drops
- * 
- * @author Daniel
  *
+ * @author Daniel
  */
 public class MobDrops {
 
@@ -62,7 +63,7 @@ public class MobDrops {
 
 	/**
 	 * Calculates amount
-	 * 
+	 *
 	 * @param drop
 	 * @return
 	 */
@@ -78,7 +79,7 @@ public class MobDrops {
 
 	/**
 	 * Drops the item
-	 * 
+	 *
 	 * @param entity
 	 * @param mob
 	 * @param table
@@ -151,7 +152,14 @@ public class MobDrops {
 					int am = item.getAmount();
 					item.setAmount(1);
 					for (int ii = 0; ii < am; ii++) {
-						GroundItemHandler.add(item, dropLocation, (entity == null) || (entity.isNpc()) ? null : World.getPlayers()[entity.getIndex()], World.getPlayers()[entity.getIndex()].ironPlayer() ? World.getPlayers()[entity.getIndex()] : null);
+						if ((item.getId() == 526 || item.getId() == 532 || item.getId() == 534 || item.getId() == 536 || item.getId() == 11943 || item.getId() == 6729) && entity.getPlayer() != null) {
+							if (entity.getPlayer().getInventory().hasItemId(13116)) {
+								entity.getPlayer().getSkill().addExperience(Skills.PRAYER, BoneBurying.getExperience(item.getId()));
+							}
+						}
+						else {
+							GroundItemHandler.add(item, dropLocation, (entity == null) || (entity.isNpc()) ? null : World.getPlayers()[entity.getIndex()], World.getPlayers()[entity.getIndex()].ironPlayer() ? World.getPlayers()[entity.getIndex()] : null);
+						}
 					}
 				}
 			} else {
@@ -195,7 +203,7 @@ public class MobDrops {
 				GroundItemHandler.add(item, dropLocation, player, player.ironPlayer() ? player : null);
 				return true;
 			}
-			
+
 		}
 		return false;
 	}
@@ -204,9 +212,9 @@ public class MobDrops {
 		if (entity == null || entity.isNpc() || mob == null || !mob.isNpc()) {
 			return;
 		}
-		
+
 		Player player = World.getPlayers()[entity.getIndex()];
-		
+
 		if (player == null) {
 			return;
 		}
@@ -214,14 +222,14 @@ public class MobDrops {
 
 		if (player.getEquipment() != null && player.getEquipment().getItems() != null) {
 			Item weapon = player.getEquipment().getItems()[3];
-			
+
 			if (weapon == null) {
 				weapon = new Item();
 			}
-			
+
 			Utility.sendPacketToPlayers(new SendKillFeed(Utility.formatPlayerName(player.getUsername()), Utility.formatPlayerName(mob.getDefinition().getName()), weapon.getId(), mob.isPoisoned()), Arrays.asList(World.getPlayers()));
 		}
-		
+
 		if (mob.getId() == 1778) {
 			if (ClueScrollManager.playerHasScroll(player)) {
 				for (Item item : player.getInventory().getItems()) {
@@ -241,66 +249,66 @@ public class MobDrops {
 		}
 
 		switch (mob.getId()) {
-		case 2215:
-		case 3162:
-		case 2205:
-		case 3129:
-		case 4005:
-		case 6342:
-		case 319:
-		case 415:
-		case 8:
-		case 3127:
-		case 2265:
-		case 6618:
-		case 2266:
-		case 2267:
-		case 5779:
-		case 2054:
-		case 6615:
-		case 4315:
-		case 6619:
-			player.getProperties().addProperty(mob, 1);
-			break;
-			
-		case 6609:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_100_CALLISTO, 1);
-			player.getProperties().addProperty(mob, 1);
-		break;
-			
-		case 494:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_25_KRAKENS, 1);
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_150_KRAKENS, 1);
-			player.getProperties().addProperty(mob, 1);
-			break;
-			
-		case 239:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_KING_BLACK_DRAGON, 1);
-			player.getProperties().addProperty(mob, 1);
-			break;
+			case 2215:
+			case 3162:
+			case 2205:
+			case 3129:
+			case 4005:
+			case 6342:
+			case 319:
+			case 415:
+			case 8:
+			case 3127:
+			case 2265:
+			case 6618:
+			case 2266:
+			case 2267:
+			case 5779:
+			case 2054:
+			case 6615:
+			case 4315:
+			case 6619:
+				player.getProperties().addProperty(mob, 1);
+				break;
 
-		case 100:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_ROCK_CRABS, 1);
-			break;
+			case 6609:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_100_CALLISTO, 1);
+				player.getProperties().addProperty(mob, 1);
+				break;
 
-		case 467:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_250_SKELETAL_WYVERNS, 1);
-			break;
+			case 494:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_25_KRAKENS, 1);
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_150_KRAKENS, 1);
+				player.getProperties().addProperty(mob, 1);
+				break;
 
-		case 2805:
-			AchievementHandler.activateAchievement(player, AchievementList.KILL_75_COWS, 1);
-			break;
+			case 239:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_KING_BLACK_DRAGON, 1);
+				player.getProperties().addProperty(mob, 1);
+				break;
 
-		case 2955:
-		case 2954:
-			player.setArenaPoints(player.getArenaPoints() + 1);
-			player.send(new SendMessage("@dre@You now have " + player.getArenaPoints() + " Mage Arena points."));
-			AchievementHandler.activateAchievement(player, AchievementList.EARN_100_MAGE_ARENA_POINTS, 1);
-			AchievementHandler.activateAchievement(player, AchievementList.EARN_500_MAGE_ARENA_POINTS, 1);
-			break;
+			case 100:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_ROCK_CRABS, 1);
+				break;
+
+			case 467:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_250_SKELETAL_WYVERNS, 1);
+				break;
+
+			case 2805:
+				AchievementHandler.activateAchievement(player, AchievementList.KILL_75_COWS, 1);
+				break;
+
+			case 2955:
+			case 2954:
+				player.setArenaPoints(player.getArenaPoints() + 1);
+				player.send(new SendMessage("@dre@You now have " + player.getArenaPoints() + " Mage Arena points."));
+				AchievementHandler.activateAchievement(player, AchievementList.EARN_100_MAGE_ARENA_POINTS, 1);
+				AchievementHandler.activateAchievement(player, AchievementList.EARN_500_MAGE_ARENA_POINTS, 1);
+				break;
 
 		}
-		
+
 
 		if ((entity instanceof FamiliarMob)) {
 			Mob m = World.getNpcs()[entity.getIndex()];
@@ -321,19 +329,19 @@ public class MobDrops {
 		if (mob instanceof SeaTrollQueen) {
 			dropLocation = new Location(2344, 3699);
 		}
-		
+
 		if (mob instanceof Zulrah) {
 			dropLocation = new Location(player.getX(), player.getY(), player.getZ());
 		}
-		
+
 		if (mob instanceof Kraken) {
 			dropLocation = new Location(player.getX(), player.getY(), player.getZ());
 		}
-		
+
 		if (mob instanceof GiantMole) {
 			dropLocation = new Location(player.getX(), player.getY(), player.getZ());
 		}
-		
+
 
 		// int level = mob.getDefinition().getLevel();
 
@@ -356,7 +364,7 @@ public class MobDrops {
 				ArmourAnimator.dropForAnimatedArmour(p, mob);
 				return;
 			}
-			
+
 			if (p.getController() == ControllerManager.GOD_WARS_CONTROLLER) {
 				try {
 					GodWars.onGodwarsKill(p, mob.getId());
@@ -422,7 +430,7 @@ public class MobDrops {
 		}
 
 		if ((drops.getConstant() != null) && (drops.getConstant().getDrops() != null)) {
-			System.out.println("mob id(has constants): " +mob.getId());
+			System.out.println("mob id(has constants): " + mob.getId());
 			dropConstants(entity, mob, drops.getConstant(), dropLocation);
 		}
 
@@ -430,7 +438,7 @@ public class MobDrops {
 			System.out.println("drop false mob max hp 0");
 			return;
 		}
-		
+
 		if (dropClues(player, mob, dropLocation)) {
 			return;
 		}
@@ -619,7 +627,7 @@ public class MobDrops {
 					if (!p.getController().equals(ControllerManager.WILDERNESS_CONTROLLER)) {
 						Item item = new Item(rare.getId(), am);
 						World.sendRegionMessage("<col=1F8C26>" + e.getPlayer().getUsername() + " received a drop: " + Utility.format(item.getAmount()) + " x " + item.getDefinition().getName() + ".", mob.getLocation());
-						
+
 					}
 				}
 

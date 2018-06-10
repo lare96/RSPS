@@ -81,7 +81,14 @@ public class Magic {
 		}
 
 		int damage = nextHit == -2 ? entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MAGIC) + 1)) : nextHit;
+
+
 		if (entity.getPlayer() != null) {
+
+			if(success) { //check for poison here instead to only poison if magic is not splash
+				PoisonWeapons.checkForPoison(entity.getPlayer(), entity.getCombat().getAttacking());
+			}
+
 			if (entity.getPlayer().getEquipment().isWearingItem(11791) || entity.getPlayer().getEquipment().isWearingItem(12904))
 			{
 				damage *= 1.15;

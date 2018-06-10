@@ -722,7 +722,15 @@ public class WalkToActions {
 			case 954://Barrows repair
 				for (int[] id : Barrows.BROKEN_BARROWS) {
 					if (item == id[1]) {
-						if (player.getInventory().contains(new Item(995, 250_000))) {
+						if(player.isPouchPayment()) {
+							if(player.getMoneyPouch() > 250_000) {
+								player.setMoneyPouch(player.getMoneyPouch() - 250_000);
+								player.getInventory().remove(item, 1);
+								player.getInventory().add(new Item(id[0]));
+								DialogueManager.sendNpcChat(player, 954, Emotion.DEFAULT, "Your " + GameDefinitionLoader.getItemDef(id[0]).getName() + " has been repaired.");
+							}
+						}
+						else if (player.getInventory().contains(new Item(995, 250_000))) {
 							player.getInventory().remove(item, 1);
 							player.getInventory().remove(new Item(995, 250_000));
 							player.getInventory().add(new Item(id[0]));

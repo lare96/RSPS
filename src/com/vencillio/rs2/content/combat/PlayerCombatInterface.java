@@ -494,7 +494,9 @@ public class PlayerCombatInterface implements CombatInterface {
 			player.getMagic().getSpellCasting().appendMultiSpell(player);
 		}
 
-		PoisonWeapons.checkForPoison(player, entity);
+		if (player.getCombat().getCombatType() != CombatTypes.MAGIC) {
+			PoisonWeapons.checkForPoison(player, entity);
+		}
 
 		player.getDegrading().degradeWeapon(player);
 

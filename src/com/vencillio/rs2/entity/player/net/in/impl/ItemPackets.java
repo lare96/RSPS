@@ -37,6 +37,7 @@ import com.vencillio.rs2.content.skill.hunter.Impling.ImplingRewards;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
 import com.vencillio.rs2.content.skill.magic.TabCreation;
 import com.vencillio.rs2.content.skill.magic.spells.BoltEnchanting;
+import com.vencillio.rs2.content.skill.magic.weapons.ToxicStaffOfTheDead;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSeas;
 import com.vencillio.rs2.content.skill.magic.weapons.TridentOfTheSwamp;
 import com.vencillio.rs2.content.skill.melee.SerpentineHelmet;
@@ -237,6 +238,10 @@ public class ItemPackets extends IncomingPacket {
 				}
 
 				if (SerpentineHelmet.itemOption(player, 2, itemId)) {
+					return;
+				}
+
+				if(ToxicStaffOfTheDead.itemOption(player, 2, itemId)) {
 					return;
 				}
 
@@ -625,6 +630,10 @@ public class ItemPackets extends IncomingPacket {
 					return;
 				}
 
+				if(ToxicStaffOfTheDead.itemOption(player, 4, itemId)) {
+					return;
+				}
+
 				if (itemId == 4045) {
 					player.getUpdateFlags().sendAnimation(new Animation(827));
 					player.getInventory().remove(new Item(4045, 1));
@@ -739,6 +748,10 @@ public class ItemPackets extends IncomingPacket {
 				}
 
 				if (TridentOfTheSwamp.itemOnItem(player, itemUsed, usedWith)) {
+					return;
+				}
+
+				if(ToxicStaffOfTheDead.itemOnItem(player, itemUsed, usedWith)) {
 					return;
 				}
 
@@ -1007,6 +1020,10 @@ public class ItemPackets extends IncomingPacket {
 					return;
 				}
 
+				if(ToxicStaffOfTheDead.itemOption(player, 1, itemId)) {
+					return;
+				}
+
 				if (itemId == 4079) {
 					player.getUpdateFlags().sendAnimation(1459, 0);
 					return;
@@ -1069,6 +1086,10 @@ public class ItemPackets extends IncomingPacket {
 				}
 
 				if (TridentOfTheSwamp.itemOption(player, 3, itemId)) {
+					return;
+				}
+
+				if(ToxicStaffOfTheDead.itemOption(player, 3, itemId)) {
 					return;
 				}
 

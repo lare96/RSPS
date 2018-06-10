@@ -151,6 +151,10 @@ public class PlayerDrops {
 
 		player.getInventory().clear();
 		player.getEquipment().clear();
+
+		if(items.contains(new Item(13116))) {
+			player.getInventory().add(new Item(13116));
+		}
 		
 		for (int i = 0; i < kept; i++) {
 			Item keep = items.poll();

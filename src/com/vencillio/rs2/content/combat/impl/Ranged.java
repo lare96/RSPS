@@ -42,6 +42,12 @@ public class Ranged {
 
 		int damage = entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.RANGED) + 1));
 
+		if (entity.getPlayer() != null) {
+			if (success) { //check for poison here instead to only poison if magic is not splash
+				PoisonWeapons.checkForPoison(entity.getPlayer(), entity.getCombat().getAttacking());
+			}
+		}
+
 		Hit hit = new Hit(entity, (success) || (entity.isIgnoreHitSuccess()) ? damage : 0, Hit.HitTypes.RANGED);
 
 		entity.setLastDamageDealt(hit.getDamage());

@@ -379,11 +379,13 @@ public class PlayerCommand implements Command {
 					player.getInventory().remove(995, 25_000_000);
 					player.insure = true;
 					PlayerSave.save(player);
+					player.send(new SendMessage("Your pet has been successfully insured"));
 				}
 				else if(player.getMoneyPouch() > 25_000_000) {
 					player.setMoneyPouch(player.getMoneyPouch() - 25_000_000);
 					player.insure = true;
 					PlayerSave.save(player);
+					player.send(new SendMessage("Your pet has been successfully insured"));
 				}
 				else {
 					player.send(new SendMessage("You don't have enough money to insure your pet"));

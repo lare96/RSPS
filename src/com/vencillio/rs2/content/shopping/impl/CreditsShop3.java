@@ -40,6 +40,7 @@ public class CreditsShop3 extends Shop {
 			case 6922:
 			case 6924:
 			case 10833:
+			case 13116:
 				return 25;
 
 		}
@@ -61,6 +62,7 @@ public class CreditsShop3 extends Shop {
 				new Item(6920),
 				new Item(6922),
 				new Item(10833),
+				new Item(13116),
 
 		}, false, "Credits Store 3");
 	}

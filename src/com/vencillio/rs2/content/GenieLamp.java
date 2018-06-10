@@ -1,11 +1,11 @@
 package com.vencillio.rs2.content;
 
-import java.util.HashMap;
-
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
+
+import java.util.HashMap;
 
 /**
  * Class that handles genie lamp
@@ -88,7 +88,7 @@ public class GenieLamp {
 		player.getDelay().reset();
 		player.send(new SendRemoveInterfaces());
 		player.getInventory().remove(new Item(2528));
-		player.getSkill().addExperience(genie.getSkill(), 1_000);
+		player.getSkill().addExperience(genie.getSkill(), 2_500);
 		player.send(new SendMessage("You rub on the lamp... and were given experience in "+Prestige.getSkillName(genie.getSkill())+"."));
 		return true;
 	}

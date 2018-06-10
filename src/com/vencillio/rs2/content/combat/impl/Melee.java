@@ -45,6 +45,9 @@ public class Melee {
 
 		if(attacking.isNpc() && entity.getPlayer() != null) {
 			Player p = entity.getPlayer();
+			if(success) { //check for poison here instead to only poison if magic is not splash
+				PoisonWeapons.checkForPoison(p, entity.getCombat().getAttacking());
+			}
 			if(p.getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && p.getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT) && success)
 				Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, p);
 		}

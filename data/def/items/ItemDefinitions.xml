@@ -2397,7 +2397,7 @@
 		<noteId>200</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>500</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy guam leaf</name>
@@ -2409,7 +2409,7 @@
 		<noteId>199</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>500</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy marrentill</name>
@@ -2421,7 +2421,7 @@
 		<noteId>202</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>550</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy marrentill</name>
@@ -2433,7 +2433,7 @@
 		<noteId>201</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>550</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy tarromin</name>
@@ -2445,7 +2445,7 @@
 		<noteId>204</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>750</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy tarromin</name>
@@ -2457,7 +2457,7 @@
 		<noteId>203</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>750</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy harralander</name>
@@ -2469,7 +2469,7 @@
 		<noteId>206</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>1100</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy harralander</name>
@@ -2481,7 +2481,7 @@
 		<noteId>205</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>1100</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy ranarr weed</name>
@@ -2491,9 +2491,9 @@
 		<stackable>false</stackable>
 		<note>false</note>
 		<noteId>208</noteId>
-		<highAlch>15</highAlch>
-		<lowAlch>10</lowAlch>
-		<generalPrice>15</generalPrice>
+		<highAlch>0</highAlch>
+		<lowAlch>0</lowAlch>
+		<generalPrice>5000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy ranarr weed</name>
@@ -2503,9 +2503,9 @@
 		<stackable>true</stackable>
 		<note>true</note>
 		<noteId>207</noteId>
-		<highAlch>15</highAlch>
-		<lowAlch>10</lowAlch>
-		<generalPrice>15</generalPrice>
+		<highAlch>0</highAlch>
+		<lowAlch>0</lowAlch>
+		<generalPrice>5000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy irit leaf</name>
@@ -2517,7 +2517,7 @@
 		<noteId>210</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>1400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy irit leaf</name>
@@ -2529,7 +2529,7 @@
 		<noteId>209</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>1400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy avantoe</name>
@@ -2541,7 +2541,7 @@
 		<noteId>212</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2800</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy avantoe</name>
@@ -2553,7 +2553,7 @@
 		<noteId>211</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2800</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy kwuarm</name>
@@ -2565,7 +2565,7 @@
 		<noteId>214</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy kwuarm</name>
@@ -2577,7 +2577,7 @@
 		<noteId>213</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy cadantine</name>
@@ -2589,7 +2589,7 @@
 		<noteId>216</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2200</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy cadantine</name>
@@ -2601,7 +2601,7 @@
 		<noteId>215</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2200</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy dwarf weed</name>
@@ -2613,7 +2613,7 @@
 		<noteId>218</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>3000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy dwarf weed</name>
@@ -2625,7 +2625,7 @@
 		<noteId>217</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>3000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy torstol</name>
@@ -2637,7 +2637,7 @@
 		<noteId>220</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>8000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy torstol</name>
@@ -2649,7 +2649,7 @@
 		<noteId>219</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>8000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Eye of newt</name>
@@ -29829,7 +29829,7 @@
 		<noteId>2486</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy lantadyme</name>
@@ -29841,7 +29841,7 @@
 		<noteId>2485</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Blue d'hide vamb</name>
@@ -36597,7 +36597,7 @@
 		<noteId>3050</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2600</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy toadflax</name>
@@ -36609,7 +36609,7 @@
 		<noteId>3049</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>2600</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy snapdragon</name>
@@ -36621,7 +36621,7 @@
 		<noteId>3052</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>6000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Grimy snapdragon</name>
@@ -36633,7 +36633,7 @@
 		<noteId>3051</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>6000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Lava battlestaff</name>
@@ -37665,7 +37665,7 @@
 		<noteId>3139</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>600</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Potato cactus</name>
@@ -99633,7 +99633,7 @@
 		<noteId>-1</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>5500</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Tentacle pool</name>
@@ -115137,7 +115137,7 @@
 		<noteId>-1</noteId>
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
-		<generalPrice>0</generalPrice>
+		<generalPrice>700</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Hazelmere's book</name>

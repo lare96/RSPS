@@ -23,7 +23,7 @@ public class BoltSpecials {
 		int decrease = (attacking instanceof Player && attacking.getPlayer() != null && attacking.getPlayer().getEquipment().contains(9944) ? 5 : 0);
 		int random = Utility.random(230);
 		
-		if (random > 30 - decrease) {
+		if (random > 15 - decrease) {
 			return;
 		}
 

@@ -58,6 +58,11 @@ public class BoneBurying {
 
 	public static final int BURYING_ANIMATION = 827;
 
+	public static double getExperience(int id) {
+		Bones bones = Bones.forId(id);
+		return bones.experience;
+	}
+
 	public static boolean bury(Player player, int id, int slot) {
 		Bones bones = Bones.forId(id);
 
