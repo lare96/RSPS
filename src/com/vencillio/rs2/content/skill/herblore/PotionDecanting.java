@@ -21,17 +21,14 @@ public class PotionDecanting {
 
 		int id1 = p.getInventory().get(slot1).getId();
 		int id2 = p.getInventory().get(slot2).getId();
-		System.out.println("id1: " + p.getInventory().get(slot1).getName()  + " id2: " + p.getInventory().get(slot2).getName());
 
 		for (int[] i : DECANT_DATA) {
 			if (((id1 == i[0]) && (id2 == i[1])) || ((id1 == i[1]) && (id2 == i[0]))) {
-				System.out.println("i[0]: " + i[0] + " i[1]: " + i[1]);
 				Item item1 = new Item(i[3] , 1);
 				Item item2 = new Item(i[2], 1);
 				p.getInventory().setSlot(item1, slot1);
-				System.out.println("slot1: " + p.getInventory().get(slot1).getName() + " replaced with " + item1.getName());
 				p.getInventory().setSlot(item2, slot2);
-				System.out.println("slot2: " + p.getInventory().get(slot2).getName() + " replaced with " + item2.getName());
+
 
 				p.getInventory().update();
 
@@ -53,7 +50,7 @@ public class PotionDecanting {
 				for (int k = 0; k < items.length; k++) {
 					if (i != k && items[k] != null && Consumables.isPotion(items[k])) {
 
-						if (!p.getInventory().hasItemAmount(new Item(995, 250)) || p.getMoneyPouch() < 250) {
+						if (!p.getInventory().hasItemAmount(new Item(995, 250)) && p.getMoneyPouch() < 250) {
 							p.getClient().queueOutgoingPacket(new SendMessage("You do not have enough coins to decant any potions!"));
 							p.getInventory().update();
 							return;
@@ -61,11 +58,17 @@ public class PotionDecanting {
 
 						final int id1 = items[i].getId();
 						final int id2 = items[k].getId();
+						System.out.println("id1: " + new Item(id1).getName()  + " id2: " + new Item(id2).getName());
 
 						for (int[] j : DECANT_DATA) {
 							if (((id1 == j[0]) && (id2 == j[1])) || ((id1 == j[1]) && (id2 == j[0]))) {
-								p.getInventory().setSlot(new Item(j[3], 1), i); //Increases dose by one
-								p.getInventory().setSlot(new Item(j[2], 1), k); //Decreases dose by one
+								System.out.println("i[0]: " + j[0] + " i[1]: " + j[1]);
+								Item item1 = new Item(j[3] , 1);
+								Item item2 = new Item(j[2], 1);
+								p.getInventory().setSlot(item1, i); //Increases dose by one
+								System.out.println("slot1: " + i + " replaced with " + item1.getName());
+								p.getInventory().setSlot(item2, k); //Decreases dose by one
+								System.out.println("slot2: " + k + " replaced with " + item2.getName());
 								if(p.isPouchPayment()) {
 									p.setMoneyPouch(p.getMoneyPouch() - 250);
 									p.send(new SendString(p.getMoneyPouch() + "", 8135));

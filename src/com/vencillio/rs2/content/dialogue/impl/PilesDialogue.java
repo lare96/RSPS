@@ -47,9 +47,12 @@ public class PilesDialogue extends Dialogue {
 						DialogueManager.sendStatement(player, Utility.format(payment) + " coins is required to do this; which you do not have!"); 
 						break;
 					}
-					if(player.isPouchPayment())
+					if(player.isPouchPayment()) {
 						player.setMoneyPouch(player.getMoneyPouch() - amount);
-					player.getInventory().remove(new Item(ITEMS[i][0], amount));
+					}
+					else {
+						player.getInventory().remove(new Item(ITEMS[i][0], amount));
+					}
 					player.getInventory().add(new Item(ITEMS[i][1], amount));
 					DialogueManager.sendInformationBox(player, "Piles", "You have noted:", "@blu@" + amount + " </col>items", "You have paid:", "@blu@" + Utility.format(payment) + " </col>coins");
 					AchievementHandler.activateAchievement(player, AchievementList.EXCHANGE_1000_ITEMS_PILES, amount);		
