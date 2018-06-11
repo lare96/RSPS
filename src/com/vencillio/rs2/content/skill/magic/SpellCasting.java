@@ -86,6 +86,7 @@ public class SpellCasting {
 							if (affected == 9)
 								return;
 						}
+
 					}
 				}
 			}
