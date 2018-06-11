@@ -775,8 +775,13 @@ public abstract class Entity implements CombatInterface {
 	 * @param start
 	 */
 	public void poison(int start) {
-		if (((poisoned) || (World.getCycles() < poisonImmunity)) && getPlayer() != null) {
-			if (!SerpentineHelmet.hasHelmet(getPlayer())) {
+		if ((poisoned) || (World.getCycles() < poisonImmunity)) {
+			if(getCombat().getAttacking().getPlayer() != null) { //If player is attacking
+				if (!SerpentineHelmet.hasHelmet(getCombat().getAttacking().getPlayer())) { //And player doesn't have
+					return; //Serpentine helm then don't stack poison hence exit poison method
+				}
+			}
+			else { //If npc is attacking and enemy is poisoned already dont stack poison hence exit poison method
 				return;
 			}
 		}

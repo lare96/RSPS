@@ -8,7 +8,6 @@ import com.vencillio.rs2.content.combat.Hit.HitTypes;
 import com.vencillio.rs2.content.combat.formula.MagicFormulas;
 import com.vencillio.rs2.content.combat.formula.MeleeFormulas;
 import com.vencillio.rs2.content.combat.formula.RangeFormulas;
-import com.vencillio.rs2.content.combat.impl.PoisonWeapons;
 import com.vencillio.rs2.content.combat.impl.RingOfRecoil;
 import com.vencillio.rs2.content.combat.special.SpecialAttackHandler;
 import com.vencillio.rs2.content.minigames.pestcontrol.PestControlGame;
@@ -500,9 +499,9 @@ public class PlayerCombatInterface implements CombatInterface {
 			player.getMagic().getSpellCasting().appendMultiSpell(player);
 		}
 
-		if (player.getCombat().getCombatType() != CombatTypes.MAGIC) {
+		/*if (player.getCombat().getCombatType() != CombatTypes.MAGIC) {
 			PoisonWeapons.checkForPoison(player, entity);
-		}
+		}*/
 
 		player.getDegrading().degradeWeapon(player);
 
