@@ -19,7 +19,7 @@ public class PoisonWeapons {
 
 	public static void checkForPoison(Player player, Entity attack) {
 		CombatTypes type = player.getCombat().getCombatType();
-		int venom = 10;
+		int venom = 18;
 
 		if(attack.isNpc()) {
 			if (!attack.inCorp() && !attack.inZulrah() && attack.getMob().getId() != 2205 && attack.getMob().getId() != 2215 && attack.getMob().getId() != 3129 && attack.getMob().getId() != 3162) {
