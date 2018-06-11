@@ -23,7 +23,7 @@ public class PoisonWeapons {
 
 		if(attack.isNpc()) {
 			if (!attack.inCorp() && !attack.inZulrah() && attack.getMob().getId() != 2205 && attack.getMob().getId() != 2215 && attack.getMob().getId() != 3129 && attack.getMob().getId() != 3162) {
-				if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player) || player.getEquipment().isWearingItem(12904))) { //Serpentine + TBP or TOS or TSTOD
+				if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player) || (player.getEquipment().isWearingItem(12904) && type == CombatTypes.MAGIC ))) { //Serpentine + TBP or TOS or TSTOD
 					attack.poison(venom);
 				} else if (SerpentineHelmet.hasHelmet(player)) {
 					if (type == CombatTypes.MELEE && player.getEquipment().getItems()[3] != null) {

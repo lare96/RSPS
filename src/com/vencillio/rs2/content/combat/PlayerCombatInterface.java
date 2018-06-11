@@ -277,20 +277,26 @@ public class PlayerCombatInterface implements CombatInterface {
 			return;
 		}
 
-		int torsoID = 8839, legsID = 8840;
+		int voidTorso = 8839, voidLegs = 8840, elysian = 12807;
 		//System.out.println("hit getAttacker: " + hit.getAttacker().toString() + "hit: " + hit.getDamage() + "player: " + player.getUsername());
 
 		if(hit.getDamage() > 0) {
 			//Deflection
-			if (player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) && player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT)) {
+			if (player.getEquipment().isWearingItem(voidTorso, EquipmentConstants.TORSO_SLOT) && player.getEquipment().isWearingItem(voidLegs, EquipmentConstants.LEGS_SLOT)) {
 				if (Curses.deflectAttack(hit.getAttacker(), hit.getDamage())) {
 					hit.setDamage((int) (hit.getDamage() * .5));
 				}
 			}
 
 			//Absorption
-			if (player.getEquipment().isWearingItem(torsoID, EquipmentConstants.TORSO_SLOT) || player.getEquipment().isWearingItem(legsID, EquipmentConstants.LEGS_SLOT)) {
+			if (player.getEquipment().isWearingItem(voidTorso, EquipmentConstants.TORSO_SLOT) || player.getEquipment().isWearingItem(voidLegs, EquipmentConstants.LEGS_SLOT)) {
 				hit.setDamage((int) (hit.getDamage() * .5));
+			}
+
+			if(player.getEquipment().isWearingItem(elysian, EquipmentConstants.SHIELD_SLOT)) {
+				if(Utility.randomNumber(10) > 2) { //70%
+					hit.setDamage((int) (hit.getDamage() * .75));
+				}
 			}
 		}
 

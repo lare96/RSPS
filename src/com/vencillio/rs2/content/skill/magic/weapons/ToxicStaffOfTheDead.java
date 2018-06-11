@@ -90,7 +90,7 @@ public class ToxicStaffOfTheDead {
 	}
 
 	public static boolean itemOption(Player player, int i, int itemId) {
-		if (itemId != 12899) {
+		if (itemId != 12904) {
 			return false;
 		}
 		switch (i) {
@@ -110,7 +110,9 @@ public class ToxicStaffOfTheDead {
 	}
 
 	public static void unload(Player player) {
+		player.getInventory().addOrCreateGroundItem(12934, player.getToxicStaffOfTheDead(), true);
 		player.setToxicStaffOfTheDead(0);
+		player.getInventory().get(player.getInventory().getItemSlot(12904)).setId(12902);
 		player.send(new SendMessage("You have unloaded your staff."));
 	}
 
