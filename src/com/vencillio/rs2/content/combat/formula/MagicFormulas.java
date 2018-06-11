@@ -23,15 +23,15 @@ public class MagicFormulas {
 		} else {
 			double attackBonus = 0;
 			double baseAttack = 0;
-			
+
 			if (entity.getBonuses() != null) {
 				attackBonus = entity.getBonuses()[3];
 			}
-			
+
 			if (entity.getLevels() != null) {
 				baseAttack = entity.getLevels()[6];
 			}
-			
+
 			return Math.floor(baseAttack + attackBonus) + 8;
 		}
 
@@ -95,12 +95,12 @@ public class MagicFormulas {
 
 	/**
 	 * Calculates the attackers max magical damage output
-	 * 
+	 *
 	 * @param player
 	 * @return
 	 */
 	public static int magicMaxHit(Player player) {
-		
+
 		int spellId = player.getMagic().getSpellCasting().getCurrentSpellId();
 
 		if (spellId == -1) {
@@ -132,20 +132,26 @@ public class MagicFormulas {
 		}
 		if (player.getEquipment().getItems()[3] != null) {
 			switch (player.getEquipment().getItems()[3].getId()) {
-			case 20076:
-			case 20074:
-				damageMultiplier += 0.15;
-				break;
-			case 20086:
-				damageMultiplier += 0.8;
-				break;
+				case 20076:
+				case 20074:
+					damageMultiplier += 0.15;
+					break;
+				case 20086:
+					damageMultiplier += 0.8;
+					break;
+				case 12904:
+					damageMultiplier += .15;
+					break;
 			}
+		}
+		if(player.getEquipment().isWearingItem(12002)) {
+			damageMultiplier += .1;
 		}
 		if (spellId > 0) {
 			switch (spellId) {
-			case 12037:
-				damage += player.getSkill().getLevels()[6] / 10;
-				break;
+				case 12037:
+					damage += player.getSkill().getLevels()[6] / 10;
+					break;
 			}
 		}
 		damage *= damageMultiplier;
