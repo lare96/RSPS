@@ -657,7 +657,7 @@ public class ControlPanel extends JFrame {
 					canTradeLabel.setText("Trade banned: N/A"); //+(player.isTradeBanned() ? "true" : "false")); //Set to true, doesn't matter
 					bannedLabel.setText("Banned: "+(player.isBanned() ? "true" : "false"));
 					mutedLabel.setText("Muted: "+(player.isMuted() ? "true" : "false"));
-					slayerTaskLabel.setText("Slayer task: " + player.getSlayer().getTask());
+					slayerTaskLabel.setText("Slayer task: " + player.getSlayer().getTask() + " (" + player.getSlayer().getAmount() + ")");
 				}
 			}
 		});
