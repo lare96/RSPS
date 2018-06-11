@@ -145,24 +145,32 @@ public class MobDrops {
 			Item item = new Item(i.getId(), calculateAmount(i));
 
 			if (!item.getDefinition().isStackable()) {
+				System.out.println("in !item.getDefinition().isStackable()");
 				if (item.getAmount() > 5) {
+					System.out.println("in item.getAmount() > 5");
 					item.setId(item.getDefinition().getNoteId());
 					GroundItemHandler.add(item, dropLocation, (entity == null) || (entity.isNpc()) ? null : World.getPlayers()[entity.getIndex()], World.getPlayers()[entity.getIndex()].ironPlayer() ? World.getPlayers()[entity.getIndex()] : null);
 				} else {
+					System.out.println("in else");
 					int am = item.getAmount();
 					item.setAmount(1);
 					for (int ii = 0; ii < am; ii++) {
 						if ((item.getId() == 526 || item.getId() == 532 || item.getId() == 534 || item.getId() == 536 || item.getId() == 11943 || item.getId() == 6729) && entity.getPlayer() != null) {
+							System.out.println("in item.getid: " + item.getId());
 							if (entity.getPlayer().getInventory().hasItemId(13116)) {
+								System.out.println("in hasItem 13116");
+								System.out.println("bone xp: " + BoneBurying.getExperience(item.getId()));
 								entity.getPlayer().getSkill().addExperience(Skills.PRAYER, BoneBurying.getExperience(item.getId()));
 							}
 						}
 						else {
+							System.out.println("in 2nd else");
 							GroundItemHandler.add(item, dropLocation, (entity == null) || (entity.isNpc()) ? null : World.getPlayers()[entity.getIndex()], World.getPlayers()[entity.getIndex()].ironPlayer() ? World.getPlayers()[entity.getIndex()] : null);
 						}
 					}
 				}
 			} else {
+				System.out.println("in last else");
 				GroundItemHandler.add(item, dropLocation, (entity == null) || (entity.isNpc()) ? null : World.getPlayers()[entity.getIndex()], World.getPlayers()[entity.getIndex()].ironPlayer() ? World.getPlayers()[entity.getIndex()] : null);
 			}
 		}
