@@ -43,10 +43,12 @@ public class PilesDialogue extends Dialogue {
 					int amount = player.getInventory().getItemAmount(ITEMS[i][0]);
 					int payment = player.getInventory().getItemAmount(ITEMS[i][0]) * 50;
 					
-					if (!player.getInventory().hasItemId(new Item(995, payment))) {
+					if (!player.getInventory().hasItemId(new Item(995, payment)) || player.getMoneyPouch() < payment) {
 						DialogueManager.sendStatement(player, Utility.format(payment) + " coins is required to do this; which you do not have!"); 
 						break;
 					}
+					if(player.isPouchPayment())
+						player.setMoneyPouch(player.getMoneyPouch() - amount);
 					player.getInventory().remove(new Item(ITEMS[i][0], amount));
 					player.getInventory().add(new Item(ITEMS[i][1], amount));
 					DialogueManager.sendInformationBox(player, "Piles", "You have noted:", "@blu@" + amount + " </col>items", "You have paid:", "@blu@" + Utility.format(payment) + " </col>coins");

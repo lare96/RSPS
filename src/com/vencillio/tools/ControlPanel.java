@@ -561,43 +561,46 @@ public class ControlPanel extends JFrame {
 		panel_2.add(questPointsLabel);
 
 		final JLabel totalLevelLabel = new JLabel("Total Level:");
-		totalLevelLabel.setBounds(393, 32, 189, 14);
+		totalLevelLabel.setBounds(393, 30, 189, 14);
 		panel_2.add(totalLevelLabel);
 
 		final JLabel totalExpLabel = new JLabel("Total Exp:");
-		totalExpLabel.setBounds(393, 69, 201, 14);
+		totalExpLabel.setBounds(393, 60, 201, 14);
 		panel_2.add(totalExpLabel);
 
-		final JLabel memberLabel = new JLabel("Member:");
-		memberLabel.setBounds(393, 149, 165, 14);
-		panel_2.add(memberLabel);
-
 		final JLabel rightsLabel = new JLabel("Rights:");
-		rightsLabel.setBounds(393, 109, 165, 14);
+		rightsLabel.setBounds(393, 90, 165, 14);
 		panel_2.add(rightsLabel);
 
+		final JLabel memberLabel = new JLabel("Member:");
+		memberLabel.setBounds(393, 120, 165, 14);
+		panel_2.add(memberLabel);
+
 		final JLabel bankSizeLabel = new JLabel("Bank size:");
-		bankSizeLabel.setBounds(393, 189, 176, 14);
+		bankSizeLabel.setBounds(393, 150, 176, 14);
 		panel_2.add(bankSizeLabel);
 
+		final JLabel moneyPouchLabel = new JLabel("Money pouch:");
+		moneyPouchLabel.setBounds(393, 180, 201, 14);
+		panel_2.add(moneyPouchLabel);
+
 		final JLabel canTradeLabel = new JLabel("Trade banned:");
-		canTradeLabel.setBounds(393, 269, 201, 14);
+		canTradeLabel.setBounds(393, 210, 201, 14);
 		panel_2.add(canTradeLabel);
 
 		final JLabel bannedLabel = new JLabel("Banned:");
-		bannedLabel.setBounds(393, 309, 165, 14);
+		bannedLabel.setBounds(393, 240, 165, 14);
 		panel_2.add(bannedLabel);
 
-		final JLabel moneyPouchLabel = new JLabel("Money pouch:");
-		moneyPouchLabel.setBounds(393, 229, 201, 14);
-		panel_2.add(moneyPouchLabel);
-
 		final JLabel mutedLabel = new JLabel("Muted:");
-		mutedLabel.setBounds(393, 349, 176, 14);
+		mutedLabel.setBounds(393, 270, 176, 14);
 		panel_2.add(mutedLabel);
 
+		final JLabel slayerTaskLabel = new JLabel("Slayer task:");
+		slayerTaskLabel.setBounds(393, 300, 190, 14);
+		panel_2.add(slayerTaskLabel);
 
-		inventoryButton.setBounds(393, 399, 201, 14);
+		inventoryButton.setBounds(393, 350, 201, 14);
 		panel_2.add(inventoryButton);
 
 		final JPanel infoPanel = new JPanel();
@@ -654,6 +657,7 @@ public class ControlPanel extends JFrame {
 					canTradeLabel.setText("Trade banned: N/A"); //+(player.isTradeBanned() ? "true" : "false")); //Set to true, doesn't matter
 					bannedLabel.setText("Banned: "+(player.isBanned() ? "true" : "false"));
 					mutedLabel.setText("Muted: "+(player.isMuted() ? "true" : "false"));
+					slayerTaskLabel.setText("Slayer task: " + player.getSlayer().getTask());
 				}
 			}
 		});

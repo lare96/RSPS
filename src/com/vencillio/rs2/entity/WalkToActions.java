@@ -176,6 +176,10 @@ public class WalkToActions {
 
 		final int[] length = ObjectConstants.getObjectLength(id, object == null ? 0 : object.getFace());
 
+		if(id == 7436 && x == 3008 && y == 3150 && player.getX() == x && player.getY() == y) {
+			player.getMagic().teleport(3007, 9550, 0, MagicSkill.TeleportTypes.SPELL_BOOK);
+		}
+
 		if ((id == 1815) && x == 3098 && y == 3499 && player.getX() == x && player.getY() == y) {
 			player.start(new WildernessLever(player));
 			return;
