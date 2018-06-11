@@ -85,7 +85,7 @@ public class Magic {
 
 		if (entity.getPlayer() != null) {
 
-			if(success) { //check for poison here instead to only poison if magic is not splash
+			if(success && damage > 0) { //check for poison here instead to only poison if magic is not splash
 				PoisonWeapons.checkForPoison(entity.getPlayer(), attacking);
 			}
 
