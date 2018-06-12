@@ -815,7 +815,7 @@ public abstract class Entity implements CombatInterface {
 
 				if(e.getPlayer() != null) { //		E is the thing being poisoned - if this entity is a player
 					if(e.getPlayer().isDeflect()) { //And if the entity being attacked has deflect on
-						e.getCombat().getAttacking().hit(new Hit(e, poisonDamage, Hit.HitTypes.POISON));
+						e.getCombat().getLastAttackedBy().hit(new Hit(e, poisonDamage, Hit.HitTypes.POISON));
 						//Get the entity that last attacked the entity and hit them instead
 					}
 				}
