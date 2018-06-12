@@ -209,9 +209,9 @@ public class BossPets {
 						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
 
 						if (distance <= 5) {
-							if (player.getLevels()[3] < player.getMaxLevels()[3]) {
-								player.getLevels()[3] += finalHealAmount;
-								player.getSkill().update(3);
+							if (p.getLevels()[3] < p.getMaxLevels()[3]) {
+								p.getLevels()[3] += finalHealAmount;
+								p.getSkill().update(3);
 							}
 						}
 					}
