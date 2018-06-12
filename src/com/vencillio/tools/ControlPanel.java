@@ -256,8 +256,8 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("In action performed");
-				JFrame mainFrame = new JFrame();
-				JDialog dialog = new JDialog(mainFrame);
+				JPanel mainFrame = new JPanel();
+				JDialog dialog = new JDialog();
 				JPanel itemPanel = new JPanel();
 				JPanel addPanel = new JPanel();
 				JTextField[] items = new JTextField[5];
@@ -266,6 +266,7 @@ public class ControlPanel extends JFrame {
 				mainFrame.setLayout(new BorderLayout());
 				mainFrame.add(itemPanel, BorderLayout.NORTH);
 				mainFrame.add(addPanel, BorderLayout.SOUTH);
+				dialog.setContentPane(addPanel);
 
 				itemPanel.setLayout(new GridLayout(5,2));
 				for(int i=0; i<items.length; i++) {
