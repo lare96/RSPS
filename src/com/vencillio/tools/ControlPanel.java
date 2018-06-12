@@ -253,7 +253,6 @@ public class ControlPanel extends JFrame {
 		final JButton addItem = new JButton("Add Item");
 		addItem.addActionListener(new ActionListener() {
 			JPanel mainFrame = new JPanel();
-			JDialog dialog = new JDialog();
 			JPanel itemPanel = new JPanel();
 			JPanel addPanel = new JPanel();
 			JTextField[] items = new JTextField[5];
@@ -267,7 +266,6 @@ public class ControlPanel extends JFrame {
 				mainFrame.setLayout(new BorderLayout());
 				mainFrame.add(itemPanel, BorderLayout.NORTH);
 				mainFrame.add(addPanel, BorderLayout.SOUTH);
-				dialog.setContentPane(addPanel);
 
 				itemPanel.setLayout(new GridLayout(5,2));
 				for(int i=0; i<items.length; i++) {
@@ -293,6 +291,8 @@ public class ControlPanel extends JFrame {
 					}
 				});
 				mainFrame.setSize(new Dimension(500,500));
+				JDialog dialog = new JDialog();
+				dialog.add(mainFrame);
 				dialog.setAlwaysOnTop(true);
 				dialog.setVisible(true);
 				dialog.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
