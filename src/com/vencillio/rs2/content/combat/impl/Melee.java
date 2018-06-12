@@ -11,7 +11,6 @@ import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.item.EquipmentConstants;
-import com.vencillio.rs2.entity.player.Player;
 
 @SuppressWarnings("all")
 public class Melee {
@@ -43,13 +42,12 @@ public class Melee {
 
 		int damage = (int) (entity.getCorrectedDamage(Combat.next(entity.getMaxHit(CombatTypes.MELEE) + 1)) * damageBoost);
 
-		if(attacking.isNpc() && entity.getPlayer() != null) {
-			Player p = entity.getPlayer();
+		if(entity.getPlayer() != null) { //if the entity doing the damage is a player
 			if(success && damage > 0) { //check for poison here instead to only poison if magic is not splash
-				PoisonWeapons.checkForPoison(p, entity.getCombat().getAttacking());
+				PoisonWeapons.checkForPoison(entity.getPlayer(), entity.getCombat().getAttacking());
 
-				if(p.getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && p.getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT)) {
-					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, p);
+				if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT) && attacking.isNpc()) {
+					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, entity.getPlayer());
 				}
 			}
 		}
