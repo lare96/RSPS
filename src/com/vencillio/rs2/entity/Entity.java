@@ -798,7 +798,7 @@ public abstract class Entity implements CombatInterface {
 		}
 
 		e.poisoned = true;
-		poisonDamage = start;
+		e.poisonDamage = start;
 
 		Entity finalE = e;
 		TaskQueue.queue(new Task(this, 30) {
