@@ -822,6 +822,9 @@ public abstract class Entity implements CombatInterface {
 						finalE.getCombat().getLastAttackedBy().hit(new Hit(finalE, poisonDamage, Hit.HitTypes.POISON));
 						//Get the entity that last attacked the entity and hit them instead
 					}
+					else {
+						finalE.hit(new Hit(poisonDamage, Hit.HitTypes.POISON));
+					}
 				}
 				else {
 					finalE.hit(new Hit(getCombat().getAttacking(), poisonDamage, Hit.HitTypes.POISON));
