@@ -206,7 +206,7 @@ public class BossPets {
 							continue;
 						}
 
-						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
+						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());
 
 						if (distance <= 5) {
 							if (p.getLevels()[3] < p.getMaxLevels()[3]) {

@@ -9,11 +9,13 @@ import com.vencillio.rs2.content.combat.Combat;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.combat.formula.RangeFormulas;
+import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Projectile;
 import com.vencillio.rs2.entity.World;
+import com.vencillio.rs2.entity.item.EquipmentConstants;
 
 public class Ranged {
 
@@ -45,6 +47,10 @@ public class Ranged {
 		if (entity.getPlayer() != null) {
 			if (success && damage > 0) { //check for poison here instead to only poison if magic is not splash
 				PoisonWeapons.checkForPoison(entity.getPlayer(), entity.getCombat().getAttacking());
+
+				if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT)) {
+					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, entity.getPlayer());
+				}
 			}
 		}
 

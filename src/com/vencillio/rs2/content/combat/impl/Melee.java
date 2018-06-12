@@ -47,9 +47,11 @@ public class Melee {
 			Player p = entity.getPlayer();
 			if(success && damage > 0) { //check for poison here instead to only poison if magic is not splash
 				PoisonWeapons.checkForPoison(p, entity.getCombat().getAttacking());
+
+				if(p.getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && p.getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT)) {
+					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, p);
+				}
 			}
-			if(p.getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && p.getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT) && success)
-				Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, p);
 		}
 
 		if (nextDamage != -1) {

@@ -10,7 +10,9 @@ import com.vencillio.rs2.content.combat.CombatConstants;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.combat.formula.FormulaData;
 import com.vencillio.rs2.content.combat.formula.MagicFormulas;
+import com.vencillio.rs2.content.skill.prayer.Curses;
 import com.vencillio.rs2.entity.*;
+import com.vencillio.rs2.entity.item.EquipmentConstants;
 
 public class Magic {
 
@@ -87,6 +89,10 @@ public class Magic {
 
 			if(success && damage > 0) { //check for poison here instead to only poison if magic is not splash
 				PoisonWeapons.checkForPoison(entity.getPlayer(), attacking);
+
+				if(entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT)) {
+					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, entity.getPlayer());
+				}
 			}
 
 			if (entity.getPlayer().getEquipment().isWearingItem(11791) || entity.getPlayer().getEquipment().isWearingItem(12904))

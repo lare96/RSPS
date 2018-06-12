@@ -814,7 +814,7 @@ public abstract class Entity implements CombatInterface {
 					}
 				}
 
-				e.hit(new Hit(poisonDamage, Hit.HitTypes.POISON));
+				e.hit(new Hit(getCombat().getAttacking(), poisonDamage, Hit.HitTypes.POISON));
 
 				if (++count == 4) {
 					poisonDamage -= 1;
