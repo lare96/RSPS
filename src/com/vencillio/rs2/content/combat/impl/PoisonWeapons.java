@@ -21,9 +21,9 @@ public class PoisonWeapons {
 		CombatTypes type = player.getCombat().getCombatType();
 		int venom = 18;
 
-		if(attack.isNpc()) {
+		if (attack.isNpc()) {
 			if (!attack.inCorp() && !attack.inZulrah() && attack.getMob().getId() != 2205 && attack.getMob().getId() != 2215 && attack.getMob().getId() != 3129 && attack.getMob().getId() != 3162) {
-				if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player) || (player.getEquipment().isWearingItem(12904) && type == CombatTypes.MAGIC ))) { //Serpentine + TBP or TOS or TSTOD
+				if (SerpentineHelmet.hasHelmet(player) && (ToxicBlowpipe.hasBlowpipe(player) || TridentOfTheSwamp.hasTrident(player) || (player.getEquipment().isWearingItem(12904) && type == CombatTypes.MAGIC))) { //Serpentine + TBP or TOS or TSTOD
 					attack.poison(venom);
 				} else if (SerpentineHelmet.hasHelmet(player)) {
 					if (type == CombatTypes.MELEE && player.getEquipment().getItems()[3] != null) {
@@ -46,44 +46,43 @@ public class PoisonWeapons {
 						return;
 					}
 					attack.poison(venom);
-				}
-				else if(player.getEquipment().isWearingItem(12904) && player.getCombat().getCombatType() == CombatTypes.MAGIC) {
+				} else if (player.getEquipment().isWearingItem(12904) && player.getCombat().getCombatType() == CombatTypes.MAGIC) {
 					if (Utility.randomNumber(4) != 0) {
 						return;
 					}
 					attack.poison(venom);
 				}
-			} else if (Utility.randomNumber(3) != 0) {
+			}
+		} else if (Utility.randomNumber(3) != 0) {
+			return;
+		}
+
+		if ((attack != null) && (!attack.isNpc())) {
+			Player o = com.vencillio.rs2.entity.World.getPlayers()[attack.getIndex()];
+
+			if (o != null) {
+				Item shield = o.getEquipment().getItems()[5];
+
+				if ((shield != null) && (shield.getId() == 18340)) {
+					return;
+				}
+			}
+
+		}
+
+		Item weapon = player.getEquipment().getItems()[3];
+		Item ammo = player.getEquipment().getItems()[13];
+
+		if (type == CombatTypes.MELEE) {
+			if ((weapon == null) || (poison.get(Integer.valueOf(weapon.getId())) == null)) {
 				return;
 			}
-
-			if ((attack != null) && (!attack.isNpc())) {
-				Player o = com.vencillio.rs2.entity.World.getPlayers()[attack.getIndex()];
-
-				if (o != null) {
-					Item shield = o.getEquipment().getItems()[5];
-
-					if ((shield != null) && (shield.getId() == 18340)) {
-						return;
-					}
-				}
-
+			attack.poison(poison.get(Integer.valueOf(weapon.getId())).getStart());
+		} else if (type == CombatTypes.RANGED) {
+			if ((ammo == null) || (poison.get(Integer.valueOf(ammo.getId())) == null)) {
+				return;
 			}
-
-			Item weapon = player.getEquipment().getItems()[3];
-			Item ammo = player.getEquipment().getItems()[13];
-
-			if (type == CombatTypes.MELEE) {
-				if ((weapon == null) || (poison.get(Integer.valueOf(weapon.getId())) == null)) {
-					return;
-				}
-				attack.poison(poison.get(Integer.valueOf(weapon.getId())).getStart());
-			} else if (type == CombatTypes.RANGED) {
-				if ((ammo == null) || (poison.get(Integer.valueOf(ammo.getId())) == null)) {
-					return;
-				}
-				attack.poison(poison.get(Integer.valueOf(ammo.getId())).getStart());
-			}
+			attack.poison(poison.get(Integer.valueOf(ammo.getId())).getStart());
 		}
 	}
 
