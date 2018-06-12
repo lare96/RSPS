@@ -1431,6 +1431,11 @@ public class Player extends Entity {
 	}
 
 	public void logout(boolean force) {
+		if(this.isPoisoned()) {
+			send(new SendMessage("You are poisoned and cannot logout right now."));
+			return;
+		}
+
 		if (isActive()) {
 
 			boolean debugMessage = false;
