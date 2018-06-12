@@ -290,8 +290,10 @@ public class ControlPanel extends JFrame {
 						}
 					}
 				});
+				mainFrame.setSize(new Dimension(500,500));
+				dialog.setAlwaysOnTop(true);
 				dialog.setVisible(true);
-				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				dialog.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			}
 		});
 		addItem.setBounds(455, 166, width, 30);
@@ -1277,7 +1279,6 @@ public class ControlPanel extends JFrame {
 			JOptionPane op = new JOptionPane(p.getUsername() + " logged in",JOptionPane.INFORMATION_MESSAGE);
 			JDialog dialog = op.createDialog("Info");
 			dialog.setAlwaysOnTop(true);
-			dialog.setModal(true);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			// 15 sec
 			Timer timer = new Timer(15000, e -> {
