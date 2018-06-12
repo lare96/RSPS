@@ -257,6 +257,7 @@ public class ControlPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("In action performed");
 				JFrame mainFrame = new JFrame();
+				JDialog dialog = new JDialog(mainFrame);
 				JPanel itemPanel = new JPanel();
 				JPanel addPanel = new JPanel();
 				JTextField[] items = new JTextField[5];
@@ -289,7 +290,7 @@ public class ControlPanel extends JFrame {
 						}
 					}
 				});
-				mainFrame.setVisible(true);
+				dialog.setVisible(true);
 				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			}
 		});
