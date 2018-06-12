@@ -98,7 +98,7 @@ public class ControlPanel extends JFrame {
 		setResizable(false);
 		setTitle("Control Panel");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 625, 472);
+		setBounds(100, 100, 650, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -597,7 +597,7 @@ public class ControlPanel extends JFrame {
 		panel_2.add(mutedLabel);
 
 		final JLabel slayerTaskLabel = new JLabel("Slayer task:");
-		slayerTaskLabel.setBounds(393, 300, 190, 14);
+		slayerTaskLabel.setBounds(393, 300, 240, 14);
 		panel_2.add(slayerTaskLabel);
 
 		inventoryButton.setBounds(393, 350, 201, 14);
