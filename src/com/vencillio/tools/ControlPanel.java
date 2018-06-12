@@ -138,7 +138,7 @@ public class ControlPanel extends JFrame {
 
 		playerScrollList.setViewportView(playerList);
 
-		int width = 80;
+		int width = 90;
 		int fontSize = 10;
 
 		final JButton ipBan = new JButton("IP Ban");
@@ -186,7 +186,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		ipMute.setBounds(245, 57, width, 30);
+		ipMute.setBounds(250, 57, width, 30);
 		ipMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(ipMute);
 
@@ -201,7 +201,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveAdmin.setBounds(345, 57, width, 30);
+		giveAdmin.setBounds(350, 57, width, 30);
 		giveAdmin.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveAdmin);
 
@@ -216,7 +216,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveMod.setBounds(345, 112, width, 30);
+		giveMod.setBounds(350, 112, width, 30);
 		giveMod.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveMod);
 
@@ -246,13 +246,13 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		demotePlayer.setBounds(345, 166, width, 30);
+		demotePlayer.setBounds(350, 166, width, 30);
 		demotePlayer.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(demotePlayer);
 
 		final JButton addItem = new JButton("Add Item");
 		addItem.addActionListener(new ActionListener() {
-			JPanel mainPanel = new JPanel();
+			JFrame mainFrame = new JFrame();
 			JPanel itemPanel = new JPanel();
 			JPanel addPanel = new JPanel();
 			JTextField[] items = new JTextField[5];
@@ -260,9 +260,9 @@ public class ControlPanel extends JFrame {
 			JButton add = new JButton("Add");
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainPanel.setLayout(new BorderLayout());
-				mainPanel.add(itemPanel, BorderLayout.NORTH);
-				mainPanel.add(addPanel, BorderLayout.SOUTH);
+				mainFrame.setLayout(new BorderLayout());
+				mainFrame.add(itemPanel, BorderLayout.NORTH);
+				mainFrame.add(addPanel, BorderLayout.SOUTH);
 
 				itemPanel.setLayout(new GridLayout(5,2));
 				for(int i=0; i<items.length; i++) {
@@ -287,9 +287,10 @@ public class ControlPanel extends JFrame {
 						}
 					}
 				});
+				mainFrame.setVisible(true);
 			}
 		});
-		addItem.setBounds(565, 166, width, 30);
+		addItem.setBounds(455, 166, width, 30);
 		addItem.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(addItem);
 
@@ -305,7 +306,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		permMute.setBounds(245, 112, width, 30);
+		permMute.setBounds(250, 112, width, 30);
 		permMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(permMute);
 
@@ -320,7 +321,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		tempMute.setBounds(245, 166, width, 30);
+		tempMute.setBounds(250, 166, width, 30);
 		tempMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(tempMute);
 
