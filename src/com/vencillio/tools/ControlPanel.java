@@ -252,17 +252,18 @@ public class ControlPanel extends JFrame {
 
 		final JButton addItem = new JButton("Add Item");
 		addItem.addActionListener(new ActionListener() {
+			JPanel mainFrame = new JPanel();
+			JDialog dialog = new JDialog();
+			JPanel itemPanel = new JPanel();
+			JPanel addPanel = new JPanel();
+			JTextField[] items = new JTextField[5];
+			JTextField[] amounts = new JTextField[5];
+			JButton add = new JButton("Add");
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("In action performed");
-				JPanel mainFrame = new JPanel();
-				JDialog dialog = new JDialog();
-				JPanel itemPanel = new JPanel();
-				JPanel addPanel = new JPanel();
-				JTextField[] items = new JTextField[5];
-				JTextField[] amounts = new JTextField[5];
-				JButton add = new JButton("Add");
+
 				mainFrame.setLayout(new BorderLayout());
 				mainFrame.add(itemPanel, BorderLayout.NORTH);
 				mainFrame.add(addPanel, BorderLayout.SOUTH);
