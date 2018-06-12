@@ -78,7 +78,7 @@ public class PilesDialogue extends Dialogue {
 		switch (next) {
 
 		case 0:
-			DialogueManager.sendNpcChat(player, 13, Emotion.HAPPY, "I can note any items obtained from the resource", "arena for 50 coins an item.");
+			DialogueManager.sendNpcChat(player, 13, Emotion.HAPPY, "I can note any items obtained from the resource", "arena for 250 coins an item.");
 			next++;
 			break;
 		case 1:

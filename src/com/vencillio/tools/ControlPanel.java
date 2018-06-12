@@ -138,8 +138,8 @@ public class ControlPanel extends JFrame {
 
 		playerScrollList.setViewportView(playerList);
 
-		int width = 105;
-		int fontSize = 12;
+		int width = 80;
+		int fontSize = 10;
 
 		final JButton ipBan = new JButton("IP Ban");
 		ipBan.addActionListener(new ActionListener() {
@@ -186,7 +186,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		ipMute.setBounds(285, 57, width, 30);
+		ipMute.setBounds(245, 57, width, 30);
 		ipMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(ipMute);
 
@@ -201,7 +201,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveAdmin.setBounds(425, 57, width, 30);
+		giveAdmin.setBounds(345, 57, width, 30);
 		giveAdmin.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveAdmin);
 
@@ -216,7 +216,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveMod.setBounds(425, 112, width, 30);
+		giveMod.setBounds(345, 112, width, 30);
 		giveMod.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveMod);
 
@@ -246,19 +246,47 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		demotePlayer.setBounds(425, 166, width, 30);
+		demotePlayer.setBounds(345, 166, width, 30);
 		demotePlayer.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(demotePlayer);
 
 		final JButton addItem = new JButton("Add Item");
-		demotePlayer.addActionListener(new ActionListener() {
+		addItem.addActionListener(new ActionListener() {
+			JPanel mainPanel = new JPanel();
+			JPanel itemPanel = new JPanel();
+			JPanel addPanel = new JPanel();
+			JTextField[] items = new JTextField[5];
+			JTextField[] amounts = new JTextField[5];
+			JButton add = new JButton("Add");
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (checkAll(false)) {
-					logAction("Punishments", "Successfully demoted "+usernameField.getText()+" to regular player.");
-					player.setRights(0);
-					PlayerSave.save(player);
+				mainPanel.setLayout(new BorderLayout());
+				mainPanel.add(itemPanel, BorderLayout.NORTH);
+				mainPanel.add(addPanel, BorderLayout.SOUTH);
+
+				itemPanel.setLayout(new GridLayout(5,2));
+				for(int i=0; i<items.length; i++) {
+					itemPanel.add(items[i]);
+					itemPanel.add(amounts[i]);
 				}
+
+				addPanel.add(add);
+
+				for(int i=0; i<items.length; i++) {
+					items[i].setColumns(5);
+					amounts[i].setColumns(5);
+				}
+
+				add.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						for(int i=0; i<items.length; i++) {
+							if(items[i].getText().length() != 0) {
+								player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+							}
+						}
+					}
+				});
 			}
 		});
 		addItem.setBounds(565, 166, width, 30);
@@ -277,7 +305,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		permMute.setBounds(285, 112, width, 30);
+		permMute.setBounds(245, 112, width, 30);
 		permMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(permMute);
 
@@ -292,7 +320,7 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		tempMute.setBounds(285, 166, width, 30);
+		tempMute.setBounds(245, 166, width, 30);
 		tempMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(tempMute);
 
