@@ -37,7 +37,7 @@ public class ToxicBlowpipe {
 	}
 
 	public static boolean itemOnItem(Player player, Item itemUsed, Item usedWith) {
-		if(usedWith.getId() != 5937 || itemUsed.getId() != 5937) {
+		if(usedWith.getId() == 5937 || itemUsed.getId() == 5937) {
 			return false;
 		}
 
