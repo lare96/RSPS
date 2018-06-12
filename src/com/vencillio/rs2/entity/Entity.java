@@ -775,13 +775,17 @@ public abstract class Entity implements CombatInterface {
 	 * @param start
 	 */
 	public void poison(int start) {
+		Entity e = this;
 		if(getPlayer() != null) { //If entity being poisoned is a player
 			if (SerpentineHelmet.hasHelmet(getPlayer())) { //And this entity has serp helm
 				return; //Don't get poisoned cause of serp helm effect so exit poison method
 			}
+
+			if(getPlayer().isDeflect())
+				e = getCombat().getLastAttackedBy();
 		}
 
-		if ((poisoned) || (World.getCycles() < poisonImmunity)) {
+		if ((e.poisoned) || (World.getCycles() < e.poisonImmunity)) {
 			/*if(getCombat().getAttacking().getPlayer() != null) { //If player is attacking
 				if (!SerpentineHelmet.hasHelmet(getCombat().getAttacking().getPlayer())) { //And player doesn't have
 					return; //Serpentine helm then don't stack poison hence exit poison method
@@ -793,40 +797,40 @@ public abstract class Entity implements CombatInterface {
 			return;
 		}
 
-		poisoned = true;
+		e.poisoned = true;
 		poisonDamage = start;
-		Entity e = this;
 
+		Entity finalE = e;
 		TaskQueue.queue(new Task(this, 30) {
 			int count = 0;
 
 			@Override
 			public void execute() {
-				if (!poisoned || poisonDamage <= 0 || (getPlayer() == null && getMob() == null)) {
+				if (!finalE.poisoned || poisonDamage <= 0 || (getPlayer() == null && getMob() == null)) {
 					stop();
 					return;
 				}
 
-				if(!e.isNpc()) {
+				if(!finalE.isNpc()) {
 					if (getPlayer().isDead() || getPlayer().getMagic().isTeleporting()) {
 						return;
 					}
 				}
 
-				if(e.getPlayer() != null) { //		E is the thing being poisoned - if this entity is a player
-					if(e.getPlayer().isDeflect()) { //And if the entity being attacked has deflect on
-						e.getCombat().getLastAttackedBy().hit(new Hit(e, poisonDamage, Hit.HitTypes.POISON));
+				if(finalE.getPlayer() != null) { //		E is the thing being poisoned - if this entity is a player
+					if(finalE.getPlayer().isDeflect()) { //And if the entity being attacked has deflect on
+						finalE.getCombat().getLastAttackedBy().hit(new Hit(finalE, poisonDamage, Hit.HitTypes.POISON));
 						//Get the entity that last attacked the entity and hit them instead
 					}
 				}
 				else {
-					e.hit(new Hit(getCombat().getAttacking(), poisonDamage, Hit.HitTypes.POISON));
+					finalE.hit(new Hit(getCombat().getAttacking(), poisonDamage, Hit.HitTypes.POISON));
 				}
 
 				if (++count == 4) {
-					poisonDamage -= 1;
+					finalE.poisonDamage -= 1;
 					count = 0;
-					if (poisonDamage == 0) {
+					if (finalE.poisonDamage == 0) {
 						stop();
 					}
 				}
