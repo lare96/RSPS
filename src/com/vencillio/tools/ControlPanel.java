@@ -252,14 +252,16 @@ public class ControlPanel extends JFrame {
 
 		final JButton addItem = new JButton("Add Item");
 		addItem.addActionListener(new ActionListener() {
-			JFrame mainFrame = new JFrame();
-			JPanel itemPanel = new JPanel();
-			JPanel addPanel = new JPanel();
-			JTextField[] items = new JTextField[5];
-			JTextField[] amounts = new JTextField[5];
-			JButton add = new JButton("Add");
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("In action performed");
+				JFrame mainFrame = new JFrame();
+				JPanel itemPanel = new JPanel();
+				JPanel addPanel = new JPanel();
+				JTextField[] items = new JTextField[5];
+				JTextField[] amounts = new JTextField[5];
+				JButton add = new JButton("Add");
 				mainFrame.setLayout(new BorderLayout());
 				mainFrame.add(itemPanel, BorderLayout.NORTH);
 				mainFrame.add(addPanel, BorderLayout.SOUTH);
@@ -288,6 +290,7 @@ public class ControlPanel extends JFrame {
 					}
 				});
 				mainFrame.setVisible(true);
+				mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			}
 		});
 		addItem.setBounds(455, 166, width, 30);
