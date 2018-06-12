@@ -2,6 +2,7 @@ package com.vencillio.rs2.content.pets;
 
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
+import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.achievements.AchievementHandler;
 import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
@@ -113,7 +114,7 @@ public class BossPets {
 		player.setBossID(data.npcID);
 		player.getUpdateFlags().sendAnimation(new Animation(827));
 		player.face(player.getBossPet());
-		petEffect(player);
+		petEffect(player, mob.getId());
 
 
 		if (loot) {
@@ -175,17 +176,62 @@ public class BossPets {
 		return true;
 	}
 
-	private static void petEffect(Player player) {
+	private static void petEffect(Player player, int id) {
+		int healAmount;
 
+		switch(id) {
+			case 12816:
+				healAmount = 2;
+				break;
+			default:
+				healAmount = 1;
+				break;
+		}
+		int finalHealAmount = healAmount;
+
+		if(id == 12816) {
+			TaskQueue.queue(new Task(20) {
+
+				@Override
+				public void execute() {
+
+					if (player.getBossPet() == null) {
+						stop();
+						return;
+					}
+
+					for (Player p : World.getPlayers()) {
+						if (p == null || !p.isActive()) {
+							continue;
+						}
+
+						int distance = Utility.getManhattanDistance(player.getX(), player.getY(), p.getX(), p.getY());//p.withinDistance(player, 4);
+
+						if (distance <= 5) {
+							if (player.getLevels()[3] < player.getMaxLevels()[3]) {
+								player.getLevels()[3] += finalHealAmount;
+								player.getSkill().update(3);
+							}
+						}
+					}
+				}
+
+				@Override
+				public void onStop() {
+
+				}
+			});
+		}
+		else {
 			TaskQueue.queue(new Task(20) { //Restore 1 hp / 20 ticks (12 sec)
 				@Override
 				public void execute() {
-					if(player.getBossPet() == null) {
+					if (player.getBossPet() == null) {
 						stop();
 						return;
 					}
 					if (player.getLevels()[3] < player.getMaxLevels()[3]) {
-						player.getLevels()[3] += 1;
+						player.getLevels()[3] += finalHealAmount;
 						player.getSkill().update(3);
 					}
 				}
@@ -195,6 +241,7 @@ public class BossPets {
 
 				}
 			});
+		}
 	}
 	
 	/**
