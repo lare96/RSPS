@@ -806,8 +806,9 @@ public abstract class Entity implements CombatInterface {
 
 			@Override
 			public void execute() {
-				if (!finalE.poisoned || poisonDamage <= 0 || (getPlayer() == null && getMob() == null)) {
+				if (!finalE.poisoned || finalE.poisonDamage <= 0 || (finalE == null && getMob() == null)) {
 					stop();
+					finalE.poisoned = false;
 					return;
 				}
 
@@ -835,6 +836,7 @@ public abstract class Entity implements CombatInterface {
 					count = 0;
 					if (finalE.poisonDamage == 0) {
 						stop();
+						finalE.poisoned = false;
 					}
 				}
 			}
