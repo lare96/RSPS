@@ -177,6 +177,7 @@ public class BossPets {
 	}
 
 	private static void petEffect(Player player, int id) {
+		System.out.println("id: " + id);
 		int healAmount;
 
 		switch(id) {
