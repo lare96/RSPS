@@ -41,9 +41,9 @@ public class PilesDialogue extends Dialogue {
 			for (int i = 0; i < ITEMS.length; i++) {
 				if (player.getInventory().hasItemId(new Item(ITEMS[i][0]))) {
 					int amount = player.getInventory().getItemAmount(ITEMS[i][0]);
-					int payment = player.getInventory().getItemAmount(ITEMS[i][0]) * 50;
+					int payment = player.getInventory().getItemAmount(ITEMS[i][0]) * 250;
 					
-					if (!player.getInventory().hasItemId(new Item(995, payment)) || player.getMoneyPouch() < payment) {
+					if (!player.getInventory().hasItemId(new Item(995, payment)) && player.getMoneyPouch() < payment) {
 						DialogueManager.sendStatement(player, Utility.format(payment) + " coins is required to do this; which you do not have!"); 
 						break;
 					}

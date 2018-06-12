@@ -54,7 +54,6 @@ public class PoisonWeapons {
 				}
 			}
 		} else if (Utility.randomNumber(3) != 0) {
-			System.out.println("Returned");
 			return;
 		}
 

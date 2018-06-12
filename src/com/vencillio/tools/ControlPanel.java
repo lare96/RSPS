@@ -138,6 +138,9 @@ public class ControlPanel extends JFrame {
 
 		playerScrollList.setViewportView(playerList);
 
+		int width = 105;
+		int fontSize = 12;
+
 		final JButton ipBan = new JButton("IP Ban");
 		ipBan.addActionListener(new ActionListener() {
 			@Override
@@ -150,7 +153,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		ipBan.setBounds(145, 57, 114, 30);
+		ipBan.setBounds(145, 57, width, 30);
+		ipBan.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(ipBan);
 
 		final JButton permBan = new JButton("Perm Ban");
@@ -166,7 +170,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		permBan.setBounds(145, 112, 114, 30);
+		permBan.setBounds(145, 112, width, 30);
+		permBan.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(permBan);
 
 		final JButton ipMute = new JButton("IP Mute");
@@ -181,7 +186,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		ipMute.setBounds(317, 57, 114, 30);
+		ipMute.setBounds(285, 57, width, 30);
+		ipMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(ipMute);
 
 		final JButton giveAdmin = new JButton("Give Admin");
@@ -195,7 +201,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveAdmin.setBounds(480, 57, 114, 30);
+		giveAdmin.setBounds(425, 57, width, 30);
+		giveAdmin.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveAdmin);
 
 		final JButton giveMod = new JButton("Give Mod");
@@ -209,7 +216,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		giveMod.setBounds(480, 112, 114, 30);
+		giveMod.setBounds(425, 112, width, 30);
+		giveMod.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(giveMod);
 
 		final JButton tempBan = new JButton("Temp ban");
@@ -223,7 +231,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		tempBan.setBounds(145, 166, 114, 30);
+		tempBan.setBounds(145, 166, width, 30);
+		tempBan.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(tempBan);
 
 		final JButton demotePlayer = new JButton("Demote");
@@ -237,8 +246,24 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		demotePlayer.setBounds(480, 166, 114, 30);
+		demotePlayer.setBounds(425, 166, width, 30);
+		demotePlayer.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(demotePlayer);
+
+		final JButton addItem = new JButton("Add Item");
+		demotePlayer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (checkAll(false)) {
+					logAction("Punishments", "Successfully demoted "+usernameField.getText()+" to regular player.");
+					player.setRights(0);
+					PlayerSave.save(player);
+				}
+			}
+		});
+		addItem.setBounds(565, 166, width, 30);
+		addItem.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
+		mainMenu.add(addItem);
 
 		final JButton permMute = new JButton("Perm Mute");
 		permMute.addActionListener(new ActionListener() {
@@ -252,7 +277,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		permMute.setBounds(317, 112, 114, 30);
+		permMute.setBounds(285, 112, width, 30);
+		permMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(permMute);
 
 		final JButton tempMute = new JButton("Temp Mute");
@@ -266,7 +292,8 @@ public class ControlPanel extends JFrame {
 				}
 			}
 		});
-		tempMute.setBounds(317, 166, 114, 30);
+		tempMute.setBounds(285, 166, width, 30);
+		tempMute.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(tempMute);
 
 		for (int i = 0; i < mainMenu.getComponents().length; i++) { //needs to be above textField or they become unclickable.
