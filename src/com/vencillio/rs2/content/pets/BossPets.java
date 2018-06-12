@@ -114,7 +114,7 @@ public class BossPets {
 		player.setBossID(data.npcID);
 		player.getUpdateFlags().sendAnimation(new Animation(827));
 		player.face(player.getBossPet());
-		petEffect(player, mob.getId());
+		petEffect(player, data.npcID);
 
 
 		if (loot) {
