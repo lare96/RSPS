@@ -54,6 +54,7 @@ public class PoisonWeapons {
 				}
 			}
 		} else if (Utility.randomNumber(3) != 0) {
+			System.out.println("Returned");
 			return;
 		}
 
@@ -74,15 +75,16 @@ public class PoisonWeapons {
 		Item ammo = player.getEquipment().getItems()[13];
 
 		if (type == CombatTypes.MELEE) {
-			if ((weapon == null) || (poison.get(Integer.valueOf(weapon.getId())) == null)) {
+			if ((weapon == null) || (poison.get(weapon.getId()) == null)) {
 				return;
 			}
-			attack.poison(poison.get(Integer.valueOf(weapon.getId())).getStart());
+			System.out.println(poison.get(weapon.getId()).getStart());
+			attack.poison(poison.get(weapon.getId()).getStart());
 		} else if (type == CombatTypes.RANGED) {
-			if ((ammo == null) || (poison.get(Integer.valueOf(ammo.getId())) == null)) {
+			if ((ammo == null) || (poison.get(ammo.getId()) == null)) {
 				return;
 			}
-			attack.poison(poison.get(Integer.valueOf(ammo.getId())).getStart());
+			attack.poison(poison.get(ammo.getId()).getStart());
 		}
 	}
 
