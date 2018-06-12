@@ -181,7 +181,7 @@ public class BossPets {
 		int healAmount;
 
 		switch(id) {
-			case 12816:
+			case 318:
 				healAmount = 2;
 				break;
 			default:
@@ -190,7 +190,7 @@ public class BossPets {
 		}
 		int finalHealAmount = healAmount;
 
-		if(id == 12816) {
+		if(id == 318) {
 			TaskQueue.queue(new Task(20) {
 
 				@Override
