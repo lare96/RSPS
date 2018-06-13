@@ -4,6 +4,7 @@ import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.definitions.NpcDefinition;
+import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
 import com.vencillio.rs2.content.Yelling;
@@ -164,6 +165,17 @@ public class PlayerCommand implements Command {
 				}).start();
 				return true;
 
+			case "ib":
+				if(parser.hasNext()) {
+					boolean playerCmd = true;
+					String input = parser.nextString();
+					while (parser.hasNext()) {
+						input += " " + parser.nextString();
+					}
+					GameDefinitionLoader.getItemID(player, input, playerCmd);
+				}
+				return true;
+
 		/*
 		 * Opens the command list
 		 */
@@ -202,14 +214,17 @@ public class PlayerCommand implements Command {
 					case "dagsup":
 					case "ds":
 					case "dagsupreme":
+					case "supreme":
 						npcID = 2265;
 						break;
 					case "dagprime":
 					case "dp":
+					case "prime":
 						npcID = 2266;
 						break;
 					case "dagrex":
 					case "dr":
+					case "rex":
 						npcID = 2267;
 						break;
 					case "zilyana":

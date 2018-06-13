@@ -123,5 +123,7 @@ public class VencillioConstants {
 		26502, 26503, 26504, 26505, 24306, 24309, 26760, 2104, 
 		2102, 2100, 26461, 4799
 	};
+
+	public static int[] UNBANKABLE = { 2528 };
 	
 }

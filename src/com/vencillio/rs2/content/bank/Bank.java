@@ -1,5 +1,6 @@
 package com.vencillio.rs2.content.bank;
 
+import com.vencillio.VencillioConstants;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.minigames.weapongame.WeaponGame;
 import com.vencillio.rs2.entity.item.Item;
@@ -150,6 +151,10 @@ public class Bank extends ItemContainer {
 			return;
 		}
 
+		if(Arrays.stream(VencillioConstants.UNBANKABLE).anyMatch(i -> i == id)) {
+			return;
+		}
+
 		int invAmount = player.getInventory().getItemAmount(id);
 
 		if (invAmount < amount) {
@@ -157,6 +162,8 @@ public class Bank extends ItemContainer {
 		}
 		
 		Item item = new Item(id, amount);
+
+
 		
 		if (item.getDefinition().isNote()) {
 			item.unNote();

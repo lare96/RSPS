@@ -30339,7 +30339,7 @@
 		<name>Lamp</name>
 		<id>2528</id>
 		<members>false</members>
-		<tradable>true</tradable>
+		<tradable>false</tradable>
 		<stackable>false</stackable>
 		<note>false</note>
 		<noteId>-1</noteId>

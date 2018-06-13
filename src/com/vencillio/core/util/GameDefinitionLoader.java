@@ -158,25 +158,49 @@ public class GameDefinitionLoader {
 			name = name.toLowerCase();
 			ItemDefinition definition = getItemDef(i);
 			String output = definition.getName().toLowerCase();
-			//System.out.println(output);
-			int itemId = definition.getId();
-			ItemDefinition defs = getItemDef(itemId);
 			if (output.contains(name)) {
 				count++;
-				String results = ""+count+" - <col=007FFF>"+defs.getName()+"</col> (<col=00FF3E>"+definition.getId()+"</col>) Worth(General): "+defs.getGeneralPrice()+" GP";
-				//player.getPackets().sendPanelBoxMessage(""+results+"");
+				String results = ""+count+" - <col=007FFF>"+definition.getName()+"</col> (<col=00FF3E>"+definition.getId()+"</col>) Worth(General): "+definition.getGeneralPrice()+" GP";
 				player.send(new SendMessage(""+results+""));
 				if(count >= 100) {
-					//player.getPackets().sendPanelBoxMessage("Found "+count+"+ results for '"+name+"'. Only 500 listed.");
 					player.send(new SendMessage("Found "+count+"+ results for '"+name+"'. Only 100 listed."));
 					return definition;
 				}
 				// return definition; // Will stop the method on first item found >.>
 			}
 		}
-		//player.getPackets().sendPanelBoxMessage("Found "+count+" results for '"+name+"'");
 		player.send(new SendMessage("Found "+count+" results for '"+name+"'"));
 		return null;
+	}
+
+	public static void getItemID(Player player, String name, boolean cmd) {
+		for (int i = 0; i < itemDefinitions.size(); i++) {
+			name = name.toLowerCase();
+			ItemDefinition definition = getItemDef(i);
+			String output = definition.getName().toLowerCase();
+			short[] bonuses;
+			if (output.contains(name)) {
+				bonuses = Item.getItemBonuses(definition.getId());
+
+				if(bonuses != null) {
+					String resultsName = "<col=007FFF>" + definition.getName() + "</col>";
+
+					String resultsAtt = "Stab: " + bonuses[0] + " Slash: " + bonuses[1] +
+							" Crush: " + bonuses[2] + " Magic: " + bonuses[3] + " Range: " + bonuses[4];
+
+					String resultsDef = " Stab: " + bonuses[5] + " Slash: " + bonuses[6] + " Crush: " +
+							bonuses[7] + " Magic: " + bonuses[8] + " Range: " + bonuses[9];
+
+					String resultsOther = " Strength: " + bonuses[10] + " Prayer: " + bonuses[12];
+
+					player.send(new SendMessage("" + resultsName + ""));
+					player.send(new SendMessage("" + resultsAtt + ""));
+					player.send(new SendMessage("" + resultsDef + ""));
+					player.send(new SendMessage("" + resultsOther + ""));
+				}
+					return;
+			}
+		}
 	}
 
 	public static ItemDropDefinition getItemDropDefinition(int id) {
