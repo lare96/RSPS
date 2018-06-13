@@ -90,11 +90,10 @@ public final class ArmourAnimator {
 			return false;
 		}
 
-		player.getAttributes().set("warriorGuildAnimator", Integer.valueOf(animatorIndex));
-
 		int armorIndex = hasArmor(player, itemId);
 
 		if (armorIndex != -1) {
+			player.getAttributes().set("warriorGuildAnimator", Integer.valueOf(animatorIndex));
 			createAnimatedArmor(player, armorIndex);
 		}
 

@@ -248,6 +248,21 @@ public class ControlPanel extends JFrame {
 		demotePlayer.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
 		mainMenu.add(demotePlayer);
 
+		final JButton disconnect = new JButton("Disconnect");
+		disconnect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (checkAll(false)) {
+					logAction("Punishments", "Successfully disconnected " + usernameField.getText());
+					PlayerSave.save(player);
+					player.logout(false);
+				}
+			}
+		});
+		disconnect.setBounds(455, 57, width, 30);
+		disconnect.setFont(new Font("Sitka Small", Font.PLAIN, fontSize));
+		mainMenu.add(disconnect);
+
 		final JButton addItem = new JButton("Add Item");
 		JPanel mainFrame = new JPanel();
 		JPanel itemPanel = new JPanel();
@@ -279,7 +294,7 @@ public class ControlPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < items.length; i++) {
 					if (items[i].getText().length() != 0) {
-						player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+						player.getInventory().add(Integer.parseInt(items[i].getText()), amounts[i].getText().isEmpty() ? 1 : Integer.parseInt(amounts[i].getText()));
 					}
 				}
 			}
