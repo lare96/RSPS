@@ -689,6 +689,7 @@ public class ControlPanel extends JFrame {
 		hsList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				System.out.println("In mouse click");
 				if (loadPlayer()) {
 					attackLabel.setText(player.getSkill().getLevels()[Skills.ATTACK]+"");
 					constitutionLabel.setText(player.getSkill().getLevels()[Skills.HITPOINTS]+"");
@@ -1275,7 +1276,7 @@ public class ControlPanel extends JFrame {
 		if (player == null) {
 			/*player = SerializableFilesManager.loadPlayer(Utils.formatPlayerNameForProtocol(usernameField.getText()));
 			player.setUsername(Utils.formatPlayerNameForProtocol(usernameField.getText()));*/
-			return true;
+			return false;
 		}
 		return true;
 	}
