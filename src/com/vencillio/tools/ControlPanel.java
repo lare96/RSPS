@@ -251,6 +251,7 @@ public class ControlPanel extends JFrame {
 		mainMenu.add(demotePlayer);
 
 		final JButton addItem = new JButton("Add Item");
+		final Player tmp = player;
 		addItem.addActionListener(new ActionListener() {
 			JPanel mainFrame = new JPanel();
 			JPanel itemPanel = new JPanel();
@@ -281,10 +282,6 @@ public class ControlPanel extends JFrame {
 
 				addPanel.add(add);
 
-
-
-
-				final Player tmp = player;
 				add.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
