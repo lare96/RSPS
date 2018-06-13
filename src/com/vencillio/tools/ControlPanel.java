@@ -36,9 +36,7 @@ import java.util.stream.Collectors;
 //import com.ew.utils.WeightManager;//delete?
 
 /**
- * 
  * @author Cody
- *
  */
 
 public class ControlPanel extends JFrame {
@@ -90,7 +88,7 @@ public class ControlPanel extends JFrame {
 	public static ImageIcon resize(String path) {
 		ImageIcon imageIcon = new ImageIcon(path);
 		Image image = imageIcon.getImage();
-		Image newimg = image.getScaledInstance(36,25, Image.SCALE_SMOOTH);
+		Image newimg = image.getScaledInstance(36, 25, Image.SCALE_SMOOTH);
 		return new ImageIcon(newimg);
 	}
 
@@ -179,7 +177,7 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (checkAll(false)) {
-					logAction("Punishments", "Successfully permanently IPMuted "+usernameField.getText());
+					logAction("Punishments", "Successfully permanently IPMuted " + usernameField.getText());
 					PlayerSaveUtil.setIPMuted(player);
 					player.setMuted(true);
 					PlayerSave.save(player);
@@ -195,7 +193,7 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-					logAction("Punishments", "Successfully promoted "+usernameField.getText()+" to administrator.");
+					logAction("Punishments", "Successfully promoted " + usernameField.getText() + " to administrator.");
 					player.setRights(2);
 					PlayerSave.save(player);
 				}
@@ -210,7 +208,7 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-					logAction("Punishments", "Successfully promoted "+usernameField.getText()+" to moderator.");
+					logAction("Punishments", "Successfully promoted " + usernameField.getText() + " to moderator.");
 					player.setRights(1);
 					PlayerSave.save(player);
 				}
@@ -225,8 +223,8 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(true)) {
-					logAction("Punishments", "Successfully banned "+usernameField.getText()+" for "+getGrammar());
-					player.setBanLength(System.currentTimeMillis() + Integer.parseInt(hoursField.getText())* 60 * 60 * 1000);
+					logAction("Punishments", "Successfully banned " + usernameField.getText() + " for " + getGrammar());
+					player.setBanLength(System.currentTimeMillis() + Integer.parseInt(hoursField.getText()) * 60 * 60 * 1000);
 					PlayerSave.save(player);
 				}
 			}
@@ -240,7 +238,7 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-					logAction("Punishments", "Successfully demoted "+usernameField.getText()+" to regular player.");
+					logAction("Punishments", "Successfully demoted " + usernameField.getText() + " to regular player.");
 					player.setRights(0);
 					PlayerSave.save(player);
 				}
@@ -262,44 +260,46 @@ public class ControlPanel extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("In action performed");
+				if (checkAll(false)) {
+					System.out.println("In action performed");
 
-				mainFrame.setLayout(new BorderLayout());
-				mainFrame.add(itemPanel, BorderLayout.NORTH);
-				mainFrame.add(addPanel, BorderLayout.SOUTH);
+					mainFrame.setLayout(new BorderLayout());
+					mainFrame.add(itemPanel, BorderLayout.NORTH);
+					mainFrame.add(addPanel, BorderLayout.SOUTH);
 
-				itemPanel.setLayout(new GridLayout(5,2));
+					itemPanel.setLayout(new GridLayout(5, 2));
 
-				for(int i=0; i<items.length; i++) {
-					items[i] = new JTextField(5);
-					amounts[i] = new JTextField(5);
-				}
+					for (int i = 0; i < items.length; i++) {
+						items[i] = new JTextField(5);
+						amounts[i] = new JTextField(5);
+					}
 
-				for(int i=0; i<items.length; i++) {
-					itemPanel.add(items[i]);
-					itemPanel.add(amounts[i]);
-				}
+					for (int i = 0; i < items.length; i++) {
+						itemPanel.add(items[i]);
+						itemPanel.add(amounts[i]);
+					}
 
-				addPanel.add(add);
+					addPanel.add(add);
 
-				add.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						for(int i=0; i<items.length; i++) {
-							if(items[i].getText().length() != 0) {
-								System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
-								tmp.getInventory().add(532, 1);
-								tmp.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+					add.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							for (int i = 0; i < items.length; i++) {
+								if (items[i].getText().length() != 0) {
+									System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
+									tmp.getInventory().add(532, 1);
+									tmp.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+								}
 							}
 						}
-					}
-				});
-				mainFrame.setSize(new Dimension(500,500));
-				JDialog dialog = new JDialog();
-				dialog.add(mainFrame);
-				dialog.setAlwaysOnTop(true);
-				dialog.setVisible(true);
-				dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					});
+					mainFrame.setSize(new Dimension(500, 500));
+					JDialog dialog = new JDialog();
+					dialog.add(mainFrame);
+					dialog.setAlwaysOnTop(true);
+					dialog.setVisible(true);
+					dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				}
 			}
 		});
 		addItem.setBounds(455, 166, width, 30);
@@ -311,7 +311,7 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-					logAction("Punishments", "Successfully permanently muted "+usernameField.getText());
+					logAction("Punishments", "Successfully permanently muted " + usernameField.getText());
 					player.setMuted(true);
 					player.setMuteLength(-1);
 					PlayerSave.save(player);
@@ -327,8 +327,8 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(true)) {
-					logAction("Punishments", "Successfully muted "+usernameField.getText()+" for "+getGrammar());
-					player.setMuteLength(System.currentTimeMillis() + Integer.parseInt(hoursField.getText())* 60 * 60 * 1000);
+					logAction("Punishments", "Successfully muted " + usernameField.getText() + " for " + getGrammar());
+					player.setMuteLength(System.currentTimeMillis() + Integer.parseInt(hoursField.getText()) * 60 * 60 * 1000);
 					PlayerSave.save(player);
 				}
 			}
@@ -383,18 +383,19 @@ public class ControlPanel extends JFrame {
 
 		inventoryButton.addActionListener(new ActionListener() {
 			JLabel invData = new JLabel();
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				TaskQueue.queue(new Task(25) { //Every 15 sec
 					@Override
 					public void execute() {
-						if(dialogClosed)
+						if (dialogClosed)
 							stop();
 
 						int player2freeslots = player.getInventory().getFreeSlots();
 						int player2usedslots = 28 - player2freeslots;
 						StringBuilder sb = new StringBuilder();
-						sb.append("<html><br>").append(player.getUsername()).append(" has used ").append(player2usedslots).append(" slots; Free: ").append( player2freeslots).append(" inventory slots.")
+						sb.append("<html><br>").append(player.getUsername()).append(" has used ").append(player2usedslots).append(" slots; Free: ").append(player2freeslots).append(" inventory slots.")
 								.append("<br/>Inventory contains: <br/>");
 						for (Item item : player.getInventory().getItems()) {
 							if (item != null) {
@@ -413,7 +414,7 @@ public class ControlPanel extends JFrame {
 
 				JDialog inventoryInfo = new JDialog();
 				inventoryInfo.add(invData);
-				inventoryInfo.setPreferredSize(new Dimension(400,500));
+				inventoryInfo.setPreferredSize(new Dimension(400, 500));
 				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
 
@@ -465,8 +466,8 @@ public class ControlPanel extends JFrame {
 				showingOffline = !showingOffline;
 				updateList();
 				logAction("Player Manager", showingOffline ? "Showing all players, Number of accounts registered: "
-						+ new File("./data/characters/details/").list().length:
-							"Only showing online players, Total players online: "+World.getActivePlayers());
+						+ new File("./data/characters/details/").list().length :
+						"Only showing online players, Total players online: " + World.getActivePlayers());
 				btnShowOffline.setText(showingOffline ? "Only online" : "Include offline");
 				button.setText(showingOffline ? "Only online" : "Include offline");
 			}
@@ -480,12 +481,12 @@ public class ControlPanel extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				showingOffline = !showingOffline;
 				updateList();
-				if(World.getPlayers() != null && new File("./data/characters/details/").list() != null)
-				logAction("Player Manager", showingOffline ? "Showing all players, Number of accounts registered: "
-						+ new File("./data/characters/details/").list().length:
-							"Only showing online players, Total players online: "+World.getActivePlayers());
+				if (World.getPlayers() != null && new File("./data/characters/details/").list() != null)
+					logAction("Player Manager", showingOffline ? "Showing all players, Number of accounts registered: "
+							+ new File("./data/characters/details/").list().length :
+							"Only showing online players, Total players online: " + World.getActivePlayers());
 				else
-				logAction("Player Manager", "All players are null");
+					logAction("Player Manager", "All players are null");
 				btnShowOffline.setText(showingOffline ? "Only online" : "Include offline");
 				button.setText(showingOffline ? "Only online" : "Include offline");
 			}
@@ -499,132 +500,132 @@ public class ControlPanel extends JFrame {
 		panel_2.add(label);
 
 		final JLabel attackLabel = new JLabel("1");
-		attackLabel.setIcon(resize(IMAGE_PATH+"Attack.png"));
+		attackLabel.setIcon(resize(IMAGE_PATH + "Attack.png"));
 		attackLabel.setBounds(177, 23, 76, 29);
 		panel_2.add(attackLabel);
 
 		final JLabel constitutionLabel = new JLabel("10");
-		constitutionLabel.setIcon(resize(IMAGE_PATH+"Constitution.png"));
+		constitutionLabel.setIcon(resize(IMAGE_PATH + "Constitution.png"));
 		constitutionLabel.setBounds(241, 23, 76, 29);
 		panel_2.add(constitutionLabel);
 
 		final JLabel miningLabel = new JLabel("1");
-		miningLabel.setIcon(resize(IMAGE_PATH+"Mining.png"));
+		miningLabel.setIcon(resize(IMAGE_PATH + "Mining.png"));
 		miningLabel.setBounds(307, 23, 76, 29);
 		panel_2.add(miningLabel);
 
 		final JLabel strengthLabel = new JLabel("1");
-		strengthLabel.setIcon(resize(IMAGE_PATH+"Strength.png"));
+		strengthLabel.setIcon(resize(IMAGE_PATH + "Strength.png"));
 		strengthLabel.setBounds(177, 62, 76, 29);
 		panel_2.add(strengthLabel);
 
 		final JLabel agilityLabel = new JLabel("1");
-		agilityLabel.setIcon(resize(IMAGE_PATH+"Agility.png"));
+		agilityLabel.setIcon(resize(IMAGE_PATH + "Agility.png"));
 		agilityLabel.setBounds(241, 62, 76, 29);
 		panel_2.add(agilityLabel);
 
 		final JLabel smithingLabel = new JLabel("1");
-		smithingLabel.setIcon(resize(IMAGE_PATH+"Smithing.png"));
+		smithingLabel.setIcon(resize(IMAGE_PATH + "Smithing.png"));
 		smithingLabel.setBounds(307, 62, 76, 29);
 		panel_2.add(smithingLabel);
 
 		final JLabel defenceLabel = new JLabel("1");
-		defenceLabel.setIcon(resize(IMAGE_PATH+"Defence.png"));
+		defenceLabel.setIcon(resize(IMAGE_PATH + "Defence.png"));
 		defenceLabel.setBounds(177, 102, 76, 29);
 		panel_2.add(defenceLabel);
 
 		final JLabel herbloreLabel = new JLabel("1");
-		herbloreLabel.setIcon(resize(IMAGE_PATH+"Herblore.png"));
+		herbloreLabel.setIcon(resize(IMAGE_PATH + "Herblore.png"));
 		herbloreLabel.setBounds(241, 102, 76, 29);
 		panel_2.add(herbloreLabel);
 
 		final JLabel fishingLabel = new JLabel("1");
-		fishingLabel.setIcon(resize(IMAGE_PATH+"Fishing.png"));
+		fishingLabel.setIcon(resize(IMAGE_PATH + "Fishing.png"));
 		fishingLabel.setBounds(307, 102, 76, 29);
 		panel_2.add(fishingLabel);
 
 		final JLabel rangedLabel = new JLabel("1");
-		rangedLabel.setIcon(resize(IMAGE_PATH+"Ranged.png"));
+		rangedLabel.setIcon(resize(IMAGE_PATH + "Ranged.png"));
 		rangedLabel.setBounds(177, 142, 76, 29);
 		panel_2.add(rangedLabel);
 
 		final JLabel thievingLabel = new JLabel("1");
-		thievingLabel.setIcon(resize(IMAGE_PATH+"Thieving.png"));
+		thievingLabel.setIcon(resize(IMAGE_PATH + "Thieving.png"));
 		thievingLabel.setBounds(241, 142, 76, 29);
 		panel_2.add(thievingLabel);
 
 		final JLabel cookingLabel = new JLabel("1");
-		cookingLabel.setIcon(resize(IMAGE_PATH+"Cooking.png"));
+		cookingLabel.setIcon(resize(IMAGE_PATH + "Cooking.png"));
 		cookingLabel.setBounds(307, 142, 76, 29);
 		panel_2.add(cookingLabel);
 
 		final JLabel prayerLabel = new JLabel("1");
-		prayerLabel.setIcon(resize(IMAGE_PATH+"Prayer.png"));
+		prayerLabel.setIcon(resize(IMAGE_PATH + "Prayer.png"));
 		prayerLabel.setBounds(177, 182, 76, 29);
 		panel_2.add(prayerLabel);
 
 		final JLabel craftingLabel = new JLabel("1");
-		craftingLabel.setIcon(resize(IMAGE_PATH+"Crafting.png"));
+		craftingLabel.setIcon(resize(IMAGE_PATH + "Crafting.png"));
 		craftingLabel.setBounds(241, 182, 76, 29);
 		panel_2.add(craftingLabel);
 
 		final JLabel firemakingLabel = new JLabel("1");
-		firemakingLabel.setIcon(resize(IMAGE_PATH+"Firemaking.png"));
+		firemakingLabel.setIcon(resize(IMAGE_PATH + "Firemaking.png"));
 		firemakingLabel.setBounds(307, 182, 76, 29);
 		panel_2.add(firemakingLabel);
 
 		final JLabel magicLabel = new JLabel("1");
-		magicLabel.setIcon(resize(IMAGE_PATH+"Magic.png"));
+		magicLabel.setIcon(resize(IMAGE_PATH + "Magic.png"));
 		magicLabel.setBounds(177, 222, 76, 29);
 		panel_2.add(magicLabel);
 
 		final JLabel fletchingLabel = new JLabel("1");
-		fletchingLabel.setIcon(resize(IMAGE_PATH+"Fletching.png"));
+		fletchingLabel.setIcon(resize(IMAGE_PATH + "Fletching.png"));
 		fletchingLabel.setBounds(241, 222, 76, 29);
 		panel_2.add(fletchingLabel);
 
 		final JLabel woodcuttingLabel = new JLabel("1");
-		woodcuttingLabel.setIcon(resize(IMAGE_PATH+"Woodcutting.png"));
+		woodcuttingLabel.setIcon(resize(IMAGE_PATH + "Woodcutting.png"));
 		woodcuttingLabel.setBounds(307, 222, 76, 29);
 		panel_2.add(woodcuttingLabel);
 
 		final JLabel runecraftingLabel = new JLabel("1");
-		runecraftingLabel.setIcon(resize(IMAGE_PATH+"Runecrafting.png"));
+		runecraftingLabel.setIcon(resize(IMAGE_PATH + "Runecrafting.png"));
 		runecraftingLabel.setBounds(177, 262, 76, 29);
 		panel_2.add(runecraftingLabel);
 
 		final JLabel slayerLabel = new JLabel("1");
-		slayerLabel.setIcon(resize(IMAGE_PATH+"Slayer.png"));
+		slayerLabel.setIcon(resize(IMAGE_PATH + "Slayer.png"));
 		slayerLabel.setBounds(241, 262, 76, 29);
 		panel_2.add(slayerLabel);
 
 		final JLabel farmingLabel = new JLabel("1");
-		farmingLabel.setIcon(resize(IMAGE_PATH+"Farming.png"));
+		farmingLabel.setIcon(resize(IMAGE_PATH + "Farming.png"));
 		farmingLabel.setBounds(307, 262, 76, 29);
 		panel_2.add(farmingLabel);
 
 		final JLabel constructionLabel = new JLabel("1");
-		constructionLabel.setIcon(resize(IMAGE_PATH+"Construction.png"));
+		constructionLabel.setIcon(resize(IMAGE_PATH + "Construction.png"));
 		constructionLabel.setBounds(177, 302, 76, 29);
 		panel_2.add(constructionLabel);
 
 		final JLabel hunterLabel = new JLabel("1");
-		hunterLabel.setIcon(resize(IMAGE_PATH+"Hunter.png"));
+		hunterLabel.setIcon(resize(IMAGE_PATH + "Hunter.png"));
 		hunterLabel.setBounds(241, 302, 76, 29);
 		panel_2.add(hunterLabel);
 
 		final JLabel summoningLabel = new JLabel("1");
-		summoningLabel.setIcon(resize(IMAGE_PATH+"Summoning.png"));
+		summoningLabel.setIcon(resize(IMAGE_PATH + "Summoning.png"));
 		summoningLabel.setBounds(307, 302, 76, 29);
 		panel_2.add(summoningLabel);
 
 		final JLabel dungeoneeringLabel = new JLabel("1");
-		dungeoneeringLabel.setIcon(resize(IMAGE_PATH+"Dungeoneering.png"));
+		dungeoneeringLabel.setIcon(resize(IMAGE_PATH + "Dungeoneering.png"));
 		dungeoneeringLabel.setBounds(177, 342, 76, 29);
 		panel_2.add(dungeoneeringLabel);
 
 		final JLabel questPointsLabel = new JLabel("0");
-		questPointsLabel.setIcon(resize(IMAGE_PATH+"QuestPoints.png"));
+		questPointsLabel.setIcon(resize(IMAGE_PATH + "QuestPoints.png"));
 		questPointsLabel.setBounds(241, 342, 76, 29);
 		panel_2.add(questPointsLabel);
 
@@ -691,41 +692,41 @@ public class ControlPanel extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				System.out.println("In mouse click");
 				if (loadPlayer()) {
-					attackLabel.setText(player.getSkill().getLevels()[Skills.ATTACK]+"");
-					constitutionLabel.setText(player.getSkill().getLevels()[Skills.HITPOINTS]+"");
-					miningLabel.setText(player.getSkill().getLevels()[Skills.MINING]+"");
-					strengthLabel.setText(player.getSkill().getLevels()[Skills.STRENGTH]+"");
-					agilityLabel.setText(player.getSkill().getLevels()[Skills.AGILITY]+"");
-					smithingLabel.setText(player.getSkill().getLevels()[Skills.SMITHING]+"");
-					defenceLabel.setText(player.getSkill().getLevels()[Skills.DEFENCE]+"");
-					herbloreLabel.setText(player.getSkill().getLevels()[Skills.HERBLORE]+"");
-					fishingLabel.setText(player.getSkill().getLevels()[Skills.FISHING]+"");
-					rangedLabel.setText(player.getSkill().getLevels()[Skills.RANGED]+"");
-					thievingLabel.setText(player.getSkill().getLevels()[Skills.THIEVING]+"");
-					cookingLabel.setText(player.getSkill().getLevels()[Skills.COOKING]+"");
-					prayerLabel.setText(player.getSkill().getLevels()[Skills.PRAYER]+"");
-					craftingLabel.setText(player.getSkill().getLevels()[Skills.CRAFTING]+"");
-					firemakingLabel.setText(player.getSkill().getLevels()[Skills.FIREMAKING]+"");
-					magicLabel.setText(player.getSkill().getLevels()[Skills.MAGIC]+"");
-					fletchingLabel.setText(player.getSkill().getLevels()[Skills.FLETCHING]+"");
-					woodcuttingLabel.setText(player.getSkill().getLevels()[Skills.WOODCUTTING]+"");
-					runecraftingLabel.setText(player.getSkill().getLevels()[Skills.RUNECRAFTING]+"");
-					slayerLabel.setText(player.getSkill().getLevels()[Skills.SLAYER]+"");
-					farmingLabel.setText(player.getSkill().getLevels()[Skills.FARMING]+"");
-					constructionLabel.setText(player.getSkill().getLevels()[Skills.CONSTRUCTION]+"");
-					hunterLabel.setText(player.getSkill().getLevels()[Skills.HUNTER]+"");
-					summoningLabel.setText(player.getSkill().getLevels()[Skills.SUMMONING]+"");
-					dungeoneeringLabel.setText(player.getSkill().getLevels()[Skills.DUNGEONEERING]+"");
-					questPointsLabel.setText(player.getAchievementsPoints()+"");
-					totalLevelLabel.setText("Total Level: "+ player.getSkill().getTotalLevel());
-					totalExpLabel.setText("Total Exp: "+ player.getSkill().getTotalExperience());
-					rightsLabel.setText("Rights: "+player.getRights());
+					attackLabel.setText(player.getSkill().getLevels()[Skills.ATTACK] + "");
+					constitutionLabel.setText(player.getSkill().getLevels()[Skills.HITPOINTS] + "");
+					miningLabel.setText(player.getSkill().getLevels()[Skills.MINING] + "");
+					strengthLabel.setText(player.getSkill().getLevels()[Skills.STRENGTH] + "");
+					agilityLabel.setText(player.getSkill().getLevels()[Skills.AGILITY] + "");
+					smithingLabel.setText(player.getSkill().getLevels()[Skills.SMITHING] + "");
+					defenceLabel.setText(player.getSkill().getLevels()[Skills.DEFENCE] + "");
+					herbloreLabel.setText(player.getSkill().getLevels()[Skills.HERBLORE] + "");
+					fishingLabel.setText(player.getSkill().getLevels()[Skills.FISHING] + "");
+					rangedLabel.setText(player.getSkill().getLevels()[Skills.RANGED] + "");
+					thievingLabel.setText(player.getSkill().getLevels()[Skills.THIEVING] + "");
+					cookingLabel.setText(player.getSkill().getLevels()[Skills.COOKING] + "");
+					prayerLabel.setText(player.getSkill().getLevels()[Skills.PRAYER] + "");
+					craftingLabel.setText(player.getSkill().getLevels()[Skills.CRAFTING] + "");
+					firemakingLabel.setText(player.getSkill().getLevels()[Skills.FIREMAKING] + "");
+					magicLabel.setText(player.getSkill().getLevels()[Skills.MAGIC] + "");
+					fletchingLabel.setText(player.getSkill().getLevels()[Skills.FLETCHING] + "");
+					woodcuttingLabel.setText(player.getSkill().getLevels()[Skills.WOODCUTTING] + "");
+					runecraftingLabel.setText(player.getSkill().getLevels()[Skills.RUNECRAFTING] + "");
+					slayerLabel.setText(player.getSkill().getLevels()[Skills.SLAYER] + "");
+					farmingLabel.setText(player.getSkill().getLevels()[Skills.FARMING] + "");
+					constructionLabel.setText(player.getSkill().getLevels()[Skills.CONSTRUCTION] + "");
+					hunterLabel.setText(player.getSkill().getLevels()[Skills.HUNTER] + "");
+					summoningLabel.setText(player.getSkill().getLevels()[Skills.SUMMONING] + "");
+					dungeoneeringLabel.setText(player.getSkill().getLevels()[Skills.DUNGEONEERING] + "");
+					questPointsLabel.setText(player.getAchievementsPoints() + "");
+					totalLevelLabel.setText("Total Level: " + player.getSkill().getTotalLevel());
+					totalExpLabel.setText("Total Exp: " + player.getSkill().getTotalExperience());
+					rightsLabel.setText("Rights: " + player.getRights());
 					memberLabel.setText("Member: True"); //+(player.isMember() ? "true" : "false")); //Set to true, doesn't matter
-					bankSizeLabel.setText("Bank size: "+player.getBank().getSize()+"");
-					moneyPouchLabel.setText("Money pouch: "+player.getMoneyPouch());
+					bankSizeLabel.setText("Bank size: " + player.getBank().getSize() + "");
+					moneyPouchLabel.setText("Money pouch: " + player.getMoneyPouch());
 					canTradeLabel.setText("Trade banned: N/A"); //+(player.isTradeBanned() ? "true" : "false")); //Set to true, doesn't matter
-					bannedLabel.setText("Banned: "+(player.isBanned() ? "true" : "false"));
-					mutedLabel.setText("Muted: "+(player.isMuted() ? "true" : "false"));
+					bannedLabel.setText("Banned: " + (player.isBanned() ? "true" : "false"));
+					mutedLabel.setText("Muted: " + (player.isMuted() ? "true" : "false"));
 					slayerTaskLabel.setText("Slayer task: " + player.getSlayer().getTask() + " (" + player.getSlayer().getAmount() + ")");
 				}
 			}
@@ -793,13 +794,13 @@ public class ControlPanel extends JFrame {
 				if (!showingItems && !showingObjects) {
 					for (int i = 0; i <= GameDefinitionLoader.getNpcDefinitions().values().size(); i++) {
 						if (GameDefinitionLoader.getNpcDefinition(i).getName().toLowerCase().contains(textField.getText())) {
-							npcListModel.addElement(i+" - "+GameDefinitionLoader.getNpcDefinition(i).getName());
+							npcListModel.addElement(i + " - " + GameDefinitionLoader.getNpcDefinition(i).getName());
 						}
 					}
 				} else if (showingItems && !showingObjects) {
 					for (int i = 0; i <= GameDefinitionLoader.getItemSize(); i++) {
 						if (GameDefinitionLoader.getItemDef(i).getName().toLowerCase().contains(textField.getText())) {
-							npcListModel.addElement(i+" - "+GameDefinitionLoader.getItemDef(i).getName());
+							npcListModel.addElement(i + " - " + GameDefinitionLoader.getItemDef(i).getName());
 						}
 					}
 				} /*else {
@@ -838,7 +839,8 @@ public class ControlPanel extends JFrame {
 					fourthOptionLabel.setText("Fourth option : ");
 					updateNPCList();
 					return;
-				} if (showingObjects && !showingItems) {
+				}
+				if (showingObjects && !showingItems) {
 					showingObjects = !showingObjects;
 					btnShowObjects.setText("Show items");
 					informationLabel.setText("NPC information");
@@ -1023,22 +1025,21 @@ public class ControlPanel extends JFrame {
 		JButton btnToggleYell = new JButton("Toggle yell");
 		btnToggleYell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!yellDisabled[0]) {
+				if (!yellDisabled[0]) {
 					for (Player p : World.getPlayers()) {
-						if(p == null) continue;
+						if (p == null) continue;
 						p.setYellMuted(true);
 						yellDisabled[0] = true;
 					}
-				}
-				else {
+				} else {
 					for (Player p : World.getPlayers()) {
-						if(p == null) continue;
+						if (p == null) continue;
 						p.setYellMuted(false);
 						yellDisabled[0] = false;
 					}
 				}
 
-				logAction("Yell handler", "The yell system has been "+(!yellDisabled[0] ? "dis" : "en")+"abled.");
+				logAction("Yell handler", "The yell system has been " + (!yellDisabled[0] ? "dis" : "en") + "abled.");
 			}
 		});
 		btnToggleYell.setBounds(422, 181, 172, 36);
@@ -1073,7 +1074,6 @@ public class ControlPanel extends JFrame {
 		toolsPanel.add(btnPackItemExamine);
 
 
-
 		JButton btnNewButton_1 = new JButton("Send");
 		btnNewButton_1.addActionListener(arg0 -> {
 			if (announcementsTextField.getText() == null) {
@@ -1081,8 +1081,8 @@ public class ControlPanel extends JFrame {
 			}
 			System.out.println("Field: " + announcementsTextField.getText());
 			for (Player p : World.getPlayers()) {
-				if(p == null) continue;
-				p.send(new SendMessage("<col=FF0000>[<img=1> Server <img=1>] "+announcementsTextField.getText()+"</col>"));
+				if (p == null) continue;
+				p.send(new SendMessage("<col=FF0000>[<img=1> Server <img=1>] " + announcementsTextField.getText() + "</col>"));
 			}
 			announcementsTextField.setText("");
 		});
@@ -1109,28 +1109,28 @@ public class ControlPanel extends JFrame {
 				if (!showingItems && !showingObjects) { //if we're displaying NPC's
 					NpcDefinition npcDefs = GameDefinitionLoader.getNpcDefinition(Integer.parseInt(info[0]));
 					final NpcCombatDefinition defs = GameDefinitionLoader.getNpcCombatDefinition(Integer.parseInt(info[0]));
-					idLabel.setText("Id : "+info[0]);
-					nameLabel.setText("Name : "+info[1]);
-					combatLevelLabel.setText("Combat level : "+npcDefs.getLevel());
+					idLabel.setText("Id : " + info[0]);
+					nameLabel.setText("Name : " + info[1]);
+					combatLevelLabel.setText("Combat level : " + npcDefs.getLevel());
 					//examineLabel.setText("Examine : "+NPCExamines.getExamine(Integer.parseInt(info[0])));
 					//attackAnimationLabel.setText("Attack animation : "+defs.getAttackEmote());
-					defenceAnimationLabel.setText("Defence animation : "+defs.getBlock());
-					deathAnimationLabel.setText("Death animation : "+defs.getDeath());
-					respawnTimeLabel.setText("Respawn time : "+defs.getRespawnTime()+" seconds");
+					defenceAnimationLabel.setText("Defence animation : " + defs.getBlock());
+					deathAnimationLabel.setText("Death animation : " + defs.getDeath());
+					respawnTimeLabel.setText("Respawn time : " + defs.getRespawnTime() + " seconds");
 					/*firstOptionLabel.setText("First option : "+npcDefs.getOption(0));
 					secondOptionLabel.setText("Second option : "+npcDefs.getOption(1));
 					thirdOptionLabel.setText("Third option : "+npcDefs.getOption(2));
 					fourthOptionLabel.setText("Fourth option : "+npcDefs.getOption(3));*/
 				} else if (showingItems && !showingObjects) { //Items...
 					ItemDefinition itemDefs = GameDefinitionLoader.getItemDef(Integer.parseInt(info[0]));
-					idLabel.setText("Id : "+info[0]);
-					nameLabel.setText("Name : "+info[1]);
+					idLabel.setText("Id : " + info[0]);
+					nameLabel.setText("Name : " + info[1]);
 					//combatLevelLabel.setText("Oversized : "+itemDefs.isOverSized());
 					//examineLabel.setText("Examine : "+ItemExamines.getExamine(new Item(Integer.parseInt(info[0]))));
 					//attackAnimationLabel.setText("Price : "+PriceManager.getPrice(Integer.parseInt(info[0])));
 					//attackAnimationLabel.setText("Weight : "+WeightManager.getWeight(Integer.parseInt(info[0]))+" KG");
-					defenceAnimationLabel.setText("Tradeable : "+itemDefs.isTradable());
-					deathAnimationLabel.setText("Noted : "+itemDefs.isNote());
+					defenceAnimationLabel.setText("Tradeable : " + itemDefs.isTradable());
+					deathAnimationLabel.setText("Noted : " + itemDefs.isNote());
 					//respawnTimeLabel.setText("Lended item : "+itemDefs.isLended());
 					/*firstOptionLabel.setText("First option : "+itemDefs.inventoryOptions[0]);
 					secondOptionLabel.setText("Second option : "+itemDefs.inventoryOptions[1]);
@@ -1138,8 +1138,8 @@ public class ControlPanel extends JFrame {
 					fourthOptionLabel.setText("Fourth option : "+itemDefs.inventoryOptions[3]);*/
 				} else { //Objects
 					ObjectDef objectDefs = ObjectDef.getObjectDef(Integer.parseInt(info[0]));
-					idLabel.setText("Id : "+info[0]);
-					nameLabel.setText("Name : "+info[1]);
+					idLabel.setText("Id : " + info[0]);
+					nameLabel.setText("Name : " + info[1]);
 					/*combatLevelLabel.setText("Animation : "+objectDefs.objectAnimation);
 					examineLabel.setText("Examine : "+ObjectExamines.getExamine(info[0]));
 					attackAnimationLabel.setText("Size (X) : "+objectDefs.sizeX);
@@ -1159,7 +1159,7 @@ public class ControlPanel extends JFrame {
 		}
 
 		final JTextArea text = new JTextArea();
-		DefaultCaret caret = (DefaultCaret)text.getCaret();
+		DefaultCaret caret = (DefaultCaret) text.getCaret();
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
 
@@ -1167,7 +1167,7 @@ public class ControlPanel extends JFrame {
 		tabbedPane.addTab("Console", null, console, null);
 		console.setLayout(new BoxLayout(console, BoxLayout.X_AXIS));
 
-		SYSTEM_OUT =  new PrintStream(System.out) {
+		SYSTEM_OUT = new PrintStream(System.out) {
 			public void println(String x) {
 				text.append(x + "\n");
 			}
@@ -1200,14 +1200,15 @@ public class ControlPanel extends JFrame {
 		npcListModel.clear();
 		if (showingItems) {
 			for (int i = 0; i <= GameDefinitionLoader.getItemSize(); i++) {
-				npcListModel.addElement(i+" - "+GameDefinitionLoader.getItemDef(i).getName());
+				npcListModel.addElement(i + " - " + GameDefinitionLoader.getItemDef(i).getName());
 			}
 		}
 		/*else if (showingObjects) {
 			for (int i = 0; i <= GameDefinitionLoader; i++) {
 				npcListModel.addElement(i+" - "+ObjectDef.getObjectDef(i).name);
 			}
-		}*/ else {
+		}*/
+		else {
 			int i = 0;
 			List<NpcDefinition> npcdefs = GameDefinitionLoader.getNpcDefinitions().values().stream().filter(npcdef -> {
 				if (npcdef == null || !GameDefinitionLoader.getMobDropDefinitions().containsKey(npcdef.getId())) {
@@ -1216,14 +1217,14 @@ public class ControlPanel extends JFrame {
 				return npcdef.isAttackable();
 			}).collect(Collectors.toList());
 			for (NpcDefinition def : npcdefs) {
-				npcListModel.addElement(i+" - "+def.getName());
+				npcListModel.addElement(i + " - " + def.getName());
 				i++;
 			}
 		}
 	}
 
 	protected String getGrammar() {
-		return hoursField.getText()+ (hoursField.getText().equalsIgnoreCase("1") ? " hour" : " hours");
+		return hoursField.getText() + (hoursField.getText().equalsIgnoreCase("1") ? " hour" : " hours");
 	}
 
 	public boolean loadPlayer() {
@@ -1232,7 +1233,7 @@ public class ControlPanel extends JFrame {
 		if (player == null) {
 			String[] str = hsList.getSelectedValue().split(" - ");
 			//player = SerializableFilesManager.loadPlayer(Utils.formatPlayerNameForProtocol(str[0]));
-			if(PlayerSaveUtil.exists(str[0])) {
+			if (PlayerSaveUtil.exists(str[0])) {
 				try {
 					//PlayerSave.PlayerDetails.loadDetails(str[0]);
 				} catch (Exception e) {
@@ -1283,7 +1284,7 @@ public class ControlPanel extends JFrame {
 
 	public static void update(Player p) {
 		EventQueue.invokeLater(() -> {
-			JOptionPane op = new JOptionPane(p.getUsername() + " logged in",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane op = new JOptionPane(p.getUsername() + " logged in", JOptionPane.INFORMATION_MESSAGE);
 			JDialog dialog = op.createDialog("Info");
 			dialog.setAlwaysOnTop(true);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -1308,7 +1309,7 @@ public class ControlPanel extends JFrame {
 				return;
 			}
 			for (final Player p : World.getPlayers()) {
-				if(p == null) continue;
+				if (p == null) continue;
 				playersModel.addElement(p.getUsername());
 				hsPlayersList.addElement(p.getUsername());
 			}
@@ -1316,20 +1317,20 @@ public class ControlPanel extends JFrame {
 				playersModel.addElement(p.getUsername() + " - Lobby");
 				hsPlayersList.addElement(p.getUsername() + " - Lobby");
 		}*/
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 		}
 	}
 
 
 	public void logAction(String file, String log) {
-		loggingModel.addElement("["+file+"]"+" "+log);
-		logger.ensureIndexIsVisible(logger.getModel().getSize()-1);
+		loggingModel.addElement("[" + file + "]" + " " + log);
+		logger.ensureIndexIsVisible(logger.getModel().getSize() - 1);
 	}
 
 	public static void init(final File folder) { //shows players that are offline.
 		File[] fileArray = folder.listFiles();
-		for (int i=0; (fileArray != null) && i< fileArray.length; i++) {
+		for (int i = 0; (fileArray != null) && i < fileArray.length; i++) {
 			if (fileArray[i].isDirectory()) {
 				init(fileArray[i]);
 			} else {
