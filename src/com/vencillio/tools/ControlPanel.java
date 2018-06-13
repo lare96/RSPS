@@ -283,10 +283,12 @@ public class ControlPanel extends JFrame {
 
 
 
-				Player tmp = player;
+
+				final Player tmp = player;
 				add.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
+						loadPlayer();
 						for(int i=0; i<items.length; i++) {
 							if(items[i].getText().length() != 0) {
 								System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
@@ -1227,7 +1229,7 @@ public class ControlPanel extends JFrame {
 		return hoursField.getText()+ (hoursField.getText().equalsIgnoreCase("1") ? " hour" : " hours");
 	}
 
-	private boolean loadPlayer() {
+	public boolean loadPlayer() {
 		player = World.getPlayerByName(hsList.getSelectedValue());
 		//System.out.println(player);
 		if (player == null) {
