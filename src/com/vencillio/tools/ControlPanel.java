@@ -249,7 +249,6 @@ public class ControlPanel extends JFrame {
 		mainMenu.add(demotePlayer);
 
 		final JButton addItem = new JButton("Add Item");
-		final Player tmp = player;
 		addItem.addActionListener(new ActionListener() {
 			JPanel mainFrame = new JPanel();
 			JPanel itemPanel = new JPanel();
@@ -287,8 +286,8 @@ public class ControlPanel extends JFrame {
 							for (int i = 0; i < items.length; i++) {
 								if (items[i].getText().length() != 0) {
 									System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
-									tmp.getInventory().add(532, 1);
-									tmp.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+									player.getInventory().add(532, 1);
+									player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
 								}
 							}
 						}
