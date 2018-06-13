@@ -270,8 +270,8 @@ public class ControlPanel extends JFrame {
 				itemPanel.setLayout(new GridLayout(5,2));
 
 				for(int i=0; i<items.length; i++) {
-					items[i].setColumns(5);
-					amounts[i].setColumns(5);
+					items[i] = new JTextField(5);
+					amounts[i] = new JTextField(5);
 				}
 
 				for(int i=0; i<items.length; i++) {
