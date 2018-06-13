@@ -268,8 +268,8 @@ public class ControlPanel extends JFrame {
 					itemPanel.setLayout(new GridLayout(5, 2));
 
 					for (int i = 0; i < items.length; i++) {
-						items[i] = new JTextField(5);
-						amounts[i] = new JTextField(5);
+						items[i] = new JTextField(7);
+						amounts[i] = new JTextField(7);
 					}
 
 					for (int i = 0; i < items.length; i++) {
@@ -289,13 +289,12 @@ public class ControlPanel extends JFrame {
 							}
 						}
 					});
-					mainFrame.setSize(new Dimension(500, 500));
 					JDialog dialog = new JDialog();
 					dialog.add(mainFrame);
 					dialog.setAlwaysOnTop(true);
 					dialog.pack();
 					dialog.setVisible(true);
-					dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					dialog.setDefaultCloseOperation(HIDE_ON_CLOSE);
 				}
 			}
 		});
