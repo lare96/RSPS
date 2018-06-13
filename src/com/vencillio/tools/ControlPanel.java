@@ -249,13 +249,13 @@ public class ControlPanel extends JFrame {
 		mainMenu.add(demotePlayer);
 
 		final JButton addItem = new JButton("Add Item");
+		JPanel mainFrame = new JPanel();
+		JPanel itemPanel = new JPanel();
+		JPanel addPanel = new JPanel();
+		JTextField[] items = new JTextField[5];
+		JTextField[] amounts = new JTextField[5];
+		JButton add = new JButton("Add");
 		addItem.addActionListener(new ActionListener() {
-			JPanel mainFrame = new JPanel();
-			JPanel itemPanel = new JPanel();
-			JPanel addPanel = new JPanel();
-			JTextField[] items = new JTextField[5];
-			JTextField[] amounts = new JTextField[5];
-			JButton add = new JButton("Add");
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -294,7 +294,7 @@ public class ControlPanel extends JFrame {
 					dialog.setAlwaysOnTop(true);
 					dialog.pack();
 					dialog.setVisible(true);
-					dialog.setDefaultCloseOperation(HIDE_ON_CLOSE);
+					dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}
 			}
 		});
