@@ -260,7 +260,6 @@ public class ControlPanel extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-					System.out.println("In action performed");
 
 					mainFrame.setLayout(new BorderLayout());
 					mainFrame.add(itemPanel, BorderLayout.NORTH);
@@ -285,8 +284,6 @@ public class ControlPanel extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							for (int i = 0; i < items.length; i++) {
 								if (items[i].getText().length() != 0) {
-									System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
-									player.getInventory().add(532, 1);
 									player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
 								}
 							}
@@ -296,6 +293,7 @@ public class ControlPanel extends JFrame {
 					JDialog dialog = new JDialog();
 					dialog.add(mainFrame);
 					dialog.setAlwaysOnTop(true);
+					dialog.pack();
 					dialog.setVisible(true);
 					dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}
@@ -689,7 +687,6 @@ public class ControlPanel extends JFrame {
 		hsList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.out.println("In mouse click");
 				if (loadPlayer()) {
 					attackLabel.setText(player.getSkill().getLevels()[Skills.ATTACK] + "");
 					constitutionLabel.setText(player.getSkill().getLevels()[Skills.HITPOINTS] + "");
