@@ -288,6 +288,7 @@ public class ControlPanel extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						for(int i=0; i<items.length; i++) {
 							if(items[i].getText().length() != 0) {
+								System.out.println("items[" + i + "]: " + items[i].getText() + "amounts[" + i + "]: " + amounts[i].getText());
 								player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
 							}
 						}
@@ -298,7 +299,7 @@ public class ControlPanel extends JFrame {
 				dialog.add(mainFrame);
 				dialog.setAlwaysOnTop(true);
 				dialog.setVisible(true);
-				dialog.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				dialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		});
 		addItem.setBounds(455, 166, width, 30);
