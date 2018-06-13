@@ -255,40 +255,41 @@ public class ControlPanel extends JFrame {
 		JTextField[] items = new JTextField[5];
 		JTextField[] amounts = new JTextField[5];
 		JButton add = new JButton("Add");
+
+		mainFrame.setLayout(new BorderLayout());
+		mainFrame.add(itemPanel, BorderLayout.NORTH);
+		mainFrame.add(addPanel, BorderLayout.SOUTH);
+
+		itemPanel.setLayout(new GridLayout(5, 2));
+
+		for (int i = 0; i < items.length; i++) {
+			items[i] = new JTextField(7);
+			amounts[i] = new JTextField(7);
+		}
+
+		for (int i = 0; i < items.length; i++) {
+			itemPanel.add(items[i]);
+			itemPanel.add(amounts[i]);
+		}
+
+		addPanel.add(add);
+
+		add.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < items.length; i++) {
+					if (items[i].getText().length() != 0) {
+						player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
+					}
+				}
+			}
+		});
+
 		addItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkAll(false)) {
-
-					mainFrame.setLayout(new BorderLayout());
-					mainFrame.add(itemPanel, BorderLayout.NORTH);
-					mainFrame.add(addPanel, BorderLayout.SOUTH);
-
-					itemPanel.setLayout(new GridLayout(5, 2));
-
-					for (int i = 0; i < items.length; i++) {
-						items[i] = new JTextField(7);
-						amounts[i] = new JTextField(7);
-					}
-
-					for (int i = 0; i < items.length; i++) {
-						itemPanel.add(items[i]);
-						itemPanel.add(amounts[i]);
-					}
-
-					addPanel.add(add);
-
-					add.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							for (int i = 0; i < items.length; i++) {
-								if (items[i].getText().length() != 0) {
-									player.getInventory().add(Integer.parseInt(items[i].getText()), Integer.parseInt(amounts[i].getText()));
-								}
-							}
-						}
-					});
 					JDialog dialog = new JDialog();
 					dialog.add(mainFrame);
 					dialog.setAlwaysOnTop(true);
