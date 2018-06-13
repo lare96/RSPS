@@ -268,6 +268,12 @@ public class ControlPanel extends JFrame {
 				mainFrame.add(addPanel, BorderLayout.SOUTH);
 
 				itemPanel.setLayout(new GridLayout(5,2));
+
+				for(int i=0; i<items.length; i++) {
+					items[i].setColumns(5);
+					amounts[i].setColumns(5);
+				}
+
 				for(int i=0; i<items.length; i++) {
 					itemPanel.add(items[i]);
 					itemPanel.add(amounts[i]);
@@ -275,10 +281,7 @@ public class ControlPanel extends JFrame {
 
 				addPanel.add(add);
 
-				for(int i=0; i<items.length; i++) {
-					items[i].setColumns(5);
-					amounts[i].setColumns(5);
-				}
+
 
 				add.addActionListener(new ActionListener() {
 					@Override
