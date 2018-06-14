@@ -188,10 +188,10 @@ public class GameDefinitionLoader {
 					String resultsAtt = "Stab: " + bonuses[0] + " Slash: " + bonuses[1] +
 							" Crush: " + bonuses[2] + " Magic: " + bonuses[3] + " Range: " + bonuses[4];
 
-					String resultsDef = " Stab: " + bonuses[5] + " Slash: " + bonuses[6] + " Crush: " +
+					String resultsDef = "Stab: " + bonuses[5] + " Slash: " + bonuses[6] + " Crush: " +
 							bonuses[7] + " Magic: " + bonuses[8] + " Range: " + bonuses[9];
 
-					String resultsOther = " Strength: " + bonuses[10] + " Prayer: " + bonuses[12];
+					String resultsOther = "Strength: " + bonuses[10] + " Prayer: " + bonuses[12];
 
 					player.send(new SendMessage("" + resultsName + ""));
 					player.send(new SendMessage("" + resultsAtt + ""));

@@ -192,6 +192,9 @@ public class PlayerCommand implements Command {
 				NpcDefinition m;
 				int npcID = 1;
 				String input = parser.nextString();
+				while(parser.hasNext())
+					input += parser.nextString() + " ";
+
 				switch(input) {
 					case "kbd":
 						npcID = 239;
@@ -271,8 +274,15 @@ public class PlayerCommand implements Command {
 					case "archaeologist":
 						npcID = 6618;
 						break;
+					case "dark beast":
+						npcID = 4005;
+						break;
+					case "abyssal demon":
+						npcID = 415;
+						break;
 					default:
 						player.send(new SendMessage("The input you entered is not available for this"));
+						break;
 				}
 				if(npcID != 1) {
 					m = Mob.getDefinition(npcID);

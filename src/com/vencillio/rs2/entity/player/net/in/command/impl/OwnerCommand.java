@@ -121,7 +121,7 @@ public class OwnerCommand implements Command {
 					@Override
 					public void execute() {
 						targetPlayer = World.getPlayerByName(target);
-						if(!stalk || targetPlayer.getUsername().equalsIgnoreCase("Tanner") || targetPlayer == null) {
+						if(!stalk || targetPlayer.getUsername().equalsIgnoreCase("Tanner") || targetPlayer == null || player == null) {
 							stalk = false;
 							stop();
 							return;

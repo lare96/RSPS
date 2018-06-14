@@ -158386,5 +158386,17 @@
 		<highAlch>0</highAlch>
 		<lowAlch>0</lowAlch>
 		<generalPrice>0</generalPrice>
-	</ItemDefinition>		
+	</ItemDefinition>
+	<ItemDefinition>
+		<name>Energy sword</name>
+		<id>13200</id>
+		<members>false</members>
+		<tradable>true</tradable>
+		<stackable>false</stackable>
+		<note>false</note>
+		<noteId>-1</noteId>
+		<highAlch>0</highAlch>
+		<lowAlch>0</lowAlch>
+		<generalPrice>0</generalPrice>
+	</ItemDefinition>
 </list>

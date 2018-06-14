@@ -66,6 +66,10 @@ public class SpellCasting {
 			}
 			if (p.getController().canAttackNPC()) {
 				for (Mob i : player.getClient().getNpcs()) {
+
+					if(!i.getDefinition().isAttackable())
+						continue;
+
 					boolean enhanced = p.getSkill().getLevels()[Skills.MAGIC] == 99 ? ((Math.abs(x - i.getLocation().getX()) <= 7) &&
 							(Math.abs(y - i.getLocation().getY()) <= 7)) : ((Math.abs(x - i.getLocation().getX()) <= 1) && (Math.abs(y - i.getLocation().getY()) <= 1));
 
