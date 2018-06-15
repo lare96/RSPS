@@ -173,7 +173,7 @@ public class GameDefinitionLoader {
 		return null;
 	}
 
-	public static void getItemID(Player player, String name, boolean cmd) {
+	public static void getItemIDBonus(Player player, String name) {
 		for (int i = 0; i < itemDefinitions.size(); i++) {
 			name = name.toLowerCase();
 			ItemDefinition definition = getItemDef(i);

@@ -1,9 +1,5 @@
 package com.vencillio.rs2.content.skill.farming;
 
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.Task.BreakType;
 import com.vencillio.core.task.Task.StackType;
@@ -19,6 +15,10 @@ import com.vencillio.rs2.entity.player.controllers.Controller;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
 import com.vencillio.rs2.entity.player.net.out.impl.SendConfig;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Flowers {
 
@@ -396,7 +396,7 @@ public class Flowers {
 		}
 		if (flowerStages[flowerFieldsData.getFlowerIndex()] <= 3) {
 			if (!player.getInventory().hasItemId(FarmingConstants.RAKE)) {
-				DialogueManager.sendStatement(player, "You need a rake to clear this path.");
+				DialogueManager.sendStatement(player, "You need a rake to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.RAKING_ANIM;
@@ -404,7 +404,7 @@ public class Flowers {
 			}
 		} else {
 			if (!player.getInventory().hasItemId(FarmingConstants.SPADE)) {
-				DialogueManager.sendStatement(player, "You need a spade to clear this path.");
+				DialogueManager.sendStatement(player, "You need a spade to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.SPADE_ANIM;

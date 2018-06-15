@@ -1,9 +1,5 @@
 package com.vencillio.rs2.content.skill.farming;
 
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.Task.BreakType;
 import com.vencillio.core.task.Task.StackType;
@@ -19,6 +15,10 @@ import com.vencillio.rs2.entity.player.controllers.Controller;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
 import com.vencillio.rs2.entity.player.net.out.impl.SendConfig;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Herbs {
 
@@ -64,7 +64,7 @@ public class Herbs {
 		TOADFLAX(5296, 3049, 38, 60, 0.20, 34, 38.5, 0x27, 0x2b),
 		IRIT(5297, 209, 44, 60, 0.20, 43, 48.5, 0x2e, 0x32),
 		AVANTOE(5298, 211, 50, 60, 0.20, 54.5, 61.5, 0x35, 0x39),
-		KUARM(5299, 213, 56, 60, 0.20, 69, 78, 0x44, 0x48),
+		KWUARM(5299, 213, 56, 60, 0.20, 69, 78, 0x44, 0x48),
 		SNAPDRAGON(5300, 3051, 62, 60, 0.15, 87.5, 98.5, 0x4b, 0x4f),
 		CADANTINE(5301, 215, 67, 60, 0.15, 106.5, 120, 0x52, 0x56),
 		LANTADYME(5302, 2485, 73, 60, 0.15, 134.5, 151.5, 0x59, 0x5d),
@@ -308,14 +308,15 @@ public class Herbs {
 		}
 	}
 
+	//herbState 0-2 = weeds, 3 = raked/empty, 4 = composted & empty
 	/* calculations about the diseasing chance */
 
 	public void doStateCalculation(int index) {
-		if (herbState[index] == 2) {
+		if (herbState[index] == 2) { //Dead
 			return;
 		}
-		if (herbState[index] == 1) {
-			herbState[index] = 2;
+		if (herbState[index] == 1) { //If diseased
+			herbState[index] = 2; //Dead
 		}
 
 		if (herbState[index] == 4 && herbStages[index] != 3) {
@@ -330,7 +331,7 @@ public class Herbs {
 			double chance = diseaseChance[index] * herbData.getDiseaseChance();
 			int maxChance = (int) chance * 100;
 			if (Utility.random(100) <= maxChance && !player.isCreditUnlocked(CreditPurchase.DISEASE_IMUNITY)) {
-				herbState[index] = 1;
+				herbState[index] = 1; //Diseased
 			}
 		}
 	}
@@ -352,7 +353,7 @@ public class Herbs {
 		}
 		if (herbStages[herbFieldsData.getHerbIndex()] <= 3) {
 			if (!player.getInventory().hasItemId(FarmingConstants.RAKE)) {
-				DialogueManager.sendStatement(player, "You need a rake to clear this path.");
+				DialogueManager.sendStatement(player, "You need a rake to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.RAKING_ANIM;
@@ -360,7 +361,7 @@ public class Herbs {
 			}
 		} else {
 			if (!player.getInventory().hasItemId(FarmingConstants.SPADE)) {
-				DialogueManager.sendStatement(player, "You need a spade to clear this path.");
+				DialogueManager.sendStatement(player, "You need a spade to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.SPADE_ANIM;
@@ -415,7 +416,7 @@ public class Herbs {
 		if (herbFieldsData == null || herbData == null) {
 			return false;
 		}
-		if (herbStages[herbFieldsData.getHerbIndex()] != 3) {
+		if (herbStages[herbFieldsData.getHerbIndex()] != 3) { //herb Stage 3 - not empty patch
 			player.send(new SendMessage("You can't plant a seed here."));
 			return false;
 		}
@@ -498,7 +499,7 @@ public class Herbs {
 		TaskQueue.queue(new Task(player, 3, false, StackType.NEVER_STACK, BreakType.NEVER, TaskIdentifier.FARMING) {
 			@Override
 			public void execute() {
-				if (herbHarvest[herbFieldsData.getHerbIndex()] == 0) {
+				if (herbHarvest[herbFieldsData.getHerbIndex()] == 0) { //4-19(24) herbs Avg 11-12
 					herbHarvest[herbFieldsData.getHerbIndex()] = (int) (1 + (START_HARVEST_AMOUNT + Utility.random((END_HARVEST_AMOUNT + (player.getEquipment().isWearingItem(7409) ? 5 : 0)) - START_HARVEST_AMOUNT)) * (1));
 				}
 

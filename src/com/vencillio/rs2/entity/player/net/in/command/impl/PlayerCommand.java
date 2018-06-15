@@ -167,12 +167,11 @@ public class PlayerCommand implements Command {
 
 			case "ib":
 				if(parser.hasNext()) {
-					boolean playerCmd = true;
 					String input = parser.nextString();
 					while (parser.hasNext()) {
 						input += " " + parser.nextString();
 					}
-					GameDefinitionLoader.getItemID(player, input, playerCmd);
+					GameDefinitionLoader.getItemIDBonus(player, input);
 				}
 				return true;
 

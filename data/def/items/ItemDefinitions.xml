@@ -158388,8 +158388,32 @@
 		<generalPrice>0</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
+		<name>Guthix godsword</name>
+		<id>13199</id>
+		<members>false</members>
+		<tradable>true</tradable>
+		<stackable>false</stackable>
+		<note>false</note>
+		<noteId>-1</noteId>
+		<highAlch>0</highAlch>
+		<lowAlch>0</lowAlch>
+		<generalPrice>0</generalPrice>
+	</ItemDefinition>
+	<ItemDefinition>
 		<name>Energy sword</name>
 		<id>13200</id>
+		<members>false</members>
+		<tradable>true</tradable>
+		<stackable>false</stackable>
+		<note>false</note>
+		<noteId>-1</noteId>
+		<highAlch>0</highAlch>
+		<lowAlch>0</lowAlch>
+		<generalPrice>0</generalPrice>
+	</ItemDefinition>
+	<ItemDefinition>
+		<name>Demon wind shuriken</name>
+		<id>13201</id>
 		<members>false</members>
 		<tradable>true</tradable>
 		<stackable>false</stackable>

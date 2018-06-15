@@ -482,7 +482,7 @@ public class Allotments {
 		}
 		if (allotmentStages[allotmentFieldsData.getAllotmentIndex()] <= 3) {
 			if (!player.getInventory().hasItemId(FarmingConstants.RAKE)) {
-				DialogueManager.sendStatement(player, "You need a rake to clear this path.");
+				DialogueManager.sendStatement(player, "You need a rake to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.RAKING_ANIM;
@@ -490,7 +490,7 @@ public class Allotments {
 			}
 		} else {
 			if (!player.getInventory().hasItemId(FarmingConstants.SPADE)) {
-				DialogueManager.sendStatement(player, "You need a spade to clear this path.");
+				DialogueManager.sendStatement(player, "You need a spade to clear this patch.");
 				return true;
 			} else {
 				finalAnimation = FarmingConstants.SPADE_ANIM;
@@ -634,7 +634,7 @@ public class Allotments {
 					stop();
 					return;
 				}
-				if (allotmentHarvest[allotmentFieldsData.getAllotmentIndex()] == 0) {
+				if (allotmentHarvest[allotmentFieldsData.getAllotmentIndex()] == 0) { //4-11(21) Avg 7-8
 					allotmentHarvest[allotmentFieldsData.getAllotmentIndex()] = 1 + (START_HARVEST_AMOUNT + Utility.random((END_HARVEST_AMOUNT + (player.getEquipment().isWearingItem(7409) ? 10 : 0)) - START_HARVEST_AMOUNT));
 				}
 				if (allotmentHarvest[allotmentFieldsData.getAllotmentIndex()] == 1) {
