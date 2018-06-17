@@ -17,6 +17,7 @@ import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.CommandInterface;
 import com.vencillio.rs2.content.interfaces.impl.TrainingInterface;
 import com.vencillio.rs2.content.io.PlayerSave;
+import com.vencillio.rs2.content.membership.RankHandler;
 import com.vencillio.rs2.content.profiles.PlayerProfiler;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
 import com.vencillio.rs2.content.vencilliobot.VencillioBot;
@@ -145,10 +146,27 @@ public class PlayerCommand implements Command {
 							return;
 						}
 						if(player.getInventory().getFreeSlots() == 0) {
-							player.send(new SendMessage("Your inventory was full so the credit voucher has been sent to your bank."));
+							player.send(new SendMessage("Your inventory was full so the item has been sent to your bank."));
 
 							for (Donation donate : donations) {
 								//player.getInventory().add(new Item(donate.product_id, donate.product_amount));
+								if(donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
+									switch(donate.product_id) {
+										case 2726:
+											player.setMoneySpent(player.getMoneySpent() + 10);
+											break;
+										case 2728:
+											player.setMoneySpent(player.getMoneySpent() + 5);
+											break;
+										case 2730:
+											player.setMoneySpent(player.getMoneySpent() + 10);
+											break;
+										case 2732:
+											player.setMoneySpent(player.getMoneySpent() + 15);
+											break;
+									}
+									RankHandler.upgrade(player);
+								}
 								player.getBank().add(new Item(donate.product_id, donate.product_amount));
 							}
 						}

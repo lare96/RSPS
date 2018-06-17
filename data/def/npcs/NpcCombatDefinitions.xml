@@ -18290,7 +18290,7 @@
 		<!-- Giant Mole -->
 		<id>5779</id>
 		<combatType>MELEE</combatType>
-		<respawnTime>160</respawnTime>
+		<respawnTime>20</respawnTime>
 		<block>
 			<id>3311</id>
 			<delay>0</delay>

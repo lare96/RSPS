@@ -43,6 +43,14 @@ public class CreditsShop3 extends Shop {
 			case 13116:
 				return 25;
 
+			case 2728:
+				return 50;
+			case 2732:
+				return 150;
+			case 2726:
+			case 2730:
+				return 100;
+
 		}
 
 		return 150;

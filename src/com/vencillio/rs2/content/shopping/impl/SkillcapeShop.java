@@ -103,7 +103,13 @@ public class SkillcapeShop extends Shop {
 		}
 
 		if (gold.getAmount() > 0) {
-			if (!player.getInventory().hasItemAmount(gold)) {
+			if(player.isPouchPayment()) {
+				if(player.getMoneyPouch() < gold.getAmount()) {
+					player.getClient().queueOutgoingPacket(new SendMessage("[" + ShopConstants.COLOUR + "*</col>] You do not have enough coins to buy that."));
+					return;
+				}
+			}
+			else if (!player.getInventory().hasItemAmount(gold)) {
 				player.getClient().queueOutgoingPacket(new SendMessage("[" + ShopConstants.COLOUR + "*</col>] You do not have enough coins to buy that."));
 				return;
 			}

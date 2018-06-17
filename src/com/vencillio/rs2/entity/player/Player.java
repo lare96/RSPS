@@ -2035,7 +2035,7 @@ public class Player extends Entity {
 		case 7:
 			return "<col=4D8528>Extreme Member</col>";
 		case 8:
-			return "<col=971FF2>Elite Member</col>";
+			return "<col=971FF2>Royal Member</col>";
 		case 11:
 			return "@gry@Iron Man</col>";
 		case 12:

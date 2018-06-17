@@ -142545,7 +142545,7 @@
 		<noteId>11877</noteId>
 		<highAlch>120</highAlch>
 		<lowAlch>80</lowAlch>
-		<generalPrice>120</generalPrice>
+		<generalPrice>25400</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Water-filled vial pack</name>
@@ -142557,7 +142557,7 @@
 		<noteId>11880</noteId>
 		<highAlch>120</highAlch>
 		<lowAlch>80</lowAlch>
-		<generalPrice>4900</generalPrice>
+		<generalPrice>26000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Water-filled vial pack</name>
@@ -142569,7 +142569,7 @@
 		<noteId>11879</noteId>
 		<highAlch>120</highAlch>
 		<lowAlch>80</lowAlch>
-		<generalPrice>120</generalPrice>
+		<generalPrice>26000</generalPrice>
 	</ItemDefinition>
 	<ItemDefinition>
 		<name>Feather pack</name>

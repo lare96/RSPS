@@ -53,9 +53,9 @@ public class DunceDialogue extends Dialogue {
 			
 		case DialogueConstants.OPTIONS_4_4:
 			if (PlayerConstants.isStaff(player) || player.getRights() == 8) {
-				title("Elite", 0x9900FF);
+				title("Royal", 0x9900FF);
 			} else {
-				DialogueManager.sendNpcChat(player, 6749, Emotion.SAD, "You need to at least be a <img=8> <col=0x7D088A>Elite Member</col>!");
+				DialogueManager.sendNpcChat(player, 6749, Emotion.SAD, "You need to at least be a <img=8> <col=0x7D088A>Royal Member</col>!");
 			}
 			break;
 		

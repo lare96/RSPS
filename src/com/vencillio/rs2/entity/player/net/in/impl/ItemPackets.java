@@ -7,10 +7,7 @@ import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.task.impl.DigTask;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
-import com.vencillio.rs2.content.DropTable;
-import com.vencillio.rs2.content.ItemInteraction;
-import com.vencillio.rs2.content.ItemOpening;
-import com.vencillio.rs2.content.MysteryBox;
+import com.vencillio.rs2.content.*;
 import com.vencillio.rs2.content.bank.Bank.RearrangeTypes;
 import com.vencillio.rs2.content.cluescroll.ClueScrollManager;
 import com.vencillio.rs2.content.combat.Hit;
@@ -936,6 +933,12 @@ public class ItemPackets extends IncomingPacket {
 						int random = Utility.random(10000) + Utility.random(2500) + Utility.random(666);
 						player.getInventory().add(995, random);
 						player.send(new SendMessage("You have found " + random + " coins inside the casket"));
+						break;
+					case 2726:
+					case 2728:
+					case 2730:
+					case 2732:
+						Casket.open(player, itemId);
 						break;
 					case 12938:// Zulrah teleport
 						player.getInventory().remove(12938, 1);
