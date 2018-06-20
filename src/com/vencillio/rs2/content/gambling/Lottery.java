@@ -72,10 +72,14 @@ public class Lottery {
 			return;
 		}
 
-		if(player.isPouchPayment())
+		if(player.getMoneyPouch() > ENTRY_PRICE)
 			player.setMoneyPouch(player.getMoneyPouch() - ENTRY_PRICE);
-		else
+		else if(player.getInventory().hasItemAmount(995, ENTRY_PRICE))
 			player.getInventory().remove(995, ENTRY_PRICE);
+		else {
+			DialogueManager.sendStatement(player, "You need " + Utility.format(ENTRY_PRICE) + " coins to enter the lottery!");
+			return;
+		}
 		CURRENT_POT += ENTRY_PRICE;
 		entries.add(player);
 		World.sendGlobalMessage("[ <col=C46423>Lottery </col>] <col=C46423>" + player.determineIcon(player) + " " + player.getUsername() + "</col> has just entered the lottery! Pot: <col=C46423>" + Utility.format(CURRENT_POT) + " </col>/ <col=C46423>" + Utility.format(LOTTERY_LIMIT) + "</col>.");

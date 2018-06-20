@@ -188,9 +188,9 @@ public class Shop extends ItemContainer {
 		    return;
 		}
 
-		if (amount > 500) {
-			player.getClient().queueOutgoingPacket(new SendMessage("[" + ShopConstants.COLOUR + "*</col>] You can only buy 500 maximum at a time from these shops."));
-			amount = 500;
+		if (amount > 1000) {
+			player.getClient().queueOutgoingPacket(new SendMessage("[" + ShopConstants.COLOUR + "*</col>] You can only buy 1000 maximum at a time from these shops."));
+			amount = 1000;
 		}
 
 		if (!hasItem(slot, id))
@@ -362,7 +362,7 @@ public class Shop extends ItemContainer {
 
 			if (stock != null) {
 				if (items[j].getAmount() < stock.getAmount())
-					items[j].add(1);
+					items[j].add(5);
 				else if (items[j].getAmount() > stock.getAmount()) {
 					items[j].remove(1);
 				}

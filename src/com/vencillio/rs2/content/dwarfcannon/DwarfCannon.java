@@ -41,7 +41,7 @@ public class DwarfCannon extends RSObject {
 	/**
 	 * The directions
 	 */
-	public static final int[] DIRECIONS = { 1, 2, 4, 7, 6, 5, 3 };
+	public static final int[] DIRECTIONS = { 1, 2, 4, 7, 6, 5, 3, 8 }; // dir, dir, West
 
 	/**
 	 * The owner of the Dwarf Cannon
@@ -186,9 +186,10 @@ public class DwarfCannon extends RSObject {
 	public Mob[] getMobsInPath() {
 		ArrayList<Mob> attack = new ArrayList<Mob>();
 		for (Iterator<Mob> mobs = cannonOwner.getClient().getNpcs().iterator(); mobs.hasNext();) {
-			Mob mob = mobs.next();
+			Mob mob = mobs.next();									//positive							//negative
 			int dir = GameConstants.getDirection(Integer.signum(cannonLocation.getX() - mob.getX()), Integer.signum(cannonLocation.getY() - mob.getY()));
-			if (DIRECIONS[dir] == this.dir) {
+			System.out.println("Directions[dir]: " + DIRECTIONS[dir] + " this.dir: " + this.dir);
+			if (DIRECTIONS[dir] == this.dir) { //If it's facing the same direction as the target check path below
 				boolean canAttack = !cannonOwner.getCombat().inCombat() || cannonOwner.inMultiArea() || (cannonOwner.getCombat().inCombat() && cannonOwner.getCombat().getLastAttackedBy().equals(mob));
 				boolean clearPath = StraightPathFinder.isProjectilePathClear(getX(), getY(), cannonLocation.getZ(), mob.getX(), mob.getY());
 				if (mob.getLevels()[3] > 0 && canAttack && clearPath) {

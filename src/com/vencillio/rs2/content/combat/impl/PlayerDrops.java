@@ -136,7 +136,7 @@ public class PlayerDrops {
 		Queue<Item> items = new PriorityQueue<Item>(42, ITEM_VALUE_COMPARATOR);
 		
 		for (Item i : player.getInventory().getItems()) {
-			if (i != null) {
+			if (i != null && i.getId() != 13116) {
 				items.add(i);
 			}
 		}
@@ -152,7 +152,7 @@ public class PlayerDrops {
 		player.getInventory().clear();
 		player.getEquipment().clear();
 
-		if(items.contains(new Item(13116))) {
+		if(player.getInventory().hasItemId(new Item(13116))) {
 			player.getInventory().add(new Item(13116));
 		}
 		
