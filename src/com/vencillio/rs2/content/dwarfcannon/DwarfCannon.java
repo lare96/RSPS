@@ -188,6 +188,7 @@ public class DwarfCannon extends RSObject {
 		for (Iterator<Mob> mobs = cannonOwner.getClient().getNpcs().iterator(); mobs.hasNext();) {
 			Mob mob = mobs.next();									//positive							//negative
 			int dir = GameConstants.getDirection(Integer.signum(cannonLocation.getX() - mob.getX()), Integer.signum(cannonLocation.getY() - mob.getY()));
+			System.out.println("dir:" + dir);
 			System.out.println("Directions[dir]: " + DIRECTIONS[dir] + " this.dir: " + this.dir);
 			if (DIRECTIONS[dir] == this.dir) { //If it's facing the same direction as the target check path below
 				boolean canAttack = !cannonOwner.getCombat().inCombat() || cannonOwner.inMultiArea() || (cannonOwner.getCombat().inCombat() && cannonOwner.getCombat().getLastAttackedBy().equals(mob));
