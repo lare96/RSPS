@@ -1734,5 +1734,29 @@
 			</skillData>
 		</skillData>
 	</PotionDefinition>
+	<PotionDefinition>
+		<id>11730</id>
+		<name>Overload (4)</name>
+		<replaceId>11731</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>11731</id>
+		<name>Overload (3)</name>
+		<replaceId>11732</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>11732</id>
+		<name>Overload (2)</name>
+		<replaceId>11733</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>11733</id>
+		<name>Overload (1)</name>
+		<replaceId>229</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
 
 </list>

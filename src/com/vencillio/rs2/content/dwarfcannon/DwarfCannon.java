@@ -186,9 +186,8 @@ public class DwarfCannon extends RSObject {
 	public Mob[] getMobsInPath() {
 		ArrayList<Mob> attack = new ArrayList<Mob>();
 		for (Iterator<Mob> mobs = cannonOwner.getClient().getNpcs().iterator(); mobs.hasNext();) {
-			Mob mob = mobs.next();									//positive							//negative
+			Mob mob = mobs.next();
 			int dir = GameConstants.getDirection(Integer.signum(cannonLocation.getX() - mob.getX()), Integer.signum(cannonLocation.getY() - mob.getY()));
-			System.out.println("dir:" + dir);
 			if(dir == -1)
 				continue;
 			if (DIRECTIONS[dir] == this.dir) { //If it's facing the same direction as the target check path below
@@ -225,7 +224,7 @@ public class DwarfCannon extends RSObject {
 			player.send(new SendMessage("You do not have any Cannon balls."));
 			return true;
 		}
-		int needed = 30 - ammunition;
+		int needed = 1000 - ammunition;
 		if (needed == 0) {
 			player.send(new SendMessage("Your cannon is full."));
 			return true;
