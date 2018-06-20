@@ -41,7 +41,7 @@ public class DwarfCannon extends RSObject {
 	/**
 	 * The directions
 	 */
-	public static final int[] DIRECTIONS = { 1, 2, 4, 7, 6, 5, 3, 8 }; // dir, dir, West
+	public static final int[] DIRECTIONS = { 1, 2, 4, 7, 6, 5, 3, 0 }; // E, SE, SW, N, NW, W, S, NE?
 
 	/**
 	 * The owner of the Dwarf Cannon
