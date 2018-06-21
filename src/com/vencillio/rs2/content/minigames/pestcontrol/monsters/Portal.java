@@ -111,7 +111,7 @@ public class Portal extends Mob {
 			}
 		}
 
-		if (game.getPlayers().size() > 1) {
+		if (game.getPlayers().size() > 3) {
 			if (Utility.randomNumber(20) == 0 && shifters.size() < 1) {
 				int baseX = 2656;
 				int baseY = 2592;
