@@ -219,7 +219,7 @@ public class PestControlGame {
 
 		voidKnight.getLevels()[Skills.HITPOINTS] = 200;
 		voidKnight.getMaxLevels()[Skills.HITPOINTS] = 200;
-		voidKnight.getLevels()[Skills.DEFENCE] = 400;
+		voidKnight.getLevels()[Skills.DEFENCE] = 500;
 
 		voidKnight.setRespawnable(false);
 

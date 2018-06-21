@@ -4,6 +4,8 @@ import com.everythingrs.donate.Donation;
 import com.motiservice.Motivote;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.definitions.NpcDefinition;
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.PlayersOnline;
@@ -21,6 +23,7 @@ import com.vencillio.rs2.content.membership.RankHandler;
 import com.vencillio.rs2.content.profiles.PlayerProfiler;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
 import com.vencillio.rs2.content.vencilliobot.VencillioBot;
+import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.mob.Mob;
@@ -47,6 +50,7 @@ import java.util.concurrent.TimeUnit;
 public class PlayerCommand implements Command {
 
 	private final static Motivote motivote = new Motivote("rennatscape", "d65e6c6fc6ef5e51c2866a776f25da59");
+	boolean active = false;
 
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
@@ -678,6 +682,42 @@ public class PlayerCommand implements Command {
 				player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
 			}
 			return true;
+
+			case "glow":
+				if(player.getRights() == 6) {
+					active = !active;
+					TaskQueue.queue(new Task(2) {
+						@Override
+						public void execute() {
+							player.getUpdateFlags().sendGraphic(new Graphic(246));
+							if (!active)
+								stop();
+						}
+
+						@Override
+						public void onStop() {
+						}
+					});
+				}
+				return true;
+
+			case "glow2":
+				if(player.getRights() == 6) {
+					active = !active;
+					TaskQueue.queue(new Task(2) {
+						@Override
+						public void execute() {
+							player.getUpdateFlags().sendGraphic(new Graphic(332));
+							if (!active)
+								stop();
+						}
+
+						@Override
+						public void onStop() {
+						}
+					});
+				}
+				return true;
 
 /*		case "bsf815s":
 			if (parser.hasNext(2)) {

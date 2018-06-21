@@ -14,7 +14,7 @@ public class PestControlController extends GenericMinigameController {
 
 	@Override
 	public boolean allowMultiSpells() {
-		return false;
+		return true;
 	}
 
 	@Override
