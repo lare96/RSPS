@@ -684,7 +684,7 @@ public class PlayerCommand implements Command {
 			return true;
 
 			case "glow":
-				if(player.getRights() == 6) {
+				if(player.getRights() >= 6 && player.getRights() <= 8) {
 					active = !active;
 					TaskQueue.queue(new Task(2) {
 						@Override
@@ -702,7 +702,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "glow2":
-				if(player.getRights() == 6) {
+				if(player.getRights() >= 6 && player.getRights() <= 8) {
 					active = !active;
 					TaskQueue.queue(new Task(2) {
 						@Override
