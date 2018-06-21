@@ -265,7 +265,6 @@ public final class Consumables {
 			case 11731:
 			case 11732:
 			case 11733:
-				System.out.println("Use special case overload: " + id);
 				this.overloadEffect();
 				TaskQueue.queue(new OverloadTask(player));
 				return true;
