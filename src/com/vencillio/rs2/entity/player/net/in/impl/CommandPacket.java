@@ -42,6 +42,7 @@ public class CommandPacket extends IncomingPacket {
 						return;
 					}
 					player.clan.sendChat(player, message);
+					System.out.println("*CC*" + player.getUsername() + ": " + message);
 				}
 				return;
 			} else if (player.clan == null) {
@@ -54,6 +55,7 @@ public class CommandPacket extends IncomingPacket {
 			for (Command command : COMMANDS) {
 				if (PlayerConstants.isOwner(player) || command.meetsRequirements(player)) {
 					if (command.handleCommand(player, parser)) {
+						System.out.println(player.getUsername() + " used " + parser);
 						PlayerLogger.COMMANDS_LOGGER.log(player.getUsername(),String.format("%s used %s", Utility.formatPlayerName(player.getUsername()), parser));
 						return;
 					}
