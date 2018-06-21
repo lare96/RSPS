@@ -184,6 +184,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "ib":
+			case "itemdef":
 				if(parser.hasNext()) {
 					String input = parser.nextString();
 					while (parser.hasNext()) {

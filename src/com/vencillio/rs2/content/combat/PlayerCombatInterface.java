@@ -464,6 +464,7 @@ public class PlayerCombatInterface implements CombatInterface {
 			player.getRanged().removeArrowsOnAttack();
 
 			if (player.getRanged().isOnyxEffectActive()) {
+				hit *= 1.2;
 				player.getRanged().doOnyxEffect(hit);
 			}
 			break;

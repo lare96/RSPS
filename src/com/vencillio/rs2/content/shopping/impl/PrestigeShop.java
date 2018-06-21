@@ -30,6 +30,7 @@ public class PrestigeShop extends Shop {
 			case 1419:
 				return 15;
 			case 9472:
+			case 2577:
 				return 10;
 			case 10833:
 				return 5;
@@ -75,6 +76,7 @@ public class PrestigeShop extends Shop {
 				new Item(7595),
 				new Item(7596),
 				new Item(10833),
+				new Item(2577),
 
 
 		}, false, "Prestige Store");

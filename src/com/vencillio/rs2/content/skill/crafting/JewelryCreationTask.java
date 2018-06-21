@@ -97,7 +97,7 @@ public class JewelryCreationTask extends Task {
 		}
 
 		for (int i : data.getMaterialsRequired()) {
-			if (i != 0 && i != 1592)
+			if (i != 0 && i != 1592 && i != 1595 && i != 1597)
 				player.getInventory().remove(i, 1, true);
 		}
 

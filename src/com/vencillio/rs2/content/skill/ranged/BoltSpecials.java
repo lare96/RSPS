@@ -7,6 +7,7 @@ import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.item.Item;
+import com.vencillio.rs2.entity.mob.MobConstants;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 
@@ -41,7 +42,16 @@ public class BoltSpecials {
 				if ((shield != null) && ((shield.getId() == 1540) || (shield.getId() == 11283))) {
 					return;
 				}
+			}
 
+			int dBoltHit = player.getLevels()[Skills.RANGED] / 5;
+			if(attacking.isNpc()) {
+				if (!MobConstants.isDragon(attacking.getMob())) {
+					attacking.hit(new Hit(dBoltHit));
+				}
+			}
+			else {
+				attacking.hit(new Hit(dBoltHit));
 			}
 
 			attacking.getUpdateFlags().sendGraphic(Graphic.lowGraphic(756, 0));

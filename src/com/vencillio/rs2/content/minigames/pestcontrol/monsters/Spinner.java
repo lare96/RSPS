@@ -26,7 +26,7 @@ public class Spinner extends Pest {
 				@Override
 				public void onDestination() {
 					getUpdateFlags().sendAnimation(3911, 0);
-					portal.heal(5);
+					portal.heal(15);
 					stop();
 				}
 			});
@@ -39,7 +39,7 @@ public class Spinner extends Pest {
 			return;
 		}
 
-		if ((portal.isDamaged()) && (Utility.randomNumber(3) == 0)) {
+		if ((portal.isDamaged()) && (Utility.randomNumber(2) == 0)) {
 			heal();
 		}
 	}

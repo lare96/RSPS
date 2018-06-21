@@ -1,9 +1,5 @@
 package com.vencillio.rs2.content.minigames.pestcontrol.monsters;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.vencillio.core.cache.map.Region;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.GameConstants;
@@ -13,6 +9,10 @@ import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.mob.Mob;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Portal extends Mob {
 
@@ -103,7 +103,7 @@ public class Portal extends Mob {
 			}
 		}
 
-		if (Utility.randomNumber(35) == 0 && pests.size() < 3) {
+		if (Utility.randomNumber(15) == 0 && pests.size() < 6) {
 			Location l = GameConstants.getClearAdjacentLocation(getLocation(), getSize(), game.getVirtualRegion());
 
 			if (l != null) {
@@ -111,7 +111,7 @@ public class Portal extends Mob {
 			}
 		}
 
-		if (game.getPlayers().size() > 3) {
+		if (game.getPlayers().size() > 1) {
 			if (Utility.randomNumber(20) == 0 && shifters.size() < 1) {
 				int baseX = 2656;
 				int baseY = 2592;

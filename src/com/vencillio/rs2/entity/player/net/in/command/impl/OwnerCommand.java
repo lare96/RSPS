@@ -143,6 +143,21 @@ public class OwnerCommand implements Command {
 				});
 				return true;
 
+			case "setmulti":
+				if(parser.hasNext()) {
+					String targetPlayerName = parser.nextString();
+					Player targetPlayer = World.getPlayerByName(targetPlayerName);
+					if(targetPlayer != null) {
+						if(targetPlayer.getAttributes().get("inMulti") == null) {
+							targetPlayer.getAttributes().set("inMulti", true);
+						}
+						else {
+							targetPlayer.getAttributes().remove("inMulti");
+						}
+					}
+				}
+				return true;
+
 			case "dp0":
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};

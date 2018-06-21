@@ -117,7 +117,7 @@ public class PestControlGame {
 				if (p.getAttributes().get(PEST_DAMAGE_KEY) != null && p.getAttributes().getInt(PEST_DAMAGE_KEY) >= 80) {
 					DialogueManager.sendNpcChat(p, 1756, Emotion.HAPPY_TALK, "You have managed to destroy all the portals!", "We've awarded you with Void Knight Commendation", "points and some coins to show our appreciation.");
 					p.getInventory().addOrCreateGroundItem(995, p.getAttributes().getInt(PEST_DAMAGE_KEY) * 6, true);
-					p.setPestPoints(p.getPestPoints() + (10));
+					p.setPestPoints(p.getPestPoints() + (5));
 					AchievementHandler.activateAchievement(p, AchievementList.WIN_30_PEST_CONTROL_GAMES, 1);
 				} else {
 					DialogueManager.sendNpcChat(p, 1756, Emotion.CALM, "You were successful but did not contribute enough", "to the void knights. Try harder next time!");

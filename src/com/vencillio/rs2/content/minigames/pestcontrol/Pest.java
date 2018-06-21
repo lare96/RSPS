@@ -1,13 +1,5 @@
 package com.vencillio.rs2.content.minigames.pestcontrol;
 
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.BRAWLERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.DEFILERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.RAVAGERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.SHIFTERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.SPINNERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.SPLATTERS;
-import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.TORCHERS;
-
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.combat.Combat.CombatTypes;
 import com.vencillio.rs2.content.combat.impl.Attack;
@@ -17,6 +9,8 @@ import com.vencillio.rs2.entity.Animation;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
+
+import static com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants.*;
 
 /**
  * Pest Control pests
@@ -114,8 +108,8 @@ public abstract class Pest extends Mob {
 
 				for (Player k : game.getPlayers()) {
 					int thisDist = Utility.getManhattanDistance(getLocation(), k.getLocation());
-					if (thisDist <= 8) {
-						if (p == null && game.getAttackers(k) < 2 || thisDist < dist && game.getAttackers(k) < 2) {
+					if (thisDist <= 10) {
+						if (p == null && game.getAttackers(k) < 4 || thisDist < dist && game.getAttackers(k) < 4) {
 							getCombat().setAttack(k);
 						}
 					}

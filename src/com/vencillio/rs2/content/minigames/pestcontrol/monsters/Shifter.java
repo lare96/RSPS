@@ -2,9 +2,11 @@ package com.vencillio.rs2.content.minigames.pestcontrol.monsters;
 
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.GameConstants;
+import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.minigames.pestcontrol.Pest;
 import com.vencillio.rs2.content.minigames.pestcontrol.PestControlConstants;
 import com.vencillio.rs2.content.minigames.pestcontrol.PestControlGame;
+import com.vencillio.rs2.entity.Entity;
 import com.vencillio.rs2.entity.Location;
 
 public class Shifter extends Pest {
@@ -13,6 +15,13 @@ public class Shifter extends Pest {
 
 	public Shifter(Location location, PestControlGame game) {
 		super(game, PestControlConstants.SHIFTERS[Utility.randomNumber(PestControlConstants.SHIFTERS.length)], location);
+	}
+
+	@Override
+	public void onHit(Entity e, Hit hit) {
+		if(Utility.randomNumber(4) == 0) {
+			e.setPoisonDamage(5);
+		}
 	}
 
 	@Override
