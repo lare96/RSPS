@@ -651,6 +651,8 @@ public class Player extends Entity {
 		//System.out.println("CLAN: " + clan +  " Clan title: " + clan.getTitle() + "Founder: " + clan.getFounder());
 		send(new SendString(clan.getTitle(), 53706));
 		String title = "";
+		System.out.println("clan who can join: " + clan.getRankTitle(clan.whoCanJoin) + " true/false: " + (clan.whoCanJoin > Clan.Rank.ANYONE && clan.whoCanJoin < Clan.Rank.OWNER) + " clan rank.owner: " + Clan.Rank.OWNER);
+		System.out.println("clan who can talk: " + clan.whoCanTalk + " who can kick: " + clan.whoCanKick + " who can ban: " + clan.whoCanBan);
 		for (int id = 53707; id < 53717; id += 3) {
 			if (id == 53707) {
 				title = clan.getRankTitle(clan.whoCanJoin) + (clan.whoCanJoin > Clan.Rank.ANYONE && clan.whoCanJoin < Clan.Rank.OWNER ? "+" : "");
