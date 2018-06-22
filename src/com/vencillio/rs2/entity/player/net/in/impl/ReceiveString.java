@@ -17,6 +17,7 @@ public class ReceiveString extends IncomingPacket {
 		int index = text.indexOf(",");
 		int id = Integer.parseInt(text.substring(0, index));
 		String string = text.substring(index + 1);
+		System.out.println("ID: " + id);
 		switch (id) {
 		case 0: //Leave clan chat
 
