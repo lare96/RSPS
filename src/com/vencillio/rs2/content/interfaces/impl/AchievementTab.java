@@ -19,7 +19,6 @@ public class AchievementTab extends InterfaceHandler {
 
 	public AchievementTab(Player player) {
 		super(player);
-		System.out.println(text.length);
 		int shift = 0;
 		text[shift++] = "";
 		text[shift++] = "@lre@ Total achievements: @gre@" + AchievementList.values().length;
