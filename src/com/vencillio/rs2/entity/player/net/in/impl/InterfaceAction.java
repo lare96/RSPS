@@ -13,6 +13,8 @@ public class InterfaceAction extends IncomingPacket {
 
 	@Override
 	public void handle(Player player, StreamBuffer.InBuffer in, int opcode, int length) {
+		player.setClanData();
+		System.out.println("Set clan data at top");
 		int id = in.readShort(false);
 		int action = in.readShort(false);
 		switch (id) {
@@ -86,7 +88,6 @@ public class InterfaceAction extends IncomingPacket {
 			}
 		}
 		if (id >= 18144 && id < 18244) {
-			System.out.println("action case: " + action);
 			for (int index = 0; index < 100; index++) {
 				if (id == index + 18144) {
 					String member = player.clan.activeMembers.get(id - 18144);
@@ -98,7 +99,6 @@ public class InterfaceAction extends IncomingPacket {
 					case 0:
 						if (player.clan.isFounder(player.getUsername()) && !player.getCombat().inCombat()) {
 							player.send(new SendInterface(43700)); //Clan setup screen
-							System.out.println("In interface 43700");
 							player.setClanData();
 						}
 						break;
