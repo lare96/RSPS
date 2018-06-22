@@ -95,7 +95,9 @@ public class InterfaceAction extends IncomingPacket {
 					switch (action) {
 					case 0:
 						if (player.clan.isFounder(player.getUsername()) && !player.getCombat().inCombat()) {
-							player.send(new SendInterface(43700));
+							player.send(new SendInterface(43700)); //Clan setup screen
+							System.out.println("In interface 43700");
+							player.setClanData();
 						}
 						break;
 					case 1:
