@@ -51,7 +51,7 @@ public enum AchievementList {
 	HIGH_ALCH_250_ITEMS("High alch 250 items", 250, AchievementDifficulty.MEDIUM),
 	OBTAIN_10_FIRECAPES("Obtain 10 firecapes", 10, AchievementDifficulty.MEDIUM),
 	WIN_A_DUEL_WORTH_OVER_10M("Win a duel worth over 10m", 1, AchievementDifficulty.MEDIUM),
-	WIN_50_PEST_CONTROL_GAMES("Win 50 Pest Control games", 50, AchievementDifficulty.MEDIUM),
+	WIN_30_PEST_CONTROL_GAMES("Win 30 Pest Control games", 30, AchievementDifficulty.MEDIUM),
 	CHOP_DOWN_750_TREES("Chop down 750 trees", 750, AchievementDifficulty.MEDIUM),
 	BURN_500_LOGS("Burn 500 logs", 500, AchievementDifficulty.MEDIUM),
 	OPEN_50_ITEM_SETS("Open 50 item sets", 50, AchievementDifficulty.MEDIUM),
@@ -70,6 +70,7 @@ public enum AchievementList {
 	VOTE_15_TIMES("Vote 15 times", 15, AchievementDifficulty.MEDIUM),
 	ANSWER_50_TRIVIABOTS_CORRECTLY("Answer 50 TriviaBots correctly", 50, AchievementDifficulty.MEDIUM),
 	COMPLETE_10_CLUE_SCROLLS("Complete 10 clue scrolls", 10, AchievementDifficulty.MEDIUM),
+	WIN_50_PEST_CONTROL_GAMES("Win 50 Pest Control games", 50, AchievementDifficulty.MEDIUM),
 
 	
 	/* Hard Achievements */
