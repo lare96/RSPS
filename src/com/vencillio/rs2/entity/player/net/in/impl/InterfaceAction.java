@@ -15,6 +15,7 @@ public class InterfaceAction extends IncomingPacket {
 	public void handle(Player player, StreamBuffer.InBuffer in, int opcode, int length) {
 		int id = in.readShort(false);
 		int action = in.readShort(false);
+		System.out.println("ID: " + id);
 		switch (id) {
 		case 43704:
 			if (action == 1) {
