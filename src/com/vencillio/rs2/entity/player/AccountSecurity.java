@@ -71,7 +71,7 @@ public class AccountSecurity {
 	 * @param input
 	 */
 	public void setIP(String input) {
-		if (player.getIP() != null) {
+		if (!player.getIP().isEmpty()) {
 			DialogueManager.sendStatement(player, "You already have an IP address set!");
 			return;
 		}
@@ -85,7 +85,7 @@ public class AccountSecurity {
 	 * @param input
 	 */
 	public void setName(String input) {
-		if (player.getFullName() != null) {
+		if (!player.getFullName().isEmpty()) {
 			DialogueManager.sendStatement(player, "You already have your name set!");
 			return;
 		}
@@ -99,7 +99,7 @@ public class AccountSecurity {
 	 * @param input
 	 */
 	public void setRecovery(String input) {
-		if (player.getRecovery() != null) {
+		if (!player.getRecovery().isEmpty()) {
 			DialogueManager.sendStatement(player, "You already have a recovery set!");
 			return;
 		}
@@ -113,7 +113,7 @@ public class AccountSecurity {
 	 * @param input
 	 */
 	public void setEmail(String input) {
-		if (player.getEmailAddress() != null) {
+		if (!player.getEmailAddress().isEmpty()) {
 			DialogueManager.sendStatement(player, "You already have a email address set!");
 			return;
 		}

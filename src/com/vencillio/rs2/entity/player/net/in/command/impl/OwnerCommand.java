@@ -116,12 +116,20 @@ public class OwnerCommand implements Command {
 			case "stalk":
 				String target = parser.hasNext() ? parser.nextString() : player.getUsername();
 				stalk = !stalk;
+				if(World.getPlayerByName(target) != null) {
+					player.send(new SendMessage("You have started stalking: " + target));
+				}
+
 				TaskQueue.queue(new Task(9) {
 					Player targetPlayer = null;
+
 					@Override
 					public void execute() {
 						targetPlayer = World.getPlayerByName(target);
-						if(!stalk || targetPlayer.getUsername().equalsIgnoreCase("Tanner") || targetPlayer == null || player == null) {
+						if(!stalk || target.equalsIgnoreCase("Tanner") || targetPlayer == null || player == null) {
+							if(!target.equalsIgnoreCase("Tanner")) {
+								player.send(new SendMessage("You have stopped stalking: " + target));
+							}
 							stalk = false;
 							stop();
 							return;
@@ -953,12 +961,33 @@ public class OwnerCommand implements Command {
 				return true;
 
 			case "og":
-			case "glow":
 				active = !active;
 				TaskQueue.queue(new Task(2) {
 					@Override
 					public void execute() {
 						player.getUpdateFlags().sendGraphic(new Graphic(332));
+						if (!active)
+							stop();
+					}
+
+					@Override
+					public void onStop() {
+					}
+				});
+
+				return true;
+
+			case "og2":
+				active = !active;
+				TaskQueue.queue(new Task(2) {
+					@Override
+					public void execute() {
+						for(int i=-1; i<2; i++) {
+							for(int j=-1; j<2; j++) {
+								World.sendStillGraphic(332, 0, new Location(player.getX() + i, player.getY() + j, player.getZ()));
+							}
+						}
+
 						if (!active)
 							stop();
 					}

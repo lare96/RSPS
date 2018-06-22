@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import com.vencillio.core.util.Utility;
 import com.vencillio.core.util.chance.Chance;
 import com.vencillio.rs2.content.Emotes.Emote;
+import com.vencillio.rs2.content.achievements.AchievementHandler;
+import com.vencillio.rs2.content.achievements.AchievementList;
 import com.vencillio.rs2.content.cluescroll.Clue.ClueType;
 import com.vencillio.rs2.content.cluescroll.scroll.EmoteScroll;
 import com.vencillio.rs2.content.cluescroll.scroll.MapScroll;
@@ -20,6 +22,8 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
 import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItems;
+
+import static com.vencillio.rs2.content.achievements.AchievementList.COMPLETE_5_CLUE_SCROLLS;
 
 /**
  * Manages any action regarding clue scrolls.
@@ -642,7 +646,10 @@ public enum ClueScrollManager {
 		items.update();
 		player.getInventory().update();
 		player.send(new SendInterface(6960));
-		
+		AchievementHandler.activateAchievement(player, AchievementList.COMPLETE_5_CLUE_SCROLLS, 1);
+		AchievementHandler.activateAchievement(player, AchievementList.COMPLETE_10_CLUE_SCROLLS, 1);
+		AchievementHandler.activateAchievement(player, AchievementList.COMPLETE_20_CLUE_SCROLLS, 1);
+
 		for (int i = 0; i < items.items.length; i++) {
 			if (items.items[i] == null) {
 				continue;

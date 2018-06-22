@@ -114,8 +114,6 @@ public class BoneBurying {
 		player.getUpdateFlags().sendAnimation(645, 5);
 		player.getInventory().remove(new Item(item, amount));
 		player.getSkill().addExperience(5, (bones.experience * 2.0D) * amount);
-		AchievementHandler.activateAchievement(player, AchievementList.BURY_150_BONES, 1);
-		AchievementHandler.activateAchievement(player, AchievementList.BURY_1000_BONES, 1);
 
 	}
 
@@ -147,6 +145,8 @@ public class BoneBurying {
 					p.getUpdateFlags().sendAnimation(645, 5);
 					p.getInventory().remove(item);
 					p.getSkill().addExperience(5, bones.experience * 2.0);
+					AchievementHandler.activateAchievement(p, AchievementList.BURY_150_BONES, 1);
+					AchievementHandler.activateAchievement(p, AchievementList.BURY_1000_BONES, 1);
 				}
 
 				@Override
