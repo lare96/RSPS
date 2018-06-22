@@ -15,7 +15,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendColor;
  */
 public class AchievementTab extends InterfaceHandler {
 
-	private String[] text = new String[AchievementList.values().length + 8];
+	private String[] text = new String[AchievementList.values().length + 10];
 
 	public AchievementTab(Player player) {
 		super(player);
