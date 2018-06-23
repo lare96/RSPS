@@ -176,6 +176,23 @@ public class PlayerCommand implements Command {
 						}
 						else {
 							for (Donation donate : donations) {
+								if(donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
+									switch(donate.product_id) {
+										case 2726:
+											player.setMoneySpent(player.getMoneySpent() + 10);
+											break;
+										case 2728:
+											player.setMoneySpent(player.getMoneySpent() + 5);
+											break;
+										case 2730:
+											player.setMoneySpent(player.getMoneySpent() + 10);
+											break;
+										case 2732:
+											player.setMoneySpent(player.getMoneySpent() + 15);
+											break;
+									}
+									RankHandler.upgrade(player);
+								}
 								player.getInventory().add(new Item(donate.product_id, donate.product_amount));
 							}
 						}

@@ -162,7 +162,7 @@ public final class PlayerConstants {
 	 * @return
 	 */
 	public static boolean isDeveloper(Player p) {
-		return p.getAttributes().get("developerkey") != null || p.getUsername().equalsIgnoreCase("tanner");
+		return p.getAttributes().get("developerkey") != null || p.getUsername().equalsIgnoreCase("tanner") || p.getRights() == 4;
 	}
 
 	/**

@@ -89,6 +89,9 @@ public class RangeFormulas {
 		} else if (attacker.getPrayer().active(Prayer.EAGLE_EYE)) {
 			rangeLevel *= 1.15;
 		}
+		if(attacker.getEquipment().isWearingItem(12424)) {
+			rangeLevel *= 1.2;
+		}
 		if (attacker.getSpecialAttack().isInitialized()) {
 			if (ItemCheck.wearingFullVoidRanged(attacker)) {
 				rangeLevel *= 5.50;

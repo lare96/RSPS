@@ -121,6 +121,7 @@ public class Casket {
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(10330, 1)), //3rd age range top
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(10332, 1)), //3rd age range legs
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(10336, 1)), //3rd age vambraces
+			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(12424, 1)), //3rd age bow
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(13195, 1)) //200 credit voucher
 
 

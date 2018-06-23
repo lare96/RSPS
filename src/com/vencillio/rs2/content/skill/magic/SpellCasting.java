@@ -76,7 +76,7 @@ public class SpellCasting {
 					if (enhanced) {
 						/*System.out.println("x abs: " + Math.abs(x - i.getLocation().getX()) + " y abs: " + Math.abs(y - i.getLocation().getY()));
 						System.out.println("inmultiarea: " + i.inMultiArea() + " !i.equals(a): " + !i.equals(a));*/
-						if(PlayerConstants.isOwner(p) && !i.equals(a) && i.getId() != 1756) { //Owner override
+						if((PlayerConstants.isOwner(p) || player.getAttributes().get("setMulti") != null) && !i.equals(a) && i.getId() != 1756) { //Owner override
 							p.getCombat().getMagic().finish(i);
 							affected = (byte) (affected + 1);
 
