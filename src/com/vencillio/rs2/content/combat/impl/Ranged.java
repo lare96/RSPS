@@ -62,6 +62,10 @@ public class Ranged {
 					}
 				}
 			}
+			if(entity.getPlayer().getEquipment().isWearingItem(12424)) {
+				System.out.println("set start");
+				setStart(new Graphic(-1));
+			}
 		}
 
 		Hit hit = new Hit(entity, (success) || (entity.isIgnoreHitSuccess()) ? damage : 0, Hit.HitTypes.RANGED);
@@ -78,6 +82,7 @@ public class Ranged {
 		if (start != null) {
 			executeStartGraphic();
 		}
+
 
 		if (projectile != null) {
 			executeProjectile(attacking);
