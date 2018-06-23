@@ -58946,10 +58946,10 @@
 		<twoHanded>true</twoHanded>
 		<type>RANGED</type>
 		<attackAnimations>
-			<short>422</short>
-			<short>423</short>
-			<short>422</short>
-			<short>422</short>
+            <short>426</short>
+            <short>426</short>
+            <short>426</short>
+            <short>426</short>
 		</attackAnimations>
 		<attackSpeeds>
 			<short>5</short>
