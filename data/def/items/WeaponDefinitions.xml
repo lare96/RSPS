@@ -58944,7 +58944,7 @@
 	<WeaponDefinition>
 		<id>12424</id>
 		<twoHanded>true</twoHanded>
-		<type>MELEE</type>
+		<type>RANGED</type>
 		<attackAnimations>
 			<short>422</short>
 			<short>423</short>
