@@ -170,6 +170,7 @@ public class OwnerCommand implements Command {
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};
 				int temp = parser.nextInt();
+				int itemAmount = parser.hasNext() ? parser.nextInt() : 1;
 				TaskQueue.queue(new Task(3, true) {
 					int amount = temp;
 					@Override
@@ -179,7 +180,7 @@ public class OwnerCommand implements Command {
 							return;
 						}
 						int rand = Utility.random(7), rand2 = Utility.random(7);
-						GroundItem tmp = new GroundItem(new Item(itemToSpawn),
+						GroundItem tmp = new GroundItem(new Item(itemToSpawn, itemAmount),
 								new Location(player.getX() + (rand * sign[Utility.random(1)]),
 										player.getY() + (rand2 * sign[Utility.random(1)])), null);
 						GroundItemHandler.add(tmp);

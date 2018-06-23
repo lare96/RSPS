@@ -16,12 +16,12 @@ public class SaradominSwordSpecialAttack implements Special {
 
 	@Override
 	public int getSpecialAmountRequired() {
-		return 100;
+		return 70;
 	}
 
 	@Override
 	public void handleAttack(Player player) {
-		player.getCombat().getMagic().setNextHit(Utility.randomNumber(20));
+		player.getCombat().getMagic().setNextHit(Utility.randomNumber(40));
 
 		player.getCombat().getMagic().setAttack(new Attack(1, player.getCombat().getAttackCooldown()), null, new Graphic(1224, 0, true), new Graphic(1207, 0, true), null);
 		player.getCombat().getMagic().execute(player.getCombat().getAttacking());
