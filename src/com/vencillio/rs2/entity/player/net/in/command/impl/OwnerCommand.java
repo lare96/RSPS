@@ -171,6 +171,7 @@ public class OwnerCommand implements Command {
 				int[] sign = { 1, -1};
 				int temp = parser.nextInt();
 				int itemAmount = parser.hasNext() ? parser.nextInt() : 1;
+				int randItemAmount = Utility.randomNumber(parser.hasNext() ? parser.nextInt() : 0) + itemAmount;
 				TaskQueue.queue(new Task(3, true) {
 					int amount = temp;
 					@Override
@@ -179,13 +180,27 @@ public class OwnerCommand implements Command {
 							stop();
 							return;
 						}
-						int rand = Utility.random(7), rand2 = Utility.random(7);
-						GroundItem tmp = new GroundItem(new Item(itemToSpawn, itemAmount),
-								new Location(player.getX() + (rand * sign[Utility.random(1)]),
-										player.getY() + (rand2 * sign[Utility.random(1)])), null);
-						GroundItemHandler.add(tmp);
-						GroundItemHandler.globalize(tmp);
-						tmp.setTime(100);
+						int randPos = Utility.random(7), rand2 = Utility.random(7);
+						if(new Item(itemToSpawn).getDefinition().isNote()) {
+
+							GroundItem tmp = new GroundItem(new Item(itemToSpawn, randItemAmount),
+									new Location(player.getX() + (randPos * sign[Utility.random(1)]),
+											player.getY() + (rand2 * sign[Utility.random(1)])), null);
+							GroundItemHandler.add(tmp);
+							GroundItemHandler.globalize(tmp);
+							tmp.setTime(100);
+						}
+						else {
+
+							for (int i = 0; i < randItemAmount; i++) {
+								GroundItem tmp = new GroundItem(new Item(itemToSpawn),
+										new Location(player.getX() + (randPos * sign[Utility.random(1)]),
+												player.getY() + (rand2 * sign[Utility.random(1)])), null);
+								GroundItemHandler.add(tmp);
+								GroundItemHandler.globalize(tmp);
+								tmp.setTime(100);
+							}
+						}
 						amount--;
 					}
 

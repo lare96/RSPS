@@ -154,6 +154,8 @@ public class Skill {
 
 		int doubleXP = VencillioConstants.doubleExperience ? 2 : 1;
 
+		double expBefore = experience;
+
 		experience = experience * Skills.EXPERIENCE_RATES[id] * 1.0D * doubleXP;
 
 		this.experience[id] += experience;
@@ -162,11 +164,7 @@ public class Skill {
 			if (this.experience[id] < 200_000_000) {
 				player.send(new SendExpCounter(id, (int) experience));
 			}
-			
-			if (this.experience[id] >= 200000000) {
-				this.experience[id] = 200000000;
-				World.sendGlobalMessage("<col=855907><img=12> "+player.getUsername() + " has achieved 200m xp in " + Skills.SKILL_NAMES[id] + "! Prestige level: " + player.getSkillPrestiges()[id]);
-			}
+
 			update(id);
 			return experience;
 		}
@@ -196,7 +194,7 @@ public class Skill {
 			}
 		}
 
-		if (this.experience[id] >= 200000000) {
+		if (this.experience[id] >= 200000000 && expBefore < 200_000_000) {
 			this.experience[id] = 200000000;
 			World.sendGlobalMessage("<col=855907><img=12> "+player.getUsername() + " has achieved 200m xp in " + Skills.SKILL_NAMES[id] + "! Prestige level: " + player.getSkillPrestiges()[id]);
 		} else {
