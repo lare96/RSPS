@@ -171,8 +171,7 @@ public class OwnerCommand implements Command {
 				int[] sign = { 1, -1};
 				int amountOfDrops = parser.nextInt();
 				int itemAmount = parser.hasNext() ? parser.nextInt() : 1;
-				int randItemAmount = Utility.randomNumber(parser.hasNext() ? parser.nextInt() : 0) + itemAmount;
-				System.out.println("item: " + itemToSpawn + " amount of drops: " + amountOfDrops + " item amount: " + itemAmount + " random amount: " + randItemAmount);
+				int randItemAmount = parser.hasNext() ? parser.nextInt() : 0;
 				TaskQueue.queue(new Task(3, true) {
 					int amount = amountOfDrops;
 					@Override
@@ -184,21 +183,19 @@ public class OwnerCommand implements Command {
 						int randPos = Utility.random(7), rand2 = Utility.random(7);
 						if(new Item(itemToSpawn).getDefinition().isNote()) {
 
-							System.out.println("In item spawn is note");
-							GroundItem tmp = new GroundItem(new Item(itemToSpawn, randItemAmount),
+							GroundItem tmp = new GroundItem(new Item(itemToSpawn, Utility.random(randItemAmount) + itemAmount),
 									new Location(player.getX() + (randPos * sign[Utility.random(1)]),
-											player.getY() + (rand2 * sign[Utility.random(1)])), null);
+											player.getY() + (rand2 * sign[Utility.random(1)]), player.getZ()), null);
 							GroundItemHandler.add(tmp);
 							GroundItemHandler.globalize(tmp);
 							tmp.setTime(100);
 						}
 						else {
-							System.out.println("In else (not noted)");
-							for (int i = 0; i < randItemAmount; i++) {
-								System.out.println("In for " + i);
+							int num = sign[Utility.random(1)];
+							for (int i = 0; i < Utility.random(randItemAmount) + itemAmount; i++) {
 								GroundItem tmp = new GroundItem(new Item(itemToSpawn),
-										new Location(player.getX() + (randPos * sign[Utility.random(1)]),
-												player.getY() + (rand2 * sign[Utility.random(1)])), null);
+										new Location(player.getX() + (randPos * num),
+												player.getY() + (rand2 * num), player.getZ()), null);
 								GroundItemHandler.add(tmp);
 								GroundItemHandler.globalize(tmp);
 								tmp.setTime(100);
