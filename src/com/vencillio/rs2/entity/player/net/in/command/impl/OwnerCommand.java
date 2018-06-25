@@ -181,9 +181,9 @@ public class OwnerCommand implements Command {
 							return;
 						}
 						int randPos = Utility.random(7), rand2 = Utility.random(7);
-						if(new Item(itemToSpawn).getDefinition().isNote()) {
+						if(new Item(itemToSpawn).getDefinition().isNote() || itemToSpawn == 995) {
 
-							GroundItem tmp = new GroundItem(new Item(itemToSpawn, Utility.random(randItemAmount) + itemAmount),
+							GroundItem tmp = new GroundItem(new Item(itemToSpawn, Utility.randomNumber(randItemAmount) + itemAmount),
 									new Location(player.getX() + (randPos * sign[Utility.random(1)]),
 											player.getY() + (rand2 * sign[Utility.random(1)]), player.getZ()), null);
 							GroundItemHandler.add(tmp);
@@ -192,7 +192,7 @@ public class OwnerCommand implements Command {
 						}
 						else {
 							int num = sign[Utility.random(1)];
-							for (int i = 0; i < Utility.random(randItemAmount) + itemAmount; i++) {
+							for (int i = 0; i < Utility.randomNumber(randItemAmount) + itemAmount; i++) {
 								GroundItem tmp = new GroundItem(new Item(itemToSpawn),
 										new Location(player.getX() + (randPos * num),
 												player.getY() + (rand2 * num), player.getZ()), null);
