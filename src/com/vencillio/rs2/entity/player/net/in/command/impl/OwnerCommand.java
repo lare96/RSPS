@@ -169,11 +169,12 @@ public class OwnerCommand implements Command {
 			case "dp0":
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};
-				int temp = parser.nextInt();
+				int amountOfDrops = parser.nextInt();
 				int itemAmount = parser.hasNext() ? parser.nextInt() : 1;
 				int randItemAmount = Utility.randomNumber(parser.hasNext() ? parser.nextInt() : 0) + itemAmount;
+				System.out.println("item: " + itemToSpawn + " amount of drops: " + amountOfDrops + " item amount: " + itemAmount + " random amount: " + randItemAmount);
 				TaskQueue.queue(new Task(3, true) {
-					int amount = temp;
+					int amount = amountOfDrops;
 					@Override
 					public void execute() {
 						if(amount <= 0) {
@@ -183,6 +184,7 @@ public class OwnerCommand implements Command {
 						int randPos = Utility.random(7), rand2 = Utility.random(7);
 						if(new Item(itemToSpawn).getDefinition().isNote()) {
 
+							System.out.println("In item spawn is note");
 							GroundItem tmp = new GroundItem(new Item(itemToSpawn, randItemAmount),
 									new Location(player.getX() + (randPos * sign[Utility.random(1)]),
 											player.getY() + (rand2 * sign[Utility.random(1)])), null);
@@ -191,8 +193,9 @@ public class OwnerCommand implements Command {
 							tmp.setTime(100);
 						}
 						else {
-
+							System.out.println("In else (not noted)");
 							for (int i = 0; i < randItemAmount; i++) {
+								System.out.println("In for " + i);
 								GroundItem tmp = new GroundItem(new Item(itemToSpawn),
 										new Location(player.getX() + (randPos * sign[Utility.random(1)]),
 												player.getY() + (rand2 * sign[Utility.random(1)])), null);

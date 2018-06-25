@@ -440,7 +440,7 @@ public class MobDrops {
 		}
 
 		if ((drops.getConstant() != null) && (drops.getConstant().getDrops() != null)) {
-			System.out.println("mob id(has constants): " + mob.getId());
+			System.out.println("mob name(has constants): " + mob.getDefinition().getName() + " id: " + mob.getId());
 			dropConstants(entity, mob, drops.getConstant(), dropLocation);
 		}
 
