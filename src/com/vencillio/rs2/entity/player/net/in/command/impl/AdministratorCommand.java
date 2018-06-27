@@ -404,6 +404,7 @@ public class AdministratorCommand implements Command {
                                         skill = 3;
                                         break;
                                     case "ranged":
+                                    case "range":
                                         skill = 4;
                                         break;
                                     case "prayer":

@@ -592,7 +592,7 @@ public abstract class Entity implements CombatInterface {
 					return true;
 				}
 			}
-			if(getAttributes().get("inMulti") != null) {
+			else if(getAttributes().get("inMulti") != null) {
 				return true;
 			}
 		}

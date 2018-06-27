@@ -166,6 +166,18 @@ public class OwnerCommand implements Command {
 				}
 				return true;
 
+			case "invisible":
+				if(parser.hasNext()) {
+					String targetPlayerName = parser.nextString();
+					Player targetPlayer = World.getPlayerByName(targetPlayerName);
+					if(targetPlayer != null) {
+						player.setVisible(!player.isVisible());
+						System.out.println("Set visible is now: " + player.isVisible());
+						player.getUpdateFlags().setUpdateRequired(true);
+					}
+				}
+				return true;
+
 			case "dp0":
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};
