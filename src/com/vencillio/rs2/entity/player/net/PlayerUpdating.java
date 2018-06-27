@@ -236,12 +236,13 @@ public final class PlayerUpdating {
 
 			if (flags != null && !flags.getUsername().equals(local.getUsername())){ //&& flags.isActive()) {
 
-				System.out.println("flag username: " + flags.getUsername() + "flags.getLocation().isViewableFrom(player.getLocation()" + flags.getLocation().isViewableFrom(player.getLocation()));
-				System.out.println("!doesLocalListContainPlayer(player, flags.getUsernameToLong()): " + !doesLocalListContainPlayer(player, flags.getUsernameToLong()));
+				/*System.out.println("flag username: " + flags.getUsername() + "flags.getLocation().isViewableFrom(player.getLocation()" + flags.getLocation().isViewableFrom(player.getLocation()));
+				System.out.println("!doesLocalListContainPlayer(player, flags.getUsernameToLong()): " + !doesLocalListContainPlayer(player, flags.getUsernameToLong()));*/
 				if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation())) {
 					player.getPlayers().add(World.getPlayers()[i]);
 					addPlayer(out, local, flags, i);
 					if(player.isActive()) {
+						System.out.println(player.getUsername() + " is active");
 						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
 					}
 					added++;
