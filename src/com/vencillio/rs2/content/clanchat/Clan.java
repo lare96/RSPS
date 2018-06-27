@@ -344,9 +344,10 @@ public class Clan {
 		for (int i = 0; i < 100; i++)
 			if (i < this.activeMembers.size()) {
 			if(this.activeMembers.get(i) != null) {
-				if(World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+				//if(World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+				System.out.println(this.activeMembers.get(i));
 					paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
-				}
+				//}
 			}
 			} else {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
