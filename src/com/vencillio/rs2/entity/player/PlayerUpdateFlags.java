@@ -80,8 +80,8 @@ public final class PlayerUpdateFlags {
 
 		set.set(0, player.isVisible());
 		set.set(1, player.isChatUpdateRequired());
+		set.set(2, player.isAppearanceUpdateRequired());
 		if(player.isVisible()) {
-			set.set(2, player.isAppearanceUpdateRequired());
 			set.set(3, u.isUpdateRequired());
 		}
 		set.set(4, u.isForceChatUpdate());
