@@ -342,7 +342,7 @@ public class Clan {
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
 		Collections.sort(this.activeMembers);
 		for (int i = 0; i < 100; i++)
-			if (i < this.activeMembers.size()) {
+			if (i < this.activeMembers.size() && World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
 			} else {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
