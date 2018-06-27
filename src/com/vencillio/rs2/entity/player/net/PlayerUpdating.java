@@ -238,16 +238,16 @@ public final class PlayerUpdating {
 
 				/*System.out.println("flag username: " + flags.getUsername() + "flags.getLocation().isViewableFrom(player.getLocation()" + flags.getLocation().isViewableFrom(player.getLocation()));
 				System.out.println("!doesLocalListContainPlayer(player, flags.getUsernameToLong()): " + !doesLocalListContainPlayer(player, flags.getUsernameToLong()));*/
-				if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation())) {
-					if(player.isActive()) {
+				if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation()) && player.isActive()) {
 						player.getPlayers().add(World.getPlayers()[i]);
-					}
-					addPlayer(out, local, flags, i);
+
 						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
 					added++;
 				}
+				addPlayer(out, local, flags, i);
 			}
 		}
+
 		if (block.getBuffer().writerIndex() > 0) {
 			out.writeBits(11, 2047);
 			out.setAccessType(StreamBuffer.AccessType.BYTE_ACCESS);
