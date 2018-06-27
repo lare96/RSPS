@@ -72,7 +72,7 @@ public final class PlayerUpdateFlags {
 	private final long usernameToLong;
 	private final byte hitUpdateCombatType;
 	private final byte hitUpdateCombatType2;
-	
+
 	private PlayerTitle playerTitle;
 
 	public PlayerUpdateFlags(Player player) {
@@ -80,10 +80,10 @@ public final class PlayerUpdateFlags {
 
 		set.set(0, player.isVisible());
 		set.set(1, player.isChatUpdateRequired());
-		if(player.isVisible()) {
-			set.set(2, player.isAppearanceUpdateRequired());
-		}
+		set.set(2, player.isAppearanceUpdateRequired());
+		//if (player.isVisible()) {
 			set.set(3, u.isUpdateRequired());
+		//}
 		set.set(4, u.isForceChatUpdate());
 		set.set(5, u.isGraphicsUpdateRequired());
 		set.set(6, u.isAnimationUpdateRequired());
@@ -336,7 +336,7 @@ public final class PlayerUpdateFlags {
 	public byte getHitUpdateType() {
 		return hitUpdateCombatType;
 	}
-	
+
 	public byte getHitUpdateType2() {
 		return hitUpdateCombatType2;
 	}

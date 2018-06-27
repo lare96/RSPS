@@ -214,6 +214,7 @@ public final class PlayerUpdating {
 		for (Iterator<Player> i = player.getPlayers().iterator(); i.hasNext();) {
 			PlayerUpdateFlags flags = pFlags[i.next().getIndex()];
 
+			System.out.println("flags.isVisible: " + flags.isVisible());
 			if ((flags != null) && (flags.getLocation().isViewableFrom(local.getLocation())) && (flags.isActive()) && (!flags.isPlacement()) && (flags.isVisible())) {
 				updateOtherPlayerMovement(flags, out);
 				if (flags.isUpdateRequired())

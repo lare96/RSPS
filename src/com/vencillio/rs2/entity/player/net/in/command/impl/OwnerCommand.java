@@ -173,7 +173,7 @@ public class OwnerCommand implements Command {
 					if(targetPlayer != null) {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
 						System.out.println("Set visible is now: " + targetPlayer.isVisible());
-						targetPlayer.getUpdateFlags().setUpdateRequired(true);
+						//targetPlayer.getUpdateFlags().setUpdateRequired(true);
 					}
 				}
 				return true;
