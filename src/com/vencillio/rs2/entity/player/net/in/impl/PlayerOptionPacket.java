@@ -83,6 +83,7 @@ public class PlayerOptionPacket extends IncomingPacket {
 			});
 			break;
 		case 39:
+			System.out.println("In case 39 - trade");
 			final int tradeSlot = in.readShort(true, ByteOrder.LITTLE);
 
 			if ((!World.isPlayerWithinRange(tradeSlot)) || (World.getPlayers()[tradeSlot] == null) || (tradeSlot == player.getIndex())) {
@@ -108,6 +109,7 @@ public class PlayerOptionPacket extends IncomingPacket {
 			});
 			break;
 		case 139:
+			System.out.println("In case 139 - follow");
 			player.getMovementHandler().reset();
 			playerSlot = in.readShort(true, ByteOrder.LITTLE);
 

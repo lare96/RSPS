@@ -371,7 +371,7 @@ public class Trade {
 			return;
 		}
 		
-		if (player.ironPlayer()) {
+		if (player.ironPlayer() && !PlayerConstants.isOwner(requested)) {
 			player.send(new SendMessage("You are an Ironman player and cannot trade!"));
 			return;
 		}
@@ -386,7 +386,7 @@ public class Trade {
 			return;
 		}
 		
-		if (player.getRights() == 2) {
+		if (player.getRights() == 2 && !PlayerConstants.isOwner(requested)) {
 			player.send(new SendMessage("You may not trade since you are an Administrator!"));
 			return;
 		}

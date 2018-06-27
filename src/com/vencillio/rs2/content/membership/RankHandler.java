@@ -41,7 +41,7 @@ public class RankHandler {
 			rights = 6;
 		if (player.getMoneySpent() >= 75) //Extreme Member
 			rights = 7;
-		if (player.getMoneySpent() >= 150) //Elite Member
+		if (player.getMoneySpent() >= 150) //Royal Member
 			rights = 8;
 		
 		if (rights != 0 && player.getRights() != rights) {

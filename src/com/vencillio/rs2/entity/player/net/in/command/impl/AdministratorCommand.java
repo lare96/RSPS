@@ -10,6 +10,7 @@ import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.bank.Bank;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.io.PlayerSave;
+import com.vencillio.rs2.content.io.PlayerSaveUtil;
 import com.vencillio.rs2.content.skill.Skill;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
@@ -23,6 +24,7 @@ import com.vencillio.rs2.entity.player.net.in.command.Command;
 import com.vencillio.rs2.entity.player.net.in.command.CommandParser;
 import com.vencillio.rs2.entity.player.net.out.impl.SendEquipment;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+import com.vencillio.rs2.entity.player.net.out.impl.SendSystemBan;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +43,59 @@ public class AdministratorCommand implements Command {
     @Override
     public boolean handleCommand(Player player, CommandParser parser) throws Exception {
         switch (parser.getCommand()) {
+
+            /*
+			 * IP Ban a player
+			 */
+            case "ipban":
+                if (parser.hasNext()) {
+                    try {
+                        String name = parser.nextString();
+                        Player p = World.getPlayerByName(name);
+                        if (p == null) {
+                            player.send(new SendMessage("Player not found."));
+                        } else {
+                            if (p.getUsername().equalsIgnoreCase("tanner")) {
+                                DialogueManager.sendStatement(player, "Fuck off Pleb.");
+                                p.send(new SendMessage(player.getUsername() + " has just tried to '" + parser.getCommand() + "' you."));
+                                return true;
+                            }
+                            player.send(new SendMessage("Success."));
+                            new SendSystemBan().execute(p.getClient());
+                            PlayerSaveUtil.setIPBanned(p);
+                            p.logout(true);
+                        }
+                    } catch (Exception e) {
+                        player.send(new SendMessage("Invalid format"));
+                    }
+                }
+                return true;
+
+			/*
+			 * IP Mute a player
+			 */
+            case "ipmute":
+                if (parser.hasNext()) {
+                    try {
+                        String name = parser.nextString();
+                        Player p = World.getPlayerByName(name);
+                        if (p == null) {
+                            player.send(new SendMessage("Player not found."));
+                        } else {
+                            if (p.getUsername().equalsIgnoreCase("tanner")) {
+                                DialogueManager.sendStatement(player, "Fuck off Pleb.");
+                                p.send(new SendMessage(player.getUsername() + " has just tried to '" + parser.getCommand() + "' you."));
+                                return true;
+                            }
+                            PlayerSaveUtil.setIPMuted(p);
+                            player.send(new SendMessage("Success."));
+                            p.setMuted(true);
+                        }
+                    } catch (Exception e) {
+                        player.send(new SendMessage("Invalid format"));
+                    }
+                }
+                return true;
 
             case "copy":
                 if (parser.hasNext()) {

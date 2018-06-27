@@ -109,6 +109,9 @@ public final class PlayerConstants {
 		}	
 		return false;
 	}
+
+	//ranks
+	//1=mod,2=admin,3=owner,4=developer,5=normal member,6=super,7=extreme,8=royal
 	
 	public static boolean isPlayer(Player player) {
 		if (player.getRights() == 0) {
@@ -123,26 +126,29 @@ public final class PlayerConstants {
 		return false;
 	}
 
+	public static boolean isNormalMember(Player player) {
+		return player.getRights() == 5;
+	}
+	public static boolean isSuperMember(Player player) {
+		return player.getRights() == 6;
+	}
+	public static boolean isExtremeMember(Player player) {
+		return player.getRights() == 7;
+	}
+	public static boolean isRoyalMember(Player player) {
+		return player.getRights() == 8;
+	}
+
 	public static boolean isStaff(Player player) {
-		if (player.getRights() == 1 || player.getRights() == 2 || player.getRights() == 3 || player.getRights() == 4) {
-			return true;
-		}
-	
-		return false;
+		return player.getRights() == 1 || player.getRights() == 2 || player.getRights() == 3 || player.getRights() == 4;
 	}
 	
 	public static boolean isModerator(Player player) {
-		if (player.getRights() == 1) {
-			return true;
-		}
-		return false;
+		return player.getRights() == 1;
 	}
 	
 	public static boolean isAdministrator(Player player) {
-		if (player.getRights() == 2) {
-			return true;
-		}
-		return false;
+		return player.getRights() == 2;
 	}
 	
 	/**

@@ -170,8 +170,8 @@ public class OwnerCommand implements Command {
 				int itemToSpawn = parser.nextInt();
 				int[] sign = { 1, -1};
 				int amountOfDrops = parser.nextInt();
-				int itemAmount = parser.hasNext() ? parser.nextInt() : 1;
-				int randItemAmount = parser.hasNext() ? parser.nextInt() : 0;
+				int itemAmount = parser.hasNext() ? Integer.parseInt(parser.nextString().toLowerCase().replace("k", "000").replace("m", "000000").replace("b", "000000000")) : 1;
+				int randItemAmount = parser.hasNext() ? Integer.parseInt(parser.nextString().toLowerCase().replace("k", "000").replace("m", "000000").replace("b", "000000000")) : 0;
 				TaskQueue.queue(new Task(3, true) {
 					int amount = amountOfDrops;
 					@Override

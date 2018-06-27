@@ -1,12 +1,5 @@
 package com.vencillio.rs2.content.minigames.duelarena;
 
-import java.math.BigInteger;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
@@ -18,15 +11,16 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.item.ItemCheck;
 import com.vencillio.rs2.entity.player.Player;
+import com.vencillio.rs2.entity.player.PlayerConstants;
 import com.vencillio.rs2.entity.player.controllers.ControllerManager;
-import com.vencillio.rs2.entity.player.net.out.impl.SendConfig;
-import com.vencillio.rs2.entity.player.net.out.impl.SendDuelEquipment;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInventoryInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendPlayerHint;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItems;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.math.BigInteger;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 public class Dueling {
 
@@ -634,23 +628,22 @@ public class Dueling {
 			return;
 		}
 		
-		if (p.ironPlayer()) {
-			p.send(new SendMessage("You are an Iron player and cannot trade!"));
+		if (p.ironPlayer() && !PlayerConstants.isOwner(r)) {
+			p.send(new SendMessage("You are an Iron player and cannot duel!"));
 			return;
 		}
 		
-		if (r.ironPlayer()) {
-			p.send(new SendMessage(r.getUsername() + " is an Iron player and cannot trade!"));
+		if (r.ironPlayer() && !PlayerConstants.isOwner(p)) {
+			p.send(new SendMessage(r.getUsername() + " is an Iron player and cannot duel!"));
 			return;
 		}
-		
-		
-		if (p.getRights() == 2) {
+
+		if (p.getRights() == 2 && !PlayerConstants.isOwner(r)) {
 			p.send(new SendMessage("You may not do this since you are an Administrator!"));
 			return;
 		}
 		
-		if (r.getRights() == 2) {
+		if (r.getRights() == 2 && !PlayerConstants.isOwner(p)) {
 			p.send(new SendMessage("Dueling with Administrators has been disabled!"));
 			return;
 		}
