@@ -116,7 +116,12 @@ public class LoyaltyShop {
 			return true;
 		}
 
-		if (!player.unlockedTitles.contains(button.getTitle())) {
+		if(button.ordinal() >= TitleButton.RED.ordinal() && button.ordinal() <= TitleButton.WHITE.ordinal()) {
+			if (!player.getInventory().hasItemAmount(995, Integer.parseInt(String.valueOf(button.getPrice()))) && player.getMoneyPouch() <  Integer.parseInt(String.valueOf(button.getPrice()))) {
+				player.send(new SendMessage("<col=128>You need more coins to buy this color."));
+				return true;
+			}
+		else if (!player.unlockedTitles.contains(button.getTitle())) {
 			if (button.getPrice() instanceof Integer) {
 				if (player.getCredits() < Integer.parseInt(String.valueOf(button.getPrice()))) {
 					player.send(new SendMessage("<col=128>You do not have enough Tannerscape credits to buy this."));
@@ -137,10 +142,8 @@ public class LoyaltyShop {
 					player.send(new SendMessage("<col=128>This is already your title color."));
 					return true;
 				}
-				if (!player.getInventory().hasItemAmount(995, Integer.parseInt(String.valueOf(button.getPrice())))) {
-					player.send(new SendMessage("<col=128>You need more coins to buy this color."));
-					return true;
-				}
+			}
+
 				player.setPlayerTitle(PlayerTitle.create(player.getPlayerTitle().getTitle(), button.getTitle().getColor(), player.getPlayerTitle().isSuffix()));
 				player.setAppearanceUpdateRequired(true);
 				player.getInventory().remove(995, Integer.parseInt(String.valueOf(button.getPrice())));

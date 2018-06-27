@@ -525,7 +525,7 @@
 	<PotionDefinition>
 		<id>11725</id>
 		<name>Super ranging (1)</name>
-		<replaceId>11723</replaceId>
+		<replaceId>229</replaceId>
 		<potionType>NORMAL</potionType>
 		<skillData>
 			<skillData>

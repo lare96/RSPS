@@ -241,7 +241,7 @@ public final class PlayerUpdating {
 				if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation())) {
 					player.getPlayers().add(World.getPlayers()[i]);
 					addPlayer(out, local, flags, i);
-					if(flags.isActive())
+					//if(flags.isActive()) //line doesnt go here
 					updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
 					added++;
 				}

@@ -86187,7 +86187,7 @@
 		<id>11838</id>
 		<slot>3</slot>
 		<requirements>
-			<int>1</int>
+			<int>70</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
@@ -116655,7 +116655,7 @@
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
-			<int>1</int>
+			<int>75</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>

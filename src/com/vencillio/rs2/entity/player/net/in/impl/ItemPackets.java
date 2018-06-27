@@ -370,7 +370,7 @@ public class ItemPackets extends IncomingPacket {
 					case 1121:
 					case 1122:
 					case 1123:
-						SmithingTask.start(player, itemId, 10, interfaceId, slot);
+						SmithingTask.start(player, itemId, 28, interfaceId, slot);
 						break;
 					case 4233:
 					case 4239:
