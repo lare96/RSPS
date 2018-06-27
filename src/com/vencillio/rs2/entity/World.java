@@ -353,9 +353,9 @@ public class World {
 			else {
 				try {
 					player.getMovementHandler().process();
-					if(player.isVisible()) {
+					//if(player.isVisible()) {
 						pFlags[i] = new PlayerUpdateFlags(player);
-					}
+					//}
 				} catch (Exception ex) {
 					ex.printStackTrace();
 					player.logout(true);

@@ -1,11 +1,11 @@
 package com.vencillio.rs2.entity.player;
 
-import java.util.BitSet;
-
 import com.vencillio.rs2.content.PlayerTitle;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.UpdateFlags;
 import com.vencillio.rs2.entity.item.Item;
+
+import java.util.BitSet;
 
 public final class PlayerUpdateFlags {
 
@@ -80,8 +80,10 @@ public final class PlayerUpdateFlags {
 
 		set.set(0, player.isVisible());
 		set.set(1, player.isChatUpdateRequired());
-		set.set(2, player.isAppearanceUpdateRequired());
-		set.set(3, u.isUpdateRequired());
+		if(player.isVisible()) {
+			set.set(2, player.isAppearanceUpdateRequired());
+			set.set(3, u.isUpdateRequired());
+		}
 		set.set(4, u.isForceChatUpdate());
 		set.set(5, u.isGraphicsUpdateRequired());
 		set.set(6, u.isAnimationUpdateRequired());
