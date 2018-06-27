@@ -211,10 +211,9 @@ public final class PlayerUpdating {
 		}
 
 		out.writeBits(8, player.getPlayers().size());
-		for (Iterator<Player> i = player.getPlayers().iterator(); i.hasNext();) {
+		for (Iterator<Player> i = player.getPlayers().iterator(); i.hasNext(); ) {
 			PlayerUpdateFlags flags = pFlags[i.next().getIndex()];
 
-			System.out.println("flags.isVisible: " + flags.isVisible());
 			if ((flags != null) && (flags.getLocation().isViewableFrom(local.getLocation())) && (flags.isActive()) && (!flags.isPlacement()) && (flags.isVisible())) {
 				updateOtherPlayerMovement(flags, out);
 				if (flags.isUpdateRequired())
@@ -235,15 +234,13 @@ public final class PlayerUpdating {
 
 			PlayerUpdateFlags flags = pFlags[i];
 
-			if (flags != null && !flags.getUsername().equals(local.getUsername()) && flags.isActive()) {
+			if (flags != null && !flags.getUsername().equals(local.getUsername())){// && flags.isActive()) {
 
-				if (flags != null) {
-					if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation())) {
-						player.getPlayers().add(World.getPlayers()[i]);
-						addPlayer(out, local, flags, i);
-						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
-						added++;
-					}
+				if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && flags.getLocation().isViewableFrom(player.getLocation())) {
+					player.getPlayers().add(World.getPlayers()[i]);
+					addPlayer(out, local, flags, i);
+					updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
+					added++;
 				}
 			}
 		}
@@ -303,7 +300,7 @@ public final class PlayerUpdating {
 			out.writeBit(false);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(0x40);
 	}
