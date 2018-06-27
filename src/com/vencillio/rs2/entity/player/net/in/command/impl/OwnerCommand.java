@@ -171,9 +171,9 @@ public class OwnerCommand implements Command {
 					String targetPlayerName = parser.nextString();
 					Player targetPlayer = World.getPlayerByName(targetPlayerName);
 					if(targetPlayer != null) {
-						player.setVisible(!player.isVisible());
-						System.out.println("Set visible is now: " + player.isVisible());
-						player.getUpdateFlags().setUpdateRequired(true);
+						targetPlayer.setVisible(!targetPlayer.isVisible());
+						System.out.println("Set visible is now: " + targetPlayer.isVisible());
+						targetPlayer.getUpdateFlags().setUpdateRequired(true);
 					}
 				}
 				return true;
