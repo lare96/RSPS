@@ -357,9 +357,7 @@ public class Clan {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
 			}
 		}
-		paramPlayer.getClient().
-
-				queueOutgoingPacket(new SendString("(" + this.activeMembers.size() + "/100)", 18252));
+		paramPlayer.getClient().queueOutgoingPacket(new SendString("(" + this.activeMembers.size() + "/100)", 18252));
 	}
 
 	public void updateMembers() {

@@ -243,6 +243,10 @@ public final class PlayerUpdating {
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
 					}
+					if(!flags.isVisible()) {
+						System.out.println("In appendChat");
+						appendChat(flags, block);
+					}
 					updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
 					added++;
 				}
