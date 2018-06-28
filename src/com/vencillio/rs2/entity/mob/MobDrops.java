@@ -96,6 +96,19 @@ public class MobDrops {
 			Item item = new Item(drop.getId(), calculateAmount(drop));
 
 			if (!entity.isNpc()) {
+				PetData petDrop = PetData.forItem(drop.getId());
+
+				if (petDrop != null) {
+					if (entity.getPlayer().getBossPet() == null) {
+						BossPets.spawnPet(entity.getPlayer(), petDrop.getItem(), true);
+						entity.getPlayer().send(new SendMessage("You feel a presence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
+					} else {
+						entity.getPlayer().getBank().depositFromNoting(petDrop.getItem(), 1, 0, false);
+						entity.getPlayer().send(new SendMessage("You feel a presence added to your bank."));
+						AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_1_BOSS_PET, 1);
+						AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_BOSS_PET, 1);
+					}
+				}
 				if (item.getDefinition().getGeneralPrice() >= 1_000_000) {
 					PlayerLogger.DROP_LOGGER.log(entity.getPlayer().getUsername(), String.format("%s has received %s %s from %s.", Utility.formatPlayerName(entity.getPlayer().getUsername()), item.getAmount(), item.getDefinition().getName(), Utility.formatPlayerName(mob.getDefinition().getName())));
 					AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_RARE_DROPS, 1);

@@ -8,6 +8,7 @@ import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.DropTable;
+import com.vencillio.rs2.content.clanchat.Clan;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.content.combat.Hit.HitTypes;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
@@ -172,6 +173,9 @@ public class OwnerCommand implements Command {
 					Player targetPlayer = World.getPlayerByName(targetPlayerName);
 					if(targetPlayer != null) {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
+						Clan clan = player.getClan();
+						clan.updateMembers();
+						player.getPrivateMessaging().updateOnlineStatus(player, true);
 						System.out.println("Set visible is now: " + targetPlayer.isVisible());
 						//targetPlayer.getUpdateFlags().setUpdateRequired(true);
 					}
