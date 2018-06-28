@@ -129,9 +129,12 @@ public class PrivateMessaging {
 		String name = connectedPlayer.getUsername().toLowerCase();
 
 		if (friends.contains(name)) {
-			if(connected && World.getPlayerByName(name).isVisible()) {
-				player.getClient().queueOutgoingPacket(new SendFriendUpdate(NameUtil.nameToLong(name), 0));
+			try {
+				if (connected && World.getPlayerByName(name).isVisible()) {
+					player.getClient().queueOutgoingPacket(new SendFriendUpdate(NameUtil.nameToLong(name), 0));
+				}
 			}
+			catch (Exception e) { System.out.println("Update online status player null"); }
 			player.getClient().queueOutgoingPacket(new SendFriendUpdate(NameUtil.nameToLong(name), connected ? 1 : 0));
 		}
 	}
