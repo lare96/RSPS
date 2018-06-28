@@ -257,7 +257,9 @@ public final class PlayerUpdating {
 			out.setAccessType(StreamBuffer.AccessType.BYTE_ACCESS);
 			out.writeBytes(block.getBuffer());
 		} else {
+			out.writeBits(11, 2047); //Yes? will this fix it
 			out.setAccessType(StreamBuffer.AccessType.BYTE_ACCESS);
+			out.writeBytes(block.getBuffer()); //Yes? will this fix it
 		}
 
 		out.finishVariableShortPacketHeader();
