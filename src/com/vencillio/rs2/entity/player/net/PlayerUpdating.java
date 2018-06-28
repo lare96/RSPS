@@ -243,7 +243,7 @@ public final class PlayerUpdating {
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
 					}
-					if(!flags.isVisible()) {
+					if(!flags.isVisible() && flags.isChatUpdateRequired()) {
 						System.out.println("In appendChat");
 						appendChat(flags, block);
 					}
