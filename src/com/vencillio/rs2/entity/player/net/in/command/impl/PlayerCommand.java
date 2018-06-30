@@ -19,6 +19,7 @@ import com.vencillio.rs2.content.interfaces.InterfaceHandler;
 import com.vencillio.rs2.content.interfaces.impl.CommandInterface;
 import com.vencillio.rs2.content.interfaces.impl.TrainingInterface;
 import com.vencillio.rs2.content.io.PlayerSave;
+import com.vencillio.rs2.content.io.PlayerSaveUtil;
 import com.vencillio.rs2.content.membership.RankHandler;
 import com.vencillio.rs2.content.profiles.PlayerProfiler;
 import com.vencillio.rs2.content.skill.magic.MagicSkill.TeleportTypes;
@@ -99,6 +100,193 @@ public class PlayerCommand implements Command {
 					player.send(new SendMessage("Redemption unsuccessful"));
 				}
 				return true;*/
+
+			case "jail":
+				if(player.getRights() == 9) {
+					if (parser.hasNext()) {
+						try {
+							String name = parser.nextString();
+							int hours = -1;
+
+							if (parser.hasNext()) {
+								hours = parser.nextInt();
+							}
+
+							Player target = World.getPlayerByName(name);
+							boolean save = false;
+							if (target == null) {
+								target = new Player();
+								target.setUsername(Utility.formatPlayerName(name));
+								if (!PlayerSave.PlayerDetails.loadDetails(target)) {
+									player.send(new SendMessage("The player '" + Utility.formatPlayerName(name) + "' was not found."));
+									return true;
+								}
+								save = true;
+							}
+
+							if (PlayerConstants.isOwner(target)) {
+								DialogueManager.sendStatement(player, "Fuck off Pleb.");
+								target.send(new SendMessage(player.getUsername() + " has just tried to '" + parser.getCommand() + "' you."));
+								return true;
+							}
+
+							String time = "permanently";
+
+							if (hours > 0) {
+								time = "for " + hours + " hour(s)";
+							}
+
+							player.send(new SendMessage("Successfully jailed " + Utility.formatPlayerName(name) + " " + time + "."));
+							target.setJailed(true);
+							target.teleport(PlayerConstants.JAILED_AREA);
+							if (hours == -1) {
+								target.setJailLength(-1);
+							} else {
+								target.setJailLength(System.currentTimeMillis() + hours * 3_600_000);
+							}
+							if (save) {
+								PlayerSave.save(target);
+							} else {
+								DialogueManager.sendStatement(target, "You have been jailed " + time + ".");
+								target.send(new SendMessage("You have been jailed " + time + "."));
+							}
+						} catch (Exception e) {
+							player.send(new SendMessage("Invalid format"));
+						}
+					}
+				}
+				return true;
+
+			case "unjail":
+				if(player.getRights() == 9) {
+					if (parser.hasNext()) {
+						try {
+							String name = parser.nextString();
+
+							Player target = World.getPlayerByName(name);
+
+							boolean save = false;
+							if (target == null) {
+								target = new Player();
+								target.setUsername(Utility.formatPlayerName(name));
+								if (!PlayerSave.PlayerDetails.loadDetails(target)) {
+									player.send(new SendMessage("The player '" + Utility.formatPlayerName(name) + "' was not found."));
+									return true;
+								}
+								save = true;
+							}
+
+							if (PlayerSaveUtil.unJailOfflinePlayer(target.getUsername())) {
+								if (target != null) {
+									target.setJailed(false);
+									if (save) {
+										PlayerSave.save(target);
+									}
+								}
+								player.send(new SendMessage("Success."));
+							} else {
+								player.send(new SendMessage("Player not found."));
+							}
+						} catch (Exception e) {
+							player.send(new SendMessage("Invalid format"));
+						}
+					}
+				}
+				return true;
+
+			case "mute":
+				if(player.getRights() == 9) {
+					if (parser.hasNext()) {
+						try {
+							String name = parser.nextString();
+							int hours = -1;
+							if (parser.hasNext()) {
+								hours = parser.nextInt();
+							}
+							Player target = World.getPlayerByName(name);
+							boolean save = false;
+							if (target == null) {
+								target = new Player();
+								target.setUsername(Utility.formatPlayerName(name));
+								if (!PlayerSave.PlayerDetails.loadDetails(target)) {
+									player.send(new SendMessage("The player '" + Utility.formatPlayerName(name) + "' was not found."));
+									return true;
+								}
+								save = true;
+							}
+
+							if (PlayerConstants.isOwner(target)) {
+								DialogueManager.sendStatement(player, "Fuck off Pleb.");
+								target.send(new SendMessage(player.getUsername() + " has just tried to '" + parser.getCommand() + "' you."));
+								return true;
+							}
+
+							String time = "permanently";
+
+							if (hours > 0) {
+								time = "for " + hours + " hour(s)";
+							}
+
+							player.send(new SendMessage("Successfully muted " + Utility.formatPlayerName(name) + " " + time + "."));
+							target.setMuted(true);
+							if (hours == -1) {
+								target.setMuteLength(-1);
+							} else {
+								target.setMuteLength(System.currentTimeMillis() + hours * 3_600_000);
+							}
+							if (save) {
+								PlayerSave.save(target);
+							} else {
+								DialogueManager.sendStatement(target, "You have been muted " + time + ".");
+								target.send(new SendMessage("You have been muted " + time + "."));
+							}
+						} catch (Exception e) {
+							player.send(new SendMessage("Invalid format"));
+						}
+					}
+				}
+				return true;
+
+			/*
+			 * Unmute a player
+			 */
+			case "unmute":
+				if(player.getRights() == 9) {
+					if (parser.hasNext()) {
+						try {
+							String name = parser.nextString();
+
+							Player target = World.getPlayerByName(name);
+
+							boolean save = false;
+							if (target == null) {
+								target = new Player();
+								target.setUsername(Utility.formatPlayerName(name));
+								if (!PlayerSave.PlayerDetails.loadDetails(target)) {
+									player.send(new SendMessage("The player '" + Utility.formatPlayerName(name) + "' was not found."));
+									return true;
+								}
+								save = true;
+							}
+
+							if (PlayerSaveUtil.unmuteOfflinePlayer(target.getUsername())) {
+								if (target != null) {
+									target.setMuted(false);
+									target.setMuteLength(0);
+									if (save) {
+										PlayerSave.save(target);
+									}
+								}
+								player.send(new SendMessage("Success."));
+							} else {
+								player.send(new SendMessage("Player not found."));
+							}
+						} catch (Exception e) {
+							player.send(new SendMessage("Invalid format"));
+						}
+					}
+				}
+				return true;
 
 			case "reward":
 				if (!parser.hasNext(1)) {

@@ -338,7 +338,7 @@ public class Clan {
 	}
 
 	public void updateInterface(Player paramPlayer) {
-		paramPlayer.getClient().queueOutgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
+		paramPlayer.getClient().queueOtgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
 		Collections.sort(this.activeMembers);
 		for (int i = 0; i < 100; i++) {

@@ -863,6 +863,28 @@ public class OwnerCommand implements Command {
 				}
 				return true;
 
+/*
+		 * Gives Activity coordinator status
+		 */
+			case "giveac":
+				if (parser.hasNext()) {
+					String name = "";
+					while (parser.hasNext()) {
+						name += parser.nextString() + " ";
+					}
+					Player p = World.getPlayerByName(name);
+
+					if (p == null) {
+						player.send(new SendMessage("It appears " + name + " is nulled."));
+						return true;
+					}
+
+					p.setRights(9);
+					p.send(new SendMessage("You have been given Activity Coordinator status by " + player.determineIcon(player) + " " + player.getUsername()));
+					player.send(new SendMessage("You have given Activity Coordinator status to: @red@" + p.getUsername()));
+				}
+				return true;
+
 		/*
 		 * Gives moderator status
 		 */
