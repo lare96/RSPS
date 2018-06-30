@@ -1,14 +1,5 @@
 package com.vencillio.core;
 
-import java.io.File;
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
-import java.util.logging.Logger;
-
-import org.jboss.netty.bootstrap.ServerBootstrap;
-import org.jboss.netty.channel.ChannelException;
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
-
 import com.vencillio.GameDataLoader;
 import com.vencillio.VencillioConstants;
 import com.vencillio.core.network.PipelineFactory;
@@ -19,6 +10,14 @@ import com.vencillio.core.util.SystemLogger;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.impl.GroundItemHandler;
 import com.vencillio.rs2.entity.object.ObjectManager;
+import org.jboss.netty.bootstrap.ServerBootstrap;
+import org.jboss.netty.channel.ChannelException;
+import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
+
+import java.io.File;
+import java.net.InetSocketAddress;
+import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
 public class GameThread extends Thread {
 	
@@ -88,7 +87,7 @@ public class GameThread extends Thread {
 
 		while (true) {
 			try {
-				serverBootstrap.bind(new InetSocketAddress(43594));
+				serverBootstrap.bind(new InetSocketAddress(43595));
 				break;
 			} catch (ChannelException e2) {
 				logger.info("Server could not bind port - sleeping..");
