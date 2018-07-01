@@ -341,23 +341,18 @@ public class Clan {
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
 		Collections.sort(this.activeMembers);
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 100; i++)
 			if (i < this.activeMembers.size()) {
-				if (this.activeMembers.get(i) != null) {
-					try {
-						if (World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
-							System.out.println(this.activeMembers.get(i));
-							paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
-						}
-					} catch (Exception e) {
-						System.out.println("NULL player");
-					}
+				if(this.activeMembers.get(i) != null) {
+					//if(World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+					System.out.println(this.activeMembers.get(i));
+					paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
+					//}
 				}
 			} else {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
 			}
-		}
-		paramPlayer.getClient().queueOutgoingPacket(new SendString("(" + this.activeMembers.size() + "/100)", 18252));
+		paramPlayer.getClient().queueOutgoingPacket(new SendString("("+this.activeMembers.size()+"/100)", 18252));
 	}
 
 	public void updateMembers() {
