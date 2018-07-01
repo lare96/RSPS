@@ -359,7 +359,7 @@ public class Clan {
 			if (i < this.activeMembers.size()) {
 				try {
 					if (this.activeMembers.get(i) != null) {
-						System.out.println("Sending clan data member " + this.activeMembers.get(i) + " to " + paramPlayer + " at id : " + (18144+i));
+						System.out.println("Sending clan data member " + this.activeMembers.get(i) + " to " + paramPlayer.getUsername() + " at id : " + (18144+i));
 						paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
 					}
 				} catch (Exception e) {
