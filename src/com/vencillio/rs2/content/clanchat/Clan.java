@@ -375,6 +375,7 @@ public class Clan {
 			if (s != null)
 				this.activeMembers.add(s);
 		}
+		System.out.println(Arrays.asList(this.activeMembers));
 	}
 
 	public void updateMembers() {
