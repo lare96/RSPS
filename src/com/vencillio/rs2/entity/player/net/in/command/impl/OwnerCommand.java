@@ -175,9 +175,12 @@ public class OwnerCommand implements Command {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
 						Clan clan = player.getClan();
 						clan.updateMembers();
+						player.clan = null;
 						for(Player p : World.getPlayers()) {
-							if(p != null)
-							p.getPrivateMessaging().updateOnlineStatus(player, true);
+							if(p != null) {
+								p.getPrivateMessaging().updateOnlineStatus(player, true);
+								clan.resetInterface(p);
+							}
 						}
 						System.out.println("Set visible is now: " + targetPlayer.isVisible());
 						//targetPlayer.getUpdateFlags().setUpdateRequired(true);
