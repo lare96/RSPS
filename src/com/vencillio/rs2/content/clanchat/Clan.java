@@ -348,7 +348,7 @@ public class Clan {
 			if (World.getPlayerByName(this.activeMembers.get(i)) != null) {
 				World.getPlayerByName(this.activeMembers.get(i)).send(new SendString("", 18144 + i));
 				if (!World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
-					System.out.println("In remove");
+					System.out.println("In remove: " + this.activeMembers.get(i));
 					tmp[i] = this.activeMembers.get(i);
 					this.activeMembers.remove(i);
 				}
