@@ -7,6 +7,7 @@ import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
@@ -342,20 +343,20 @@ public class Clan {
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
 		Collections.sort(this.activeMembers);
-		String tmp = "";
+		String tmp[] = new String[this.activeMembers.size()];
+		for(int i=0; i<this.activeMembers.size(); i++) {
+			if (World.getPlayerByName(this.activeMembers.get(i)) != null && !World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+				tmp[i] = this.activeMembers.get(i);
+				this.activeMembers.remove(i);
+			}
+		}
+		//Sort here instead?
 		for (int i = 0; i < 100; i++) {
 			if (i < this.activeMembers.size()) {
 				try {
-					if(World.getPlayerByName(this.activeMembers.get(i)) != null) {
-						if(!World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
-							tmp = this.activeMembers.get(i);
-							this.activeMembers.remove(i);
-						}
-					}
-					if (this.activeMembers.get(i) != null) {
+					 if (this.activeMembers.get(i) != null) {
 						paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
 					}
-
 				} catch (Exception e) {
 					System.out.println("NULL PLAYER");
 					e.printStackTrace();
@@ -365,9 +366,7 @@ public class Clan {
 			}
 		}
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("(" + this.activeMembers.size() + "/100)", 18252));
-		if(!tmp.isEmpty()) {
-			this.activeMembers.add(tmp);
-		}
+		this.activeMembers.addAll(Arrays.asList(tmp));
 	}
 
 	public void updateMembers() {
