@@ -371,7 +371,10 @@ public class Clan {
 		}
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("(" + this.activeMembers.size() + "/100)", 18252));
 		System.out.println(Arrays.asList(tmp));
-		this.activeMembers.addAll(Arrays.asList(tmp));
+		for (String s : tmp) {
+			if (s != null)
+				this.activeMembers.add(s);
+		}
 	}
 
 	public void updateMembers() {
