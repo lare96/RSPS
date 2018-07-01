@@ -346,6 +346,7 @@ public class Clan {
 		String tmp[] = new String[this.activeMembers.size()];
 		for(int i=0; i<this.activeMembers.size(); i++) {
 			if (World.getPlayerByName(this.activeMembers.get(i)) != null && !World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+				System.out.println("In remove");
 				tmp[i] = this.activeMembers.get(i);
 				this.activeMembers.remove(i);
 			}
