@@ -8,7 +8,6 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -342,7 +341,7 @@ public class Clan {
 		System.out.println("In updateinterface for player: " + paramPlayer.getUsername());
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
-		Collections.sort(this.activeMembers);
+		//Collections.sort(this.activeMembers);
 		String tmp[] = new String[this.activeMembers.size()];
 		for(int i=0; i<this.activeMembers.size(); i++) {
 			if (World.getPlayerByName(this.activeMembers.get(i)) != null && !World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
