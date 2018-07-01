@@ -342,6 +342,7 @@ public class Clan {
 		System.out.println("In updateinterface for player: " + paramPlayer.getUsername());
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("</col>Talking in: <col=FFFF64><shad=0>" + getTitle(), 18139));
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
+		System.out.println(this.activeMembers.size());
 		Collections.sort(this.activeMembers);
 		String tmp[] = new String[this.activeMembers.size()];
 		for (int i = 0; i < this.activeMembers.size(); i++) {
