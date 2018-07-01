@@ -343,18 +343,21 @@ public class Clan {
 		paramPlayer.getClient().queueOutgoingPacket(new SendString("<col>Owner: <col=FFFF64><shad=0>" + (Utility.formatPlayerName(getFounder())), 18140));
 		//Collections.sort(this.activeMembers);
 		String tmp[] = new String[this.activeMembers.size()];
-		for(int i=0; i<this.activeMembers.size(); i++) {
-			if (World.getPlayerByName(this.activeMembers.get(i)) != null && !World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
-				System.out.println("In remove");
-				tmp[i] = this.activeMembers.get(i);
-				this.activeMembers.remove(i);
+		for (int i = 0; i < this.activeMembers.size(); i++) {
+			if (World.getPlayerByName(this.activeMembers.get(i)) != null) {
+				resetInterface(World.getPlayerByName(this.activeMembers.get(i)));
+				if (!World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
+					System.out.println("In remove");
+					tmp[i] = this.activeMembers.get(i);
+					this.activeMembers.remove(i);
+				}
 			}
 		}
 		//Sort here instead?
 		for (int i = 0; i < 100; i++) {
 			if (i < this.activeMembers.size()) {
 				try {
-					 if (this.activeMembers.get(i) != null) {
+					if (this.activeMembers.get(i) != null) {
 						paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
 					}
 				} catch (Exception e) {
