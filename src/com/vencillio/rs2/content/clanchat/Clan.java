@@ -346,7 +346,6 @@ public class Clan {
 				if (this.activeMembers.get(i) != null) {
 					try {
 						if (World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
-							System.out.println(this.activeMembers.get(i));
 							//paramPlayer.getClient().queueOutgoingPacket(new SendString("<clan=" + getRank(this.activeMembers.get(i)) + ">" + this.activeMembers.get(i), 18144 + i));
 						}
 					} catch (Exception e) {
