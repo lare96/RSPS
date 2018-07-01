@@ -358,6 +358,7 @@ public class Clan {
 
 				} catch (Exception e) {
 					System.out.println("NULL PLAYER");
+					e.printStackTrace();
 				}
 			} else {
 				paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
