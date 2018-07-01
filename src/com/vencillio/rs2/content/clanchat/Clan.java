@@ -344,9 +344,11 @@ public class Clan {
 		System.out.println(this.activeMembers.size());
 		//Collections.sort(this.activeMembers);
 		String tmp[] = new String[this.activeMembers.size()];
+		for(int i=0; i<this.activeMembers.size(); i++) {
+			paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
+		}
 		for (int i = 0; i < this.activeMembers.size(); i++) {
 			if (World.getPlayerByName(this.activeMembers.get(i)) != null) {
-				World.getPlayerByName(this.activeMembers.get(i)).send(new SendString("", 18144 + i));
 				if (!World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
 					System.out.println("In remove: " + this.activeMembers.get(i));
 					tmp[i] = this.activeMembers.get(i);
