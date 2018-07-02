@@ -3,13 +3,20 @@ package com.vencillio.rs2.entity.mob.impl;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.mob.Mob;
+import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.text.SimpleDateFormat;
 
 public class CorporealBeast extends Mob {
 	
 	private Mob[] darkEnergyCores = null;
+	private long TIME;
 
 	public CorporealBeast() {
 		super(319, true, new Location(2946, 4386));
+		TIME = System.currentTimeMillis();
+		for(int i=0; i<getCombatants().size(); i++)
+			getCombatants().get(i).getAttributes().set("CORP_DAMAGE", 0);
 	}
 
 	public boolean areCoresDead() {
@@ -35,6 +42,11 @@ public class CorporealBeast extends Mob {
 	@Override
 	public void onDeath() {
 		darkEnergyCores = null;
+		for(int i=0; i<getCombatants().size(); i++) {
+			getCombatants().get(i).send(new SendMessage("Fight duration: @red@" + new SimpleDateFormat("m:ss").format(System.currentTimeMillis() - TIME) + "</col>."));
+			getCombatants().get(i).send(new SendMessage("Damage dealt: " + getCombatants().get(i).getAttributes().getInt("CORP_DAMAGE")));
+			getCombatants().get(i).getAttributes().remove("CORP_DAMAGE");
+		}
 	}
 
 	public void spawn() {

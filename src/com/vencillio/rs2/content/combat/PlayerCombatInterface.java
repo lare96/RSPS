@@ -302,7 +302,12 @@ public class PlayerCombatInterface implements CombatInterface {
 		if (hit.getAttacker() != null) {
 			if (hit.getAttacker().isNpc()) {
 				Mob mob = World.getNpcs()[hit.getAttacker().getIndex()];
-				if (mob != null && MobConstants.isDragon(mob)) {
+				if(mob.getId() == 2045) {
+					if (Utility.randomNumber(5) == 0) {
+						player.poison(18);
+					}
+				}
+				if (MobConstants.isDragon(mob)) {
 					if (ItemCheck.isWearingAntiDFireShield(player) && (hit.getType() == Hit.HitTypes.MAGIC)) {
 						if (ItemCheck.hasDFireShield(player)) {
 							player.getMagic().incrDragonFireShieldCharges(mob);
@@ -536,6 +541,10 @@ public class PlayerCombatInterface implements CombatInterface {
 	public void onHit(Entity entity, Hit hit) {
 		if (player.getAttributes().get(PestControlGame.PEST_GAME_KEY) != null) {
 			player.getAttributes().set(PestControlGame.PEST_DAMAGE_KEY, player.getAttributes().get(PestControlGame.PEST_DAMAGE_KEY) != null ? player.getAttributes().getInt(PestControlGame.PEST_DAMAGE_KEY) + hit.getDamage() : hit.getDamage());
+		}
+
+		if (player.getAttributes().get("CORP_DAMAGE") != null) {
+			player.getAttributes().set("CORP_DAMAGE", player.getAttributes().get("CORP_DAMAGE") != null ? player.getAttributes().getInt("CORP_DAMAGE") + hit.getDamage() : hit.getDamage());
 		}
 
 		if (player.getCombat().getCombatType() == CombatTypes.RANGED) {

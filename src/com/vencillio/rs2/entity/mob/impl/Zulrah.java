@@ -1,10 +1,5 @@
 package com.vencillio.rs2.entity.mob.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
@@ -19,6 +14,11 @@ import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendProjectile;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Handles Zulrah Boss
@@ -62,7 +62,7 @@ public class Zulrah extends Mob {
 			return;
 		}
 		
-		int random = Utility.random(11);
+		int random = Utility.randomNumber(10);
 		if (random == 0 && getOwner().isHitZulrah()) {
 			move();
 		} else if (random == 5) {

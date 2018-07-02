@@ -1,7 +1,5 @@
 package com.vencillio.rs2.entity.mob.impl;
 
-import java.util.List;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.Utility;
@@ -13,11 +11,13 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.mob.Mob;
 import com.vencillio.rs2.entity.player.Player;
 
+import java.util.List;
+
 public class DarkEnergyCore extends Mob {
 
 	public static final int CORPOREAL_BEAST_INDEX = 1;
 	
-	public static final int DARK_ENERGY_CORE_ID = 8127;
+	public static final int DARK_ENERGY_CORE_ID = 320;
 
 	public static final Mob getCorp() {
 		return World.getNpcs()[1];
@@ -48,12 +48,13 @@ public class DarkEnergyCore extends Mob {
 	private byte pause = -1;
 
 	public DarkEnergyCore(Location location, Player bind) {
-		super(8127, false, location, null, false, false, null);
+		super(DARK_ENERGY_CORE_ID, false, location, null, false, false, null);
 		this.bind = bind;
+		getLevels()[3] = 25;
 	}
 
 	public Hit getHit() {
-		return new Hit(this, Utility.randomNumber(10), Hit.HitTypes.NONE);
+		return new Hit(this, Utility.randomNumber(15), Hit.HitTypes.NONE);
 	}
 
 	@Override
