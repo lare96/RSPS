@@ -172,9 +172,10 @@ public class OwnerCommand implements Command {
 					String targetPlayerName = parser.nextString();
 					Player targetPlayer = World.getPlayerByName(targetPlayerName);
 					if(targetPlayer != null) {
-						targetPlayer.setNpcAppearanceId(targetPlayer.isVisible() ? (short)6500 : -1);
-						player.setAppearanceUpdateRequired(true);
 						targetPlayer.setVisible(!targetPlayer.isVisible());
+						if(targetPlayer.isVisible()) {
+							targetPlayer.setNpcAppearanceId((short) -1);
+						}
 						Clan clan = player.getClan();
 						clan.updateMembers();
 						for(Player p : World.getPlayers()) {
