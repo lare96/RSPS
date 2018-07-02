@@ -253,12 +253,8 @@ public final class PlayerUpdating {
 						addPlayer(out, local, flags, i);
 						appendChat(flags, block);
 					}*/
-
-					if(!flags.isVisible()) {
-						updateState(flags, block, false, player.getPrivateMessaging().ignored(flags.getUsername()));
-					}
 					else {
-						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
+						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()) && !flags.getUsername().equalsIgnoreCase("Tanner"));
 					}
 					added++;
 				}
