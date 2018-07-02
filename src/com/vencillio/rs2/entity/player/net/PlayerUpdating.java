@@ -244,7 +244,7 @@ public final class PlayerUpdating {
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
 						if(!flags.isVisible()) {
-							player.getUpdateFlags().sendGraphic(new Graphic(8000));
+							World.getPlayerByName(flags.getUsername()).getUpdateFlags().sendGraphic(new Graphic(8000));
 						}
 					}
 
