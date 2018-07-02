@@ -121,16 +121,19 @@ public class ToxicBlowpipe {
 		}
 		
 		if (usedWith.getId() == 12924 || usedWith.getId() == 12926 || itemUsed.getId() == 12924 || itemUsed.getId() == 12926) {
-			if (player.getToxicBlowpipe().blowpipeAmmo != null) {
+			if (player.getToxicBlowpipe().blowpipeAmmo != null && player.getToxicBlowpipe().blowpipeAmmo.getId() == dart.getId()) {
 				if (dart.getAmount() + player.getToxicBlowpipe().blowpipeAmmo.getAmount() > FULL) {
 					dart.setAmount((dart.getAmount() + player.getToxicBlowpipe().blowpipeAmmo.getAmount()) - FULL);
 				}
 				player.getToxicBlowpipe().blowpipeAmmo.add(dart.getAmount());
-			} else if (dart.getAmount() > FULL) {
+			} else if (dart.getAmount() > FULL && player.getToxicBlowpipe().blowpipeAmmo.getId() == dart.getId()) {
 				dart.setAmount(FULL);
 				player.getToxicBlowpipe().blowpipeAmmo = dart;
-			} else {
+			} else if(player.getToxicBlowpipe().getBlowpipeAmmo().getAmount() == 0){
 				player.getToxicBlowpipe().blowpipeAmmo = dart;
+			}
+			else {
+				player.send(new SendMessage("Please remove the current ammo to add this ammo in"));
 			}
 		}
 

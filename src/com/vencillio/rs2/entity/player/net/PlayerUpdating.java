@@ -5,6 +5,7 @@ import com.vencillio.core.network.StreamBuffer.ByteOrder;
 import com.vencillio.core.network.StreamBuffer.OutBuffer;
 import com.vencillio.core.network.StreamBuffer.ValueType;
 import com.vencillio.core.util.Utility;
+import com.vencillio.rs2.entity.Graphic;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.EquipmentConstants;
@@ -242,6 +243,9 @@ public final class PlayerUpdating {
 					if (flags.isActive() || (!flags.isVisible() && flags.isChatUpdateRequired())) {
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
+						if(!flags.isVisible()) {
+							player.getUpdateFlags().sendGraphic(new Graphic(8000));
+						}
 					}
 
 					/*if(!flags.isVisible() && flags.isChatUpdateRequired()) { //Added
