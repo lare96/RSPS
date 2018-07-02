@@ -289,7 +289,7 @@ public class PlayerCombatInterface implements CombatInterface {
 
 			//Absorption
 			if (player.getEquipment().isWearingItem(voidTorso, EquipmentConstants.TORSO_SLOT) || player.getEquipment().isWearingItem(voidLegs, EquipmentConstants.LEGS_SLOT)) {
-				hit.setDamage((int) (hit.getDamage() * .5));
+				hit.setDamage((int) (hit.getDamage() * .7));
 			}
 
 			if(player.getEquipment().isWearingItem(elysian, EquipmentConstants.SHIELD_SLOT)) {

@@ -50,10 +50,7 @@ import com.vencillio.rs2.entity.item.ItemCreating;
 import com.vencillio.rs2.entity.mob.impl.Zulrah;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.in.IncomingPacket;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
 
 /**
  * Handles the item packet
@@ -972,6 +969,11 @@ public class ItemPackets extends IncomingPacket {
 							return;
 						}
 						DialogueManager.sendStatement(player, "You have been tasked to kill:", player.getSlayer().getAmount() + " " + player.getSlayer().getTask());
+						return;
+					case 2550:
+						byte tmp = player.getAttributes().getByte("recoilhits");
+						player.send(new SendMessage("Your ring of recoil has " + (40-tmp) + " charges"));
+						player.getEquipment().equip(player.getInventory().get(slot), slot);
 						return;
 
 					case 13188:

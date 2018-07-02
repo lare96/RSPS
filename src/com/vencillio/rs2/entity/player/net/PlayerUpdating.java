@@ -250,7 +250,12 @@ public final class PlayerUpdating {
 						appendChat(flags, block);
 					}*/
 
-					updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
+					if(!flags.isVisible()) {
+						updateState(flags, block, false, player.getPrivateMessaging().ignored(flags.getUsername()));
+					}
+					else {
+						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()));
+					}
 					added++;
 				}
 			}
@@ -260,9 +265,7 @@ public final class PlayerUpdating {
 			out.setAccessType(StreamBuffer.AccessType.BYTE_ACCESS);
 			out.writeBytes(block.getBuffer());
 		} else {
-			out.writeBits(11, 2047); //Yes? will this fix it -no
 			out.setAccessType(StreamBuffer.AccessType.BYTE_ACCESS);
-			out.writeBytes(block.getBuffer()); //Yes? will this fix it- no
 		}
 
 		out.finishVariableShortPacketHeader();

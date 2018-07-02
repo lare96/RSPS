@@ -345,10 +345,9 @@ public class Clan {
 		System.out.println(this.activeMembers.size());
 		Collections.sort(this.activeMembers);
 		String tmp[] = new String[this.activeMembers.size()];
-		for(int i=0; i<this.activeMembers.size(); i++) {
-			paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
-		}
+
 		for (int i = 0; i < this.activeMembers.size(); i++) {
+			paramPlayer.getClient().queueOutgoingPacket(new SendString(" ", 18144 + i));
 			if (World.getPlayerByName(this.activeMembers.get(i)) != null) {
 				if (!World.getPlayerByName(this.activeMembers.get(i)).isVisible()) {
 					System.out.println("In remove: " + this.activeMembers.get(i));
@@ -357,7 +356,6 @@ public class Clan {
 				}
 			}
 		}
-		//Sort here instead?
 		for (int i = 0; i < 100; i++) {
 			if (i < this.activeMembers.size()) {
 				try {
