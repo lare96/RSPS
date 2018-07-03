@@ -131,7 +131,7 @@ public class ToxicBlowpipe {
 				dart.setAmount(FULL);
 				player.getToxicBlowpipe().blowpipeAmmo = dart;
 				player.getInventory().remove(dart);
-			} else if(player.getToxicBlowpipe().getBlowpipeAmmo().getAmount() == 0){
+			} else if(player.getToxicBlowpipe().getBlowpipeAmmo() == null){
 				player.getToxicBlowpipe().blowpipeAmmo = dart;
 				player.getInventory().remove(dart);
 			}
