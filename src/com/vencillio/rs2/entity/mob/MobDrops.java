@@ -102,11 +102,13 @@ public class MobDrops {
 					if (entity.getPlayer().getBossPet() == null) {
 						BossPets.spawnPet(entity.getPlayer(), petDrop.getItem(), true);
 						entity.getPlayer().send(new SendMessage("You feel a presence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
+						return;
 					} else {
 						entity.getPlayer().getBank().depositFromNoting(petDrop.getItem(), 1, 0, false);
 						entity.getPlayer().send(new SendMessage("You feel a presence added to your bank."));
 						AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_1_BOSS_PET, 1);
 						AchievementHandler.activateAchievement(entity.getPlayer(), AchievementList.OBTAIN_10_BOSS_PET, 1);
+						return;
 					}
 				}
 				if (item.getDefinition().getGeneralPrice() >= 1_000_000) {
