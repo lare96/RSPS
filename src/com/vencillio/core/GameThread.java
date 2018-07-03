@@ -87,7 +87,7 @@ public class GameThread extends Thread {
 
 		while (true) {
 			try {
-				serverBootstrap.bind(new InetSocketAddress(43595));
+				serverBootstrap.bind(new InetSocketAddress(43594));
 				break;
 			} catch (ChannelException e2) {
 				logger.info("Server could not bind port - sleeping..");
