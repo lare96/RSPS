@@ -255,7 +255,7 @@ public class ControlPanel extends JFrame {
 				if (checkAll(false)) {
 					logAction("Punishments", "Successfully disconnected " + usernameField.getText());
 					PlayerSave.save(player);
-					player.logout(false);
+					player.logout(true);
 				}
 			}
 		});

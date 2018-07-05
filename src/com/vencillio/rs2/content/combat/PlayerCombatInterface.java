@@ -134,7 +134,7 @@ public class PlayerCombatInterface implements CombatInterface {
 		if (!player.inMultiArea() || !attacking.inMultiArea()) {
 			if (player.getCombat().inCombat() && player.getCombat().getLastAttackedBy() != player.getCombat().getAttacking()) {
 				player.getClient().queueOutgoingPacket(new SendMessage("You are already under attack."));
-				if(!PlayerConstants.isOwner(player))
+				if(!PlayerConstants.isOwner(player) && player.getAttributes().get("inMulti") == null)
 					return false;
 			}
 
