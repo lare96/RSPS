@@ -242,8 +242,6 @@ public final class PlayerUpdating {
                     if (flags.isActive() || (!flags.isVisible() && flags.isChatUpdateRequired())) {
                         if (!flags.isVisible()) {
                             World.getPlayerByName(flags.getUsername()).setNpcAppearanceId((short) 6500);
-                            if (!player.getUsername().equals(flags.getUsername()))
-                                player.setAppearanceUpdateRequired(true);
                         }
                         player.getPlayers().add(World.getPlayers()[i]);
                         addPlayer(out, local, flags, i);
