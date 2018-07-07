@@ -103,5 +103,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="everythingrs-api" level="project" />
   </component>
 </module>

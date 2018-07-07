@@ -91,38 +91,38 @@ public class Player extends Entity {
 
 	/* Client */
 	private final Client client;
-	
+
 	/* Stopwatch used for delaying anything */
 	private Stopwatch delay = new Stopwatch();
-	
+
 	private boolean prestigeColors = true;
-	
+
 	/* Account Security */
 	private String fullName = "";
 	private String emailAddress = "";
 	private String recovery = "";
 	private String IP = "";
-	
+
 	/* Uids */
 	private String uid;
 	private String lastKnownUID;
-	
+
 	/* Drop Table */
 	public int monsterSelected = 0;
-	
+
 	private boolean hitZulrah;
 	public boolean playingMB = false;
-	
+
 	/* Weapon Game */
 	private int weaponKills;
 	private int weaponPoints;
-	
+
 	/* Report */
 	public long lastReport = 0;
 	public String lastReported = "";
 	public String reportName = "";
 	public int reportClicked = 0;
-	
+
 	/* Iron Man */
 	private boolean isIron = false;
 	private boolean isUltimateIron = false;
@@ -141,11 +141,11 @@ public class Player extends Entity {
 		}
 		return false;
 	}
-	
+
 	/* Money Pouch */
 	private long moneyPouch;
 	private boolean pouchPayment = true;
-	
+
 	public boolean payment(int amount) {
 		if (isPouchPayment()) {
 			if (getMoneyPouch() < amount) {
@@ -183,7 +183,7 @@ public class Player extends Entity {
 	public String viewing;
 
 	public List<PlayerTitle> unlockedTitles = new ArrayList<>();
-	
+
 	/* Kraken */
 	public int whirlpoolsHit = 0;
 	public List<Mob> tentacles = new ArrayList<>();
@@ -282,11 +282,11 @@ public class Player extends Entity {
 	private Inventory inventory = new Inventory(this);
 
 	private Bank bank = new Bank(this);
-	
+
 	private MoneyPouch pouch = new MoneyPouch(this);
 
 	private Trade trade = new Trade(this);
-	
+
 	private PlayerAssistant playerAssistant = new PlayerAssistant(this);
 
 	private Shopping shopping = new Shopping(this);
@@ -344,13 +344,13 @@ public class Player extends Entity {
 	private PlayerTitle playerTitle;
 
 	private ToxicBlowpipe toxicBlowpipe = new ToxicBlowpipe(null, 0);
-	
+
 	private TridentOfTheSeas seasTrident = new TridentOfTheSeas(0);
-	
+
 	private TridentOfTheSwamp swampTrident = new TridentOfTheSwamp(0);
-	
+
 	private SerpentineHelmet serpentineHelment = new SerpentineHelmet(0);
-	
+
 	private PlayerProperties properties = new PlayerProperties(this);
 
 	private PlayTime Playtime;
@@ -389,7 +389,7 @@ public class Player extends Entity {
 	private byte transparentPanel = 0;
 	private byte transparentChatbox = 0;
 	private byte sideStones = 0;
-	
+
 	private byte acceptAid = 0;
 	private long currentStunDelay;
 	private long setStunDelay;
@@ -399,7 +399,7 @@ public class Player extends Entity {
 	private int enterXInterfaceId = -1;
 
 	private int enterXItemId = 1;
-	
+
 	private boolean jailed = false;
 	private long jailLength = 0;
 	private long banLength = 0;
@@ -447,7 +447,7 @@ public class Player extends Entity {
 
 		setNpc(false);
 	}
-	
+
 	public PrayerBook getPrayer() {
 		return prayer;
 	}
@@ -455,7 +455,7 @@ public class Player extends Entity {
 	public PlayerProperties getProperties() {
 		return properties;
 	}
-	
+
 	public ToxicBlowpipe getToxicBlowpipe() {
 		return toxicBlowpipe;
 	}
@@ -576,11 +576,17 @@ public class Player extends Entity {
 		this.Playpoints = Playpoints;
 	}
 
-	public int getMode() {return mode;}
+	public int getMode() {
+		return mode;
+	}
 
-	public boolean getInsure() { return insure; }
+	public boolean getInsure() {
+		return insure;
+	}
 
-	public void setInsure(boolean insure) { this.insure = insure; }
+	public void setInsure(boolean insure) {
+		this.insure = insure;
+	}
 
 	public void changeZ(int z) {
 		getLocation().setZ(z);
@@ -744,10 +750,10 @@ public class Player extends Entity {
 				}
 
 				if ((i.getLocation().getZ() == getLocation().getZ()) && (!i.isWalkToHome())) {
-					
+
 					if (getController().equals(ControllerManager.GOD_WARS_CONTROLLER)) {
 						GodWarsNpc npc = GodWarsData.forId(i.getId());
-						
+
 						if (npc != null) {
 							if (!GodWarsData.isProtected(this, npc) && !i.getCombat().inCombat()) {
 								if (Math.abs(getLocation().getX() - i.getLocation().getX()) + Math.abs(getLocation().getY() - i.getLocation().getY()) <= 5) {
@@ -756,10 +762,10 @@ public class Player extends Entity {
 								}
 							}
 						}
-						
+
 						continue;
 					}
-					
+
 					if (MobConstants.isAggressive(i.getId()) && (!i.getCombat().inCombat() || i.inMultiArea())) {
 						if ((MobConstants.isAgressiveFor(i, this))) {
 							if ((overr) || (Math.abs(getLocation().getX() - i.getLocation().getX()) + Math.abs(getLocation().getY() - i.getLocation().getY()) <= i.getSize() * 2))
@@ -829,7 +835,7 @@ public class Player extends Entity {
 	public Bank getBank() {
 		return bank;
 	}
-	
+
 	public MoneyPouch getPouch() {
 		return pouch;
 	}
@@ -1113,7 +1119,7 @@ public class Player extends Entity {
 	public Trade getTrade() {
 		return trade;
 	}
-	
+
 	public PlayerAssistant getPA() {
 		return playerAssistant;
 	}
@@ -1144,9 +1150,13 @@ public class Player extends Entity {
 		InterfaceHandler.writeText(new QuestTab(this));
 	}
 
-	public boolean isInvulnerable() { return isInvulnerable; }
+	public boolean isInvulnerable() {
+		return isInvulnerable;
+	}
 
-	public boolean isDeflect() { return isDeflect; }
+	public boolean isDeflect() {
+		return isDeflect;
+	}
 
 	public boolean isAppearanceUpdateRequired() {
 		return appearanceUpdateRequired;
@@ -1209,7 +1219,7 @@ public class Player extends Entity {
 
 	/**
 	 * Handles login
-	 * 
+	 *
 	 * @param starter
 	 * @return
 	 * @throws Exception
@@ -1220,7 +1230,7 @@ public class Player extends Entity {
 		Playtime = new PlayTime(this);
 		getPlayTime().startTimer();
 		ControlPanel.updateList();
-		
+
 		username = NameUtil.uppercaseFirstLetter(username);
 
 		usernameToLong = Utility.nameToLong(username.toLowerCase());
@@ -1253,12 +1263,12 @@ public class Player extends Entity {
 		new SendLoginResponse(response, this.getRights()).execute(client);
 
 		send(new SendString(getMoneyPouch() + "", 8135));
-		
+
 		if (PlayerSaveUtil.isIPMuted(this)) {
 			setMuted(true);
 			setMuteLength(-1);
 		}
-		
+
 		if (this.inCyclops()) {
 			this.teleport(PlayerConstants.HOME);
 		}
@@ -1269,12 +1279,12 @@ public class Player extends Entity {
 			teleport(new Location(PlayerConstants.HOME));
 			send(new SendMessage("You have been retrieved from an unknown location."));
 		}
-		
+
 		if (isJailed() && !inJailed()) {
 			teleport(new Location(PlayerConstants.JAILED_AREA));
 			send(new SendMessage("You were jailed!"));
 		}
-		
+
 		if (this.inWGGame()) {
 			WeaponGame.leaveGame(this, false);
 		}
@@ -1321,7 +1331,7 @@ public class Player extends Entity {
 		privateMessaging.connect();
 		runEnergy.update();
 		prayer.disable();
-		
+
 		bank.update();
 
 		if (this.getEquipment().getItems()[5] != null && this.getEquipment().getItems()[5].getId() == 13742) {
@@ -1384,7 +1394,7 @@ public class Player extends Entity {
 		getUpdateFlags().setUpdateRequired(true);
 		appearanceUpdateRequired = true;
 		needsPlacement = true;
-		
+
 		send(new SendMessage("Welcome to Tannerscape."));
 
 		if (World.getActivePlayers() > VencillioConstants.MOST_ONLINE) {
@@ -1392,8 +1402,8 @@ public class Player extends Entity {
 			FileHandler.saveMaxPlayers();
 			World.sendGlobalMessage("[<col=910D0D>Tannerscape</col>] We have broken our most players online record! New record: <col=910D0D>" + VencillioConstants.MOST_ONLINE + "</col>!");
 		}
-		
-		if (VencillioConstants.doubleExperience) {			
+
+		if (VencillioConstants.doubleExperience) {
 			send(new SendMessage("<img=12>@dre@ Please enjoy double experience for all skills!"));
 		}
 
@@ -1405,7 +1415,7 @@ public class Player extends Entity {
 			send(new SendConfig(630 + prayer.ordinal(), this.prayer.isQuickPrayer(prayer) ? 1 : 0));
 			send(new SendConfig(prayer.getConfigId(), 0));
 		}
-		
+
 		clearClanChat();
 		setClanData();
 		if (lastClanChat != null && lastClanChat.length() > 0) {
@@ -1433,7 +1443,7 @@ public class Player extends Entity {
 	}
 
 	public void logout(boolean force) {
-		if(this.isPoisoned() && !force) {
+		if (this.isPoisoned() && !force) {
 			send(new SendMessage("You are poisoned and cannot logout right now."));
 			return;
 		}
@@ -1453,14 +1463,14 @@ public class Player extends Entity {
 				com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Ultimate Ironman Mode", this.getUsername(),
 						this.getRights(), playerXp, debugMessage);
 			else*/
-				com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Normal Mode", this.getUsername(),
-						this.getRights(), playerXp, debugMessage);
+			com.everythingrs.hiscores.Hiscores.update("mjijehoz8vrj046m7remte29z1x6ynyo7mc3vh4wfqpbke29btmpjp8709loo4b348svcs1yvi", "Normal Mode", this.getUsername(),
+					this.getRights(), playerXp, debugMessage);
 
-			if (force){
+			if (force) {
 				ControllerManager.onForceLogout(this);
-			
-			
-		}else if ((controller != null) && (!controller.canLogOut())) {
+
+
+			} else if ((controller != null) && (!controller.canLogOut())) {
 				return;
 			}
 
@@ -1473,7 +1483,7 @@ public class Player extends Entity {
 			if (trade.trading()) {
 				trade.end(false);
 			}
-			
+
 			if (this.getInterfaceManager().main == 48500) {
 				this.getPriceChecker().withdrawAll();
 			}
@@ -1938,7 +1948,7 @@ public class Player extends Entity {
 
 		TaskQueue.cancelHitsOnEntity(this);
 		TaskQueue.queue(new FinishTeleportingTask(this, 2));
-		
+
 		movementHandler.reset();
 
 		if (!inClanWarsFFA()) {
@@ -1954,7 +1964,7 @@ public class Player extends Entity {
 		} else if (dueling.isStaking()) {
 			dueling.decline();
 		}
-		
+
 		if (this.getBossPet() != null) {
 			this.getBossPet().remove();
 			final Mob mob = new Mob(this, this.getBossID(), false, false, true, this.getLocation());
@@ -1962,7 +1972,7 @@ public class Player extends Entity {
 			mob.getFollowing().setFollow(this);
 			this.setBossPet(mob);
 		}
-		
+
 		TaskQueue.onMovement(this);
 	}
 
@@ -1982,7 +1992,7 @@ public class Player extends Entity {
 		else {
 			type = EquipmentConstants.getCombatTypeForWeapon(this);
 		}
-		
+
 		if (type != CombatTypes.MAGIC) {
 			send(new SendConfig(333, 0));
 		}
@@ -1990,14 +2000,14 @@ public class Player extends Entity {
 		getCombat().setCombatType(type);
 
 		switch (type) {
-		case MELEE:
-			equipment.updateMeleeDataForCombat();
-			break;
-		case RANGED:
-			equipment.updateRangedDataForCombat();
-			break;
-		default:
-			break;
+			case MELEE:
+				equipment.updateMeleeDataForCombat();
+				break;
+			case RANGED:
+				equipment.updateRangedDataForCombat();
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -2014,34 +2024,34 @@ public class Player extends Entity {
 
 	/**
 	 * Detemines the rank
-	 * 
+	 *
 	 * @return
 	 */
 	public String determineRank(Player player) {
 		switch (this.getRights()) {
 
-		case 0:
-			return "Player";
-		case 1:
-			return "<col=006699>Moderator</col>";
-		case 2:
-			return "<col=E6E600>Administrator</col>";
-		case 3:
-			return "<col=AB1818>Owner</col>";
-		case 4:
-			return "<col=CF1DCF>Developer</col>";
-		case 5:
-			return "<col=B20000>Normal Member</col>";
-		case 6:
-			return "<col=2EB8E6>Super Member</col>";
-		case 7:
-			return "<col=4D8528>Extreme Member</col>";
-		case 8:
-			return "<col=971FF2>Royal Member</col>";
-		case 11:
-			return "@gry@Iron Man</col>";
-		case 12:
-			return "@gry@Ultimate Iron</col>";
+			case 0:
+				return "Player";
+			case 1:
+				return "<col=006699>Moderator</col>";
+			case 2:
+				return "<col=E6E600>Administrator</col>";
+			case 3:
+				return "<col=AB1818>Owner</col>";
+			case 4:
+				return "<col=CF1DCF>Developer</col>";
+			case 5:
+				return "<col=B20000>Normal Member</col>";
+			case 6:
+				return "<col=2EB8E6>Super Member</col>";
+			case 7:
+				return "<col=4D8528>Extreme Member</col>";
+			case 8:
+				return "<col=971FF2>Royal Member</col>";
+			case 11:
+				return "@gry@Iron Man</col>";
+			case 12:
+				return "@gry@Ultimate Iron</col>";
 
 		}
 		return "Unknown!";
@@ -2049,30 +2059,32 @@ public class Player extends Entity {
 
 	public String determineIcon(Player player) {
 		switch (this.getRights()) {
-		case 0:
-			return "";
-		case 1:
-			return "<img=0>";
-		case 2:
-			return "<img=1>";
-		case 3:
-			return "<img=2>";
-		case 4:
-			return "<img=3>";
-		case 5:
-			return "<img=4>";
-		case 6:
-			return "<img=5>";
-		case 7:
-			return "<img=6>";
-		case 8:
-			return "<img=7>";
-		case 9:
-			return "<img=8>";
-		case 11:
-			return "<img=10>";
-		case 12:
-			return "<img=11>";
+			case 0:
+				return "";
+			case 1:
+				return "<img=0>";
+			case 2:
+				return "<img=1>";
+			case 3:
+				return "<img=2>";
+			case 4:
+				return "<img=3>";
+			case 5:
+				return "<img=4>";
+			case 6:
+				return "<img=5>";
+			case 7:
+				return "<img=6>";
+			case 8:
+				return "<img=7>";
+			case 9:
+				return "<img=7>";
+			case 10:
+				return "<img=8>";
+			case 11:
+				return "<img=10>";
+			case 12:
+				return "<img=11>";
 		}
 		return "";
 	}
@@ -2296,7 +2308,7 @@ public class Player extends Entity {
 	public void setShopColor(String shopColor) {
 		this.shopColor = shopColor;
 	}
-	
+
 	public String getUid() {
 		return uid;
 	}
@@ -2304,11 +2316,11 @@ public class Player extends Entity {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
-	
+
 	public String getLastKnownUID() {
 		return lastKnownUID;
 	}
-	
+
 	public void setLastKnownUID(String uid) {
 		this.lastKnownUID = uid;
 	}
@@ -2340,11 +2352,11 @@ public class Player extends Entity {
 	public int[] getCluesCompleted() {
 		return cluesCompleted;
 	}
-	
+
 	public void setCluesCompleted(int[] cluesCompleted) {
 		this.cluesCompleted = cluesCompleted;
 	}
-	
+
 	public void setCluesCompleted(int index, int value) {
 		cluesCompleted[index] = value;
 	}
@@ -2393,9 +2405,13 @@ public class Player extends Entity {
 		return isMember;
 	}
 
-	public void setInvulnerable(boolean isInvulnerable) { this.isInvulnerable = isInvulnerable; }
+	public void setInvulnerable(boolean isInvulnerable) {
+		this.isInvulnerable = isInvulnerable;
+	}
 
-	public void setDeflect(boolean isDeflect) { this.isDeflect = isDeflect; }
+	public void setDeflect(boolean isDeflect) {
+		this.isDeflect = isDeflect;
+	}
 
 	public void setMember(boolean isMember) {
 		this.isMember = isMember;
@@ -2545,8 +2561,12 @@ public class Player extends Entity {
 		this.swampTrident = swampTrident;
 	}
 
-	public int getToxicStaffOfTheDead() { return toxicStaffOfTheDeadCharges; }
+	public int getToxicStaffOfTheDead() {
+		return toxicStaffOfTheDeadCharges;
+	}
 
-	public void setToxicStaffOfTheDead(int charges) { this.toxicStaffOfTheDeadCharges = charges; }
+	public void setToxicStaffOfTheDead(int charges) {
+		this.toxicStaffOfTheDeadCharges = charges;
+	}
 
 }
