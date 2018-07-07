@@ -175,6 +175,7 @@ public class OwnerCommand implements Command {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
 						if(targetPlayer.isVisible()) {
 							targetPlayer.setNpcAppearanceId((short) -1);
+							player.setAppearanceUpdateRequired(true);
 						}
 						Clan clan = player.getClan();
 						clan.updateMembers();

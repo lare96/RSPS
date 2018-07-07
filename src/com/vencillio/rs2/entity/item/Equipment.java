@@ -215,7 +215,8 @@ public class Equipment {
 
 		player.getClient().queueOutgoingPacket(new SendEquipment(slot, items[slot].getId(), items[slot].getAmount()));
 		player.getInventory().update();
-		player.setAppearanceUpdateRequired(true);
+		if(player.isVisible())
+			player.setAppearanceUpdateRequired(true);
 		player.getCombat().reset();
 
 		if (item.getId() == 7927) {
