@@ -364,8 +364,8 @@ public class Equipment {
 		}
 
 		player.getClient().queueOutgoingPacket(new SendEquipment(slot, -1, -1));
-
-		player.setAppearanceUpdateRequired(true);
+		if(player.isVisible())
+			player.setAppearanceUpdateRequired(true);
 
 		calculateBonuses();
 		return true;
