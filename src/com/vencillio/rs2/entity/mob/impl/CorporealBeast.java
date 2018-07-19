@@ -62,7 +62,7 @@ public class CorporealBeast extends Mob {
 		darkEnergyCores = null;
 		for (int i = 0; i < allCombatants.size(); i++) {
 			allCombatants.get(i).send(new SendMessage("Fight duration: @red@" + new SimpleDateFormat("m:ss").format(System.currentTimeMillis() - TIME) + "</col>."));
-			allCombatants.get(i).send(new SendMessage("Damage dealt: " + getCombatants().get(i).getAttributes().getInt("CORP_DAMAGE")));
+			allCombatants.get(i).send(new SendMessage("Damage dealt: " + allCombatants.get(i).getAttributes().getInt("CORP_DAMAGE")));
 		}
 
 		for (Player p : allCombatants) {
