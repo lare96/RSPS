@@ -1,5 +1,7 @@
 package com.vencillio.rs2.entity.mob.impl;
 
+import com.vencillio.core.task.RunOnceTask;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.rs2.content.combat.Hit;
 import com.vencillio.rs2.entity.Location;
 import com.vencillio.rs2.entity.mob.Mob;
@@ -19,7 +21,7 @@ public class CorporealBeast extends Mob {
 
 
 	public CorporealBeast() {
-		super(319, true, new Location(2993, 4382, 2));
+		super(319, true, false, new Location(2993, 4382, 2));
 		TIME = System.currentTimeMillis();
 	}
 
@@ -69,9 +71,16 @@ public class CorporealBeast extends Mob {
 			p.getAttributes().remove("CORP_DAMAGE");
 		}
 		allCombatants.clear();
+
+		spawn();
 	}
 
 	public void spawn() {
-		new CorporealBeast();
+		TaskQueue.queue(new RunOnceTask(this, 50) { //30 sec
+			@Override
+			public void onStop() {
+				new CorporealBeast();
+			}
+		});
 	}
 }
