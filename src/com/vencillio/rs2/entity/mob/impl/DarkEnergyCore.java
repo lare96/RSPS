@@ -28,12 +28,15 @@ public class DarkEnergyCore extends Mob {
 	}
 
 	public static final Mob[] spawn() {
+		System.out.println("In dark energy core spawn");
 		List<Player> players = getCorp().getCombatants();
 
 		Mob[] cores = new Mob[players.size()];
 
+		System.out.println("cores size: " + players.size());
 		for (int i = 0; i < players.size(); i++) {
 			Location l = new Location(players.get(i).getLocation());
+			System.out.println("Dark core location: " + l);
 			l.move(1, 0);
 			cores[i] = new DarkEnergyCore(l, players.get(i));
 		}

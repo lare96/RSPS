@@ -538,9 +538,9 @@ public final class PlayerSave {
 					}
 				}
 
-				if ((details.poisonDmg > 0) && (details.poisoned)) {
+				/*if ((details.poisonDmg > 0) && (details.poisoned)) {
 					player.poison(details.poisonDmg);
-				}
+				}*/
 				
 				player.setPouchPayment(details.pouchPayment);
 
@@ -718,7 +718,9 @@ public final class PlayerSave {
 		private final boolean expLock;
 		private final short[] gwkc;
 		private final boolean poisoned;
+		private static boolean tmpPoisoned;
 		private final int poisonDmg;
+		private static int tmpPoisonDmg;
 		private final String slayerTask;
 		private final byte slayerAmount;
 		private final Slayer.SlayerDifficulty slayerDifficulty;
@@ -866,9 +868,9 @@ public final class PlayerSave {
 
 			blackMarks = player.getBlackMarks();
 
-			poisoned = player.isPoisoned();
+			tmpPoisoned = poisoned = player.isPoisoned();
 			pouchPayment = player.isPouchPayment();
-			poisonDmg = player.getPoisonDamage();
+			tmpPoisonDmg = poisonDmg = player.getPoisonDamage();
 			slayerTask = player.getSlayer().getTask();
 			slayerAmount = player.getSlayer().getAmount();
 			experience = player.getSkill().getExperience();
@@ -984,6 +986,14 @@ public final class PlayerSave {
 					playerProperties.put(attribute, player.getAttributes().getAttributes().get(attribute));
 				}
 			}
+		}
+
+		public static int getPoisonDamage() {
+			return tmpPoisonDmg;
+		}
+
+		public static boolean isPoisoned() {
+			return tmpPoisoned;
 		}
 
 		public void parseDetails() throws Exception {

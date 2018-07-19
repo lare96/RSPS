@@ -21,7 +21,7 @@ public class CommandInterface extends InterfaceHandler {
 			"::mymode - shows your current mode",
 			"::kc (npc)",
 			"::ib or ::itemdef (item)",
-			"::yell - does a global yell(<img=4>Members only)",
+			"::yell - does a global yell (Members = no cooldown)",
 			"::yelltitle - changes yell title(<img=5>Super+ Members only)",
 			"::empty - deletes inventory",
 			"::home - teleports home (edge)",

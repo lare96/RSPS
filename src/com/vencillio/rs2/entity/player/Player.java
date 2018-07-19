@@ -1339,6 +1339,10 @@ public class Player extends Entity {
 			this.getEquipment().update();
 		}
 
+		if ((PlayerSave.PlayerDetails.getPoisonDamage() > 0) && (PlayerSave.PlayerDetails.isPoisoned())) {
+			poison(PlayerSave.PlayerDetails.getPoisonDamage());
+		}
+
 		jadDetails.setStage(0);
 
 		this.getRunEnergy().setRunning(true);
