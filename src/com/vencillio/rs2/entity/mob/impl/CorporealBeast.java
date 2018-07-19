@@ -48,6 +48,7 @@ public class CorporealBeast extends Mob {
 		if (getCombatants().size() > 0) {
 			for (int i = 0; i < getCombatants().size(); i++) {
 				if(!allCombatants.contains(getCombatants().get(i))) {
+					System.out.println(getCombatants().get(i).getUsername() + " added to allCombatants");
 					allCombatants.add(getCombatants().get(i));
 				}
 				if (!getCombatants().get(i).getAttributes().isSet("CORP_DAMAGE"))
