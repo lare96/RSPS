@@ -70,7 +70,7 @@ public class CorporealBeast extends Mob {
 	public void onDeath() {
 		darkEnergyCores = null;
 		for(int i=0; i<allCombatants.size(); i++) {
-			getCombatants().get(i).getAttributes().remove("CORP_DAMAGE");
+			allCombatants.get(i).getAttributes().remove("CORP_DAMAGE");
 		}
 		allCombatants.clear();
 	}
