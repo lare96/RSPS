@@ -61,7 +61,6 @@ public class CorporealBeast extends Mob {
 	public void onDeath() {
 		darkEnergyCores = null;
 		for (int i = 0; i < allCombatants.size(); i++) {
-			System.out.println("combatant " + i + ": " + getCombatants().get(i).getUsername());
 			allCombatants.get(i).send(new SendMessage("Fight duration: @red@" + new SimpleDateFormat("m:ss").format(System.currentTimeMillis() - TIME) + "</col>."));
 			allCombatants.get(i).send(new SendMessage("Damage dealt: " + getCombatants().get(i).getAttributes().getInt("CORP_DAMAGE")));
 		}
