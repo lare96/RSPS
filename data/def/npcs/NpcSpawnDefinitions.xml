@@ -6015,8 +6015,8 @@
 		<walk>false</walk>
 		<face>1</face>
 	</NpcSpawnDefinition>
+	<!-->Corporeal Beast
 	<NpcSpawnDefinition>
-	<!-->Corporeal Beast<-->
 		<id>319</id>
 		<location>
 			<x>2993</x>
@@ -6025,7 +6025,7 @@
 		</location>
 		<walk>true</walk>
 		<face>0</face>
-	</NpcSpawnDefinition>
+	</NpcSpawnDefinition><-->
 	<NpcSpawnDefinition>
 	<!-->Dagannoth Prime <-->
 		<id>2266</id>
