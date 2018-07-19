@@ -55,22 +55,19 @@ public class CorporealBeast extends Mob {
 					getCombatants().get(i).getAttributes().set("CORP_DAMAGE", 0);
 			}
 		}
-		if (getCombatants().size() > 0 && getLevels()[3] <= 0) {
-			System.out.println("Combatant size(In on death): " + getCombatants().size());
-			for (int i = 0; i < getCombatants().size(); i++) {
-				System.out.println("combatant " + i + ": " + getCombatants().get(i).getUsername());
-				getCombatants().get(i).send(new SendMessage("Fight duration: @red@" + new SimpleDateFormat("m:ss").format(System.currentTimeMillis() - TIME) + "</col>."));
-				getCombatants().get(i).send(new SendMessage("Damage dealt: " + getCombatants().get(i).getAttributes().getInt("CORP_DAMAGE")));
-
-			}
-		}
 	}
 
 	@Override
 	public void onDeath() {
 		darkEnergyCores = null;
-		for(int i=0; i<allCombatants.size(); i++) {
-			allCombatants.get(i).getAttributes().remove("CORP_DAMAGE");
+		for (int i = 0; i < allCombatants.size(); i++) {
+			System.out.println("combatant " + i + ": " + getCombatants().get(i).getUsername());
+			allCombatants.get(i).send(new SendMessage("Fight duration: @red@" + new SimpleDateFormat("m:ss").format(System.currentTimeMillis() - TIME) + "</col>."));
+			allCombatants.get(i).send(new SendMessage("Damage dealt: " + getCombatants().get(i).getAttributes().getInt("CORP_DAMAGE")));
+		}
+
+		for (Player p : allCombatants) {
+			p.getAttributes().remove("CORP_DAMAGE");
 		}
 		allCombatants.clear();
 	}
