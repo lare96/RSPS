@@ -11,6 +11,7 @@ import com.vencillio.rs2.entity.item.EquipmentConstants;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerUpdateFlags;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 import static com.vencillio.rs2.entity.item.EquipmentConstants.*;
@@ -246,7 +247,7 @@ public final class PlayerUpdating {
 
 
 					if (flags.isVisible() || flags.isChatUpdateRequired()) {
-						System.out.println("In if statement");
+						System.out.println("getPlayers(): " + Arrays.toString(player.getPlayers().toArray()));
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
 					}
