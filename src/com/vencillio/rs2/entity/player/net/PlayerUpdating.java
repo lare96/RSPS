@@ -246,6 +246,7 @@ public final class PlayerUpdating {
 					player.getPlayers().add(World.getPlayers()[i]);
 
 					if (flags.isVisible() || flags.isChatUpdateRequired()) {
+						System.out.println("In if statement");
 						addPlayer(out, local, flags, i);
 					}
 
