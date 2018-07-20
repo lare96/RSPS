@@ -243,10 +243,13 @@ public final class PlayerUpdating {
 					if (!flags.isVisible()) {
 						World.getPlayerByName(flags.getUsername()).setNpcAppearanceId((short) 6500);
 					}
+					player.getPlayers().add(World.getPlayers()[i]);
+
 					if (flags.isVisible()) {
-						player.getPlayers().add(World.getPlayers()[i]);
+
+						addPlayer(out, local, flags, i);
 					}
-					addPlayer(out, local, flags, i);
+
 					//}
 
 					/*if(!flags.isVisible() && flags.isChatUpdateRequired()) { //Added
