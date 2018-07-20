@@ -245,8 +245,7 @@ public final class PlayerUpdating {
 					}
 					player.getPlayers().add(World.getPlayers()[i]);
 
-					if (flags.isVisible()) {
-
+					if (flags.isVisible() || flags.isChatUpdateRequired()) {
 						addPlayer(out, local, flags, i);
 					}
 
