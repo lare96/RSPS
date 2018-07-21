@@ -11,7 +11,6 @@ import com.vencillio.rs2.entity.item.EquipmentConstants;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerUpdateFlags;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 import static com.vencillio.rs2.entity.item.EquipmentConstants.*;
@@ -245,9 +244,11 @@ public final class PlayerUpdating {
 						World.getPlayerByName(flags.getUsername()).setNpcAppearanceId((short) 6500);
 					}
 
-
-					if (flags.isVisible() || flags.isChatUpdateRequired()) {
-						System.out.println("getPlayers(): " + Arrays.toString(player.getPlayers().toArray()));
+					if (!doesLocalListContainPlayer(player, flags.getUsernameToLong()) && !flags.isVisible()) {
+						player.getPlayers().add(World.getPlayers()[i]);
+						addPlayer(out, local, flags, i);
+					}
+					else if(flags.isVisible()) {
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
 					}
