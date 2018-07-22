@@ -26,7 +26,7 @@ public class LowAlchemy extends Spell {
 		Item coins = new Item(995, GameDefinitionLoader.getLowAlchemyValue(item));
 
 		if (!player.getInventory().hasSpaceFor(coins)) {
-			player.getClient().queueOutgoingPacket(new SendMessage("You do not have enough inventory space to cast High alchemy."));
+			player.getClient().queueOutgoingPacket(new SendMessage("You do not have enough inventory space to cast Low alchemy."));
 			return false;
 		}
 

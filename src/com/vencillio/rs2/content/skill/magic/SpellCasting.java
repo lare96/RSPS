@@ -191,8 +191,13 @@ public class SpellCasting {
 		}
 
 		if (spell.execute(player)) {
-			if((player.getEquipment().isWearingItem(11791) || player.getEquipment().isWearingItem(12904)) &&  Utility.randomNumber(8) != 0)
+			if((player.getEquipment().isWearingItem(11791) || player.getEquipment().isWearingItem(12904)) &&  Utility.randomNumber(8) != 0) {
 				player.getMagic().removeRunes(spell.getRunes());
+			}
+			else {
+				player.getMagic().removeRunes(spell.getRunes());
+			}
+
 			player.getSkill().addExperience(6, spell.getExperience());
 		}
 	}
