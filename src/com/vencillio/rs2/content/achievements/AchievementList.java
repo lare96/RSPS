@@ -100,7 +100,7 @@ public enum AchievementList {
 	WIN_THE_LOTTERY_3_TMES("Win the lottery 3 times", 3, AchievementDifficulty.HARD),
 	VOTE_30_TIMES("Vote 30 times", 30, AchievementDifficulty.HARD),
 	PRESTIGE_15_TIMES("Prestige 15 times", 15, AchievementDifficulty.HARD),
-	WIN_100_PEST_CONTROL_GAMES("Win 100 Pest Control games", 100, AchievementDifficulty.MEDIUM),
+	WIN_100_PEST_CONTROL_GAMES("Win 100 Pest Control games", 100, AchievementDifficulty.HARD),
 	COMPLETE_20_CLUE_SCROLLS("Complete 20 clue scrolls", 20, AchievementDifficulty.HARD),
 	;
 
