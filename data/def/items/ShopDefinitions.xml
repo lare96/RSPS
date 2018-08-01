@@ -1760,6 +1760,14 @@
                 <id>1540</id>
                 <amount>150</amount>
             </item>
+            <item>
+                <id>10010</id>
+                <amount>100</amount>
+            </item>
+            <item>
+                <id>11260</id>
+                <amount>100</amount>
+            </item>
         </items>
     </ShopDefinition>	
 
@@ -1849,14 +1857,6 @@
             <item>
                 <id>9670</id>
                 <amount>150</amount>
-            </item>
-            <item>
-                <id>10010</id>
-                <amount>100</amount>
-            </item>
-            <item>
-                <id>11260</id>
-                <amount>100</amount>
             </item>
 
         </items>
