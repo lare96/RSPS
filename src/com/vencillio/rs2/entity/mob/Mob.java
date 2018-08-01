@@ -278,19 +278,15 @@ public class Mob extends Entity {
 		Entity attacking = getCombat().getAttacking();
 
 		if (!isCanAttack()) {
-			System.out.println("In 1st return false");
 			return false;
 		}
 		
 		if (attacking.getAttributes().get("inMulti") == null && ((!inMultiArea()) || (!attacking.inMultiArea()))) {
-			System.out.println("In main if");
 			if ((getCombat().inCombat()) && (getCombat().getLastAttackedBy() != getCombat().getAttacking())) {
-				System.out.println("In 3nd return false");
 				return false;
 			}
 
 			if ((attacking.getCombat().inCombat()) && (attacking.getCombat().getLastAttackedBy() != this)) {
-				System.out.println("In 3rd return false");
 				return false;
 			}
 		}
@@ -299,7 +295,6 @@ public class Mob extends Entity {
 			Player p = World.getPlayers()[attacking.getIndex()];
 
 			if ((p != null) && (!p.getController().canAttackNPC())) {
-				System.out.println("In 4th return false");
 				return false;
 			}
 
