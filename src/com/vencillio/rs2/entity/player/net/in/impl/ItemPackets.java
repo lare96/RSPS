@@ -927,7 +927,7 @@ public class ItemPackets extends IncomingPacket {
 
 					case 405://Casket
 						player.getInventory().remove(itemId, 1);
-						int random = Utility.random(10000) + Utility.random(2500) + Utility.random(666);
+						int random = Utility.random(20000) + Utility.random(2500) + Utility.random(666);
 						player.getInventory().add(995, random);
 						player.send(new SendMessage("You have found " + random + " coins inside the casket"));
 						break;
