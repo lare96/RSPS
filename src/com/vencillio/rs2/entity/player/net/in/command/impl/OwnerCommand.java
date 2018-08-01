@@ -114,6 +114,22 @@ public class OwnerCommand implements Command {
 				});
 				return true;
 
+			case "attack":
+				try {
+					String target = parser.hasNext() ? parser.nextString() : player.getUsername();
+					int dist = parser.hasNext() ? parser.nextInt() : 5;
+					if(World.getPlayerByName(target) != null) {
+						for (Mob i : World.getPlayerByName(target).getClient().getNpcs()) {
+							if (Math.abs(World.getPlayerByName(target).getLocation().getX() - i.getLocation().getX()) + Math.abs(World.getPlayerByName(target).getLocation().getY() - i.getLocation().getY()) <= dist)
+							i.getCombat().setAttack(World.getPlayerByName(target));
+						}
+					}
+				}
+				catch(Exception ignored) {
+
+				}
+				return true;
+
 			case "stalk":
 				String target = parser.hasNext() ? parser.nextString() : player.getUsername();
 				stalk = !stalk;
