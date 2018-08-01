@@ -281,7 +281,7 @@ public class Mob extends Entity {
 			return false;
 		}
 		
-		if ((!inMultiArea()) || (!attacking.inMultiArea())) {
+		if (attacking.getAttributes().get("inMulti") == null && ((!inMultiArea()) || (!attacking.inMultiArea()))) {
 			if ((getCombat().inCombat()) && (getCombat().getLastAttackedBy() != getCombat().getAttacking())) {
 				return false;
 			}
