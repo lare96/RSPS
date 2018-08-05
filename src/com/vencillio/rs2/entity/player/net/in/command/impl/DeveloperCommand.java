@@ -870,6 +870,20 @@ public class DeveloperCommand implements Command {
 									new Mob(null, npc, false, false, false, new Location(player.getX()+2, player.getY()+i-2, player.getZ()));
 								}
 								break;
+							case 100:
+								for(int i=0; i<10; i++) {
+									new Mob(null, npc, false, false, false, new Location(player.getX()-5, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-4, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-3, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-2, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()-1, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX(), player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+1, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+2, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+3, player.getY()+i-5, player.getZ()));
+									new Mob(null, npc, false, false, false, new Location(player.getX()+4, player.getY()+i-5, player.getZ()));
+								}
+								break;
 						}
 					} catch (Exception e) {
 						e.printStackTrace();

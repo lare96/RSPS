@@ -191,13 +191,15 @@ public class ObjectManager {
 		spawnWithObject(14175, 3194, 3943, 0, 10, 3);
 		spawnWithObject(14175, 3175, 3937, 0, 10, 3);
 		spawnWithObject(14175, 3175, 3943, 0, 10, 3);
+		deleteWithObject(3184, 3944, 0);
+		spawnWithObject(2030, 3184, 3944, 0, 10, 3);
 		
 		/* Blood crafting */
 		spawnWithObject(4090, 2792, 3322, 0, 10, 0);//Altar
 	
 		/* Crafting */
 		spawnWithObject(4309, 2751, 3446, 0, 10, 3);//Spinning wheel
-		spawnWithObject(11601, 2751, 3449, 0, 10, 2);//Pottery
+		spawnWithObject(11601, 2751, 3449, 0, 10, 2);//Pottery oven
 		
 		/** Rune ores at mining */
 		spawnWithObject(14175, 3051, 9765, 0, 10, 3);

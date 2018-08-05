@@ -420,7 +420,7 @@ public class PlayerCommand implements Command {
 				int npcID = 1;
 				String input = parser.nextString();
 				while(parser.hasNext())
-					input += parser.nextString() + " ";
+					input += " " + parser.nextString();
 
 				switch(input) {
 					case "kbd":

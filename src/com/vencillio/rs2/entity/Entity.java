@@ -783,7 +783,8 @@ public abstract class Entity implements CombatInterface {
 		Entity e = this;
 		if(getPlayer() != null) { //If entity being poisoned is a player
 			if (SerpentineHelmet.hasHelmet(getPlayer())) { //And this entity has serp helm
-				return; //Don't get poisoned cause of serp helm effect so exit poison method
+				if(!getPlayer().isDeflect())
+					return; //Don't get poisoned cause of serp helm effect so exit poison method
 			}
 
 			if(getPlayer().isDeflect())

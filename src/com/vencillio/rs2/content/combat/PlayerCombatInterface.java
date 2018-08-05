@@ -273,6 +273,13 @@ public class PlayerCombatInterface implements CombatInterface {
 
 		if(player.isDeflect()) {
 			hit.getAttacker().hit(new Hit(player, hit.getDamage(), Hit.HitTypes.NONE));
+			if(!hit.getAttacker().isPoisoned()) {
+				if (hit.getAttacker().isNpc()) {
+					hit.getAttacker().poison(25);
+				} else {
+					hit.getAttacker().poison(15);
+				}
+			}
 			return;
 		}
 
