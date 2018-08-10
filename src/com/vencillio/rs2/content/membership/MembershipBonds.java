@@ -94,12 +94,16 @@ public class MembershipBonds {
 			player.send(new SendMessage("Please clear up some inventory spaces before doing this!"));
 			return false;
 		}
-		
-		player.setMember(true);
+
+
 		player.getInventory().remove(data.getItem(), 1);
 		player.setCredits(player.getCredits() + data.getCredits());
 		player.setMoneySpent(player.getMoneySpent() + data.getSpent());
 		player.send(new SendMessage("@dre@Thank you for your purchase!"));
+
+		if(player.getMoneySpent() > 5 && !player.isMember())
+			player.setMember(true);
+
 		RankHandler.upgrade(player);		
 		if (data.getComplimentary() != 0) {
 			player.setCredits(player.getCredits() + data.getComplimentary());

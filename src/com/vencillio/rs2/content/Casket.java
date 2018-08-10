@@ -298,7 +298,8 @@ public class Casket {
 				break;
 			case SLAYER_CASKET:
 				int randPoints = Utility.random(675) + 75;
-				player.getSlayer().addSlayerExperience(randPoints);
+				player.getSlayer().addSlayerExperience(randPoints*100);
+				player.addSlayerPoints(randPoints);
 				player.getInventory().remove(casket);
 				player.send(new SendMessage("You have opened the and were rewarded with " + randPoints + " slayer points."));
 				break;

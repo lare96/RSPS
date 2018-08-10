@@ -85,7 +85,8 @@ public class Skill {
 			return;
 		}
 
-		//325k hits for 13m xp (ultimate) | 81,250 hit for easy
+		//325k hits for 13m xp (ultimate) | 54,300 hit for easy
+		//easy = 60x RS medium = 50x hard = 30x ultimate = 10x
 		//Kept hp ratio same for all modes (3:1)
 		int[] modes = {6,5,3,1};
 		double[] modes2 = {1,4/3,2,4};
