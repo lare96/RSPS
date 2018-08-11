@@ -27,7 +27,7 @@ public class SendSkill extends OutgoingPacket {
 		out.writeInt(exp, StreamBuffer.ByteOrder.MIDDLE);
 		out.writeByte(level);
 		//System.out.println("Level out: " + level + " id: " +id);
-		if(id==22) {
+		if(id==21) {
 			//System.out.println("Level in: " + level + " id: " +id);
 			client.getPlayer().send(new SendString(Integer.toString(level), 24134));
 			client.getPlayer().send(new SendString(Integer.toString(level), 24135));

@@ -411,7 +411,8 @@ public class ControlPanel extends JFrame {
 								.append("<br/>Inventory contains: <br/>");
 						for (Item item : player.getInventory().getItems()) {
 							if (item != null) {
-								sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append(" ea.<br/>");
+								sb.append(item.getAmount()).append(" x ").append(item.getName()).append(" [").
+										append(item.getId()).append("]").append(" Item Value: ").append(item.getDefinition().getGeneralPrice()).append(" ea.<br/>");
 							}
 						}
 						sb.append("</html>");
