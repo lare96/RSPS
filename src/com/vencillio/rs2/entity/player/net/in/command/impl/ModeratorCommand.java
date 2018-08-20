@@ -29,6 +29,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.*;
  */
 public class ModeratorCommand implements Command {
 
+	boolean stop = false;
 	@Override
 	public boolean handleCommand(Player player, CommandParser parser) throws Exception {
 		switch (parser.getCommand()) {
@@ -118,23 +119,45 @@ public class ModeratorCommand implements Command {
 				return true;
 
 			case "checkinv":
-				if (!parser.hasNext())
-					return false;
 				String name = "";
-				while (parser.hasNext()) {
-					name += parser.nextString() + " ";
+				if (!parser.hasNext()) {
+					name = player.getUsername();
+				}
+				else {
+					while (parser.hasNext()) {
+						name += parser.nextString() + " ";
+					}
 				}
 				try {
+					stop = !stop;
 					Player target = World.getPlayerByName(name.trim());
 					int player2freeslots = target.getInventory().getFreeSlots();
 					int player2usedslots = 28 - player2freeslots;
+					if(target != player)
 					player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
-					player.send(new SendMessage("Inventory contains: "));
+					Player finalTarget = target;
+					TaskQueue.queue(new Task(10) {
+						@Override
+						public void execute() {
+							if(!stop) {
+								stop();
+								return;
+							}
+							player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
+							player.send(new SendInventory(finalTarget.getInventory().getItems()));
+							player.send(new SendInventoryInterface(5292, 5063));
+						}
+
+						@Override
+						public void onStop() {
+						}
+					});
+					/*player.send(new SendMessage("Inventory contains: "));
 					for (Item item : target.getInventory().getItems()) {
 						if (item != null) {
 							player.send(new SendMessage("<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()));
 						}
-					}
+					}*/
 				}
 				catch (Exception ignored) {}
 				return true;
@@ -164,15 +187,16 @@ public class ModeratorCommand implements Command {
 
 						@Override
 						public void execute() {
-							if(!player.getInterfaceManager().hasBankOpen()) {
-								stop();
-								return;
-							}
 								player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
 								player.send(new SendUpdateItems(5382, finalTarget.getBank().getItems(), finalTarget.getBank().getTabAmounts()));
 								player.send(new SendInventory(finalTarget.getInventory().getItems()));
 								player.send(new SendString("" + finalTarget.getBank().getTakenSlots(), 22033));
 								player.send(new SendInventoryInterface(5292, 5063));
+
+							if(!player.getInterfaceManager().hasBankOpen()) {
+								stop();
+								return;
+							}
 						}
 
 						@Override

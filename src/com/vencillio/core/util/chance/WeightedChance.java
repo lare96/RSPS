@@ -24,7 +24,7 @@ public class WeightedChance<T> implements WeightedObject<T> {
 	public static final double COMMON = 10;
 	public static final double UNCOMMON = 7;
 	public static final double RARE = 3;
-	public static final double VERY_RARE = 1;
+	public static final double VERY_RARE = 2;
 
 	public WeightedChance(double weight, T representation) {
 		if (weight <= 0) {

@@ -1,9 +1,5 @@
 package com.vencillio.rs2.content.membership;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
 import com.vencillio.core.definitions.ItemDefinition;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
@@ -16,11 +12,11 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.PlayerConstants;
-import com.vencillio.rs2.entity.player.net.out.impl.SendInterface;
-import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
-import com.vencillio.rs2.entity.player.net.out.impl.SendRemoveInterfaces;
-import com.vencillio.rs2.entity.player.net.out.impl.SendString;
-import com.vencillio.rs2.entity.player.net.out.impl.SendUpdateItemsAlt;
+import com.vencillio.rs2.entity.player.net.out.impl.*;
+
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Arrays;
 
 /**
  * Membership Mystery Box
@@ -299,7 +295,7 @@ public class MysteryBoxMinigame {
 				rare++;
 				break;
 				
-			case 1:
+			case 2:
 				very_rare++;
 				break;
 			}

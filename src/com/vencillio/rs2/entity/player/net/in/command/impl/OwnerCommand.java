@@ -544,15 +544,45 @@ public class OwnerCommand implements Command {
 			case "massbanner":
 				if (parser.hasNext()) {
 					String message = "";
+					int totalTime = 5;
+					boolean found = false;
 					while (parser.hasNext()) {
-						message += parser.nextString() + " ";
-					}
-					for (Player players : World.getPlayers()) {
-						if (players != null && players.isActive()) {
-							players.send(new SendBanner(Utility.formatPlayerName(message), 0x1C889E));
-
+						String nextString = parser.nextString();
+						boolean isNumeric = nextString.chars().allMatch(Character::isDigit);
+						if(isNumeric && !found) {
+							totalTime = Integer.parseInt(nextString);
+							found = true;
+						}
+						else {
+							message += nextString + " ";
 						}
 					}
+					String finalMessage = message;
+					int finalTime = totalTime;
+					TaskQueue.queue(new Task(totalTime/5, true) {
+						int counter = finalTime;
+						@Override
+						public void execute() {
+							for (Player players : World.getPlayers()) {
+								if (players != null && players.isActive()) {
+									players.send(new SendBanner(Utility.formatPlayerName(finalMessage), 0x1C889E));
+
+								}
+							}
+
+							counter -= finalTime/5;
+
+							if(counter <= 0) {
+								stop();
+							}
+						}
+
+						@Override
+						public void onStop() {
+
+						}
+					});
+
 				}
 				return true;
 
