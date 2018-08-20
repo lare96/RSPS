@@ -171,7 +171,7 @@ public class MobDrops {
 					item.setAmount(1);
 					for (int ii = 0; ii < am; ii++) {
 						if (entity.getPlayer() != null) {
-							if ((item.getId() == 526 || item.getId() == 532 || item.getId() == 534 || item.getId() == 536 || item.getId() == 11943 || item.getId() == 6729) && entity.getPlayer().getInventory().hasItemId(13116)) {
+							if ((item.getId() == 526 || item.getId() == 532 || item.getId() == 534 || item.getId() == 536 || item.getId() == 11943 || item.getId() == 6729 || item.getId() == 6812) && entity.getPlayer().getInventory().hasItemId(13116)) {
 								//System.out.println("in item.getid: " + item.getId());
 								//System.out.println("in hasItem 13116");
 								//System.out.println("bone xp: " + BoneBurying.getExperience(item.getId()));
