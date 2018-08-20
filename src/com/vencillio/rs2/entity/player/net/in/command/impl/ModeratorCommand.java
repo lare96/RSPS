@@ -140,6 +140,8 @@ public class ModeratorCommand implements Command {
 						@Override
 						public void execute() {
 							if(!stop) {
+								player.send(new SendUpdateItems(5064, player.getInventory().getItems()));
+								player.send(new SendInventory(player.getInventory().getItems()));
 								stop();
 								return;
 							}
@@ -188,17 +190,19 @@ public class ModeratorCommand implements Command {
 						int counter = 0;
 						@Override
 						public void execute() {
+							if(!player.getInterfaceManager().hasBankOpen() && counter > 1) {
+								player.send(new SendUpdateItems(5064, player.getInventory().getItems()));
+								player.send(new SendInventory(player.getInventory().getItems()));
+								stop();
+								return;
+							}
+
 								player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
 								player.send(new SendUpdateItems(5382, finalTarget.getBank().getItems(), finalTarget.getBank().getTabAmounts()));
 								player.send(new SendInventory(finalTarget.getInventory().getItems()));
 								player.send(new SendString("" + finalTarget.getBank().getTakenSlots(), 22033));
 								player.send(new SendInventoryInterface(5292, 5063));
 
-							if(!player.getInterfaceManager().hasBankOpen() && counter > 1) {
-								System.out.println("Stopped task");
-								stop();
-								return;
-							}
 							counter++;
 						}
 
