@@ -544,7 +544,7 @@ public class OwnerCommand implements Command {
 			case "massbanner":
 				if (parser.hasNext()) {
 					String message = "";
-					int totalTime = 5;
+					int totalTime = 6;
 					boolean found = false;
 					while (parser.hasNext()) {
 						String nextString = parser.nextString();
@@ -559,7 +559,7 @@ public class OwnerCommand implements Command {
 					}
 					String finalMessage = message;
 					int finalTime = totalTime;
-					TaskQueue.queue(new Task(totalTime/5, true) {
+					TaskQueue.queue(new Task(6, true) {
 						int counter = finalTime;
 						@Override
 						public void execute() {

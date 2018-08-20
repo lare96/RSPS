@@ -134,7 +134,7 @@ public class ModeratorCommand implements Command {
 					int player2freeslots = target.getInventory().getFreeSlots();
 					int player2usedslots = 28 - player2freeslots;
 					if(target != player)
-					player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
+					player.send(new SendMessage("<col=DF7401>" + target.getUsername() + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
 					Player finalTarget = target;
 					TaskQueue.queue(new Task(10) {
 						@Override
@@ -145,7 +145,7 @@ public class ModeratorCommand implements Command {
 							}
 							player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
 							player.send(new SendInventory(finalTarget.getInventory().getItems()));
-							player.send(new SendInventoryInterface(5292, 5063));
+							//player.send(new SendInventoryInterface(5292, 5063));
 						}
 
 						@Override
@@ -183,7 +183,7 @@ public class ModeratorCommand implements Command {
 
 					player.send(new SendMessage("@blu@" + target.getUsername() + " has " + Utility.format(target.getMoneyPouch()) + " in their pouch."));
 					Player finalTarget = target;
-					TaskQueue.queue(new Task(8) {
+					TaskQueue.queue(new Task(8, true) {
 
 						@Override
 						public void execute() {
