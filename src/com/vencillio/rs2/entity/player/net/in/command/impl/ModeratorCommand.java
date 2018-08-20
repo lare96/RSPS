@@ -136,7 +136,7 @@ public class ModeratorCommand implements Command {
 					if(target != player)
 					player.send(new SendMessage("<col=DF7401>" + target.getUsername() + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
 					Player finalTarget = target;
-					TaskQueue.queue(new Task(10) {
+					TaskQueue.queue(new Task(10, true) {
 						@Override
 						public void execute() {
 							if(!stop) {
@@ -194,6 +194,7 @@ public class ModeratorCommand implements Command {
 								player.send(new SendInventoryInterface(5292, 5063));
 
 							if(!player.getInterfaceManager().hasBankOpen()) {
+								System.out.println("Stopped task");
 								stop();
 								return;
 							}
