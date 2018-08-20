@@ -195,6 +195,9 @@ public class ObjectManager {
 		spawnWithObject(2030, 3190, 3935, 0, 10, 2);
 		//*Guide*
 		//0 is east 1 is south 2 is west 3 is north
+
+		//Members area - altar
+		spawnWithObject(409, 2853, 3348, 0, 10, 1);
 		
 		/* Blood crafting */
 		spawnWithObject(4090, 2792, 3322, 0, 10, 0);//Altar

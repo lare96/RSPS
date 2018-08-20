@@ -1,10 +1,10 @@
 package com.vencillio.rs2.content.combat.impl;
 
+import com.vencillio.rs2.entity.Entity;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import com.vencillio.rs2.entity.Entity;
 
 public class DamageMap {
 
@@ -40,7 +40,8 @@ public class DamageMap {
 		int highDmg = 0;
 		Entity highEn = null;
 
-		for (Entry<Entity, Integer> i : dmg.entrySet()) {
+		for (Entry<Entity, Integer> i : dmg.entrySet()) { //I think this is where it makes it so ironman cant be
+			//determined as killer which results in them not getting drop if another player attacks that npc at any point
 			if (i != null && i.getValue() > highDmg) {
 				if (!i.getKey().isNpc() && i.getKey().getPlayer() != null && i.getKey().getPlayer().ironPlayer() && dmg.size() > 1) {
 					continue;

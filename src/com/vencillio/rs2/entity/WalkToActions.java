@@ -709,10 +709,10 @@ public class WalkToActions {
 					if (petDrop != null) {
 						if (player.getBossPet() == null) {
 							BossPets.spawnPet(player, petDrop.getItem(), true);
-							player.send(new SendMessage("You feel a pressence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
+							player.send(new SendMessage("You feel a presence following you; " + Utility.formatPlayerName(GameDefinitionLoader.getNpcDefinition(petDrop.getNPC()).getName()) + " starts to follow you."));
 						} else {
 							player.getBank().depositFromNoting(petDrop.getItem(), 1, 0, false);
-							player.send(new SendMessage("You feel a pressence added to your bank."));
+							player.send(new SendMessage("You feel a presence added to your bank."));
 						}
 					} else {
 						GroundItemHandler.add(new Item(13178, 1), player.getLocation(), player, player.ironPlayer() ? player : null);

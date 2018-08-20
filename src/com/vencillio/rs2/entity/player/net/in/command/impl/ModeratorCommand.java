@@ -1,5 +1,7 @@
 package com.vencillio.rs2.entity.player.net.in.command.impl;
 
+import com.vencillio.core.task.Task;
+import com.vencillio.core.task.TaskQueue;
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.core.util.Utility;
 import com.vencillio.rs2.content.Yelling;
@@ -122,16 +124,19 @@ public class ModeratorCommand implements Command {
 				while (parser.hasNext()) {
 					name += parser.nextString() + " ";
 				}
-				Player target = World.getPlayerByName(name.trim());
-				int player2freeslots = target.getInventory().getFreeSlots();
-				int player2usedslots = 28 - player2freeslots;
-				player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
-				player.send(new SendMessage("Inventory contains: "));
-				for (Item item : target.getInventory().getItems()) {
-					if (item != null) {
-						player.send(new SendMessage("<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()));
+				try {
+					Player target = World.getPlayerByName(name.trim());
+					int player2freeslots = target.getInventory().getFreeSlots();
+					int player2usedslots = 28 - player2freeslots;
+					player.send(new SendMessage("<col=DF7401>" + target + "</col> has used <col=DF7401>" + player2usedslots + " </col>slots; Free: <col=DF7401>" + player2freeslots + "</col> inventory slots."));
+					player.send(new SendMessage("Inventory contains: "));
+					for (Item item : target.getInventory().getItems()) {
+						if (item != null) {
+							player.send(new SendMessage("<col=088a08>" + item.getAmount() + "</col><col=BDBDBD> x </col><col=088a08>" + item.getName() + " Item Value: " + item.getDefinition().getGeneralPrice()));
+						}
 					}
 				}
+				catch (Exception ignored) {}
 				return true;
 
 			case "checkbank":
@@ -142,7 +147,7 @@ public class ModeratorCommand implements Command {
 						name += parser.nextString()+ " ";
 					}
 
-					target = World.getPlayerByName(name.trim());
+					Player target = World.getPlayerByName(name.trim());
 
 					if (target == null) {
 						target = new Player();
@@ -154,11 +159,28 @@ public class ModeratorCommand implements Command {
 					}
 
 					player.send(new SendMessage("@blu@" + target.getUsername() + " has " + Utility.format(target.getMoneyPouch()) + " in their pouch."));
-					player.send(new SendUpdateItems(5064, target.getInventory().getItems()));
-					player.send(new SendUpdateItems(5382, target.getBank().getItems(), target.getBank().getTabAmounts()));
-					player.send(new SendInventory(target.getInventory().getItems()));
-					player.send(new SendString("" + target.getBank().getTakenSlots(), 22033));
-					player.send(new SendInventoryInterface(5292, 5063));
+					Player finalTarget = target;
+					TaskQueue.queue(new Task(8) {
+
+						@Override
+						public void execute() {
+							if(!player.getInterfaceManager().hasBankOpen()) {
+								stop();
+								return;
+							}
+								player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
+								player.send(new SendUpdateItems(5382, finalTarget.getBank().getItems(), finalTarget.getBank().getTabAmounts()));
+								player.send(new SendInventory(finalTarget.getInventory().getItems()));
+								player.send(new SendString("" + finalTarget.getBank().getTakenSlots(), 22033));
+								player.send(new SendInventoryInterface(5292, 5063));
+						}
+
+						@Override
+						public void onStop() {
+
+						}
+					});
+
 				}
 				return true;
 
@@ -185,7 +207,7 @@ public class ModeratorCommand implements Command {
 						if (parser.hasNext()) {
 							hours = parser.nextInt();
 						}
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 						boolean save = false;
 						if (target == null) {
 							target = new Player();
@@ -241,7 +263,7 @@ public class ModeratorCommand implements Command {
 							hours = parser.nextInt();
 						}
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 						boolean save = false;
 						if (target == null) {
 							target = new Player();
@@ -293,7 +315,7 @@ public class ModeratorCommand implements Command {
 							hours = parser.nextInt();
 						}
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 						boolean save = false;
 						if (target == null) {
 							target = new Player();
@@ -342,7 +364,7 @@ public class ModeratorCommand implements Command {
 					try {
 						name = parser.nextString();
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 
 						boolean save = false;
 						if (target == null) {
@@ -380,7 +402,7 @@ public class ModeratorCommand implements Command {
 					try {
 						name = parser.nextString();
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 
 						boolean save = false;
 						if (target == null) {
@@ -419,7 +441,7 @@ public class ModeratorCommand implements Command {
 					try {
 						name = parser.nextString();
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 
 						boolean save = false;
 						if (target == null) {
@@ -463,7 +485,7 @@ public class ModeratorCommand implements Command {
 
 					name = name.trim();
 
-					target = World.getPlayerByName(name);
+					Player target = World.getPlayerByName(name);
 
 					if (target == null) {
 						player.send(new SendMessage("The player \'" + name + "\' could not be found."));
@@ -486,7 +508,7 @@ public class ModeratorCommand implements Command {
 
 					name = name.trim();
 
-					target = World.getPlayerByName(name);
+					Player target = World.getPlayerByName(name);
 
 					if (target == null) {
 						player.send(new SendMessage("The player \'" + name + "\' could not be found."));
@@ -511,7 +533,7 @@ public class ModeratorCommand implements Command {
 							name += " " + parser.nextString();
 						}
 
-						target = World.getPlayerByName(name);
+						Player target = World.getPlayerByName(name);
 						if (target == null) {
 							player.send(new SendMessage("Player not found."));
 						} else {
