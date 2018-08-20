@@ -185,6 +185,7 @@ public class ModeratorCommand implements Command {
 					Player finalTarget = target;
 					TaskQueue.queue(new Task(8, true) {
 
+						int counter = 0;
 						@Override
 						public void execute() {
 								player.send(new SendUpdateItems(5064, finalTarget.getInventory().getItems()));
@@ -193,11 +194,12 @@ public class ModeratorCommand implements Command {
 								player.send(new SendString("" + finalTarget.getBank().getTakenSlots(), 22033));
 								player.send(new SendInventoryInterface(5292, 5063));
 
-							if(!player.getInterfaceManager().hasBankOpen()) {
+							if(!player.getInterfaceManager().hasBankOpen() && counter > 1) {
 								System.out.println("Stopped task");
 								stop();
 								return;
 							}
+							counter++;
 						}
 
 						@Override
