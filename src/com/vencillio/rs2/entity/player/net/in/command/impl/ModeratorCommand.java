@@ -139,7 +139,7 @@ public class ModeratorCommand implements Command {
 					TaskQueue.queue(new Task(10, true) {
 						@Override
 						public void execute() {
-							if(!stop) {
+							if(!stop || !finalTarget.isActive()) {
 								player.send(new SendUpdateItems(5064, player.getInventory().getItems()));
 								player.send(new SendInventory(player.getInventory().getItems()));
 								stop();

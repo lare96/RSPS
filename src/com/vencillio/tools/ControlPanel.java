@@ -22,6 +22,7 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendSystemBan;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -29,6 +30,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static javax.swing.GroupLayout.DEFAULT_SIZE;
 
 //import com.ew.utils.ObjectExamines;//delete?
 //import com.ew.utils.PriceManager;//need?
@@ -426,10 +429,14 @@ public class ControlPanel extends JFrame {
 				});
 
 				JDialog inventoryInfo = new JDialog();
-				inventoryInfo.setLayout(new GridBagLayout());
-				inventoryInfo.add(invData);
+				//inventoryInfo.setLayout(new GridBagLayout());
 
-				invData.setPreferredSize(new Dimension(400,550));
+				Dimension prefSize = getPreferredSize(invData.getText(), true, 400);
+				GroupLayout layout = new GroupLayout(inventoryInfo);
+				inventoryInfo.setLayout(layout);
+				layout.setVerticalGroup(layout.createParallelGroup().addComponent(invData,DEFAULT_SIZE, prefSize.height, prefSize.height));
+				inventoryInfo.add(invData);
+				//invData.setPreferredSize(new Dimension(400,550));
 				//inventoryInfo.setPreferredSize(new Dimension(400, 150));
 				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
@@ -473,7 +480,6 @@ public class ControlPanel extends JFrame {
 				});
 			}
 		});
-
 
 		final JButton button = new JButton("Include offline");
 		button.addActionListener(new ActionListener() {
@@ -1337,6 +1343,21 @@ public class ControlPanel extends JFrame {
 		}
 	}
 
+	private static final JLabel resizer = new JLabel();
+
+	public static java.awt.Dimension getPreferredSize(String html, boolean width2, int prefSize) {
+
+		resizer.setText(html);
+
+		View view = (View) resizer.getClientProperty(javax.swing.plaf.basic.BasicHTML.propertyKey);
+
+		view.setSize(width2 ? prefSize : 0, width2 ? 0 : prefSize);
+
+		float w = view.getPreferredSpan(View.X_AXIS);
+		float h = view.getPreferredSpan(View.Y_AXIS);
+
+		return new java.awt.Dimension((int) Math.ceil(w), (int) Math.ceil(h));
+	}
 
 	public void logAction(String file, String log) {
 		loggingModel.addElement("[" + file + "]" + " " + log);

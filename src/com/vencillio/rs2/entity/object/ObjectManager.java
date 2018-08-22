@@ -176,10 +176,10 @@ public class ObjectManager {
 		spawnWithObject(13720, 2830, 3358, 0, 10, 1);//Adamant Ore
 		spawnWithObject(13720, 2831, 3357, 0, 10, 1);//Adamant Ore
 		spawnWithObject(13720, 2831, 3356, 0, 10, 1);//Adamant Ore		
-		spawnWithObject(13707, 2830, 3354, 0, 10, 1);//Gold Ore
-		spawnWithObject(13707, 2831, 3354, 0, 10, 1);//Gold Ore
-		spawnWithObject(13707, 2832, 3354, 0, 10, 1);//Gold Ore
-		spawnWithObject(13707, 2833, 3354, 0, 10, 1);//Gold Ore
+		spawnWithObject(13718, 2830, 3354, 0, 10, 1);//Mith Ore
+		spawnWithObject(13718, 2831, 3354, 0, 10, 1);//Mith Ore
+		spawnWithObject(13718, 2832, 3354, 0, 10, 1);//Mith Ore
+		spawnWithObject(13718, 2833, 3354, 0, 10, 1);//Mith Ore
 		spawnWithObject(13706, 2833, 3356, 0, 10, 1);//Coal
 		spawnWithObject(13706, 2834, 3356, 0, 10, 1);//Coal
 		spawnWithObject(13706, 2835, 3356, 0, 10, 1);//Coal
