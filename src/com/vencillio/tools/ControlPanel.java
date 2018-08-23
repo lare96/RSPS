@@ -31,8 +31,6 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static javax.swing.GroupLayout.DEFAULT_SIZE;
-
 //import com.ew.utils.ObjectExamines;//delete?
 //import com.ew.utils.PriceManager;//need?
 //import com.ew.utils.ProfanityFilter;//delete?
@@ -429,15 +427,15 @@ public class ControlPanel extends JFrame {
 				});
 
 				JDialog inventoryInfo = new JDialog();
-				//inventoryInfo.setLayout(new GridBagLayout());
+				inventoryInfo.setLayout(new GridBagLayout());
 
-				Dimension prefSize = getPreferredSize(invData.getText(), true, 400);
-				GroupLayout layout = new GroupLayout(inventoryInfo);
-				inventoryInfo.setLayout(layout);
-				layout.setVerticalGroup(layout.createParallelGroup().addComponent(invData,DEFAULT_SIZE, prefSize.height, prefSize.height));
+				//Dimension prefSize = getPreferredSize(invData.getText(), true, 400);
+				//GroupLayout layout = new GroupLayout(inventoryInfo);
+				//inventoryInfo.setLayout(layout);
+				//layout.setVerticalGroup(layout.createParallelGroup().addComponent(invData,DEFAULT_SIZE, prefSize.height, prefSize.height));
 				inventoryInfo.add(invData);
-				//invData.setPreferredSize(new Dimension(400,550));
-				//inventoryInfo.setPreferredSize(new Dimension(400, 150));
+				invData.setPreferredSize(new Dimension(400,550));
+				inventoryInfo.setPreferredSize(new Dimension(400, 150));
 				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
 
