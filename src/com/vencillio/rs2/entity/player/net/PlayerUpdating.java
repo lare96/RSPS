@@ -245,6 +245,8 @@ public final class PlayerUpdating {
 						}
 						player.getPlayers().add(World.getPlayers()[i]);
 						addPlayer(out, local, flags, i);
+						updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()) && !flags.getUsername().equalsIgnoreCase("Tanner"));
+						added++;
 					}
 
 					/*if(!flags.isVisible() && flags.isChatUpdateRequired()) { //Added
@@ -252,8 +254,7 @@ public final class PlayerUpdating {
 						addPlayer(out, local, flags, i);
 						appendChat(flags, block);
 					}*/
-					updateState(flags, block, true, player.getPrivateMessaging().ignored(flags.getUsername()) && !flags.getUsername().equalsIgnoreCase("Tanner"));
-					added++;
+
 				}
 			}
 		}

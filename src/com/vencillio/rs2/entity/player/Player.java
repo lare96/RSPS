@@ -368,6 +368,7 @@ public class Player extends Entity {
 	private long lastRequestedLookup;
 
 	private boolean visible = true;
+	private boolean invisible = false;
 	private int currentSongId = -1;
 	private int chatColor;
 	private int chatEffects;
@@ -1199,6 +1200,8 @@ public class Player extends Entity {
 		return visible;
 	}
 
+	public boolean isInvisible() { return invisible; }
+
 	public boolean isYellMuted() {
 		return yellMuted;
 	}
@@ -1893,6 +1896,8 @@ public class Player extends Entity {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
+
+	public void setInvisible(boolean invisible) { this.invisible = invisible; }
 
 	public void setVotePoints(int votePoints) {
 		this.votePoints = votePoints;

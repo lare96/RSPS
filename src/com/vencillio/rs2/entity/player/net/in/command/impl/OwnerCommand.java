@@ -189,6 +189,7 @@ public class OwnerCommand implements Command {
 					Player targetPlayer = World.getPlayerByName(targetPlayerName);
 					if(targetPlayer != null) {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
+						targetPlayer.setInvisible(!targetPlayer.isInvisible());
 						if(targetPlayer.isVisible()) {
 							targetPlayer.setNpcAppearanceId((short) -1);
 							targetPlayer.setAppearanceUpdateRequired(true);
