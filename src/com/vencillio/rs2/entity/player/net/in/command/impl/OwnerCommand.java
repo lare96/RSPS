@@ -189,7 +189,9 @@ public class OwnerCommand implements Command {
 					Player targetPlayer = World.getPlayerByName(targetPlayerName);
 					if(targetPlayer != null) {
 						targetPlayer.setVisible(!targetPlayer.isVisible());
-						targetPlayer.setInvisible(!targetPlayer.isInvisible());
+						if(!targetPlayer.isInvisible()) {
+							targetPlayer.getUpdateFlags().sendForceMessage(" ");
+						}
 						if(targetPlayer.isVisible()) {
 							targetPlayer.setNpcAppearanceId((short) -1);
 							targetPlayer.setAppearanceUpdateRequired(true);
@@ -260,10 +262,7 @@ public class OwnerCommand implements Command {
 			case "bang":
 				for (int i = 0; i < 4; i++) {
 					player.hit(new Hit(10, HitTypes.MONEY));
-				}
-				return true;
-
-			/**
+				}/**
 			 * Gamble data
 			 */
 			case "gambledata":
@@ -298,8 +297,8 @@ public class OwnerCommand implements Command {
 				player.send(new SendMessage("Mass Boo activated"));
 				return true;
 
-			/**
-			 * Forces message to player
+			/**l,
+			 * Fo,rces message to player
 			 */
 			case "forcemsg":
 				msg="";
