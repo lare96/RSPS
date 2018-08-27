@@ -435,7 +435,7 @@ public class ControlPanel extends JFrame {
 				//layout.setVerticalGroup(layout.createParallelGroup().addComponent(invData,DEFAULT_SIZE, prefSize.height, prefSize.height));
 				inventoryInfo.add(invData);
 				invData.setPreferredSize(new Dimension(400,550));
-				inventoryInfo.setPreferredSize(new Dimension(400, 150));
+				//inventoryInfo.setPreferredSize(new Dimension(400, 150));
 				inventoryInfo.pack();
 				inventoryInfo.setVisible(true);
 

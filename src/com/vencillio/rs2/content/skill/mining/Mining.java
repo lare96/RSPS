@@ -1,12 +1,5 @@
 package com.vencillio.rs2.content.skill.mining;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-
 import com.vencillio.core.cache.map.RSObject;
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.Task.BreakType;
@@ -25,6 +18,8 @@ import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.object.ObjectManager;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.*;
 
 public class Mining {
 	
@@ -61,8 +56,9 @@ public class Mining {
 		private Pickaxe(int item, int level, int weight, Animation animation) {
 			this.item = item;
 			this.level = level;
-			this.animation = animation;
 			this.weight = weight;
+			this.animation = animation;
+
 		}
 
 		public int getItem() {
@@ -138,7 +134,7 @@ public class Mining {
 		ADAMANT_ORE("Adamant ore", new int[] { 13720, 14168 }, 70, 95, new int[] { 449 }, 10081, 15, 16),
 		RUNITE_ORE("Runite ore", new int[] { 14175 }, 85, 125, new int[] { 451 }, 10081, 15, 18),
 		ESSENCE("Essence", new int[] { 14912, 2491 }, 30, 10, new int[] { 1436 }, -1, -1, -1),
-		GEM_ROCK("Gem Rock", new int[] { 14856, 14855, 14854 }, 40, 65, new int[] { 1625, 1627, 1629, 1623, 1621, 1619, 1617 }, 10081, 135, 140);
+		GEM_ROCK("Gem Rock", new int[] { 14856, 14855, 14854 }, 40, 65, new int[] { 1625, 1627, 1629, 1623, 1621, 1619, 1617 }, 10081, 13, 55);
 		
 		private final String name;
 		private int[] objects;
@@ -246,14 +242,14 @@ public class Mining {
 		player.send(new SendMessage("You swing your pick at the rock."));
 
 		int ticks = ore.immunity == -1 ? 2 : ore.getImmunity() - (int) ( (player.getLevels()[Skills.MINING] - ore.getLevel()) * 2 / (double) pickaxe.getWeight());
-		int gemTick = ore.getImmunity();
+		//int gemTick = ore.getImmunity();
 		
 		
 		if (ticks < 1) {
 			ticks = 1;
 		}
 		
-		int time = ore.getName().equalsIgnoreCase("gem rock") ? gemTick : ticks;
+		int time = ticks;
 		
 		TaskQueue.queue(new Task(player, 1, false, StackType.NEVER_STACK, BreakType.ON_MOVE, TaskIdentifier.CURRENT_ACTION) {
 			int ticks = 0;
@@ -298,6 +294,7 @@ public class Mining {
 						AchievementHandler.activateAchievement(player, AchievementList.MINE_1000_ROCKS, 1);
 					}	
 					if (ore.getReplacement() > 0) {
+						System.out.println("Replacement ore id: " + ore.getReplacement());
 						ObjectManager.spawnWithObject(ore.getReplacement(), object.getX(), object.getY(), object.getZ(), object.getType(), object.getFace());
 						DEAD_ORES.add(new Location(object.getX(), object.getY(), object.getZ()));
 						
@@ -310,6 +307,7 @@ public class Mining {
 							@Override
 							public void onStop() {
 								DEAD_ORES.remove(new Location(object.getX(), object.getY(), object.getZ()));
+								System.out.println("Replacement object id: " + object.getId());
 								ObjectManager.spawnWithObject(object.getId(), object.getX(), object.getY(), object.getZ(), object.getType(), object.getFace());
 							}
 						});

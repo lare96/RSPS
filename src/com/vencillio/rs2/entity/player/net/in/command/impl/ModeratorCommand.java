@@ -142,7 +142,7 @@ public class ModeratorCommand implements Command {
 							if(!stop || !finalTarget.isActive()) {
 								player.send(new SendUpdateItems(5064, player.getInventory().getItems()));
 								player.send(new SendInventory(player.getInventory().getItems()));
-								stop = !stop;
+								stop = false;
 								stop();
 								return;
 							}

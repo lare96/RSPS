@@ -184,6 +184,10 @@ public class ObjectManager {
 		spawnWithObject(13706, 2834, 3356, 0, 10, 1);//Coal
 		spawnWithObject(13706, 2835, 3356, 0, 10, 1);//Coal
 		spawnWithObject(13706, 2835, 3354, 0, 10, 1);//Coal
+		spawnWithObject(14854, 2839, 3354, 0, 10, 1);//gem rock
+		spawnWithObject(14854, 2838, 3354, 0, 10, 1);//gem rock
+		spawnWithObject(14854, 2837, 3354, 0, 10, 1);//gem rock
+		spawnWithObject(14854, 2837, 3353, 0, 10, 1);//gem rock
 		
 		
 		/* Wilderness Resource Arena */
@@ -193,6 +197,9 @@ public class ObjectManager {
 		spawnWithObject(14175, 3175, 3943, 0, 10, 3);
 		deleteWithObject(3191, 3936, 0);
 		spawnWithObject(2030, 3190, 3935, 0, 10, 2);
+		spawnWithObject(14854, 3179, 3939, 0, 10, 1);//gem rock
+		spawnWithObject(14854, 3179, 3940, 0, 10, 1);//gem rock
+		spawnWithObject(14854, 3179, 3941, 0, 10, 1);//gem rock
 		//*Guide*
 		//0 is east 1 is south 2 is west 3 is north
 
