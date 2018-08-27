@@ -254,6 +254,13 @@ public final class Consumables {
 				player.curePoison(100);
 				return true;
 
+			case 9739:
+			case 9741:
+			case 9743:
+			case 9745:
+				this.CombatEffect(player);
+				return true;
+
 			case 12695:
 			case 12697:
 			case 12699:
@@ -271,6 +278,26 @@ public final class Consumables {
 
 		}
 		return false;
+	}
+
+	/**
+	 * ombat potion effect
+	 * @param player2
+	 */
+	private void CombatEffect(Player player2) {
+		int amount = 0;
+		for (int i = 0; i < 3; i++) {
+			if (player.getMaxLevels()[i] + 3 + (int) (player.getMaxLevels()[i] * 0.1) > player.getLevels()[i]) {
+				if (player.getMaxLevels()[i] + 3 + (int) (player.getMaxLevels()[i] * 0.1) < player.getLevels()[i] + 3 + (int) (player.getLevels()[i] * 0.1)) {
+					amount = player.getMaxLevels()[i] + 3 + (int) (player.getMaxLevels()[i] * 0.1);
+				} else {
+					amount = player.getLevels()[i] + 3 + (int) (player.getLevels()[i] * 0.1);
+				}
+				if(i == 0 || i == 2) {
+					player.getSkill().setLevel(i, amount);
+				}
+			}
+		}
 	}
 
 	/**

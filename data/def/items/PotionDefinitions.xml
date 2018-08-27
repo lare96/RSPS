@@ -1,5 +1,31 @@
 <list>
 
+	<!-- combat potion -->
+	<PotionDefinition>
+		<id>9739</id>
+		<name>Super combat potion (4)</name>
+		<replaceId>9741</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>9741</id>
+		<name>Super combat potion (3)</name>
+		<replaceId>9743</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>9743</id>
+		<name>Super combat potion (2)</name>
+		<replaceId>9745</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+	<PotionDefinition>
+		<id>9745</id>
+		<name>Super combat potion (1)</name>
+		<replaceId>229</replaceId>
+		<potionType>NORMAL</potionType>
+	</PotionDefinition>
+
 	<!-- Super combat potion -->
 	<PotionDefinition>
 		<id>12695</id>
