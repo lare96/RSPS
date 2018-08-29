@@ -702,7 +702,13 @@ public class OwnerCommand implements Command {
 			 */
 			case "droptable":
 			case "table":
-				DropTable.open(player);
+				if(parser.hasNext()) {
+					String target2 = parser.nextString();
+					DropTable.open(World.getPlayerByName(target2));
+				}
+				else {
+					DropTable.open(player);
+				}
 				return true;
 
 			/**

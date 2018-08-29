@@ -45,7 +45,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * A list of commands accessible to all players disregarding rank.
- * 
+ *
  * @author Michael | Chex
  */
 public class PlayerCommand implements Command {
@@ -102,7 +102,7 @@ public class PlayerCommand implements Command {
 				return true;*/
 
 			case "jail":
-				if(player.getRights() == 9) {
+				if (player.getRights() == 9) {
 					if (parser.hasNext()) {
 						try {
 							String name = parser.nextString();
@@ -158,7 +158,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "unjail":
-				if(player.getRights() == 9) {
+				if (player.getRights() == 9) {
 					if (parser.hasNext()) {
 						try {
 							String name = parser.nextString();
@@ -195,7 +195,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "mute":
-				if(player.getRights() == 9) {
+				if (player.getRights() == 9) {
 					if (parser.hasNext()) {
 						try {
 							String name = parser.nextString();
@@ -251,7 +251,7 @@ public class PlayerCommand implements Command {
 			 * Unmute a player
 			 */
 			case "unmute":
-				if(player.getRights() == 9) {
+				if (player.getRights() == 9) {
 					if (parser.hasNext()) {
 						try {
 							String name = parser.nextString();
@@ -305,10 +305,10 @@ public class PlayerCommand implements Command {
 							player.send(new SendMessage(reward[0].message));
 							return;
 						}
-						if(reward[0].reward_id == 995)
-							theAmount[0] = reward[0].give_amount/1000000;
-						else if(reward[0].reward_id == 989)
-							theAmount[0] = reward[0].give_amount/3;
+						if (reward[0].reward_id == 995)
+							theAmount[0] = reward[0].give_amount / 1000000;
+						else if (reward[0].reward_id == 989)
+							theAmount[0] = reward[0].give_amount / 3;
 						player.getInventory().add(new Item(reward[0].reward_id, reward[0].give_amount));
 						player.setVotePoints(player.getVotePoints() + theAmount[0]);
 						VencillioConstants.LAST_VOTER = player.getUsername();
@@ -337,13 +337,13 @@ public class PlayerCommand implements Command {
 							player.send(new SendMessage(donations[0].message));
 							return;
 						}
-						if(player.getInventory().getFreeSlots() == 0) {
+						if (player.getInventory().getFreeSlots() == 0) {
 							player.send(new SendMessage("Your inventory was full so the item has been sent to your bank."));
 
 							for (Donation donate : donations) {
 								//player.getInventory().add(new Item(donate.product_id, donate.product_amount));
-								if(donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
-									switch(donate.product_id) {
+								if (donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
+									switch (donate.product_id) {
 										case 2726:
 											player.setMoneySpent(player.getMoneySpent() + 10);
 											break;
@@ -361,11 +361,10 @@ public class PlayerCommand implements Command {
 								}
 								player.getBank().add(new Item(donate.product_id, donate.product_amount));
 							}
-						}
-						else {
+						} else {
 							for (Donation donate : donations) {
-								if(donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
-									switch(donate.product_id) {
+								if (donate.product_id == 2726 || donate.product_id == 2728 || donate.product_id == 2730 || donate.product_id == 2732) {
+									switch (donate.product_id) {
 										case 2726:
 											player.setMoneySpent(player.getMoneySpent() + 10);
 											break;
@@ -394,7 +393,7 @@ public class PlayerCommand implements Command {
 
 			case "ib":
 			case "itemdef":
-				if(parser.hasNext()) {
+				if (parser.hasNext()) {
 					String input = parser.nextString();
 					while (parser.hasNext()) {
 						input += " " + parser.nextString();
@@ -419,10 +418,10 @@ public class PlayerCommand implements Command {
 				NpcDefinition m;
 				int npcID = 1;
 				String input = parser.nextString();
-				while(parser.hasNext())
+				while (parser.hasNext())
 					input += " " + parser.nextString();
 
-				switch(input) {
+				switch (input) {
 					case "kbd":
 						npcID = 239;
 						break;
@@ -511,7 +510,7 @@ public class PlayerCommand implements Command {
 						player.send(new SendMessage("The input you entered is not available for this"));
 						break;
 				}
-				if(npcID != 1) {
+				if (npcID != 1) {
 					m = Mob.getDefinition(npcID);
 					player.send(new SendMessage("Your kill count for " + input + " is: " + player.getProperties().getPropertyValue("MOB_" + m.getName())));
 				}
@@ -519,10 +518,9 @@ public class PlayerCommand implements Command {
 
 			case "wealth":
 				Player tmp;
-				if(PlayerConstants.isOwner(player) && parser.hasNext()) {
+				if (PlayerConstants.isOwner(player) && parser.hasNext()) {
 					tmp = World.getPlayerByName(parser.nextString());
-				}
-				else {
+				} else {
 					tmp = player;
 				}
 				double total = 0;
@@ -555,13 +553,11 @@ public class PlayerCommand implements Command {
 				numberFormat.setRoundingMode(RoundingMode.DOWN);
 				String str;
 				if (total > 1000000000000000000L) {
-					str = numberFormat.format( total / 1000000000000000000L) + "Q";
-				}
-				else if (total > 1000000000000000L) {
-					str = numberFormat.format( total / 1000000000000000L) + "q";
-				}
-				else if (total >= 1000000000000L) {
-					str = numberFormat.format( total / 1000000000000L) + "T";
+					str = numberFormat.format(total / 1000000000000000000L) + "Q";
+				} else if (total > 1000000000000000L) {
+					str = numberFormat.format(total / 1000000000000000L) + "q";
+				} else if (total >= 1000000000000L) {
+					str = numberFormat.format(total / 1000000000000L) + "T";
 				} else if (total >= 1000000000L) {
 					str = numberFormat.format(total / 1000000000) + "B";
 				} else if (total >= 1000000L) {
@@ -586,7 +582,7 @@ public class PlayerCommand implements Command {
 					if (TimeUnit.MINUTES.toDays(person.getPlayPoints()) > 0) {
 						days = String.valueOf(TimeUnit.MINUTES.toDays(person.getPlayPoints()));
 						totalTime -= Integer.parseInt(days) * 60 * 24;
-						if(Integer.parseInt(days) > 1)
+						if (Integer.parseInt(days) > 1)
 							days += " Days ";
 						else
 							days += " Day ";
@@ -594,7 +590,7 @@ public class PlayerCommand implements Command {
 					if (TimeUnit.MINUTES.toHours(totalTime) > 0) {
 						hours = String.valueOf(TimeUnit.MINUTES.toHours(totalTime));
 						totalTime -= Integer.parseInt(hours) * 60;
-						if(Integer.parseInt(hours) > 1)
+						if (Integer.parseInt(hours) > 1)
 							hours += " Hours ";
 						else
 							hours += " Hour ";
@@ -609,7 +605,7 @@ public class PlayerCommand implements Command {
 			case "setmode":
 				if (parser.hasNext()) {
 					String choice = parser.nextString().trim();
-					if(Integer.parseInt(choice) >=0 && Integer.parseInt(choice) <4)
+					if (Integer.parseInt(choice) >= 0 && Integer.parseInt(choice) < 4)
 						player.mode = Integer.parseInt(choice);
 				}
 				return true;
@@ -627,19 +623,17 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "insure":
-				if(player.getInventory().hasItemAmount(995, 25_000_000)) {
+				if (player.getInventory().hasItemAmount(995, 25_000_000)) {
 					player.getInventory().remove(995, 25_000_000);
 					player.insure = true;
 					PlayerSave.save(player);
 					player.send(new SendMessage("Your pet has been successfully insured"));
-				}
-				else if(player.getMoneyPouch() > 25_000_000) {
+				} else if (player.getMoneyPouch() > 25_000_000) {
 					player.setMoneyPouch(player.getMoneyPouch() - 25_000_000);
 					player.insure = true;
 					PlayerSave.save(player);
 					player.send(new SendMessage("Your pet has been successfully insured"));
-				}
-				else {
+				} else {
 					player.send(new SendMessage("You don't have enough money to insure your pet"));
 				}
 				return true;
@@ -647,249 +641,254 @@ public class PlayerCommand implements Command {
 		/*
 		 * Opens the teleporting interface
 		 */
-		case "teleport":
-		case "teleports":
-		case "teleporting":
-		case "teleportings":
-			InterfaceHandler.writeText(new TrainingInterface(player));
-			player.send(new SendInterface(61000));
-			player.send(new SendString("Selected: @red@None", 61031));
-			player.send(new SendString("Cost: @red@Free", 61032));
-			player.send(new SendString("Requirement: @red@None", 61033));
-			player.send(new SendString("Other: @red@None", 61034));
-			return true;
+			case "teleport":
+			case "teleports":
+			case "teleporting":
+			case "teleportings":
+				InterfaceHandler.writeText(new TrainingInterface(player));
+				player.send(new SendInterface(61000));
+				player.send(new SendString("Selected: @red@None", 61031));
+				player.send(new SendString("Cost: @red@Free", 61032));
+				player.send(new SendString("Requirement: @red@None", 61033));
+				player.send(new SendString("Other: @red@None", 61034));
+				return true;
 
 		/*
 		 * Answers TriviaBot
 		 */
-		case "answer":
-			if (parser.hasNext()) {
-				String answer = "";
-				while (parser.hasNext()) {
-					answer += parser.nextString() + " ";
+			case "answer":
+				if (parser.hasNext()) {
+					String answer = "";
+					while (parser.hasNext()) {
+						answer += parser.nextString() + " ";
+					}
+					VencillioBot.answer(player, answer.trim());
 				}
-				VencillioBot.answer(player, answer.trim());
-			}
-			return true;
-			
-		case "triviasetting":
-		case "triviasettings":
-			
-			player.start(new OptionDialogue("Turn on TriviaBot", p -> {
-				p.setWantTrivia(true);
-				p.send(new SendMessage("<col=482CB8>You have turned on the TriviaBot."));
-				player.send(new SendRemoveInterfaces());
-			}, "Turn off TriviaBot", p -> {
-				p.setWantTrivia(false);
-				p.send(new SendMessage("<col=482CB8>You have turned off the TriviaBot."));
-				player.send(new SendRemoveInterfaces());
-			}, "Turn on TriviaBot notification", p -> {
-				p.setTriviaNotification(true);
-				p.send(new SendMessage("<col=482CB8>You have turned on the TriviaBot notification."));
-				player.send(new SendRemoveInterfaces());
-			}, "Turn off TriviaBot notification", p -> {
-				p.setTriviaNotification(false);
-				p.send(new SendMessage("<col=482CB8>You have turned off the TriviaBot notification."));
-				player.send(new SendRemoveInterfaces());
-			}));		
-			return true;
+				return true;
+
+			case "triviasetting":
+			case "triviasettings":
+
+				player.start(new OptionDialogue("Turn on TriviaBot", p -> {
+					p.setWantTrivia(true);
+					p.send(new SendMessage("<col=482CB8>You have turned on the TriviaBot."));
+					player.send(new SendRemoveInterfaces());
+				}, "Turn off TriviaBot", p -> {
+					p.setWantTrivia(false);
+					p.send(new SendMessage("<col=482CB8>You have turned off the TriviaBot."));
+					player.send(new SendRemoveInterfaces());
+				}, "Turn on TriviaBot notification", p -> {
+					p.setTriviaNotification(true);
+					p.send(new SendMessage("<col=482CB8>You have turned on the TriviaBot notification."));
+					player.send(new SendRemoveInterfaces());
+				}, "Turn off TriviaBot notification", p -> {
+					p.setTriviaNotification(false);
+					p.send(new SendMessage("<col=482CB8>You have turned off the TriviaBot notification."));
+					player.send(new SendRemoveInterfaces());
+				}));
+				return true;
 
 		/*
 		 * Gets amount of online players
 		 */
-		case "players":
-			player.send(new SendMessage("There are currently @red@" + Utility.format(World.getActivePlayers()) + "</col> players online."));
-			PlayersOnline.showPlayers(player, p -> true);
-			return true;
+			case "players":
+				player.send(new SendMessage("There are currently @red@" + Utility.format(World.getActivePlayers()) + "</col> players online."));
+				PlayersOnline.showPlayers(player, p -> true);
+				return true;
 
 		/*
 		 * Opens donation page
 		 */
-		case "donate":
-		case "donation":
-		case "donating":
-		case "store":
-		case "credits":
-			player.send(new SendString("http://www.bit.ly/2FFVgKj", 12000));
-			player.send(new SendMessage("Loading donation page..."));
-			return true;
+			case "donate":
+			case "donation":
+			case "donating":
+			case "store":
+			case "credits":
+				player.send(new SendString("http://www.bit.ly/2FFVgKj", 12000));
+				player.send(new SendMessage("Loading donation page..."));
+				return true;
 
 		/*
 		 * Opens website page
 		 */
-		case "forum":
-		case "forums":
-		case "website":
-			player.send(new SendString("http://www.rennatscape.proboards.com/", 12000));
-			player.send(new SendMessage("Loading website page..."));
-			return true;
+			case "forum":
+			case "forums":
+			case "website":
+				player.send(new SendString("http://www.rennatscape.proboards.com/", 12000));
+				player.send(new SendMessage("Loading website page..."));
+				return true;
+
+			case "guides":
+			case "guide":
+				player.send(new SendString("http://www.rennatscape.proboards.com/board/12/guides", 12000));
+				player.send(new SendMessage("Loading website page..."));
+				return true;
 
 		/*
 		 * Opens voting page
 		 */
-		case "vote":
-		case "voting":
-			player.send(new SendString("http://www.rennatscape.proboards.com/page/voting", 12000));
-			player.send(new SendMessage("Loading voting page..."));
-			return true;
+			case "vote":
+			case "voting":
+				player.send(new SendString("http://www.rennatscape.proboards.com/page/voting", 12000));
+				player.send(new SendMessage("Loading voting page..."));
+				return true;
 
 		/*
 		 * Finds player to view profile
 		 */
-		case "find":
-			if (parser.hasNext()) {
-				String name = parser.nextString();
+			case "find":
+				if (parser.hasNext()) {
+					String name = parser.nextString();
 
-				while (parser.hasNext()) {
-					name += " " + parser.nextString();
+					while (parser.hasNext()) {
+						name += " " + parser.nextString();
+					}
+
+					name = name.trim();
+
+					PlayerProfiler.search(player, name);
 				}
-
-				name = name.trim();
-
-				PlayerProfiler.search(player, name);
-			}
-			return true;
+				return true;
 
 		/*
 		  Withdraw from pouch
 		 */
-		case "withdrawmp":
-			if (parser.hasNext()) {
-				try {
-					int amount = 1;
-					
-					if (parser.hasNext()) {
-						long temp = Long.parseLong(parser.nextString().toLowerCase().replaceAll("k", "000").replaceAll("m", "000000").replaceAll("b", "000000000"));
+			case "withdrawmp":
+				if (parser.hasNext()) {
+					try {
+						int amount = 1;
 
-						if (temp > Integer.MAX_VALUE) {
-							amount = Integer.MAX_VALUE;
-						} else {
-							amount = (int) temp;
+						if (parser.hasNext()) {
+							long temp = Long.parseLong(parser.nextString().toLowerCase().replaceAll("k", "000").replaceAll("m", "000000").replaceAll("b", "000000000"));
+
+							if (temp > Integer.MAX_VALUE) {
+								amount = Integer.MAX_VALUE;
+							} else {
+								amount = (int) temp;
+							}
 						}
+
+						player.getPouch().withdrawPouch(amount);
+
+					} catch (Exception e) {
+						player.send(new SendMessage("Something went wrong!"));
+						e.printStackTrace();
 					}
 
-					player.getPouch().withdrawPouch(amount);
-
-				} catch (Exception e) {
-					player.send(new SendMessage("Something went wrong!"));
-					e.printStackTrace();
 				}
-
-			}
-			return true;
+				return true;
 
 		/*
 		 * Change the password
 		 */
-		case "changepassword":
-		case "changepass":
-			if (parser.hasNext()) {
-				try {
-					String password = parser.nextString();
-					if ((password.length() > 4) && (password.length() < 15))
-						player.start(new ChangePasswordDialogue(player, password));
-					else
-						DialogueManager.sendStatement(player, "Your password must be between 4 and 15 characters.");
-				} catch (Exception e) {
-					player.getClient().queueOutgoingPacket(new SendMessage("Invalid password format, syntax: ::changepass password here"));
+			case "changepassword":
+			case "changepass":
+				if (parser.hasNext()) {
+					try {
+						String password = parser.nextString();
+						if ((password.length() > 4) && (password.length() < 15))
+							player.start(new ChangePasswordDialogue(player, password));
+						else
+							DialogueManager.sendStatement(player, "Your password must be between 4 and 15 characters.");
+					} catch (Exception e) {
+						player.getClient().queueOutgoingPacket(new SendMessage("Invalid password format, syntax: ::changepass password here"));
+					}
 				}
-			}
-			return true;
+				return true;
 
 		/*
 		 * Changes yell title
 		 */
-		case "yelltitle":
-			if (player.getRights() == 0 || player.getRights() == 5) {
-				player.send(new SendMessage("You need to be a super or extreme member to do this!"));
-				return true;
-			}
-			if (parser.hasNext()) {
-				try {
-					String message = parser.nextString();
-					while (parser.hasNext()) {
-						message += " " + parser.nextString();
-					}
-
-					for (int i = 0; i < VencillioConstants.BAD_STRINGS.length; i++) {
-						if (message.contains(VencillioConstants.BAD_STRINGS[i])) {
-							player.send(new SendMessage("You may not use that in your title!"));
-							return true;
-						}
-					}
-
-					for (int i = 0; i < VencillioConstants.BAD_TITLES.length; i++) {
-						if (message.contains(VencillioConstants.BAD_TITLES[i])) {
-							player.send(new SendMessage("You may not use that in your title!"));
-							return true;
-						}
-					}
-
-					player.setYellTitle(message);
-					DialogueManager.sendTimedStatement(player, "Your yell title is now @red@" + message);
-				} catch (Exception e) {
-					player.getClient().queueOutgoingPacket(new SendMessage("Invalid yell format, syntax: -title"));
+			case "yelltitle":
+				if (player.getRights() == 0 || player.getRights() == 5) {
+					player.send(new SendMessage("You need to be a super or extreme member to do this!"));
+					return true;
 				}
-			}
-			return true;
+				if (parser.hasNext()) {
+					try {
+						String message = parser.nextString();
+						while (parser.hasNext()) {
+							message += " " + parser.nextString();
+						}
+
+						for (int i = 0; i < VencillioConstants.BAD_STRINGS.length; i++) {
+							if (message.contains(VencillioConstants.BAD_STRINGS[i])) {
+								player.send(new SendMessage("You may not use that in your title!"));
+								return true;
+							}
+						}
+
+						for (int i = 0; i < VencillioConstants.BAD_TITLES.length; i++) {
+							if (message.contains(VencillioConstants.BAD_TITLES[i])) {
+								player.send(new SendMessage("You may not use that in your title!"));
+								return true;
+							}
+						}
+
+						player.setYellTitle(message);
+						DialogueManager.sendTimedStatement(player, "Your yell title is now @red@" + message);
+					} catch (Exception e) {
+						player.getClient().queueOutgoingPacket(new SendMessage("Invalid yell format, syntax: -title"));
+					}
+				}
+				return true;
 
 		/*
 		 * Yell to server
 		 */
-		case "yell":
-			if (parser.hasNext()) {
-				try {
-					String message = parser.nextString();
-					while (parser.hasNext()) {
-						message += " " + parser.nextString();
+			case "yell":
+				if (parser.hasNext()) {
+					try {
+						String message = parser.nextString();
+						while (parser.hasNext()) {
+							message += " " + parser.nextString();
+						}
+						Yelling.yell(player, message.trim(), false);
+					} catch (Exception e) {
+						player.getClient().queueOutgoingPacket(new SendMessage("Invalid yell format, syntax: -messsage"));
 					}
-					Yelling.yell(player, message.trim(), false);
-				} catch (Exception e) {
-					player.getClient().queueOutgoingPacket(new SendMessage("Invalid yell format, syntax: -messsage"));
 				}
-			}
-			return true;
+				return true;
 
 		/*
 		 * Handles player emptying inventory
 		 */
-		case "empty":
-			if (player.getRights() == 2 || player.getRights() == 3) {
-				player.getInventory().clear();
-				player.send(new SendMessage("You have emptied your inventory."));
-				//player.send(new SendRemoveInterfaces());
+			case "empty":
+				if (player.getRights() == 2 || player.getRights() == 3) {
+					player.getInventory().clear();
+					player.send(new SendMessage("You have emptied your inventory."));
+					//player.send(new SendRemoveInterfaces());
+					return true;
+				}
+
+				player.start(new OptionDialogue("Yes, empty my inventory.", p -> {
+					p.getInventory().clear();
+					p.send(new SendMessage("You have emptied your inventory."));
+					p.send(new SendRemoveInterfaces());
+				}, "Wait, nevermind!", p -> p.send(new SendRemoveInterfaces())));
 				return true;
-			}
-			
-			player.start(new OptionDialogue("Yes, empty my inventory.", p -> {
-				p.getInventory().clear();
-				p.send(new SendMessage("You have emptied your inventory."));
-				p.send(new SendRemoveInterfaces());
-			} , "Wait, nevermind!", p -> p.send(new SendRemoveInterfaces())));
-			return true;
 
 		/*
 		 * Teleport player home
 		 */
-		case "home":
-			if (player.getWildernessLevel() > 20 && player.inWilderness() && !PlayerConstants.isOwner(player)) {
-				player.send(new SendMessage("You cannot teleport above 20 wilderness!"));
-				return true;
-			}
-			if(PlayerConstants.isOwner(player)) {
-				Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
-				if(target != player)
-					target.getMagic().teleport(3087, 3492, 0, TeleportTypes.TELE_OTHER);
-				else
+			case "home":
+				if (player.getWildernessLevel() > 20 && player.inWilderness() && !PlayerConstants.isOwner(player)) {
+					player.send(new SendMessage("You cannot teleport above 20 wilderness!"));
+					return true;
+				}
+				if (PlayerConstants.isOwner(player)) {
+					Player target = parser.hasNext() ? World.getPlayerByName(parser.nextString()) : player;
+					if (target != player)
+						target.getMagic().teleport(3087, 3492, 0, TeleportTypes.TELE_OTHER);
+					else
+						player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
+				} else {
 					player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
-			}
-			else {
-				player.getMagic().teleport(3087, 3492, 0, TeleportTypes.SPELL_BOOK);
-			}
-			return true;
+				}
+				return true;
 
 			case "glow":
-				if(player.getMoneySpent() >= 25) {
+				if (player.getMoneySpent() >= 25) {
 					active = !active;
 					TaskQueue.queue(new Task(2) {
 						@Override
@@ -907,7 +906,7 @@ public class PlayerCommand implements Command {
 				return true;
 
 			case "glow2":
-				if(player.getMoneySpent() >= 25) {
+				if (player.getMoneySpent() >= 25) {
 					active = !active;
 					TaskQueue.queue(new Task(2) {
 						@Override

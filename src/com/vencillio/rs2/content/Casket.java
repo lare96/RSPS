@@ -290,14 +290,17 @@ public class Casket {
 				String name = reward.getDefinition().getName();
 				String formatted_name = Utility.getAOrAn(name) + " " + name;
 				player.getInventory().remove(casket);
-				player.getInventory().add(reward);
+				if(reward.getDefinition().getId() != reward.getDefinition().getNoteId())
+					player.getInventory().add(new Item(reward.getDefinition().getNoteId()));
+				else
+					player.getInventory().add(reward);
 				player.send(new SendMessage("You have opened the casket and were rewarded with " + reward.getAmount() + "x " + formatted_name + " ."));
 				if (reward.getDefinition().getGeneralPrice() >= 500_000) {
 					World.sendGlobalMessage("@mbl@" + player.determineIcon(player) + " " + player.getUsername() + " has recieved " + formatted_name + " from a Mystery box!");
 				}
 				break;
 			case SLAYER_CASKET:
-				int randPoints = Utility.random(675) + 75;
+				int randPoints = Utility.randomNumber(675) + 75;
 				player.getSlayer().addSlayerExperience(randPoints*100);
 				player.addSlayerPoints(randPoints);
 				player.getInventory().remove(casket);

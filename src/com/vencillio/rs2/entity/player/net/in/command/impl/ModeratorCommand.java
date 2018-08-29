@@ -167,7 +167,7 @@ public class ModeratorCommand implements Command {
 
 			case "checkbank":
 				if (parser.hasNext()) {
-					name = parser.nextString();
+					name = "";
 
 					while (parser.hasNext()) {
 						name += parser.nextString()+ " ";

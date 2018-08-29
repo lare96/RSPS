@@ -168,8 +168,11 @@ public class AdministratorCommand implements Command {
             case "coords":
             case "pos":
                 if(parser.hasNext()) {
-					String arg1 = parser.nextString();
-					Player p = World.getPlayerByName(arg1);
+                    String arg1 = "";
+                    while(parser.hasNext()) {
+                        arg1 += parser.nextString() + " ";
+                    }
+					Player p = World.getPlayerByName(arg1.trim());
 					player.send(new SendMessage(p.getUsername() + " is at: " + p.getLocation() + "."));
 				}
 				else {

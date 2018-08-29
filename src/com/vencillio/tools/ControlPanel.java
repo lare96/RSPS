@@ -28,6 +28,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -707,6 +708,7 @@ public class ControlPanel extends JFrame {
 		scrollPane_1.setBounds(14, 57, 121, 327);
 		panel_2.add(scrollPane_1);
 
+		DecimalFormat formatter = new DecimalFormat("#,###.#");
 		hsList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -737,12 +739,12 @@ public class ControlPanel extends JFrame {
 					summoningLabel.setText(player.getSkill().getLevels()[Skills.SUMMONING] + "");
 					dungeoneeringLabel.setText(player.getSkill().getLevels()[Skills.DUNGEONEERING] + "");
 					questPointsLabel.setText(player.getAchievementsPoints() + "");
-					totalLevelLabel.setText("Total Level: " + player.getSkill().getTotalLevel());
-					totalExpLabel.setText("Total Exp: " + player.getSkill().getTotalExperience());
+					totalLevelLabel.setText("Total Level: " + formatter.format(player.getSkill().getTotalLevel()));
+					totalExpLabel.setText("Total Exp: " + formatter.format(player.getSkill().getTotalExperience()));
 					rightsLabel.setText("Rights: " + player.getRights());
 					memberLabel.setText("Member: True"); //+(player.isMember() ? "true" : "false")); //Set to true, doesn't matter
-					bankSizeLabel.setText("Bank size: " + player.getBank().getSize() + "");
-					moneyPouchLabel.setText("Money pouch: " + player.getMoneyPouch());
+					bankSizeLabel.setText("Bank usage: " + player.getBank().getTakenSlots() + "/" + player.getBank().getSize() + "");
+					moneyPouchLabel.setText("Money pouch: " + formatter.format(player.getMoneyPouch()));
 					canTradeLabel.setText("Trade banned: N/A"); //+(player.isTradeBanned() ? "true" : "false")); //Set to true, doesn't matter
 					bannedLabel.setText("Banned: " + (player.isBanned() ? "true" : "false"));
 					mutedLabel.setText("Muted: " + (player.isMuted() ? "true" : "false"));
