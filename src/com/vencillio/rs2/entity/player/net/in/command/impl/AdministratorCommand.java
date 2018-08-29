@@ -11,6 +11,7 @@ import com.vencillio.rs2.content.bank.Bank;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.content.io.PlayerSaveUtil;
+import com.vencillio.rs2.content.minigames.pestcontrol.PestControl;
 import com.vencillio.rs2.content.skill.Skill;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.Animation;
@@ -38,11 +39,16 @@ import java.util.stream.Collectors;
  */
 public class AdministratorCommand implements Command {
 
-    boolean active = false;
+    private boolean active = false;
 
     @Override
     public boolean handleCommand(Player player, CommandParser parser) throws Exception {
         switch (parser.getCommand()) {
+
+            case "startpc":
+            case "pcstart":
+                PestControl.startGame();
+                return true;
 
             /*
 			 * IP Ban a player

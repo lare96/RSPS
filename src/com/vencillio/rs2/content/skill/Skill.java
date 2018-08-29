@@ -114,7 +114,13 @@ public class Skill {
 
 			break;
 		case MAGIC:
-			addExperience(6, exp * magicExp);
+			if(player.isDefenseMage()) {
+				addExperience(Skills.MAGIC, exp * magicExp / 2);
+				addExperience(Skills.DEFENCE, exp * magicExp / 2);
+			}
+			else {
+				addExperience(6, exp * magicExp);
+			}
 			break;
 		case RANGED:
 			addExperience(4, exp * rangeExp);
