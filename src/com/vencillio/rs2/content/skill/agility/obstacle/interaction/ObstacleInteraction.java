@@ -112,7 +112,7 @@ public interface ObstacleInteraction {
 					player.getUpdateFlags().sendFaceToDirection((nextObstacle == null ? start.getX() : nextObstacle.getStart().getX()) + delta.getX(),(nextObstacle == null ? start.getY() : nextObstacle.getStart().getY()) + delta.getY());
 					onExecution(player, start, end);
 
-					if (ordinal > -1 && Utility.random(45) == 0) {
+					if (ordinal > -1 && Utility.random(40) == 0) {
 						GroundItemHandler.add(new Item(11849, 1), end, player, player.ironPlayer() ? player : null);
 						player.send(new SendMessage("<col=C60DDE>There appears to be a wild Grace mark near you."));
 					}

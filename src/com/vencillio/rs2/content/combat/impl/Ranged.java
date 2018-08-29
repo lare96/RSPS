@@ -63,7 +63,6 @@ public class Ranged {
 				}
 			}
 			if(entity.getPlayer().getEquipment().isWearingItem(12424)) {
-				System.out.println("set start");
 				setStart(new Graphic(-1));
 			}
 		}

@@ -130,6 +130,7 @@ public class Player extends Entity {
 
 	private boolean isInvulnerable = false;
 	private boolean isDeflect = false;
+	private boolean defenseMage = false;
 	public int toxicStaffOfTheDeadCharges;
 
 	public boolean ironPlayer() {
@@ -656,18 +657,18 @@ public class Player extends Entity {
 		}
 		Clan clan = Server.clanManager.getClan(getUsername());
 		//System.out.println("CLAN: " + clan +  " Clan title: " + clan.getTitle() + "Founder: " + clan.getFounder());
-		send(new SendString(clan.getTitle(), 53706));
+		send(new SendString(clan.getTitle(), 43706));
 		String title = "";
 		System.out.println("clan who can join: " + clan.getRankTitle(clan.whoCanJoin) + " true/false: " + (clan.whoCanJoin > Clan.Rank.ANYONE && clan.whoCanJoin < Clan.Rank.OWNER) + " clan rank.owner: " + Clan.Rank.OWNER);
 		System.out.println("clan who can talk: " + clan.whoCanTalk + " who can kick: " + clan.whoCanKick + " who can ban: " + clan.whoCanBan);
-		for (int id = 53707; id < 53717; id += 3) {
-			if (id == 53707) {
+		for (int id = 43707; id < 43717; id += 3) {
+			if (id == 43707) {
 				title = clan.getRankTitle(clan.whoCanJoin) + (clan.whoCanJoin > Clan.Rank.ANYONE && clan.whoCanJoin < Clan.Rank.OWNER ? "+" : "");
-			} else if (id == 53710) {
+			} else if (id == 43710) {
 				title = clan.getRankTitle(clan.whoCanTalk) + (clan.whoCanTalk > Clan.Rank.ANYONE && clan.whoCanTalk < Clan.Rank.OWNER ? "+" : "");
-			} else if (id == 53713) {
+			} else if (id == 43713) {
 				title = clan.getRankTitle(clan.whoCanKick) + (clan.whoCanKick > Clan.Rank.ANYONE && clan.whoCanKick < Clan.Rank.OWNER ? "+" : "");
-			} else if (id == 53716) {
+			} else if (id == 43716) {
 				title = clan.getRankTitle(clan.whoCanBan) + (clan.whoCanBan > Clan.Rank.ANYONE && clan.whoCanBan < Clan.Rank.OWNER ? "+" : "");
 			}
 			send(new SendString(title, id + 2));
@@ -1158,6 +1159,8 @@ public class Player extends Entity {
 	public boolean isDeflect() {
 		return isDeflect;
 	}
+
+	public boolean isDefenseMage() { return defenseMage; }
 
 	public boolean isAppearanceUpdateRequired() {
 		return appearanceUpdateRequired;
@@ -2421,6 +2424,8 @@ public class Player extends Entity {
 	public void setDeflect(boolean isDeflect) {
 		this.isDeflect = isDeflect;
 	}
+
+	public void setDefenseMage(boolean deflectMage) { this.defenseMage = deflectMage; }
 
 	public void setMember(boolean isMember) {
 		this.isMember = isMember;

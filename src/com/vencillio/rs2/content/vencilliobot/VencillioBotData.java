@@ -11,7 +11,7 @@ public enum VencillioBotData {
 	DATA_3("How many times can you prestige a skill?", "5", "five"),
 	DATA_4("The barrows brother Verac hits through which prayer?", "Protect from melee"),
 	DATA_5("How many developers are there of Tannerscape?", "1", "one"),
-	DATA_6("Which MOB has four enourmous tentacles?", "Kraken", "kraken"),
+	DATA_6("Which MOB has four enormous tentacles?", "Kraken", "kraken"),
 	DATA_7("How many crystal keys do you get for voting?", "3", "Three"),
 	DATA_8("I am a rock that turns into a crab what am I called?", "Rock crab", "Rock crabs"),
 	DATA_9("What is the max level possible reached in any skill?", "99"),
@@ -33,7 +33,7 @@ public enum VencillioBotData {
 	DATA_27("How many friends fit on the friendslist?", "200"),
 	DATA_28("What is the short term used for 'Staff Of The Dead'?", "Sotd"),
 	DATA_29("Anagram - odsanb", "bandos"),
-	DATA_30("Where are spiritual mages found?", "Godwars", "Godwars dungeon"),
+	DATA_30("Where are spiritual mages found?", "Godwars", "Godwars dungeon", "gwd"),
 	DATA_31("What is the required level for Smite?", "52"),
 	DATA_32("Toxic blowpipe is a drop from what NPC?", "Zulrah"),
 	DATA_33("What is the name of the first teleport in the teleport interface?", "Rock Crabs"),
@@ -58,7 +58,7 @@ public enum VencillioBotData {
 	DATA_53("What is the maximum amount of friends allowed?", "200", "two hundred", "two-hundred"),
 	DATA_54("What is the Woodcutting level required to wield a dragon hatchet?", "61", "sixty one", "sixty-one"),
 	DATA_55("Who can you talk to if you want to see the NPC drop tables?", "hari"),
-	DATA_56("Where is home?", "edgeville", "varrock"),
+	DATA_56("Where is home?", "edgeville", "varrock", "edge"),
 	DATA_57("What is the name of the NPC you can get skillcapes from?", "wise old man"),
 	DATA_58("What color party hat does the wise old man wear?", "blue"),
 	DATA_59("What is the name of the NPC used to travel around Tannerscape?", "sailor"),
@@ -72,11 +72,16 @@ public enum VencillioBotData {
 	DATA_67("What is the best F2P armour?", "rune", "rune armour"),
 	DATA_68("How much money does normal membership cost?", "$5", "5 dollars"),
 	DATA_69("What is the best crossbow in game?", "armadyl crossbow", "acb"),
-	DATA_70("How many posts do you need to post an application?", "50", "fifty"),
-	DATA_71("How many letters are in the word 'tannerscape'?", "11", "eleven"),
-	DATA_72("What level magic does the spell High Alchemy require?", "55", "fifty-five", "fifty five"),
-	DATA_73("What is one of the rewards you get from voting?", "coins", "crystal keys", "points", "voting points", "keys", "gp"),
-	DATA_74("How many points do you get from winning pest control?", "5", "five"),;
+	DATA_70("How many letters are in the word 'tannerscape'?", "11", "eleven"),
+	DATA_71("What level magic does the spell High Alchemy require?", "55", "fifty-five", "fifty five"),
+	DATA_72("What is one of the rewards you get from voting?", "coins", "crystal keys", "points", "voting points", "keys", "gp"),
+	DATA_73("How many points do you get from winning pest control?", "5", "five"),
+	DATA_74("What can you do to check an item's bonuses without having the item?", ";;itemdef", ";;ib", "ib", "itemdef"),
+	DATA_75("How can you check what your kill count is for a boss without killing it?", ";;kc", "kc"),
+	DATA_76("What level do you unlock enhanced ice barrage at?", "99"),
+	DATA_77("How much do easter eggs heal you for?", "99"),
+	DATA_78("What is the highest total level that can be achieved?", "2178"),
+	DATA_79("Which npc has the highest hp in the game?", "corp", "corporeal beast"),;
 
 	private final String question;
 	private final String[] answers;

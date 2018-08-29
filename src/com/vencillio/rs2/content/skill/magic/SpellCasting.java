@@ -29,7 +29,13 @@ public class SpellCasting {
 
 	public void addSpellExperience() {
 		if (getCurrentSpellId() != -1) {
-			player.getSkill().addExperience(6, GameDefinitionLoader.getCombatSpellDefinition(getCurrentSpellId()).getBaseExperience());
+			if(player.isDefenseMage()) {
+				player.getSkill().addExperience(Skills.MAGIC, GameDefinitionLoader.getCombatSpellDefinition(getCurrentSpellId()).getBaseExperience()/2);
+				player.getSkill().addExperience(Skills.DEFENCE, GameDefinitionLoader.getCombatSpellDefinition(getCurrentSpellId()).getBaseExperience()/2);
+			}
+			else {
+				player.getSkill().addExperience(Skills.MAGIC, GameDefinitionLoader.getCombatSpellDefinition(getCurrentSpellId()).getBaseExperience());
+			}
 		}
 	}
 

@@ -82,7 +82,7 @@ public class PestControlConstants {
 	 * @return
 	 */
 	public static Location getRandomBoatLocation(int z) {
-		return new Location(START_X + Utility.randomNumber(START_X_MOD), START_Y + Utility.randomNumber(START_Y_MOD));
+		return new Location(START_X + Utility.randomNumber(START_X_MOD), START_Y + Utility.randomNumber(START_Y_MOD), z);
 	}
 
 	/**
