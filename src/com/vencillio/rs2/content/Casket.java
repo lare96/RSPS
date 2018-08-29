@@ -291,7 +291,7 @@ public class Casket {
 				String formatted_name = Utility.getAOrAn(name) + " " + name;
 				player.getInventory().remove(casket);
 				if(reward.getDefinition().getId() != reward.getDefinition().getNoteId())
-					player.getInventory().add(new Item(reward.getDefinition().getNoteId()));
+					player.getInventory().add(new Item(reward.getDefinition().getNoteId(), reward.getAmount()));
 				else
 					player.getInventory().add(reward);
 				player.send(new SendMessage("You have opened the casket and were rewarded with " + reward.getAmount() + "x " + formatted_name + " ."));
