@@ -23,10 +23,10 @@ public class WallSafes extends Task {
 
 	public static Item RANDOM() {
 		Item newItem = ITEMS[(int) (Math.random() * ITEMS.length)];
-		if(newItem.getId() == 1631 && Math.random() > .9)
+		if(newItem.getId() == 1631 && Math.random() > .8)
 			return newItem;
 		else
-			return ITEMS[(int) (Math.random() * ITEMS.length)];
+			return ITEMS[Utility.randomNumber(8)+1];
 	}
 
 	public static int timer(Player player) {
