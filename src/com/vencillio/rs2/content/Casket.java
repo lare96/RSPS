@@ -135,7 +135,7 @@ public class Casket {
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(1515, 500)), //Yew log
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(1513, 500)), //Magic log
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(1745, 500)), //green leather
-			new WeightedChance<Item>(WeightedChance.COMMON, new Item(2595, 500)), //blue leather
+			new WeightedChance<Item>(WeightedChance.COMMON, new Item(2505, 500)), //blue leather
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(2507, 500)), //red leather
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(2509, 500)), //black leather
 			new WeightedChance<Item>(WeightedChance.COMMON, new Item(257, 500)), //Grimy ranarr
@@ -153,7 +153,7 @@ public class Casket {
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(1515, 1000)), //Yew log
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(1513, 1000)), //Magic log
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(1745, 1000)), //green leather
-			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(2595, 1000)), //blue leather
+			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(2505, 1000)), //blue leather
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(2507, 1000)), //red leather
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(2509, 1000)), //black leather
 			new WeightedChance<Item>(WeightedChance.UNCOMMON, new Item(257, 1000)), //Grimy ranarr
@@ -173,7 +173,7 @@ public class Casket {
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(1515, 1500)), //Yew log
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(1513, 1500)), //Magic log
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(1745, 1500)), //green leather
-			new WeightedChance<Item>(WeightedChance.RARE, new Item(2595, 1500)), //blue leather
+			new WeightedChance<Item>(WeightedChance.RARE, new Item(2505, 1500)), //blue leather
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(2507, 1500)), //red leather
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(2509, 1500)), //black leather
 			new WeightedChance<Item>(WeightedChance.RARE, new Item(257, 1500)), //Grimy ranarr
@@ -192,7 +192,7 @@ public class Casket {
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(1515, 2500)), //Yew log
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(1513, 2500)), //Magic log
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(1745, 2500)), //green leather
-			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(2595, 2500)), //blue leather
+			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(2505, 2500)), //blue leather
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(2507, 2500)), //red leather
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(2509, 2500)), //black leather
 			new WeightedChance<Item>(WeightedChance.VERY_RARE, new Item(257, 2500)), //Grimy ranarr
@@ -290,7 +290,7 @@ public class Casket {
 				String name = reward.getDefinition().getName();
 				String formatted_name = Utility.getAOrAn(name) + " " + name;
 				player.getInventory().remove(casket);
-				if(reward.getDefinition().getId() != reward.getDefinition().getNoteId())
+				if(reward.getDefinition().canNote() && (reward.getDefinition().getId() != reward.getDefinition().getNoteId()))
 					player.getInventory().add(new Item(reward.getDefinition().getNoteId(), reward.getAmount()));
 				else
 					player.getInventory().add(reward);

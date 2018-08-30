@@ -19,10 +19,14 @@ public class WallSafes extends Task {
 		this.player = player;
 	}
 
-	public static Item ITEMS[] = { new Item(1617), new Item(1619), new Item(1621), new Item(1623), new Item(1623), new Item(995, 20), new Item(995, 40) };
+	public static Item ITEMS[] = { new Item(1631), new Item(1617), new Item(1619), new Item(1621), new Item(1623), new Item(1623), new Item(995, 200), new Item(995, 400) };
 
 	public static Item RANDOM() {
-		return ITEMS[(int) (Math.random() * ITEMS.length)];
+		Item newItem = ITEMS[(int) (Math.random() * ITEMS.length)];
+		if(newItem.getId() == 1631 && Math.random() > .7)
+			return newItem;
+		else
+			return ITEMS[(int) (Math.random() * ITEMS.length)];
 	}
 
 	public static int timer(Player player) {
