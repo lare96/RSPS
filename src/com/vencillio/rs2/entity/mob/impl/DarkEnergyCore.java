@@ -62,7 +62,7 @@ public class DarkEnergyCore extends Mob {
 	}
 
 	public Hit getHit() {
-		return new Hit(this, Utility.randomNumber(15), Hit.HitTypes.NONE);
+		return new Hit(this, Utility.randomNumber(10), Hit.HitTypes.NONE);
 	}
 
 	@Override

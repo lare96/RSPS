@@ -4,9 +4,7 @@ import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.util.LinkedList;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -82,6 +80,10 @@ public class ClanManager {
 		}
 		try {
 			RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
+			FileReader fr = new FileReader(localFile);
+			int ch;
+			while ((ch=fr.read())!=-1)
+				System.out.print((char)ch);
 
 			Clan localClan = new Clan(localRandomAccessFile.readUTF(), paramString);
 
