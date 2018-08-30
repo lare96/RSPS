@@ -15,21 +15,26 @@ import java.util.List;
 
 public class DarkEnergyCore extends Mob {
 
-	public static final int CORPOREAL_BEAST_INDEX = 1;
+	public static int CORPOREAL_BEAST_INDEX;
 	
 	public static final int DARK_ENERGY_CORE_ID = 320;
 
 	public static final Mob getCorp() {
-		return World.getNpcs()[1];
+		return World.getNpcs()[CORPOREAL_BEAST_INDEX];
 	}
 
 	private static final Projectile getProjectile() {
 		return new Projectile(0);
 	}
 
-	public static final Mob[] spawn() {
+	public static final Mob[] spawn(int corpIndex) {
 		System.out.println("In dark energy core spawn");
-		List<Player> players = getCorp().getCombatants();
+
+		Mob corp = World.getNpcs()[corpIndex];
+
+		CORPOREAL_BEAST_INDEX = corpIndex;
+
+		List<Player> players = corp.getCombatants();
 
 		Mob[] cores = new Mob[players.size()];
 

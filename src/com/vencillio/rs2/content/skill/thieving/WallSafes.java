@@ -23,7 +23,7 @@ public class WallSafes extends Task {
 
 	public static Item RANDOM() {
 		Item newItem = ITEMS[(int) (Math.random() * ITEMS.length)];
-		if(newItem.getId() == 1631 && Math.random() > .9)
+		if(newItem.getId() == 1631 && Math.random() > .79)
 			return newItem;
 		else
 			return ITEMS[Utility.randomNumber(7)+1];

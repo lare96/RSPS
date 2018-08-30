@@ -42,7 +42,8 @@ public class CorporealBeast extends Mob {
 	@Override
 	public void doPostHitProcessing(Hit hit) {
 		if ((getCombatants().size() != 0) && (getLevels()[3] != 0) && (getLevels()[3] <= 150) && (areCoresDead()))
-			darkEnergyCores = DarkEnergyCore.spawn();
+
+			darkEnergyCores = DarkEnergyCore.spawn(getIndex());
 	}
 
 	@Override
