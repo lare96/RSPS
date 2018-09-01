@@ -18,7 +18,7 @@ public class ClanManager {
 	}
 
 	public boolean clanExists(String paramString) {
-		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramString.toLowerCase() + ".cla");
+		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramString.toLowerCase() + ".json");
 		return localFile.exists();
 	}
 
@@ -143,6 +143,7 @@ public class ClanManager {
 			//RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(localFile, false));
 
+			writer.write(PlayerSave.GSON.toJson(paramClan.getTitle()));
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanJoin));
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanTalk));
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanKick));
