@@ -144,10 +144,15 @@ public class ClanManager {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(localFile, false));
 
 			writer.write(PlayerSave.GSON.toJson(paramClan.getTitle()));
+			writer.newLine();
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanJoin));
+			writer.newLine();
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanTalk));
+			writer.newLine();
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanKick));
+			writer.newLine();
 			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanBan));
+			writer.newLine();
 
 			if ((paramClan.rankedMembers != null) && (paramClan.rankedMembers.size() > 0)) {
 				writer.write(PlayerSave.GSON.toJson(paramClan.rankedMembers.size()));
