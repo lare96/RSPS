@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 
 public class ToxicBlowpipe {
 
-	private static final int FULL = 16_383;
+	private static final int FULL = 65_535;
 
 	private static final DecimalFormat FORMATTER = new DecimalFormat("#.#");
 

@@ -1,13 +1,13 @@
 package com.vencillio.rs2.content.skill.herblore;
 
-import java.util.ArrayList;
-
 import com.vencillio.core.util.GameDefinitionLoader;
 import com.vencillio.rs2.content.dialogue.DialogueManager;
 import com.vencillio.rs2.content.skill.Skills;
 import com.vencillio.rs2.entity.item.Item;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
+
+import java.util.ArrayList;
 
 /**
  * Handles making Super combat potion
@@ -51,10 +51,12 @@ public class SuperCombatPotion {
 		}
 		
 		//Creates item if items being used are correct
-		for (int index = 0; index < ITEMS.length; index++) {
-			if (itemUsed.getId() == ITEMS[index] || usedWith.getId() == ITEMS[index]) {
-				create(player);
-				return true;
+		if (player.getInventory().hasItemId(227) && player.getInventory().hasItemId(269)) {
+			for (int index = 0; index < ITEMS.length; index++) {
+				if (itemUsed.getId() == ITEMS[index] || usedWith.getId() == ITEMS[index]) {
+					create(player);
+					return true;
+				}
 			}
 		}
 		return false;

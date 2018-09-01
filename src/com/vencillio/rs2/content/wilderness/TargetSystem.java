@@ -1,7 +1,5 @@
 package com.vencillio.rs2.content.wilderness;
 
-import java.math.BigInteger;
-
 import com.vencillio.core.task.Task;
 import com.vencillio.core.task.TaskQueue;
 import com.vencillio.rs2.entity.World;
@@ -10,6 +8,8 @@ import com.vencillio.rs2.entity.player.net.out.impl.SendConfig;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 import com.vencillio.rs2.entity.player.net.out.impl.SendPlayerHint;
 import com.vencillio.rs2.entity.player.net.out.impl.SendString;
+
+import java.math.BigInteger;
 
 public class TargetSystem {
 

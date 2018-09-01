@@ -85207,7 +85207,7 @@
 		<id>11803</id>
 		<slot>3</slot>
 		<requirements>
-			<int>1</int>
+			<int>75</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
@@ -85235,7 +85235,7 @@
 		<id>11804</id>
 		<slot>3</slot>
 		<requirements>
-			<int>1</int>
+			<int>75</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
@@ -85291,7 +85291,7 @@
 		<id>11806</id>
 		<slot>3</slot>
 		<requirements>
-			<int>1</int>
+			<int>75</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
@@ -85347,7 +85347,7 @@
 		<id>11808</id>
 		<slot>3</slot>
 		<requirements>
-			<int>1</int>
+			<int>75</int>
 			<int>1</int>
 			<int>1</int>
 			<int>1</int>
