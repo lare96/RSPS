@@ -1,12 +1,11 @@
 package com.vencillio.rs2.content.clanchat;
 
+import com.vencillio.rs2.content.io.PlayerSave;
 import com.vencillio.rs2.entity.World;
 import com.vencillio.rs2.entity.player.Player;
 import com.vencillio.rs2.entity.player.net.out.impl.SendMessage;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.util.LinkedList;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -76,17 +75,39 @@ public class ClanManager {
 	}
 
 	private Clan read(String paramString) {
-		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramString.toLowerCase() + ".cla");
+		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramString.toLowerCase() + ".json");
 		if (!localFile.exists()) {
 			return null;
 		}
+
 		try {
-			RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
+			/*RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
+			Clan localClan = new Clan(localRandomAccessFile.readUTF(), paramString);*/
+			BufferedReader reader = new BufferedReader(new FileReader(localFile));
+			Clan details = PlayerSave.GSON.fromJson(reader, Clan.class);
+			Player player = World.getPlayerByName(paramString);
 
-			Clan localClan = new Clan(localRandomAccessFile.readUTF(), paramString);
+			if(details.whoCanJoin != -1)
+				player.getClan().whoCanJoin = details.whoCanJoin;
 
-			localClan.whoCanJoin = localRandomAccessFile.readByte();
-			System.out.println("Founder: " + localClan.getFounder() + " Who can join: " + localClan.whoCanJoin);
+			if(details.whoCanTalk != -1)
+				player.getClan().whoCanTalk = details.whoCanTalk;
+
+			if(details.whoCanKick != 6)
+				player.getClan().whoCanKick = details.whoCanKick;
+
+			if(details.whoCanBan != 7)
+				player.getClan().whoCanBan = details.whoCanBan;
+			System.out.println("Founder: " + details.getFounder() + " Who can join: " + details.whoCanJoin);
+
+			int rankedAmount = reader.read();
+			if(rankedAmount != 0) {
+				for (int i = 0; i < rankedAmount; i++) {
+					details.rankedMembers.add(reader.readLine());
+					details.ranks.add(reader.read());
+				}
+			}
+			/*localClan.whoCanJoin = localRandomAccessFile.readByte();
 			localClan.whoCanTalk = localRandomAccessFile.readByte();
 			localClan.whoCanKick = localRandomAccessFile.readByte();
 			localClan.whoCanBan = localRandomAccessFile.readByte();
@@ -97,12 +118,15 @@ public class ClanManager {
 					localClan.ranks.add((int) localRandomAccessFile.readShort());
 				}
 			}
-			localRandomAccessFile.close();
+			localRandomAccessFile.close();*/
 
-			return localClan;
+			reader.close();
+			return details;
+			//return localClan;
 		} catch (IOException localIOException) {
 			localIOException.printStackTrace();
 		}
+
 		return null;
 	}
 
@@ -113,11 +137,32 @@ public class ClanManager {
 			return;
 		}
 		//System.out.println("paramClan founder: " + paramClan.getFounder());
-		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramClan.getFounder().toLowerCase() + ".cla");
-		try {
-			RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
+		File localFile = new File("/home/server/Tannerscape/data/clan/" + paramClan.getFounder().toLowerCase() + ".json");
 
-			localRandomAccessFile.writeUTF(paramClan.getTitle());
+		try {
+			//RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile, "rwd");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(localFile, false));
+
+			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanJoin));
+			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanTalk));
+			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanKick));
+			writer.write(PlayerSave.GSON.toJson(paramClan.whoCanBan));
+
+			if ((paramClan.rankedMembers != null) && (paramClan.rankedMembers.size() > 0)) {
+				writer.write(PlayerSave.GSON.toJson(paramClan.rankedMembers.size()));
+				for(int i=0; i< paramClan.rankedMembers.size(); i++) {
+					writer.write(PlayerSave.GSON.toJson(paramClan.rankedMembers.get(i)));
+					writer.write(PlayerSave.GSON.toJson(paramClan.ranks.get(i)));
+				}
+			}
+			else {
+				writer.write(0);
+			}
+
+			writer.flush();
+			writer.close();
+
+			/*localRandomAccessFile.writeUTF(paramClan.getTitle());
 			//System.out.println("paramClan.getTitle(): " + paramClan.getTitle());
 			localRandomAccessFile.writeByte(paramClan.whoCanJoin);
 			localRandomAccessFile.writeByte(paramClan.whoCanTalk);
@@ -133,7 +178,7 @@ public class ClanManager {
 				localRandomAccessFile.writeShort(0);
 			}
 
-			localRandomAccessFile.close();
+			localRandomAccessFile.close();*/
 		} catch (IOException localIOException) {
 			localIOException.printStackTrace();
 		}
