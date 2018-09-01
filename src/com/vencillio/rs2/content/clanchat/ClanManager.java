@@ -131,7 +131,7 @@ public class ClanManager {
 	}
 
 	public void save(Clan paramClan) {
-		//System.out.println("paramClan: " + paramClan);
+		System.out.println("paramClan: " + paramClan);
 		if (paramClan == null) {
 			System.out.println("paramClan was null");
 			return;

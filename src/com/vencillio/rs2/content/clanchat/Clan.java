@@ -242,6 +242,7 @@ public class Clan {
 	}
 
 	public void save() {
+		System.out.println("In save");
 		Server.clanManager.save(this);
 		updateMembers();
 	}
