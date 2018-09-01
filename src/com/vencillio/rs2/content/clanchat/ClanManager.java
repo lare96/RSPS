@@ -51,10 +51,10 @@ public class ClanManager {
 
 	public Clan getClan(String paramString) {
 		for (int i = 0; i < this.clans.size(); i++) {
+			System.out.println(this.clans.get(i).getFounder());
 			if (this.clans.get(i).getFounder().equalsIgnoreCase(paramString)) {
 				return this.clans.get(i);
 			}
-
 		}
 
 		Clan localClan = read(paramString);
@@ -156,6 +156,7 @@ public class ClanManager {
 
 			if ((paramClan.rankedMembers != null) && (paramClan.rankedMembers.size() > 0)) {
 				writer.write(PlayerSave.GSON.toJson(paramClan.rankedMembers.size()));
+				writer.newLine();
 				for(int i=0; i< paramClan.rankedMembers.size(); i++) {
 					writer.write(PlayerSave.GSON.toJson(paramClan.rankedMembers.get(i)));
 					writer.write(PlayerSave.GSON.toJson(paramClan.ranks.get(i)));
