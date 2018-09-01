@@ -51,7 +51,7 @@ public class SuperCombatPotion {
 		}
 		
 		//Creates item if items being used are correct
-		if (player.getInventory().hasItemId(227) && player.getInventory().hasItemId(269)) {
+		if (player.getInventory().hasItemId(2436) && player.getInventory().hasItemId(2440) && player.getInventory().hasItemId(2442) && player.getInventory().hasItemId(269) ) {
 			for (int index = 0; index < ITEMS.length; index++) {
 				if (itemUsed.getId() == ITEMS[index] || usedWith.getId() == ITEMS[index]) {
 					create(player);
