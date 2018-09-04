@@ -159,7 +159,7 @@ public class Skill {
 			return 0;
 		}
 
-		int doubleXP = VencillioConstants.doubleExperience ? 2 : 1;
+		int doubleXP = VencillioConstants.doubleExperience ? VencillioConstants.experienceMultipler : 1;
 
 		double expBefore = experience;
 

@@ -179,6 +179,14 @@ public class RangeFormulas {
 
 		}
 
+		if(player.getRanged().isOnyxEffectActive()) {
+			base *= 1.2;
+		}
+
+		if(player.getEquipment().isWearingItem(12424)) {
+			base *= 1.23;
+		}
+
 		return (int) base / 11;
 	}
 

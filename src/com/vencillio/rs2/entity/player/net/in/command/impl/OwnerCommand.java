@@ -51,6 +51,20 @@ public class OwnerCommand implements Command {
 			case "doublexp":
 				String msg = "Double XP Bonus is now active!";
 				if (!VencillioConstants.doubleExperience) {
+					VencillioConstants.experienceMultipler = parser.hasNext() ? parser.nextInt() : 2;
+					if(VencillioConstants.experienceMultipler != 2) {
+						switch(VencillioConstants.experienceMultipler) {
+							case 3:
+								msg = "Triple XP Bonus is now active!";
+								break;
+							case 4:
+								msg = "Quadruple XP Bonus is now active!";
+								break;
+							case 5:
+								msg = "Quintuple XP Bonus is now active!";
+								break;
+						}
+					}
 					VencillioConstants.doubleExperience = true;
 					World.sendGlobalMessage("<col=99ff99>" + msg);
 					for (Player players : World.getPlayers()) {
@@ -61,6 +75,19 @@ public class OwnerCommand implements Command {
 				} else {
 					msg = "Double XP Bonus is now off!";
 					VencillioConstants.doubleExperience = false;
+					if(VencillioConstants.experienceMultipler != 2) {
+						switch(VencillioConstants.experienceMultipler) {
+							case 3:
+								msg = "Triple XP Bonus is now off!";
+								break;
+							case 4:
+								msg = "Quadruple XP Bonus is now off!";
+								break;
+							case 5:
+								msg = "Quintuple XP Bonus is now off!";
+								break;
+						}
+					}
 					World.sendGlobalMessage("<col=99ff99>" + msg);
 					for (Player players : World.getPlayers()) {
 						if (players != null && players.isActive()) {

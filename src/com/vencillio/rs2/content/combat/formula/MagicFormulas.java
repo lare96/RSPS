@@ -147,6 +147,9 @@ public class MagicFormulas {
 		if(player.getEquipment().isWearingItem(12002)) {
 			damageMultiplier += .1;
 		}
+		if(player.getEquipment().isWearingItem(11791) || player.getEquipment().isWearingItem(12904)) {
+			damageMultiplier += .15;
+		}
 		if (spellId > 0) {
 			switch (spellId) {
 				case 12037:

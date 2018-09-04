@@ -501,9 +501,11 @@ public class PlayerCommand implements Command {
 						npcID = 6618;
 						break;
 					case "dark beast":
+					case "dark beasts":
 						npcID = 4005;
 						break;
 					case "abyssal demon":
+					case "abyssal demons":
 						npcID = 415;
 						break;
 					default:

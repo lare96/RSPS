@@ -104,21 +104,21 @@ public class PlayerDrops {
 				}
 			}
 		}
-		
-		if (killer != null) {
-			if (!killer.isNpc()) {
-				if (PlayerConstants.isHighClass(player) || PlayerConstants.isHighClass(killer.getPlayer())) {
-					return;
-				}
-			}
-		}
-		
+
 		if (killer != null) {
 			if (!killer.isNpc()) { //if killer is player log
 				PlayerLogger.DEATH_LOGGER.log(player.getUsername(), String.format("%s has been killed by %s.", Utility.formatPlayerName(player.getUsername()), Utility.formatPlayerName(killer.getPlayer().getUsername())));
 			} else { //If killer is npc log
 				if (killer.getMob().getDefinition() != null && killer.getMob().getDefinition().getName() != null) {
 					PlayerLogger.DEATH_LOGGER.log(player.getUsername(), String.format("%s has been killed by %s.", Utility.formatPlayerName(player.getUsername()), Utility.formatPlayerName(killer.getMob().getDefinition().getName())));
+				}
+			}
+		}
+		
+		if (killer != null) {
+			if (!killer.isNpc()) {
+				if (PlayerConstants.isHighClass(player) || PlayerConstants.isHighClass(killer.getPlayer())) {
+					return;
 				}
 			}
 		}

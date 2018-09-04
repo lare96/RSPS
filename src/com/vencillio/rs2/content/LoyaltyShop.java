@@ -122,7 +122,7 @@ public class LoyaltyShop {
 				return true;
 			}
 		else if (!player.unlockedTitles.contains(button.getTitle())) {
-			if (button.getPrice() instanceof Integer) {
+			if (button.getPrice() instanceof Integer && !(button.ordinal() >= TitleButton.RED.ordinal() && button.ordinal() <= TitleButton.WHITE.ordinal())) {
 				if (player.getCredits() < Integer.parseInt(String.valueOf(button.getPrice()))) {
 					player.send(new SendMessage("<col=128>You do not have enough Tannerscape credits to buy this."));
 					return true;

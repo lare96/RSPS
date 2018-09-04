@@ -33,6 +33,11 @@ public class VencillioConstants {
 	public static boolean doubleExperience = false;
 
 	/**
+	 * Current amount of xp multiplying
+	 */
+	public static int experienceMultipler = 1;
+
+	/**
 	 * Current amount of votes
 	 */
 	public static int CURRENT_VOTES = 0;

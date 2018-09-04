@@ -94,15 +94,6 @@ public class Magic {
 					Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, entity.getPlayer());
 				}
 			}
-
-			if (entity.getPlayer().getEquipment().isWearingItem(11791) || entity.getPlayer().getEquipment().isWearingItem(12904))
-			{
-				damage *= 1.15;
-			}
-			if (entity.getPlayer().getEquipment().isWearingItem(12002))
-			{
-				damage *= 1.1;
-			}
 		}
 
 

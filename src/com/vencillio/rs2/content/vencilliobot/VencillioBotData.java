@@ -25,7 +25,7 @@ public enum VencillioBotData {
 	DATA_19("Which of the barrows warriors is based on magic?", "Ahrim", "Ahrim"),
 	DATA_20("What is the required fishing level for sharks?", "76", "76"),
 	DATA_21("What is the smithing level required to create a DFS?", "90"),
-	DATA_22("Purple is prestige color for what prestige level?", "2nd", "second", "2"),
+	DATA_22("Purple is prestige color for what prestige level?", "1st", "first", "1"),
 	DATA_23("How many waves in fight caves?", "fifteen", "15"),
 	DATA_24("What is the minimum required amount to bet against the Gambler?", "100k"),
 	DATA_25("How much special attack does Magic Short Bow require?", "55%", "55"),

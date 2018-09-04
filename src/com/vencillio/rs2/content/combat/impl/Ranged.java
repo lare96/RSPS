@@ -48,14 +48,6 @@ public class Ranged {
 			if (success && damage > 0) { //check for poison here instead to only poison if magic is not splash
 				PoisonWeapons.checkForPoison(entity.getPlayer(), entity.getCombat().getAttacking());
 
-				if(entity.getPlayer().getRanged().isOnyxEffectActive()) {
-					damage *= 1.2;
-				}
-
-				if(entity.getPlayer().getEquipment().isWearingItem(12424)) {
-					damage *= 1.23;
-				}
-
 				if(attacking.isNpc()) {
 					if (entity.getPlayer().getEquipment().isWearingItem(8839, EquipmentConstants.TORSO_SLOT) && entity.getPlayer().getEquipment().isWearingItem(8840, EquipmentConstants.LEGS_SLOT)) {
 						Curses.applySoulSplit(attacking.getMob(), attacking.getLevels()[3] < damage ? attacking.getLevels()[3] : damage, entity.getPlayer());

@@ -78,7 +78,12 @@ public class HitTask extends Task {
 		if (hit.getAttacker() != null && entity.getCombat().getBlockAnimation() != null && !entity.isDead()) {
 			int a = entity.getCombat().getAttackTimer();
 			if (a != entity.getCombat().getAttackCooldown()) {
-				entity.getUpdateFlags().sendAnimation(entity.getCombat().getBlockAnimation());
+				if(entity.getPlayer() != null && (entity.getPlayer().isDeflect() || entity.getPlayer().isInvulnerable())) {
+
+				}
+				else {
+					entity.getUpdateFlags().sendAnimation(entity.getCombat().getBlockAnimation());
+				}
 			}
 		}
 	}
